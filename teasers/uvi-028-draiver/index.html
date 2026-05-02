@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico Uvicuo · Draiver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · DOCUMENTO ADAPTABLE POR AGENTE CONTEXTUAL
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. Documento que se entrega a la persona que
+  ya tuvo contacto profundo con Uvicuo (demo, llamada, reunión, etc.) para
+  que lo lleve internamente a su CFO/COO/CEO. Tono "conseguí esto" — selección
+  y exclusividad.
+
+  PARÁMETROS APLICADOS (UV-028 · DRAIVER):
+  · COMPANY_NAME           → Draiver
+  · CHAMPION_NAME          → Armando Flores
+  · FOLIO                  → UV-028/2026
+  · QUARTER_SLOT           → 04/04 · Q2 2026
+  · FLEET_SIZE             → ~200 operadores recurrentes (NO "unidades" — Draiver mueve vehículos de terceros)
+  · ANNUAL_OPEX_MXN        → ~$24M (combustible $18M + casetas $4.5M + emergencias $1.8M)
+  · ESTIMATED_RANGE_MXN    → $9–15M (deducibilidad fiscal firme + palancas operativas estimadas)
+  · CONTEXT_HOOK           → "Las soluciones que hemos evaluado están enfocadas en la tarjeta, no en el proceso." — Armando, 30 abr
+  · DOMINANT_LEVER         → combustible (PEX no deducible MX → 46pts recuperables)
+  · APPLICABLE_LEVERS      → combustible + cash en ruta + viáticos/boletos · (peajes + Ubers entre legs · por confirmar)
+  · COMPARABLE_CASE        → Paquete Express anonimizado · framing tech-forward + APIs industry-first
+  · OPEX_BREAKDOWN         → combustible 75% · casetas 19% · emergencias 6%
+
+  REGLAS APLICADAS:
+  · Frame de dimensionamiento: operadores recurrentes, NO unidades
+  · NO comparar con marcas (Mendel/Clara/Pomelo) — solo "soluciones generalistas"
+  · NO referenciar línea de crédito Mendel (cancha del competidor)
+  · NO profundizar overcharges de peajes (Draiver no los conoce — desarrollar en deck/diagnóstico)
+  · Cifras declaradas como "datos que mapeamos en sept 2024 ajustados por crecimiento"
+  · Caso fantasma: Paquete Express anonimizado (validado en knowledge)
+  · Mensaje canónico Iker: "Entendemos su operación. Esta es nuestra especialidad. Queremos entenderla a profundidad para generarles valor desde el día uno."
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="assets/teaser.css" />
+
+<!-- LOCAL OVERRIDES · UV-028 DRAIVER · pendiente migrar a v7 del template
+     Razón: Iker corrigió 2026-05-01 que el number block del template v6 no
+     comunica el split entre deducibilidad fiscal (baseline) y palancas
+     operativas Uvicuo (diferencial). Agregamos un bloque visual `.value-split`
+     después de las barras del dashboard que separa explícitamente ambos
+     componentes. Aplicar al template canónico cuando se itere a v7. -->
+<style>
+.value-split {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(255,255,255,0.18);
+}
+.value-split-h {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+}
+.value-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.value-split-col {
+  padding: 18px 20px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.value-split-col.is-uvicuo {
+  background: rgba(76,217,123,0.06);
+  border: 1px solid rgba(76,217,123,0.35);
+}
+.value-split-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.value-split-col.is-uvicuo .value-split-amount {
+  color: #4cd97b;
+}
+.value-split-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.value-split-col.is-uvicuo .value-split-label {
+  color: #4cd97b;
+}
+.value-split-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.78);
+  margin: 0;
+}
+.value-split-desc strong {
+  color: #fff;
+  font-weight: 600;
+}
+.value-split-col.is-uvicuo .value-split-desc strong {
+  color: #4cd97b;
+}
+@media (max-width: 720px) {
+  .value-split-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-028 · DRAIVER</span>
+      <div class="right">
+        <span class="ts">PARA ARMANDO FLORES</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-028/2026</strong> · DRAIVER</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Draiver después de nuestra conversación del 30 de abril. <strong>Está diseñado para que lo lleves a tu equipo</strong>: a Paulo en Finanzas, a Kevin en Tecnología, a Federico si aplica. Los tres deben entender en cinco minutos por qué arrancar.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Draiver cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: modelo operativo único (el chofer sigue al viaje, no a la unidad), TMS propio maduro con APIs ya integradas, champion cross-funcional con poder ejecutivo, voluntad de co-crear validada en la conversación. <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>04</span><span class="of">/</span><span class="total">04</span></div>
+          </div>
+          <div class="ckey">// Q2 · 2026 · FOLIO 028</div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Armando,</p>
+      <p>Después de nuestra conversación, <strong>algo de lo que mencionaste se nos quedó en la cabeza</strong>: la idea de que las soluciones que han evaluado están enfocadas en la tarjeta, no en el proceso.</p>
+      <p>Para una operación como la de Draiver, donde el chofer sigue al viaje y no al vehículo, y un mismo viaje involucra múltiples segmentos y unidades, esa diferencia no es un detalle. <span class="acc">Es lo que separa una solución que sí encaja de una que solo te resuelve la deducibilidad fiscal y te deja la operación abierta.</span></p>
+      <p>La deducibilidad (los <strong>16% de IVA y 30% de ISR</strong> que hoy se pierden con PEX y Airbase) la resuelve cualquier alternativa local. Es el ticket de entrada. La pregunta real es <strong>qué te queda cuando la consigues</strong>: una tarjeta de gastos genérica, o una operación logística de gastos modelada para tu negocio.</p>
+      <p>Por eso quisimos formalizar la invitación. Lo que sigue es <strong>tu kit para llevar a la siguiente sesión interna</strong>: lo que estimamos (con datos que mapeamos en 2024 ajustados al crecimiento de Draiver), un caso real comparable, cómo lo haríamos, y qué decir cuando te pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyectes en una sala de juntas, no para que lo leas tú solo.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA INDIVIDUAL · UV-028</div>
+      </div>
+    </section>
+
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Lo que estimamos"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS RECUPERABLE PARA DRAIVER</div>
+      <div class="big"><span class="light">$</span>9–15<span class="scale">M</span></div>
+      <div class="unit">MXN AL AÑO · SOBRE UN GASTO OPERATIVO DE ~$24M ANUALES</div>
+      <div class="annot"><strong>Este rango tiene dos componentes que conviene separar.</strong> Hoy Draiver pierde la deducibilidad fiscal (16% IVA + 30% ISR) sobre todo el gasto que pasa por plataformas extranjeras (PEX, Airbase, RAMP). Recuperar esa deducibilidad al mover el stack a una solución local representa <strong>la mayor parte del rango (~$10M anuales)</strong>, y es algo que cualquier alternativa local te da. <strong>Lo que diferencia a Uvicuo</strong> son las palancas operativas que se suman encima: motor de fraude en combustible (cruce de rendimientos + IA post-carga), límites por categoría que cortan los Ubers automáticos entre legs, gestión de aclaraciones de Televía, cash management estructurado vía WhatsApp. Esas son <strong>~$1–5M adicionales por año</strong> que ningún generalista combina. <strong>El diagnóstico es donde actualizamos cada cifra</strong>, separamos línea por línea qué es deducibilidad pura y qué es palanca operativa, y entregamos un mapa cerrado con tres meses de facturación actual.</div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está el dinero recuperable, por categoría</span>
+          <span class="sub"><strong>Todas las cifras son anuales y están en MXN.</strong> Se estiman con la conversación que tuvimos en septiembre 2024, ajustadas por el crecimiento de la operación. <strong>La barra completa es el gasto anual de la categoría; la franja verde es la porción recuperable</strong> que estimamos para Draiver hoy.</span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible <small>gasto anual $18M · 75% del operativo</small></div>
+              <div class="rec">−$8M / año <small>$7M deducibilidad + $1M motor fraude</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:44%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Cash en ruta <small>gasto anual $1.8M · emergencias hoy sin documentar</small></div>
+              <div class="rec">−$0.8M / año <small>deducibilidad + cash management</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:46%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Viáticos &amp; boletos <small>gasto anual ~$3M · plataformas extranjeras hoy</small></div>
+              <div class="rec">−$1.4M / año <small>100% deducibilidad RAMP</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:46%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Peajes + Ubers entre legs <small>gasto anual ~$4.5M · por confirmar en diagnóstico</small></div>
+              <div class="rec">+$1–3M / año <small>100% palanca Uvicuo</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:25%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>Cada barra es el 100% del gasto anual de esa categoría · la franja verde es lo recuperable</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto anual actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable estimado</span>
+          </span>
+        </div>
+
+        <!-- Split visual: deducibilidad (baseline) vs palancas Uvicuo (diferencial) -->
+        <div class="value-split">
+          <div class="value-split-h">De los $9–15M, ¿cuánto es solo Uvicuo?</div>
+          <div class="value-split-grid">
+            <div class="value-split-col">
+              <div class="value-split-amount">~$10M</div>
+              <div class="value-split-label">Deducibilidad fiscal · baseline</div>
+              <p class="value-split-desc">16% IVA + 30% ISR sobre el gasto que hoy pasa por plataformas extranjeras (PEX, Airbase, RAMP). <strong>Cualquier alternativa local te lo da.</strong> Es el ticket de entrada, no el diferencial.</p>
+            </div>
+            <div class="value-split-col is-uvicuo">
+              <div class="value-split-amount">~$1–5M</div>
+              <div class="value-split-label">Palancas operativas · solo Uvicuo</div>
+              <p class="value-split-desc"><strong>Motor de fraude AI</strong> en combustible (rendimientos + odómetro post-carga) · <strong>Límites por categoría</strong> que cortan los Ubers automáticos entre legs · <strong>Aclaraciones de peajes</strong> con Televía · <strong>Cash management</strong> estructurado vía WhatsApp. Ningún generalista combina las cuatro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Patrón comparable</span>
+
+      <h2>Una empresa nacional de paquetería con <span class="light">flota propia y TMS maduro.</span> Creían estar optimizados.</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el equipo de tecnología de <strong>una empresa nacional de paquetería</strong> (que pidió no ser nombrada) nos dijo que ya tenían prácticamente todo lo que necesitaban: sistema propio premiado, conciliación interna, equipo de TI maduro. El gasto estaba "al hueso". El comité daba el tema por cerrado.</p>
+          <p>Aceptaron el diagnóstico más por curiosidad. <strong>Lo que encontramos no estaba en el sistema que ellos ya habían construido</strong>: estaba en la última milla. Las APIs que conectan con concesionarias de peaje, la recuperación automatizada de facturas, el motor de detección de anomalías en combustible.</p>
+          <p>Co-construimos las APIs <span class="acc">primeras de la industria</span> con la concesionaria de telepeaje. Nadie más en el mercado las tiene. <span class="acc">Recuperaron capital atado en operación que ningún proveedor genérico podía detectar.</span> Porque ningún proveedor genérico modela el viaje: modela la tarjeta.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el director técnico</div>
+          <div class="qtext">La diferencia con cualquier solución que evaluamos antes era simple: ellos sí construyeron junto con nosotros lo que faltaba.</div>
+          <div class="qattr"><strong>Director de Tecnología · Empresa nacional de paquetería</strong><br>Flota propia · cobertura nacional · sesión final del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Tipo</div><div class="ov">Tech-forward</div><div class="od">TMS propio · APIs co-construidas</div></div>
+        <div class="o"><div class="ok">Diferencial</div><div class="ov uv">Industry-first</div><div class="od">APIs con concesionarias de telepeaje</div></div>
+        <div class="o"><div class="ok">Duración</div><div class="ov">6 sem</div><div class="od">De primera sesión a presentación final</div></div>
+      </div>
+
+      <div class="pivot"><strong>Draiver nos recuerda mucho a esa cuenta.</strong> Tamaño operativo similar, equipo de TI maduro convencido de que ya construyó lo que necesita, modelo operativo que ningún generalista entiende. Por eso el rango de $9–15M no es agresivo: es lo que hemos visto, una y otra vez, en operaciones que tienen el cerebro propio y les falta la última milla.</div>
+    </section>
+
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Cómo lo hacemos"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. El cronograma depende de la disponibilidad de tu equipo y de los datos. Hemos cerrado diagnósticos en nueve días y otros en siete semanas.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión de mapeo</h4>
+            <p>Sesión con tu equipo operativo: los que despachan viajes, los que autorizan combustible, los que reciben las solicitudes de cash en ruta. Construimos el AS-IS sobre cómo se autoriza, ejecuta y concilia cada gasto.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión técnica con Kevin</h4>
+            <p>Con tu CIO para mapear las APIs del TMS, RAMP y PEX que hoy ya están integradas, y diseñar el endpoint específico para Draiver. Definimos qué se construye, qué se reutiliza, qué se delega.</p>
+            <div class="dur">45–60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con tres meses de facturación PEX, estados de cuenta Airbase y RAMP, reporte de transferencias en cash. Sin acceso directo a tus sistemas. Construcción del modelo financiero auditable con cifras reales.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con tu equipo ejecutivo (Paulo, Kevin, Federico si aplica). Entregamos documento, modelo y plan de intervención. Q&amp;A abierto. El material queda en sus manos para evaluar Uvicuo, comparar con alternativas del mercado, o cerrar internamente.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Draiver · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="La especialidad"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>De las cinco palancas, <span class="light">tres aplican directo a Draiver.</span></h2>
+      <p class="deck">Lo identificamos en lo que conversamos. Las otras dos (peajes con aclaraciones, control de Ubers entre legs) se confirman al revisar tres meses de facturación. Las que destacamos abajo son donde Uvicuo se especializa y donde ningún generalista llega.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Combustible</span><span class="rng">~44%</span></div>
+          <h4>Deducibilidad fiscal + motor de fraude AI</h4>
+          <p>PEX no deduce en México. Recuperar 46pts fiscales es el baseline. El diferencial: motor de fraude que cruza rendimientos por unidad con extracción de kilometraje vía IA en cada carga. Nadie más lo tiene.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Cash en ruta</span><span class="rng">~46%</span></div>
+          <h4>Módulo cash management + WhatsApp UI</h4>
+          <p>Hoy las emergencias en ruta se resuelven con transferencias sin documentación fiscal. En Uvicuo, el conductor sube comprobante por WhatsApp en el momento, conciliamos contra el anticipo, y la deducibilidad se recupera. Sin aplicación que descargar: la rotación alta no rompe el flujo.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/03 · Viáticos &amp; boletos</span><span class="rng">~46%</span></div>
+          <h4>Centralización + deducibilidad MX</h4>
+          <p>Lo que hoy va por RAMP (extranjera, no deducible) puede emitirse desde la entidad mexicana, recuperar la deducibilidad y consolidar en un solo lugar. Tu equipo deja de operar entre cinco plataformas dispersas.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+2 por confirmar</span><span class="rng">$1–3M est.</span></div>
+          <h4>Peajes &amp; control granular</h4>
+          <p>Gestión de aclaraciones de Televía (única en mercado) + límites por categoría que cortan los Ubers automáticos entre legs. Se cuantifican al revisar tres meses de facturación.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── 07 CHAMPION KIT (simplificado · checklist + plantilla) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a tu siguiente reunión interna.</span></h2>
+        <p>Convoca <strong>30 minutos</strong> con Paulo y Kevin. Iker se suma como tu invitado, presenta el rango y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Paulo (Finanzas) · Kevin (CIO) · Tú (champion) · Federico <span class="opt">(si aplica)</span></div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">30 minutos · 20 de presentación + 10 de preguntas</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las 3 preguntas que te van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta?</strong> Cero. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Reemplazamos PEX o el piloto Mendel?</strong> No para arrancar. El diagnóstico te da el mapa cuantificado; ustedes deciden con qué herramienta cerrar cada palanca.</li>
+              <li><strong>¿Cuánto tiempo nos toma?</strong> 5 a 7 horas totales en 4–6 semanas. Las sesiones técnicas con Kevin caben en ese tiempo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: 30 min · Uvicuo · oportunidad de optimización operativa para Draiver MX
+
+Hola Paulo / Kevin,
+
+Estuvimos hablando con Uvicuo, una plataforma especializada en operación logística de gastos para flotas en México. Trabajan con clientes tech-forward (TMS propio, equipos de TI maduros) para liberar capital atrapado en operación: combustible, peajes, viáticos, cash en ruta.
+
+Draiver fue seleccionada para uno de sus diagnósticos del trimestre. Sin costo. En operaciones similares han identificado entre $9M y $15M MXN/año recuperables, sin renegociar con proveedores actuales, partiendo de la deducibilidad fiscal que hoy pierde nuestro stack extranjero.
+
+Antes de aceptar, me gustaría que escuchen con sus propias preguntas. ¿Tienen 30 min esta o la próxima semana? Iker (CEO de Uvicuo) se suma como nuestro invitado.
+
+Adjunto la grabación de nuestra llamada con Iker: https://app.fireflies.ai/view/01KQBER0G9EA0K3W9XH4WQWW64</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS de Draiver</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Roadmap de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>Convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operación</strong> <span class="t">1.5 h</span><small>Equipo de despacho y combustible construye el AS-IS con nosotros</small></li>
+            <li><strong>CIO + TI</strong> <span class="t">45–60 min</span><small>Mapeo de APIs (TMS, PEX, RAMP) y diseño de endpoint Draiver</small></li>
+            <li><strong>Finanzas</strong> <span class="t">30–45 min</span><small>Validan deducibilidad recuperable y modelo</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Draiver</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Draiver: la riqueza de su modelo operativo enriquece nuestra ruta de producto.</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong> sobre tu gasto operativo anual, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Draiver desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes: no una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero y un plan accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Armando%20Flores%20de%20Draiver.%20Sobre%20el%20diagn%C3%B3stico%20UV-028..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagnóstico Draiver · UV-028&amp;body=Hola Iker," class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-028<span class="pad">//</span>Confidencial<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

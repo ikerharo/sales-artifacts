@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico Uvicuo · Trayecto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · DOCUMENTO ADAPTABLE POR AGENTE CONTEXTUAL
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. Documento que se entrega a la persona que
+  ya tuvo contacto profundo con Uvicuo (demo, llamada, reunión, etc.) para
+  que lo lleve internamente a su CFO/COO/CEO. Tono "conseguí esto" — selección
+  y exclusividad.
+
+  CAMPOS PARAMETRIZABLES (para conexión con CMS):
+  · COMPANY_NAME           → "Test Co."
+  · CHAMPION_NAME          → "Stakeholder Test"
+  · FOLIO                  → "UV-026/2026"
+  · QUARTER_SLOT_TOTAL     → "12 al trimestre"
+  · FLEET_SIZE             → "~600 unidades"
+  · ANNUAL_OPEX_MXN        → "$500M"
+  · ESTIMATED_RANGE_MXN    → "$15–40M"
+  · PERCENT_RANGE          → "3% a 8%"
+  · CONTEXT_HOOK           → frase específica del último contacto (lo que
+                             dijo el champion en demo / call / reunión).
+                             Si no hay frase, usar hook genérico de la industria.
+  · DOMINANT_LEVER         → combustible | peajes | viaticos | tesoreria
+  · APPLICABLE_LEVERS      → cuáles aplican (resto van a "por confirmar")
+  · COMPARABLE_CASE        → caso ghost a usar (transportista 800u | otro)
+  · OPEX_BREAKDOWN         → composición % por categoría (combustible/peajes/...)
+
+  REGLAS DE ADAPTACIÓN:
+  · Mantén siempre folio único + sello dorado (activo emocional clave).
+  · Verbo: "conseguiste", nunca "te ofrecemos".
+  · NO asumas que hubo demo. Usa frases neutras ("nuestro último contacto",
+    "lo que conversamos") que funcionen para demo, llamada, junta presencial,
+    intro por referido, etc.
+  · Caso fantasma siempre anonimizado.
+  · Solo mostrar palancas que aplican; resto va a "por confirmar".
+  · CTAs finales: WhatsApp + correo de Iker. No agregar Calendly.
+  · No agregar secciones de "material para imprimir" / "descargar PDF" —
+    el doc en sí es el material; eso solo agrega fricción.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="assets/teaser.css" />
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-027 · TRAYECTO</span>
+      <div class="right">
+        <span class="ts">PARA ALEJANDRO TORRES</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-027/2026</strong> · TRAYECTO</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Trayecto después de nuestra sesión del 17 de abril. <strong>Está diseñado para que lo lleves a tu equipo</strong>, a Rolando en TI, a Enrique Ibarra en contabilidad, al equipo de compras de combustible, y los tres entiendan en cinco minutos por qué arrancar.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Trayecto cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: tamaño enterprise (~5,500 unidades), cobertura nacional con flota propia, champion con poder cross-funcional, equipo de TI maduro con voluntad de co-crear. <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>04</span><span class="of">/</span><span class="total">04</span></div>
+          </div>
+          <div class="ckey">// Q2 · 2026 · FOLIO 027</div>
+        </div>
+      </div>
+    </header>
+
+<!--
+  AGENT_NOTE · HERO
+  · Folio único + sello dorado + verbo "conseguiste" son obligatorios. No reemplazar por "te ofrecemos".
+  · Stamp circular (FOLIO/N/AÑO) y "04/12 slots usados" comunican exclusividad real, no decoración.
+  · Ajustar SLOT_USED y SLOT_TOTAL al CMS según trimestre activo.
+-->
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Alejandro,</p>
+      <p>Después de la sesión del 17 de abril, <strong>algo de lo que dijiste se nos quedó en la cabeza</strong>: que les encantaría dejar de trabajar en la conciliación y que las facturas se generen solas con IA, porque su sistema in-house premiado ya recorrió mucho camino pero le falta la última milla.</p>
+      <p>Lo que proponemos no es replicar lo que ya tienen. Es <strong>elevar la gestión completa de lo que sucede en TAG a tiempo real</strong>: conciliación automática contra concesionarias, levantamiento de aclaraciones sin intervención manual, recuperación de facturas con IA para cerrar el ciclo. Y para el pequeño porcentaje que sigue en efectivo (las casetas estatales que ustedes mencionan), eliminar también ahí el trabajo manual de captura del ticket y recuperación del comprobante. Cuantificado, hablamos de <span class="acc">entre $30M y $70M MXN al año recuperables</span>, concentrados en su mayor parte en peajes.</p>
+      <p>Por eso queremos formalizar la invitación. Lo que sigue es <strong>tu kit para llevar a la siguiente sesión interna</strong> con Rolando y Enrique Ibarra: el rango que estimamos, un caso real comparable, cómo lo haríamos, y qué decir cuando te pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyectes en una sala de juntas, no para que lo leas tú solo. Es de cortesía, por la presentación de Rubén Hernández y por la alineación estratégica.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA INDIVIDUAL · UV-027</div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · LETTER
+  · Personalizar el segundo párrafo con CONTEXT_HOOK específico del último contacto.
+  · La frase abierta "después de nuestra conversación" funciona para demo, llamada, junta presencial o referido.
+  · NO usar comillas literales en el quote a menos que el champion lo haya dicho textual; usar paráfrasis en su defecto.
+-->
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Ahorros estimados"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS PARA TRAYECTO</div>
+      <div class="big"><span class="light">$</span>30–70<span class="scale">M</span></div>
+      <div class="unit">MXN AL AÑO · BASE 5,500 UNIDADES</div>
+      <div class="annot">Equivale a <strong>0.5% a 1% del gasto operativo anual</strong>, distribuido así: 4–6% sobre el gasto en peajes (que es 8% del OPEX), 3–5% sobre viáticos ejecutivos (2% del OPEX) y 0.5–1% sobre el subset auditable de combustible. Más conservador que el estándar de la industria (3–8%) porque <strong>Trayecto ya tiene un sistema in-house maduro</strong> y los autoconsumos propios cubren 70–80% del combustible. La cifra exacta se construye con sus datos en el diagnóstico.</div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está el dinero recuperable</span>
+          <span class="sub">Cada barra representa el 100% del gasto en esa categoría. La franja verde marca el <strong>porcentaje recuperable sobre la categoría misma</strong> (no sobre el OPEX total). Cifras absolutas estimadas a partir del 24% combustible/ingresos que Alejandro confirmó más benchmarks de industria; se cierran al revisar tres meses de facturación.</span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Peajes <small>~$530M · 8% del OPEX · vector primario</small></div>
+              <div class="rec">−$25–50M <small>−5%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:5%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Viáticos ejecutivos <small>~$130M · 2% del OPEX</small></div>
+              <div class="rec">−$3–10M <small>−4%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:4%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible <small>~$1,584M · 24% del OPEX · solo subset autorizado no-autoconsumo</small></div>
+              <div class="rec">−$2–10M <small>−0.6%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:0.6%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Tesorería + Fiscal <small>~$300M · por confirmar</small></div>
+              <div class="rec">+$2–6M <small>est.</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:2%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>← 0% de la categoría · 100% →</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Testimonio de cliente</span>
+
+      <h2>Una empresa nacional de paquetería con <span class="light">flota equivalente.</span> También tenía sistema in-house maduro.</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el director de operaciones de una empresa nacional de paquetería, que pidió no ser nombrada, nos dijo que <strong>su sistema de conciliación de telepeajes ya era robusto</strong>. Equipo de TI propio. Conciliación interna corriendo desde hace años. Entendían bien dónde estaban los errores y dónde reclamar.</p>
+          <p>Aceptaron co-construir con nosotros más por curiosidad técnica. <strong>Construimos juntos las primeras APIs en tiempo real con Televía</strong>, algo que no existía en la industria. La concesionaria nos da los cruces apenas suceden, los comparamos contra la planeación de viaje, y si detectamos anomalía, levantamos la aclaración automáticamente antes de que el cliente la vea.</p>
+          <p>El resultado: <span class="acc">recuperación del 4–6% en cobros mal aplicados</span> que su conciliación mensual no detectaba a tiempo, más la <span class="acc">eliminación del trabajo manual de reclamos</span> que tenía a personas dedicadas. Con la IA de recuperación de facturas, el ciclo se cierra solo.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el CFO</div>
+          <div class="qtext">Lo más valioso no fue el monto recuperado. Fue dejar de tener un equipo persiguiendo reclamos al final de cada mes.</div>
+          <div class="qattr"><strong>CFO · Empresa de paquetería nacional</strong><br>Flota equivalente · sistema in-house maduro · sesión de revisión del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Tipo de operación</div><div class="ov">FTL+LTL</div><div class="od">Flota nacional, foco en logística de tiempo crítico</div></div>
+        <div class="o"><div class="ok">Recuperación peajes</div><div class="ov uv">4–6%</div><div class="od">De cobros TAG mal aplicados, antes invisibles</div></div>
+        <div class="o"><div class="ok">Co-creación</div><div class="ov">8 sem</div><div class="od">De primera sesión técnica a APIs en producción</div></div>
+      </div>
+
+      <div class="pivot"><strong>Trayecto nos recuerda mucho a esa cuenta.</strong> Sistema in-house premiado, equipo de TI maduro, voluntad de innovar. Por eso el rango de $30–70M no es agresivo. Es lo que hemos visto cuando el cliente ya recorrió la mitad del camino y solo le falta la última milla con concesionarias y SAT.</div>
+    </section>
+
+<!--
+  AGENT_NOTE · CASO FANTASMA
+  · Caso intercambiable por DOMINANT_LEVER (combustible | peajes | viaticos | tesoreria).
+  · Pivote final ("Test Co. nos recuerda mucho a esa cuenta") es OBLIGATORIO.
+  · Nunca dar nombre real del comparable.
+-->
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Metodología"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. La sesión técnica de peajes con Rolando y Enrique Ibarra que ya conversamos es el inicio natural de la Fase 01.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión técnica de peajes</h4>
+            <p>Con Rolando y Enrique Ibarra. Mapeamos el sistema in-house actual, identificamos dónde cierra el loop con APIs en tiempo real y dónde queda en gabinete.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión estratégica</h4>
+            <p>Con Alejandro para validar el ángulo, priorizar palancas (peajes, viáticos ejecutivos, combustible-auditoría) y acordar qué datos compartir. Definimos alcance específico para Trayecto.</p>
+            <div class="dur">45–60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con sus reportes de cruces, estados de cuenta TAG, facturación de viáticos y log de cargas en proveedores autorizados. Sin acceso directo a sus sistemas. Construcción del modelo financiero auditable.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con el equipo ejecutivo que ustedes convoquen. Entregamos documento, modelo y plan de intervención. Q&amp;A abierto. El material queda en sus manos.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Trayecto · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="Las palancas"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>De las cinco palancas, <span class="light">tres aplican a Trayecto hoy.</span></h2>
+      <p class="deck">Lo identificamos en la sesión del 17 de abril con Alejandro. La cuarta, efectivo operadores, se desbloquea cuando concrete el partnership Mastercard, esperado Q4 2026. La quinta, tesorería y fiscal, se confirma al revisar tres meses de facturación.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Peajes (vector primario)</span><span class="rng">4–6%</span></div>
+          <h4>Última milla con concesionarias y SAT</h4>
+          <p>Su sistema in-house premiado concilia con cortes mensuales y reclamos manuales. APIs en tiempo real con Televía recuperan los cobros mal aplicados antes de que escapen, y la IA cierra el ciclo de facturas. La extensión a PASE (su proveedor) la diseñamos como parte de la fase de co-creación. No reemplaza, complementa.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Viáticos ejecutivos</span><span class="rng">3–5%</span></div>
+          <h4>Tarjeta empresarial con control fiscal</h4>
+          <p>El módulo de Microsoft Dynamics no resuelve. Tarjeta empresarial con recuperación automática de facturas e historial limpio para empleados de confianza, sin presupuesto granular por categoría (lo que ustedes pidieron).</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/03 · Combustible (auditoría)</span><span class="rng">0.3–0.6%</span></div>
+          <h4>Auditoría dentro de su lista blanca</h4>
+          <p>Análisis dentro de los proveedores autorizados de la sub-empresa con más fulls foráneos. No proponemos estaciones nuevas. No tocamos su política de cumplimiento normativo. Buscamos variabilidad de precio dentro de lo ya autorizado.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+1 vector futuro</span><span class="rng">Q4 2026</span></div>
+          <h4>Efectivo operadores · capa encima del banco</h4>
+          <p>La avenida que Alejandro propuso: capa encima del banco existente. Se desbloquea cuando concrete el partnership Mastercard que estamos negociando, esperado Q4 2026.</p>
+        </div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · PALANCAS
+  · Solo mostrar APPLICABLE_LEVERS con número y rango.
+  · Las que no aplican van agrupadas en bloque "por confirmar" con estilo dashed.
+  · Si la palanca dominante cambia, reordenar para que esa sea P/01.
+-->
+
+    <!-- ─── 07 CHAMPION KIT (simplificado · checklist + plantilla) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a la sesión técnica con Rolando y Enrique.</span></h2>
+        <p>Convoca la sesión que ya conversamos. Iker se suma como tu invitado, presenta el rango y la propuesta de co-creación, y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Rolando (Director de Transformación Tecnológica) · Enrique Ibarra (Contador, autor del sistema de peajes) · Tú (champion) · Responsable de compras de combustible <span class="opt">(opcional)</span></div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">60 a 90 minutos · centrada en vector peajes (la ventana ya está abierta) · viáticos y combustible en paralelo cuando ustedes lo señalen</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional · diseñado para circular sin escolta</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las 3 preguntas que les van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta?</strong> Cero. Cortesía por la presentación de Rubén Hernández y por la alineación estratégica. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Reemplazan nuestro sistema in-house de peajes?</strong> No. Su sistema sigue siendo el cerebro. Uvicuo es la integración con concesionarias y SAT que les faltaba.</li>
+              <li><strong>¿Cuánto tiempo nos toma?</strong> 5 a 7 horas totales del equipo Trayecto en 4–6 semanas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: Sesión técnica · Uvicuo · APIs en tiempo real con concesionarias
+
+Hola Rolando, Enrique,
+
+Tuvimos una sesión inicial con Uvicuo, una fintech especializada en flotas. Construyeron con un cliente del sector las primeras APIs en tiempo real con Televía, algo que no existía en la industria, y proponen extender la integración a PASE como parte de la fase de co-creación con nuestro equipo de TI.
+
+Trayecto fue seleccionada para uno de sus diagnósticos del trimestre. Sin costo, por la presentación de Rubén Hernández y porque el perfil empata con el tipo de cliente con el que mejor co-crean (equipos con TI in-house madura).
+
+Antes de avanzar, queremos conversar con ustedes. La idea es entender el detalle de nuestro sistema in-house actual y ver qué pieza concreta cierra el loop. Iker (CEO de Uvicuo) se suma como nuestro invitado.
+
+Adjunto el resumen completo: [link]</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Plan de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>Convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operación</strong> <span class="t">1.5 h</span><small>3–5 líderes construyen el AS-IS con nosotros</small></li>
+            <li><strong>Contabilidad</strong> <span class="t">30–90 min</span><small>Validan deducibilidad recuperable</small></li>
+            <li><strong>TI / Sistemas</strong> <span class="t">25–45 min</span><small>Solo si hay integración relevante</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Trayecto</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Trayecto. Cortesía por la presentación de Rubén Hernández y por la alineación estratégica.</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong>, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <!--
+      AGENT_NOTE · CTA
+      · El WhatsApp pre-cargado debe personalizarse con CHAMPION_NAME y COMPANY_NAME ANTES de generar el doc.
+      · Verificar que el folio en la URL del WA y mailto coincida con FOLIO del documento.
+      · No agregar Calendly. Solo WhatsApp + correo directo de Iker.
+    -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Trayecto desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes, no una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero y un plan accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Alejandro%20Torres%20de%20Trayecto.%20Sobre%20el%20diagn%C3%B3stico%20UV-027..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagnóstico Trayecto · UV-027&amp;body=Hola Iker," class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-027<span class="pad">//</span>Confidencial · preparado para Trayecto<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
