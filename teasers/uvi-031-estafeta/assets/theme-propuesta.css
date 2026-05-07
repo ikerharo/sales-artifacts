@@ -1,0 +1,46 @@
+/* ======================================================================
+   THEME · PROPUESTA (Comercial cálido)
+   ----------------------------------------------------------------------
+   Tono: comercial, optimista, espacioso. Verde Uvicuo vibrante, papel crema.
+   Identificación a 5 seg: paper cálido crema + verde Uvicuo brillante.
+   ====================================================================== */
+
+:root {
+  --paper:        #FBFAF5;
+  --paper-2:      #F5F3EA;
+  --paper-3:      #E9E9E1;
+
+  --ink:          #0E1411;
+  --ink-2:        #2A332E;
+  --ink-3:        #5C6B62;
+  --ink-4:        #8E9A92;
+
+  --rule:         #DCDDD3;
+  --rule-2:       #C8C9BE;
+
+  --accent:       #3DA61A;          /* uv-d */
+  --accent-tint:  #EAFBE0;
+
+  --grid-step: 48px;
+  --grid-color: rgba(86,203,44,0.04); /* retícula muy sutil verde */
+}
+
+body { background: var(--paper); }
+
+.brand img.wm { height: 22px; opacity: 1; filter: none; }
+.brand .client { font-weight: 600; }
+
+.page-hero { padding: 80px 0 64px; }
+
+/* Tipografía: títulos con contraste de pesos */
+.page-h1 { font-weight: 300; letter-spacing: -0.03em; }
+.page-h1 strong { font-weight: 600; color: var(--accent); }
+
+/* Page tag verde */
+.page-tag .lab { color: var(--accent); }
+.page-tag .num { background: var(--accent); color: var(--paper); }
+
+/* Foot-next con acentos verdes */
+.foot-next { background: var(--ink); }
+.foot-next .label .ti { color: var(--uv); }
+.foot-next .arrow { color: var(--uv); }

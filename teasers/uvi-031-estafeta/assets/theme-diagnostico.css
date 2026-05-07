@@ -1,0 +1,65 @@
+/* ======================================================================
+   THEME · DIAGNÓSTICO (Expediente forense)
+   ----------------------------------------------------------------------
+   Tono: auditoría seria, denso. Coral/rojo dominante, verde silenciado a gris.
+   Identificación a 5 seg: paper gris frío + retícula visible + acentos coral.
+   ====================================================================== */
+
+:root {
+  --paper:        #F5F5F0;
+  --paper-2:      #ECECE5;
+  --paper-3:      #E2E2DA;
+
+  --ink:          #0C100D;
+  --ink-2:        #2B322D;
+  --ink-3:        #5F6862;
+  --ink-4:        #8E948F;
+
+  --rule:         #D4D5CB;
+  --rule-2:       #BEBFB4;
+
+  --warn:         #B84A18;
+  --warn-tint:    #FBE8DD;
+
+  --accent:       #5C6B62;          /* gris editorial — el verde se silencia */
+  --accent-tint:  #ECECE5;
+
+  --gold:         #8A6F45;
+
+  --grid-step: 24px;
+  --grid-color: rgba(0,0,0,0.025);  /* retícula MÁS visible */
+}
+
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.012) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(0,0,0,0.012) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--paper);
+}
+
+/* Topbar institucional, papel */
+.topbar {
+  background: rgba(245, 245, 240, 0.94);
+  border-bottom: 1px solid var(--rule-2);
+}
+.brand img.wm { height: 18px; opacity: 0.75; filter: grayscale(1); }
+.brand .x { color: var(--ink-4); }
+.topbar-meta .pulse {
+  background: var(--warn);
+  box-shadow: 0 0 0 3px var(--warn-tint);
+}
+.nav a:hover .n { color: var(--ink); }
+.nav a.active .n { color: var(--ink); }
+
+/* Tipografía editorial: títulos finos, acento coral */
+.page-h1, .cover-h1 { font-weight: 200; letter-spacing: -0.04em; }
+.page-h1 .acc, .cover-h1 .acc { color: var(--warn); font-weight: 300; }
+.page-h1 strong, .cover-h1 strong { font-weight: 400; color: var(--warn); }
+
+/* Page tag: cuadro tinta */
+.page-tag .num { background: var(--ink); color: var(--paper); border-radius: 4px; width: 28px; height: 28px; font-size: 12px; }
+.page-tag .lab { color: var(--ink-3); }
+
+/* Foot-next sobrio (no verde brillante) */
+.foot-next .label .ti { color: var(--paper-3); }
+.foot-next .arrow { color: var(--paper-3); }

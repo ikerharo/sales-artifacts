@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico Uvicuo · Estafeta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · DOCUMENTO ADAPTABLE POR AGENTE CONTEXTUAL
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. Documento que se entrega a la persona que
+  ya tuvo contacto profundo con Uvicuo (demo, llamada, reunión, etc.) para
+  que lo lleve internamente a su CFO/COO/CEO. Tono "conseguí esto" — selección
+  y exclusividad.
+
+  CAMPOS PARAMETRIZABLES (para conexión con CMS):
+  · COMPANY_NAME           → "Estafeta"
+  · CHAMPION_NAME          → "Stakeholder Test"
+  · FOLIO                  → "UV-031/2026"
+  · QUARTER_SLOT_TOTAL     → "12 al trimestre"
+  · FLEET_SIZE             → "~600 unidades"
+  · ANNUAL_OPEX_MXN        → "$500M"
+  · ESTIMATED_RANGE_MXN    → "$15–40M"
+  · PERCENT_RANGE          → "3% a 8%"
+  · CONTEXT_HOOK           → frase específica del último contacto (lo que
+                             dijo el champion en demo / call / reunión).
+                             Si no hay frase, usar hook genérico de la industria.
+  · DOMINANT_LEVER         → combustible | peajes | viaticos | tesoreria
+  · APPLICABLE_LEVERS      → cuáles aplican (resto van a "por confirmar")
+  · COMPARABLE_CASE        → caso ghost a usar (transportista 800u | otro)
+  · OPEX_BREAKDOWN         → composición % por categoría (combustible/peajes/...)
+  · FIREFLIES_TRANSCRIPT_URL → URL real del transcript de la última call con el
+                             champion (Fireflies u otro). OBLIGATORIO resolver
+                             antes de emitir; nunca dejar como literal.
+
+  REGLAS DE ADAPTACIÓN:
+  · Mantén siempre folio único + sello dorado (activo emocional clave).
+  · Verbo: "conseguiste", nunca "te ofrecemos".
+  · NO asumas que hubo demo. Usa frases neutras ("nuestro último contacto",
+    "lo que conversamos") que funcionen para demo, llamada, junta presencial,
+    intro por referido, etc.
+  · Caso fantasma siempre anonimizado.
+  · Solo mostrar palancas que aplican; resto va a "por confirmar".
+  · CTAs finales: WhatsApp + correo de Iker. No agregar Calendly.
+  · No agregar secciones de "material para imprimir" / "descargar PDF" —
+    el doc en sí es el material; eso solo agrega fricción.
+  · Sweep obligatorio antes de emitir: si el HTML contiene la cadena literal
+    "{{" o "[link]", el sweep falla. Todo placeholder debe estar resuelto.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="teaser.css" />
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-031 · ESTAFETA</span>
+      <div class="right">
+        <span class="ts">PARA MAURICIO Y GEORGINA</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-031/2026</strong> · ESTAFETA</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Estafeta después de la sesión del 7 de mayo. <strong>Está diseñado para que lo lleven a su equipo</strong>: al DG, a Tesorería, a Director de TI si aplica. En cinco minutos entienden por qué arrancar.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Estafeta cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: escala (1,000+ operadores TR · 2,500+ TR+), cobertura nacional, comité con poder ejecutivo (Mauricio + Georgina), voluntad validada en la primera sesión. <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>04</span><span class="of">/</span><span class="total">12</span></div>
+          </div>
+          <div class="ckey">// Q2 · 2026 · FOLIO 031</div>
+        </div>
+      </div>
+    </header>
+
+<!--
+  AGENT_NOTE · HERO
+  · Folio único + sello dorado + verbo "conseguiste" son obligatorios. No reemplazar por "te ofrecemos".
+  · Stamp circular (FOLIO/N/AÑO) y "04/12 slots usados" comunican exclusividad real, no decoración.
+  · Ajustar SLOT_USED y SLOT_TOTAL al CMS según trimestre activo.
+-->
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Mauricio, Georgina,</p>
+      <p>Después de la sesión del 7 de mayo, <strong>lo que más se nos quedó en la cabeza</strong> es la cifra que ustedes mismos dimensionaron: <span class="acc">$30M MXN al mes en peajes</span> que se descuentan cada mes en automático, sin un instrumento real para auditarlos contra la operación física. Es uno de los volúmenes más altos que hemos visto en autotransporte mexicano.</p>
+      <p>El reto del combustible es complementario: aunque ustedes no lo dimensionaron en la sesión, es un tema estructural de la industria. La red cerrada del monedero de combustible opera con un sobreprecio sistémico que cualquier flota grande absorbe sin verlo. En cuentas de la escala de Estafeta, el conjunto suele <span class="acc">esconder entre 5% y 8% recuperable</span>. Es lo que llamamos <strong>el Pasivo Invisible</strong>: gasto que existe en la cuenta corriente cada mes pero no en la operación auditable.</p>
+      <p>Por eso quisimos formalizar la invitación. Lo que sigue es <strong>su kit para llevar a la siguiente sesión interna</strong>: el rango que estimamos, un caso real comparable, cómo lo haríamos, y qué responder cuando les pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyecten en una sala de juntas, no para que lo lean ustedes dos solos.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA · UV-031</div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · LETTER
+  · Personalizar el segundo párrafo con CONTEXT_HOOK específico del último contacto.
+  · La frase abierta "después de nuestra conversación" funciona para demo, llamada, junta presencial o referido.
+  · NO usar comillas literales en el quote a menos que el champion lo haya dicho textual; usar paráfrasis en su defecto.
+-->
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Ahorros estimados"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS PARA ESTAFETA</div>
+      <div class="big"><span class="light">$</span>15–70<span class="scale">M</span></div>
+      <div class="unit">MXN AL AÑO · BASE PEAJES CONFIRMADOS · 1,000 OPERADORES TR</div>
+      <div class="annot">Construido con base en lo que compartieron en la sesión del 7 de mayo: $350M MXN/año en peajes confirmados, más combustible foráneo estimado (3× peajes mensual). La cifra exacta se cierra al revisar tres meses de facturación; <strong>el rango lo apostamos hoy</strong>.</div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está el dinero recuperable</span>
+          <span class="sub">Cada barra es el 100% del gasto anual en esa categoría. La franja verde marca el porcentaje recuperable que estimamos para Estafeta. <strong>Todas las cifras son anuales y están en MXN.</strong></span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Peajes <small>$350M · CONFIRMADO en sesión del 7 de mayo</small></div>
+              <div class="rec">−$15–25M <small>−5 a 7%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:6%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible foráneo <small>~$1,080M estimado · 3× peajes mensual</small></div>
+              <div class="rec">−$15–30M <small>−1.5 a 3%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:2.5%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Efectivo en ruta <small>2,500+ operadores · por explorar</small></div>
+              <div class="rec">+$3–8M <small>est.</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:5%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Viáticos <small>stack actual · por explorar</small></div>
+              <div class="rec">+$3–7M <small>est.</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:4%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>Cada barra es el 100% del gasto anual · franja verde = recuperable</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto anual actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable estimado</span>
+          </span>
+        </div>
+
+        <!--
+          AGENT_NOTE · VALUE-SPLIT (opcional · ver teaser.css)
+          ·  Descomentar SOLO si el deal tiene un baseline commodity (deducibilidad
+             fiscal MX, comisión Edenred, cobertura combustible base, etc.) que
+             cualquier alternativa del mercado resuelve y conviene separar
+             visualmente del valor-add Uvicuo.
+          ·  Si el deal NO tiene baseline commodity (ej. cliente MX-only sin stack
+             extranjero) → dejar comentado, el dashboard simple funciona.
+          ·  Validado en Draiver UV-028 (2026-05-01) con "Me gusta!" verbatim
+             de Iker. Promovido a CSS canónico mismo día.
+        -->
+        <!--
+        <div class="value-split">
+          <div class="value-split-h">De los $X-Y, ¿cuánto es solo Uvicuo?</div>
+          <div class="value-split-grid">
+            <div class="value-split-col">
+              <div class="value-split-amount">~$N</div>
+              <div class="value-split-label">Baseline · Cualquier alternativa</div>
+              <p class="value-split-desc">Razón del baseline (deducibilidad MX, comisión Edenred, etc.).</p>
+            </div>
+            <div class="value-split-col is-uvicuo">
+              <div class="value-split-amount">~$M</div>
+              <div class="value-split-label">Solo con Uvicuo</div>
+              <p class="value-split-desc">Lista los 3-4 diferenciadores Uvicuo concretos del deal.</p>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Testimonio de cliente</span>
+
+      <h2>Una operación de paquetería nacional con <span class="light">800 unidades.</span> $200M MXN/año en peajes que nadie cruzaba contra GPS.</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el director de operaciones de una empresa de paquetería nacional (que pidió no ser nombrada) nos dijo que <strong>sus estados de cuenta de telepeaje llevaban años sin auditarse contra la operación física</strong>. Cobros TAG, ejes mal contados, casetas con dobles asignaciones, y un volumen de pagos en efectivo en caseta cuando la antena fallaba que escapaba a toda conciliación.</p>
+          <p>Aceptaron el diagnóstico para entender el orden de magnitud. Construimos las primeras APIs en producción con la concesionaria de telepeaje (industry-first en México) y conectamos los cruces TAG con la torre de control de su flota. <strong>En seis semanas</strong> teníamos el cuadre completo de un trimestre: TAG pagado contra ruta efectivamente operada.</p>
+          <p>El error promedio fue de <span class="acc">5.4% del gasto anual en peajes</span>. Sobre $200M MXN al año, eso fueron <span class="acc">$10.8M MXN recuperables</span>. Adicionalmente identificamos $2.7M MXN/año en pagos en efectivo en caseta sin trazabilidad, gasto que escapaba a toda auditoría. Sin migrar de proveedor de TAG, sin tocar el medio de pago.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el CFO</div>
+          <div class="qtext">Cobramos los TAGs. Pagamos los TAGs. Nadie cruzaba lo que pasaba en medio.</div>
+          <div class="qattr"><strong>CFO · Paquetería nacional</strong><br>800 unidades · cobertura nacional · sesión final del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Flota</div><div class="ov">800</div><div class="od">Unidades, cobertura nacional</div></div>
+        <div class="o"><div class="ok">Ahorro identificado</div><div class="ov uv">$13.5M</div><div class="od">MXN/año · TAG + efectivo en caseta</div></div>
+        <div class="o"><div class="ok">Duración</div><div class="ov">6 sem</div><div class="od">De primera sesión a presentación final</div></div>
+      </div>
+
+      <div class="pivot"><strong>Estafeta nos recuerda mucho a esa cuenta.</strong> Misma escala enterprise (1,000+ operadores TR · cobertura nacional), modelo de telepeaje legacy, volumen de peajes en el rango donde el sobrecobro y el efectivo no auditado representan dineral. Por eso el rango de $15–70M no es agresivo: es lo que hemos visto, una y otra vez, en operaciones de su escala.</div>
+    </section>
+
+<!--
+  AGENT_NOTE · CASO FANTASMA
+  · Caso intercambiable por DOMINANT_LEVER (combustible | peajes | viaticos | tesoreria).
+  · Pivote final ("Estafeta nos recuerda mucho a esa cuenta") es OBLIGATORIO.
+  · Nunca dar nombre real del comparable.
+-->
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Metodología"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. El cronograma depende de la disponibilidad de su equipo y de los datos. Hemos cerrado diagnósticos en nueve días y otros en siete semanas.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión de mapeo</h4>
+            <p>Sesión presencial con 3-5 personas de su equipo operativo. Construimos el AS-IS en pizarra: cómo se autoriza, ejecuta y concilia el gasto.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión estratégica</h4>
+            <p>Con el champion para validar ángulo, priorizar palancas y acordar qué datos compartir. Definimos alcance específico para Estafeta</p>
+            <div class="dur">45–60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con factura, estado de cuenta TAG, reporte de viáticos. Sin acceso directo a sus sistemas. Construcción del modelo financiero auditable.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con el equipo ejecutivo que ustedes convoquen. Entregamos documento, modelo y plan. Q&amp;A abierto. El material queda en sus manos.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Estafeta · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="Las palancas"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>De las cuatro palancas, <span class="light">dos confirmadas y dos por explorar.</span></h2>
+      <p class="deck">Las dos primeras las dimensionaron Mauricio y Georgina en la sesión del 7 de mayo. Las otras dos (efectivo en ruta y viáticos) se mapean en el diagnóstico, con personas del equipo que no estuvieron en la primera sesión.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Peajes</span><span class="rng">5–7%</span></div>
+          <h4>Cobros TAG sin conciliación</h4>
+          <p>Cruces no auditados contra Geotab y bitácora generan duplicados, errores de ejes y casetas mal asignadas. Imposible conciliar manualmente sobre $350M MXN/año.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Combustible</span><span class="rng">3–5%</span></div>
+          <h4>Sobreprecio en red cerrada</h4>
+          <p>El operador llena donde acepta la red, no donde es más barato. El sobreprecio sobre el mercado abierto es estructural al modelo del proveedor monedero.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+ Efectivo</span><span class="rng">por explorar</span></div>
+          <h4>Talachas, maniobras, emergencias en ruta</h4>
+          <p>2,500+ operadores en ruta generan volumen de gasto en efectivo no trazable. Eje no presentado en la primera sesión, a mapear con operativo y tesorería.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+ Viáticos</span><span class="rng">por explorar</span></div>
+          <h4>Ejecutivos y operadores foráneos</h4>
+          <p>Comisiones sobre el monto + recuperación fiscal incompleta. Stack actual de Estafeta en viáticos no se discutió en la primera sesión.</p>
+        </div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · PALANCAS
+  · Solo mostrar APPLICABLE_LEVERS con número y rango.
+  · Las que no aplican van agrupadas en bloque "por confirmar" con estilo dashed.
+  · Si la palanca dominante cambia, reordenar para que esa sea P/01.
+-->
+
+    <!-- ─── 07 CHAMPION KIT (simplificado · checklist + plantilla) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a tu siguiente reunión interna.</span></h2>
+        <p>Convoca <strong>30 minutos</strong> con CFO/COO. Iker se suma como tu invitado, presenta el rango y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Mauricio · Georgina (ustedes) · Director General · Director de TI <span class="opt">(opcional, si hay preguntas técnicas)</span> · Tesorería <span class="opt">(opcional)</span></div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">30 minutos · 20 de presentación + 10 de preguntas</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las 3 preguntas que te van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta?</strong> Cero. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Cambiamos de proveedor?</strong> No para arrancar.</li>
+              <li><strong>¿Cuánto tiempo nos toma?</strong> 5 a 7 horas totales en 4–6 semanas.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">05</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Material adjunto al envío</div>
+            <ul class="kit-qa">
+              <li><strong>Grabación de la sesión del 7 de mayo:</strong> <a href="https://app.fireflies.ai/view/01KQDTZKY66R50BTH9N1ERSY5V" target="_blank" rel="noopener">app.fireflies.ai/view/01KQDTZKY66R50BTH9N1ERSY5V</a> · 41 min con transcripción.</li>
+              <li><strong>NDA de Uvicuo</strong> (firmado de nuestro lado, enviado a Georgina vía Weetrust): <a href="https://app.weetrust.mx/signatory/69fcc5c82e5be4002952d3cd/69fcd5a82e5be40029539afe/1778177448635" target="_blank" rel="noopener">Firmar en Weetrust</a>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: 30 min · Uvicuo · oportunidad de optimización operativa en peajes y combustible
+
+Hola [Nombre],
+
+Tuvimos una primera sesión con Uvicuo, una fintech especializada en gestión de gastos en ruta para flotas de transporte (Solución Fleet de Mastercard para LatAm). Trabajan con operaciones como la nuestra para recuperar capital invisible en peajes, combustible, efectivo y viáticos.
+
+Estafeta fue seleccionada para uno de sus diagnósticos sin costo del trimestre. Sobre los $350M MXN anuales que pagamos en peajes, estiman entre 5% y 7% recuperable; en combustible foráneo el rango es 3% a 5% adicional. Sin renegociar con proveedores actuales.
+
+Me gustaría que escuchen el rango con sus propias preguntas antes de decidir. ¿Tienen 30 minutos esta o la próxima semana? Iker Haro (CEO de Uvicuo) se suma como nuestro invitado.
+
+Adjunto la grabación de la primera sesión: https://app.fireflies.ai/view/01KQDTZKY66R50BTH9N1ERSY5V
+
+Mauricio / Georgina</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Plan de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>Convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operación</strong> <span class="t">1.5 h</span><small>3–5 líderes construyen el AS-IS con nosotros</small></li>
+            <li><strong>Contabilidad</strong> <span class="t">30–90 min</span><small>Validan deducibilidad recuperable</small></li>
+            <li><strong>TI / Sistemas</strong> <span class="t">25–45 min</span><small>Solo si hay integración relevante</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Estafeta</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Estafeta</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong>, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <!--
+      AGENT_NOTE · CTA
+      · El WhatsApp pre-cargado debe personalizarse con CHAMPION_NAME y COMPANY_NAME ANTES de generar el doc.
+      · Verificar que el folio en la URL del WA y mailto coincida con FOLIO del documento.
+      · No agregar Calendly. Solo WhatsApp + correo directo de Iker.
+    -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Estafeta desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes. No una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero y un plan accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Mauricio%20de%20Estafeta.%20Sobre%20el%20diagn%C3%B3stico%20UV-031..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagn%C3%B3stico%20Estafeta%20%C2%B7%20UV-031&amp;body=Hola%20Iker%2C" class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-031<span class="pad">//</span>Confidencial<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
