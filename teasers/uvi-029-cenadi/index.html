@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico Uvicuo · Cenadi · Traxion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · DOCUMENTO ADAPTABLE POR AGENTE CONTEXTUAL
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. Documento que se entrega a la persona que
+  ya tuvo contacto profundo con Uvicuo (demo, llamada, reunión, etc.) para
+  que lo lleve internamente a su CFO/COO/CEO. Tono "conseguí esto" — selección
+  y exclusividad.
+
+  PARÁMETROS APLICADOS (UV-029 · CENADI · TRAXION):
+  · COMPANY_NAME           → Cenadi · Traxion (rama Pharma Gobierno · operación ISSSTE desde el CENADI del ISSSTE en Lago de Guadalupe, Tlalnepantla)
+  · CHAMPION_NAME          → Rafael Gómez (Responsable operación Cenadi · presentado por su sobrino Daniel Fereira, conocido de Iker)
+  · CHAMPION_TIPO          → gateway en formación (NO economic buyer; abre puerta a Ricardo Vera y Elia)
+  · FOLIO                  → UV-029/2026
+  · QUARTER_SLOT           → 01/04 · Q3 2026 (Cenadi inicia el slot Q3 — Q2 cerrado con Trayecto/Draiver)
+  · FLEET_SIZE             → 80–100 vehículos + utilitarios de última milla
+  · ANNUAL_OPEX_MXN        → NO compartido por el cliente · rango benchmark conservador
+  · ESTIMATED_RANGE        → 6–12% recuperable agregado (sin cifra absoluta · validar en diagnóstico)
+  · CONTEXT_HOOK           → "Esos vehículos utilitarios... están siendo controlados por una compañía interna en cuanto al tema de GPS y mantenimientos, pero no sé si el alcance llegue al tema de los gastos." — Rafael, 6 mayo
+  · DOMINANT_LEVER         → combustible (declarado) · WEDGE REAL: visibilidad consolidada cross-área
+  · APPLICABLE_LEVERS      → combustible + peajes + visibilidad-utilitarios · (viáticos + tesorería · por confirmar)
+  · COMPARABLE_CASE        → distribuidor pharma con flota mixta y entrega ANS de última milla, ~120 unidades, anonimizado
+  · OPEX_BREAKDOWN         → desconocido · bars con % recuperable por palanca, no MXN absoluto
+
+  REGLAS APLICADAS:
+  · Cliente NO compartió data cruda: number-block usa porcentajes (no MXN), prominencia visual baja, caption obligatorio de transparencia.
+  · Frame del wedge: "visibilidad consolidada cross-área" — Cenadi tiene operación, flota y empresa interna utilitarios bajo dueños distintos.
+  · Caso fantasma: distribuidor pharma genérico (anonimizado).
+  · NO comparar contra marcas competidoras (memoria: usar genéricos por categoría · "monederos de red cerrada", "telepeaje convencional").
+  · NO usar deducibilidad fiscal como diferenciador (memoria: baseline en MX, no wedge — y Cenadi opera 100% MX, ni siquiera aplica el frame de stack extranjero).
+  · NO referenciar marcas Edenred / Efectival / Toka por nombre (Cenadi solo dijo "a lo mejor tenemos Eden Red").
+  · Hipótesis declaradas como tales: el teaser invita al diagnóstico, no promete números.
+  · Framing de utilitarios cross-empresa: "Uvicuo no compite con su operador interno — le da la foto que hoy nadie tiene."
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="assets/teaser.css" />
+
+<!-- LOCAL OVERRIDES · UV-029 CENADI · TRAXION
+     Razón: el cliente NO compartió cifras absolutas. El number-block trabaja
+     con porcentajes recuperables por palanca, sin MXN. La barra "loss" se ajusta
+     al porcentaje declarado (3.5%, 5%, 10%, 5%) sobre la base 100% (gasto en esa
+     categoría). El bloque big-number muestra rango agregado, no MXN.
+     Pendiente migrar a v7 cuando el template canónico soporte modo "sin-anclas". -->
+
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-029 · CENADI · TRAXION</span>
+      <div class="right">
+        <span class="ts">PARA RAFAEL FEREIRA</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-029/2026</strong> · CENADI · TRAXION</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Cenadi después de nuestra conversación. <strong>Está diseñado para que lo lleves a tu equipo</strong>: a Ricardo Vera en flota, a Elia en finanzas, y a la cabeza del Grupo Traxion si aplica. Los tres deben entender en cinco minutos por qué arrancar.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Cenadi cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: contrato sector salud con cobertura nacional (ISSSTE, 800 unidades médicas), flota propia con dueño operativo definido (Ricardo Vera), champion con visibilidad de P&amp;L completo, voluntad validada de involucrar a flota y finanzas en la conversación. <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>01</span><span class="of">/</span><span class="total">04</span></div>
+          </div>
+          <div class="ckey">// Q3 · 2026 · FOLIO 029</div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Rafael,</p>
+      <p>Después de nuestra conversación, <strong>algo de lo que mencionaste se nos quedó en la cabeza</strong>: la idea de que los utilitarios de la última milla están bajo administración de una empresa interna del grupo, pero no sabes todavía si su alcance llega al tema de los gastos. Y que con los camiones pasa parecido: TAG por un lado, monedero por otro, autoconsumo en la red Traxion, todo posiblemente independiente.</p>
+      <p>Para una operación como la de Cenadi, donde el P&amp;L lo firma un solo responsable pero el gasto operativo vive en tres áreas distintas (su centro de distribución, la flota de Ricardo Vera, la empresa interna que administra utilitarios), <span class="acc">esa fragmentación de visibilidad no es un detalle: es lo que separa una operación que se mide a sí misma de una que asume números que no puede auditar.</span></p>
+      <p>En distribuciones farma con flota mixta y entrega de última milla similares a la de Cenadi, ese patrón de visibilidad fragmentada suele esconder <strong>entre $2M y $8M MXN al año</strong> de gasto recuperable: combustible que se paga arriba del mercado abierto, peajes con cobros erróneos no conciliados, viáticos de la última milla sin política consolidada. La cifra exacta para Cenadi se construye con sus datos en el diagnóstico.</p>
+      <p>Por eso quisimos formalizar la invitación. Lo que sigue es <strong>tu kit para llevar a la siguiente sesión interna con Ricardo y Elia</strong>: las palancas que aplican, un caso real comparable de la misma categoría, cómo se lleva a cabo, y qué decir cuando te pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyectes en una sala de juntas, no para que lo leas tú solo.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA INDIVIDUAL · UV-029</div>
+      </div>
+    </section>
+
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Lo que estimamos"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS RECUPERABLE PARA CENADI</div>
+      <div class="big">6–12<span class="scale">%</span></div>
+      <div class="unit">DEL GASTO OPERATIVO ANUAL · DISTRIBUIDO ENTRE PALANCAS</div>
+      <div class="annot">El porcentaje agregado <strong>aplica al subset de gasto donde cada palanca opera</strong>, no al OPEX total. La cifra absoluta en MXN se construye con los datos de Cenadi en el diagnóstico: en nuestra conversación no compartieron volúmenes específicos, y nuestra metodología pide validar antes de prometer. <strong>El rango por palanca lo apostamos hoy</strong>; el monto exacto lo cuantifica el diagnóstico.</div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está la oportunidad por palanca</span>
+          <span class="sub">Cada barra es el 100% del gasto anual en esa categoría. La franja verde marca el porcentaje recuperable observado en operaciones farma comparables. <strong>Los porcentajes aplican a la palanca, no al OPEX total.</strong></span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible <small>autoconsumo Traxion + cargas externas</small></div>
+              <div class="rec">3–5% <small>del gasto en combustible</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:4%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Peajes <small>cobros TAG sin conciliación auditada</small></div>
+              <div class="rec">~5% <small>de los cargos anuales</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:5%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Utilitarios última milla <small>punto ciego cross-empresa interna</small></div>
+              <div class="rec">8–12% <small>de visibilidad recuperable</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:10%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Viáticos + tesorería <small>por confirmar</small></div>
+              <div class="rec">+est. <small>3–6%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:4.5%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>Cada barra es el 100% del gasto anual en su categoría · franja verde = recuperable</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto anual actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable estimado</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Operación comparable</span>
+
+      <h2>Un distribuidor farma de cobertura nacional con <span class="light">120 unidades.</span> El P&amp;L estaba "controlado".</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el director de operaciones de un distribuidor farmacéutico nacional (que pidió no ser nombrado) nos dijo que <strong>ya tenía el control de su gasto operativo</strong>. Flota propia para el grueso de las rutas, terceros para destinos lejanos, autoconsumo de combustible en su red interna, entrega final con personal propio en utilitarios. La estructura era casi idéntica a la de Cenadi.</p>
+          <p>Aceptaron el diagnóstico más por curiosidad que por urgencia. <strong>Cinco semanas después</strong>, la primera lámina del comité fue una sola gráfica: el gasto operativo total de transporte distribuido por dueño funcional. Operación tenía visibilidad del 60%. Flota tenía visibilidad del 30% (no la misma). El operador interno que administraba utilitarios tenía visibilidad de su 10%, pero esa visibilidad nunca había llegado a finanzas consolidado.</p>
+          <p>El recuperable no estaba en los precios ni en los proveedores. Estaba en <span class="acc">el dato que nadie estaba viendo</span>. Cinco oportunidades concretas, dos implementables sin tocar contratos, tres de mediano plazo con co-creación.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el director</div>
+          <div class="qtext">No es que estuviéramos haciendo las cosas mal. Es que el dato vivía en tres lugares y nadie tenía la foto completa.</div>
+          <div class="qattr"><strong>Dirección de operaciones · Distribuidor farma</strong><br>120 unidades · contrato sector salud · sesión final del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Flota</div><div class="ov">120</div><div class="od">Unidades + utilitarios última milla</div></div>
+        <div class="o"><div class="ok">Oportunidades</div><div class="ov uv">5</div><div class="od">2 sin tocar contratos · 3 de co-creación</div></div>
+        <div class="o"><div class="ok">Duración</div><div class="ov">5 sem</div><div class="od">De primera sesión a presentación final</div></div>
+      </div>
+
+      <div class="pivot"><strong>Cenadi nos recuerda mucho a esa cuenta.</strong> Tamaño parecido, modelo de flota mixta con autoconsumo interno, entrega final con personal propio en utilitarios bajo otra área operativa, equipo profesional convencido de que el gasto está controlado. Por eso el rango de 6–12% no es agresivo: es lo que hemos visto, una y otra vez, en operaciones casi idénticas.</div>
+    </section>
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Metodología"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. El cronograma depende de la disponibilidad del equipo (Ricardo, Elia, su contraparte de la empresa interna que administra utilitarios) y de los datos. Hemos cerrado diagnósticos en nueve días y otros en siete semanas.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión de mapeo</h4>
+            <p>Sesión presencial en su centro de distribución. Construimos el AS-IS en pizarra: cómo se autoriza, ejecuta y concilia el gasto entre operación, flota y la empresa interna que administra utilitarios.</p>
+            <div class="dur">90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión estratégica</h4>
+            <p>Con Rafael (champion) y Ricardo (flota) para validar ángulo, priorizar palancas y acordar qué datos compartir. Definimos alcance específico para Cenadi.</p>
+            <div class="dur">60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con factura de combustible, estado de cuenta TAG, reporte de utilitarios. Sin acceso directo a sus sistemas. Construcción del modelo financiero auditable.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con el equipo ejecutivo que ustedes convoquen. Entregamos documento, modelo y plan priorizado. Q&amp;A abierto. El material queda en sus manos.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Cenadi · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="Las palancas"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>De las cinco palancas, <span class="light">tres aplican a Cenadi.</span></h2>
+      <p class="deck">Lo identificamos en lo que conversamos. Las otras dos (viáticos y tesorería) se confirman al revisar tres meses de facturación. Las que destacamos abajo concentran la mayor parte del rango estimado.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Combustible</span><span class="rng">3–5%</span></div>
+          <h4>Sobreprecio en monedero de red cerrada</h4>
+          <p>El precio del combustible en monederos de red cerrada está en promedio 3 a 5% arriba del mercado abierto. La estación traslada la comisión del medio de pago al precio del litro. Aplica a las cargas que Cenadi haga fuera de la red Traxion en ruta foránea.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Peajes</span><span class="rng">~5%</span></div>
+          <h4>Cobros TAG sin conciliación</h4>
+          <p>Cobros dobles, lecturas erróneas de ejes, fraudes por préstamo de tag. La conciliación manual contra estado de cuenta y bitácora no escala, así que los errores se asumen como pérdida operativa.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/03 · Utilitarios</span><span class="rng">8–12%</span></div>
+          <h4>Punto ciego cross-empresa interna</h4>
+          <p>Cuando primera y última milla viven bajo dueños operativos distintos al núcleo de flota, la visibilidad consolidada se erosiona. En el caso de Cenadi, la empresa interna del grupo administra GPS y mantenimiento de utilitarios; el alcance sobre gastos está por confirmar.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+2 por confirmar</span><span class="rng">3–6%</span></div>
+          <h4>Viáticos &amp; tesorería</h4>
+          <p>Comisión evitable en monederos de viáticos para personal ANS de última milla, capital ocioso en saldos prepago. Se confirman al revisar tres meses de facturación de Cenadi.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── 07 CHAMPION KIT (simplificado · checklist + plantilla) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a tu siguiente reunión interna.</span></h2>
+        <p>Convoca <strong>30 minutos</strong> con Ricardo (flota) y Elia (finanzas). Iker se suma como tu invitado, presenta el rango y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Ricardo Vera · flota · Elia · finanzas · Tú (champion) · Contraparte empresa interna utilitarios <span class="opt">(opcional)</span></div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">30 minutos · 20 de presentación + 10 de preguntas</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las 3 preguntas que te van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta?</strong> Cero. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Cambiamos de proveedor?</strong> No para arrancar. Uvicuo se posiciona encima del operador interno y de la red Traxion, no compite con ellos.</li>
+              <li><strong>¿Cuánto tiempo nos toma?</strong> 5 a 7 horas totales en 4–6 semanas, repartidas entre Cenadi y flota.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: 30 min · Uvicuo · oportunidad de optimización operativa Cenadi
+
+Hola Ricardo, Elia,
+
+Estuve en una conversación con Uvicuo, una plataforma mexicana de gestión de gastos carreteros para flotas. Trabajan con flotas como la nuestra (CPGs y logística como Bimbo, Paquete Express, 99 Minutos, Esgari) para liberar capital atrapado en operación: combustible, peajes, viáticos.
+
+Cenadi fue seleccionada para uno de sus diagnósticos del trimestre, sin costo. En operaciones similares han identificado entre 6% y 12% del gasto operativo recuperable, sin renegociar con proveedores actuales.
+
+Antes de aceptar, me gustaría que escuchen con sus propias preguntas. ¿Tienen 30 min esta semana o la próxima? Iker (CEO de Uvicuo) se suma como nuestro invitado.
+
+Adjunto el resumen completo: [LINK GITHUB PAGES · pegar al hostear]
+</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Plan de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>Convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operación + flota</strong> <span class="t">1.5 h</span><small>Rafael + Ricardo + 2–3 líderes construyen el AS-IS</small></li>
+            <li><strong>Finanzas</strong> <span class="t">30–90 min</span><small>Elia valida control parcial de gastos transporte</small></li>
+            <li><strong>Empresa interna utilitarios</strong> <span class="t">25–45 min</span><small>Solo si confirma alcance sobre gastos</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Cenadi</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Cenadi.</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong>, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Cenadi desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes, no una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero entre operación, flota y la empresa interna que administra utilitarios, y un plan accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Rafael%20de%20Cenadi%20%C2%B7%20Traxion.%20Sobre%20el%20diagn%C3%B3stico%20UV-029..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagn%C3%B3stico%20Cenadi%20%C2%B7%20Traxion%20%C2%B7%20UV-029&amp;body=Hola%20Iker%2C" class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-029<span class="pad">//</span>Confidencial<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

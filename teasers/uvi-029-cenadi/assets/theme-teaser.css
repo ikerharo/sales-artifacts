@@ -1,0 +1,48 @@
+/* ======================================================================
+   THEME · TEASER (Trofeo del champion)
+   ----------------------------------------------------------------------
+   Tono: exclusividad, "conseguiste un slot". Verde Uvicuo + dorado.
+   Identificación a 5 seg: paper frío gris-verdoso + verde brillante + sello dorado.
+   ====================================================================== */
+
+:root {
+  --paper:        #FAFBFA;
+  --paper-2:      #F2F5F2;
+  --paper-3:      #E6ECE7;
+
+  --ink:          #0A0F0B;
+  --ink-2:        #1F2724;
+  --ink-3:        #525C55;
+  --ink-4:        #859088;
+  --ink-5:        #B5BCB7;
+
+  --rule:         #E2E8E3;
+  --rule-2:       #CFD7D1;
+
+  --accent:       #3DA01F;          /* uv-d */
+  --accent-tint:  #E9F3DF;
+  --gold:         #A8853A;
+  --gold-tint:    #F2ECD9;
+
+  --grid-step: 32px;
+  --grid-color: rgba(0,0,0,0.022);
+}
+
+/* Topbar oscuro técnico (firma del teaser) */
+.topbar { background: #0A0F0B; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.topbar .brand .client { color: var(--paper); }
+.topbar .brand .x { color: var(--ink-5); }
+.topbar .brand img.wm { filter: brightness(0) invert(1); opacity: 0.95; }
+.topbar .nav a { color: rgba(255,255,255,0.55); }
+.topbar .nav a:hover { background: rgba(255,255,255,0.05); color: var(--paper); }
+.topbar .nav a.active { background: rgba(86,203,44,0.18); color: var(--paper); }
+.topbar .nav a.active .n { color: var(--uv-l); }
+.topbar-meta { color: rgba(255,255,255,0.5); }
+
+/* Tipografía teaser: títulos con peso intermedio (no tan finos como diagnóstico) */
+.cover-h1, .page-h1 { font-weight: 600; letter-spacing: -0.038em; }
+.cover-h1 .acc, .page-h1 .acc { color: var(--uv); font-weight: 600; }
+
+/* Page tag: verde Uvicuo */
+.page-tag .num { background: var(--uv); color: var(--ink); }
+.page-tag .lab { color: var(--accent); }
