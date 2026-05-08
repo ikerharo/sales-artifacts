@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uvicuo · Deck comercial · Guía base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css" />
+
+<!--
+═══════════════════════════════════════════════════════════════════════════
+AGENT BRIEF · DECK COMERCIAL UVICUO · v3 · GUÍAS DE DISEÑO
+═══════════════════════════════════════════════════════════════════════════
+
+PROPÓSITO DEL DOCUMENTO
+Este es el deck comercial estandarizado de Uvicuo en early stage. Se usa
+después de un primer contacto (call, demo o referido) y antes de un
+diagnóstico formal. Se entrega al stakeholder para que lo pueda compartir
+internamente con CFO/CEO/CIO/COO. NO es un sales deck genérico — siempre
+se adapta al arquetipo del cliente.
+
+LA FRASE DEL COMITÉ (mensaje único · norte del deck)
+El comité del cliente debe cerrar este deck con UNA idea en la cabeza:
+
+  "Estos tipos saben de gastos en ruta de flota como nadie + están
+   innovando con cosas que ningún otro proveedor del mercado hace.
+   Vale la pena 30 min con el CFO y operaciones para evaluar el
+   diagnóstico — sin compromiso comercial."
+
+El deck NO cierra venta. Su único trabajo es abrir la puerta a la
+siguiente sesión. Cada slide se juzga por: ¿construye confianza para
+esa sesión, o mete ruido / fricción / pricing prematuro / promesas
+que no se sostienen?
+
+AUDIENCIA · C-level (CEO/CFO/COO/CIO)
+Sweet spot del cliente: 500-1,500 unidades operativas (piso 100+).
+Esto significa empresas con OPEX de flota grande, comité formal
+de finanzas/operaciones/TI. Tono ejecutivo, denso pero claro.
+Una idea por slide, sin ruido decorativo. Lenguaje de retorno
+y operación, no de features.
+
+QUÉ CAMBIA EN CADA DECK GENERADO — 4 DIMENSIONES DE CUSTOMIZACIÓN
+El resto es plantilla. Las 4 dimensiones que el agente debe leer del
+transcript / contexto del deal antes de generar:
+
+  1. ARCHETYPE             → uno de los 7 arquetipos validados en
+                             knowledge/uvicuo/angles-by-archetype.md.
+                             Define dolor central, pilar a amplificar,
+                             features prioritarias, ghost case, rango
+                             de OPEX recuperable y reframes que funcionan.
+  2. CHAMPION_PROFILE      → CFO | COO | CIO | operaciones | intermediario.
+                             Cambia tono del lede + tiempos de la agenda
+                             + propuesta del siguiente paso.
+  3. DOMINANT_PAIN         → combustible | peajes | viáticos | efectivo |
+                             fiscal | fragmentación. Define qué palanca
+                             se enseña primero y el énfasis del problema.
+  4. STACK_ACTUAL          → monedero_cerrado | tarjeta_corporativa_moderna |
+                             excel_manual | mixto | stack_extranjero.
+                             Cambia las viñetas de "Hoy", la columna de
+                             generalistas y el wedge en slide 05.
+
+CAMPOS PARAMETRIZABLES (placeholder visible si falta dato real)
+  · COMPANY_NAME          ej. "Armstrong"
+  · COMPANY_LOGO_URL      ej. assets/clients/testco.svg
+  · CHAMPION_NAME         ej. "Stakeholder Test"
+  · CHAMPION_ROLE         ej. "Director de Operaciones"
+  · CHAMPION_PROFILE      cfo | coo | cio | operaciones | intermediario
+  · ARCHETYPE             autotransporte_carga | traslado_valores |
+                          farma | fmcg_enterprise | multi_empresa |
+                          mid_market | tech_in_house_madura
+  · INDUSTRY              transporte | distribución | e-commerce | flota_propia
+  · DOMINANT_PAIN         combustible | peajes | viáticos | efectivo |
+                          fiscal | fragmentación
+  · STACK_ACTUAL          monedero_cerrado | tarjeta_corporativa_moderna |
+                          excel_manual | mixto | stack_extranjero
+  · STATUS_QUO_BRAND      Toka | Edenred | Clara | Mendel | Brex | SAP | …
+                          (solo si el cliente lo cita verbatim — ver slide 07)
+  · FOLIO                 ej. UV-029/2026
+  · MEETING_DATE          ej. 28.04.2026
+  · MEETING_TYPE          primer_contacto | seguimiento | cierre | post_mapeo
+  · FLEET_SIZE            ej. ~600 unidades
+  · ANNUAL_OPEX_MXN       ej. $500M
+  · ESTIMATED_RANGE_MXN   ej. $15–40M
+  · CONTEXT_HOOK          frase específica del último contacto
+  · GHOST_CASE            transportista_800u | distribuidora_400u | …
+                          (mapping completo por arquetipo en slide 08)
+  · GHOST_CASE_QUOTE      una frase del CFO/Director del caso fantasma
+  · APPLICABLE_LEVERS     [combustible, peajes, viáticos, tesorería, fiscal]
+  · N_DIAGNOSTICOS        número real de casos comparables (ver
+                          SESSION-CLOSE.md). NO inventar.
+  · AVG_PCT_RECUPERABLE   promedio observado (ej. 5.2). Validar con knowledge.
+  · PCT_RANGE_LOW/HIGH    rango observado (ej. 2.8 / 7.9).
+  · UNIT_ECONOMIC_ANCHOR  ej. "~$X recuperable por unidad/año".
+                          Por arquetipo (ver slide 09).
+  · PAYBACK_MONTHS        ej. 4-6 (autotransporte) | 2-9 (tech in-house).
+                          Por arquetipo (ver slide 09).
+  · COST_OF_INACTION_QUARTERLY  ~ESTIMATED_RANGE_MXN / 4. Métrica de
+                          urgencia en slide 04 (Tesis · zona "por qué ahora").
+  · BLOG_LINK_COMBUSTIBLE  URL al blog/artículo de profundización en
+                          combustible. Si no existe, omitir el link.
+  · BLOG_LINK_PEAJES       URL profundización peajes. Si no existe, omitir.
+  · BLOG_LINK_VIATICOS     URL profundización viáticos. Si no existe, omitir.
+  · BLOG_LINK_EFECTIVO     URL profundización efectivo. Si no existe, omitir.
+  · EMBED_RUTA             HTML/iframe del mapa de análisis de ruta
+                          (slide 06 · combustible). Default: omitir.
+  · FIREFLIES_TRANSCRIPT_URL  URL real de la última call. OBLIGATORIO
+                              resolver antes de emitir.
+
+CAMPOS DE COPY GENERADO POR ARQUETIPO (slide 03, 06)
+  · UVICUO_ONELINE        frase canónica de marca (slide 03). 6 variantes
+                          por arquetipo (ver AGENT_NOTE de slide 03).
+                          Default canónico: "Especialización en gastos
+                          operativos de flota — combustible, peajes,
+                          viáticos y efectivo en una sola plataforma."
+  · CHAMPION_FAMILIARITY  alto | medio | bajo. Determina si slide 03
+                          (Esto es Uvicuo) se incluye o se omite.
+
+ESTRUCTURA NARRATIVA — 10 SLIDES (post-fusión 07+08 y 09+10)
+  01  PORTADA           identidad doble (Uvicuo + cliente) + magnitud
+  02  AGENDA            cinco bloques de la conversación, 30 min total
+  03  ESTO ES UVICUO    marca + credibilidad (default ON, omitible si
+                        CHAMPION_FAMILIARITY = alto)
+  04  TESIS             3 mecánicas + 4 categorías + magnitud + por qué ahora
+  05  EL PROBLEMA       4 palancas con mecánica + por qué + link al blog
+  06  SOLUCIÓN UVICUO   4 cards categoría + chip mecánica + WhatsApp banner
+  07  COMPARACIÓN       3 negaciones + categoría única + arquitectura + filtro
+  08  PRUEBA SOCIAL     testimonio + stats + logos por vertical
+  09  RETORNO           payback hero + 3 escenarios + anchor por unidad
+  10  SIGUIENTE PASO    una sola acción
+
+FRASE CANÓNICA DEL WEDGE (validada Iker 2026-05-01)
+  "Generalistas resuelven una tarjeta de gastos.
+   Uvicuo resuelve la operación logística de gastos."
+
+  Aplicable como tagline interno para customización del UVICUO_ONELINE.
+  Cuando aparece en HTML renderable: NUNCA usar la palabra "generalista"
+  (slang interno). Sustituir por "tarjetas corporativas estándar" o
+  "alternativas del mercado".
+
+FILTRO DE FIT (regla del template · slide 07 lo declara explícito)
+  El deck habla a empresas con flota y gastos operativos en ruta.
+  Si la operación del cliente es 100% oficina, sin movilidad ni
+  gastos en ruta — este NO es el documento que necesita y la slide
+  07 lo declara textualmente. Hiper-verticalizados a propósito.
+
+REGLAS DURAS · EL DECK NO PUEDE ROMPER NINGUNA
+  · CERO PRICING en este deck. Ni ARPU, ni "$14 USD/usuario", ni
+    success fee, ni cuota de plataforma. Pricing vive en el documento
+    de diagnóstico (teaser-test-co/), no aquí.
+  · CERO SLANG INTERNO. Palabras prohibidas en HTML renderable:
+    "generalista", "ancla", "wedge canónico", "tarjeta-céntrico",
+    "categoría 03 nueva". Son lenguaje de equipo Uvicuo, el cliente
+    NO los entiende.
+  · CERO FRASES VACÍAS O QUE MIENTAN. Ejemplos prohibidos:
+      - "sin desplazar a ningún proveedor actual" (presunción gratuita)
+      - "sin cambiar cómo opera tu flota" (mentira: SÍ hay cambios)
+      - "ya están negociadas al hueso" (críptico)
+      - "ningún proveedor actual tiene incentivo en mostrar"
+        (cuasi-conspiratorio)
+  · NUNCA INVENTES DATOS. Usa "[por confirmar]" como placeholder visible.
+  · NUNCA NOMBRE REAL del ghost case. Siempre anonimizado.
+  · Si STATUS_QUO_BRAND no se conoce, NO inventar — clarificar con Iker.
+  · La portada SIEMPRE lleva folio único + sello. No reemplazar por
+    elementos genéricos.
+  · Verbo: "lo que vimos / lo que estimamos / lo que proponemos".
+    NUNCA "te ofrecemos".
+  · SWEEP OBLIGATORIO antes de emitir: si el HTML renderable contiene
+    "{{", "[link]", "generalista", o "ancla" como label de card,
+    el sweep falla. TODO placeholder debe estar resuelto.
+  · Antes de emitir, leer angles-by-archetype.md y resolver el ARCHETYPE.
+    Sin arquetipo identificado, NO armar el deck — primero clarificar
+    con Iker.
+
+SISTEMA VISUAL (NO MODIFICAR SIN AVISAR)
+  · Papel cálido --paper · Tinta --ink · Verde Uvicuo --accent
+  · JetBrains Mono SOLO para folios, números, metadatos
+  · Inter 200/300 para titulares, 400/500 para body
+  · Una sola idea por slide. Si hay dos ideas, son dos slides.
+  · NO gradientes, NO drop shadows fuertes, NO emojis, NO iconografía
+    decorativa. Sólo tipografía, retícula y reglas finas.
+  · Slides oscuras (--ink) sólo para Tesis (04) y Cierre (10). Romper
+    esta regla rompe la jerarquía narrativa.
+
+═══════════════════════════════════════════════════════════════════════════
+-->
+
+<script type="application/json" id="speaker-notes">
+[
+  "Portada — Abre nombrando al champion y al folio. 'Esto es el documento que armamos específicamente para ustedes después de nuestro último contacto.' No leas la portada — déjala respirar.",
+  "Agenda — 30 segundos. 'Vamos a recorrer cinco bloques. Si quieren saltar o profundizar, paramos.' No te detengas más.",
+  "Esto es Uvicuo — 1-2 min. Para el comité que no nos conoce: 'Software 360 para flotas, partner + inversor de Mastercard, +50 flotas en operación.' No leas las cards — déjalas hacer su trabajo. Si el champion ya nos conoce profundo, salta esta slide.",
+  "Tesis — ESTA es la slide que decide si te escuchan los próximos 25 minutos. 'Hay 3 mecánicas que generan pérdida estructural en 4 categorías.' Léela en voz alta. No la pases hasta que haya silencio en la sala.",
+  "El problema — 'En operaciones como la suya, así se manifiestan las 3 mecánicas en cada categoría.' Tono observacional, nunca acusatorio. Lee la palanca, su mecánica, y el por qué. Si profundizan, hay link al blog en cada palanca.",
+  "Solución — 'Cada mecánica del problema se resuelve con producto concreto en cada categoría.' Recorre las 4 cards rápidamente. Pausa en la banda de WhatsApp — 'todo orquestado desde acá'. Cierra con las 4 anclas únicas.",
+  "Comparación — Aquí el comité pide el cuadro mental. 'No somos un monedero. No somos una gestión de gastos. No somos una tarjeta de crédito. Somos software 360 para gestión financiera de flotas.' Pausa en la arquitectura de integración. Si la operación no encaja en el filtro de fit, decirlo: 'este no es el documento que necesitan'.",
+  "Prueba social — 'Esta es una operación que se ve mucho a ustedes. Pidió no ser nombrada.' Nunca des el nombre real. Pasa rápido por los logos por vertical — la prueba social hace su trabajo en silencio.",
+  "Retorno — Empieza con el payback: 'Recuperan en X meses.' Luego la magnitud. Los 3 escenarios son referencia. NO hablamos de pricing — el modelo comercial vive en el doc de diagnóstico.",
+  "Siguiente paso — UNA acción. Cierra con: '¿Tiene sentido que reservemos 30 minutos la próxima semana con [persona específica]?' Espera respuesta. No llenes el silencio."
+]
+</script>
+
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 01 · PORTADA · VARIANTE DEFAULT (primer_contacto)
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · Reemplazar COMPANY_NAME, CHAMPION_NAME, FOLIO, MEETING_DATE.
+  · Si tienes COMPANY_LOGO_URL, agregarlo al lado del wordmark de
+    Uvicuo en chrome-top con un "×" entre ambos.
+  · Si MEETING_TYPE === "seguimiento", reemplazar la eyebrow por
+    "Seguimiento · sesión 02".
+  · Si MEETING_TYPE === "cierre", reemplazar por "Sesión final · cierre".
+  · Si MEETING_TYPE === "post_mapeo", "Post-mapeo · validación".
+
+AGENT · ZONAS DE LA PORTADA (4 zonas, jerarquía descendente):
+  Zona 1 · IDENTIDAD UVICUO (banda discreta debajo del wordmark
+    chrome-top o como sub-bloque) — 3 anclas mínimas:
+    · Categoría: "Software 360 para la gestión financiera de flotas"
+    · Institucional: "Solución Fleet de Mastercard para LatAm"
+    · Tracción: "+50 flotas en operación"
+    Razón: el comité del cliente puede estar frío vs Uvicuo. Slide 03
+    amplifica, pero la portada tiene que sembrar identidad mínima.
+  Zona 2 · TITULAR (hero) — solo 2 elementos:
+    · Magnitud del rango (en verde / acc)
+    · Nombre del cliente (en strong)
+    NO agregar propuesta de valor en el titular. Frases prohibidas:
+    "sin desplazar a ningún proveedor actual" / "sin cambiar cómo
+    opera tu flota" / "sin renegociar". Esas son claims gratuitos
+    que el cliente no ha conversado con nosotros.
+  Zona 3 · PERSONALIZACIÓN (lede) — referencia al último contacto.
+    "Documento preparado para [CHAMPION_NAME] y equipo ejecutivo de
+    [COMPANY_NAME] después de nuestra conversación del [MEETING_DATE_LAST_CONTACT]."
+  Zona 4 · LEDGER LATERAL (marcos de seriedad) — 5 filas exactas.
+
+AGENT · QUÉ NOTAR:
+  · El titular SIEMPRE lleva el rango estimado en verde. Si no tenemos
+    rango, NO armar este deck — primero hacemos benchmark interno.
+  · El ledger lateral debe tener exactamente 5 filas. Ni más ni menos.
+
+AGENT · QUÉ PREGUNTAR AL USUARIO:
+  · Si no hay CONTEXT_HOOK: "¿Qué dijo el champion en la última call que
+    podamos referenciar aquí?"
+  · Si la fecha de meeting es > 14 días, confirmar que sigue vigente.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide bg-grid" data-screen-label="01 Portada">
+  <div class="chrome-top">
+    <div class="l">
+      <img src="assets/wordmark-black.png" alt="Uvicuo" />
+      <span class="pad">×</span>
+      <span style="font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; text-transform: none; font-family: var(--font-sans);">Armstrong</span>
+    </div>
+    <div class="r">FOLIO UV-029/2026 · CONFIDENCIAL</div>
+  </div>
+
+  <div style="flex: 1; display: grid; grid-template-columns: 1fr 480px; gap: 96px; padding-top: 64px; align-content: center;">
+    <div style="display: flex; flex-direction: column; justify-content: center; gap: 56px;">
+      <div>
+        <span class="eyebrow">Sesión ejecutiva · business case para Dirección General</span>
+        <h1 class="s-h1" style="font-size: 132px; line-height: 0.95;">
+          Cómo recuperamos <span class="acc">$5–10M</span> al año en <strong>Armstrong</strong>
+        </h1>
+      </div>
+      <p class="lede" style="max-width: 44ch; font-size: 28px;">
+        Documento preparado para <strong>Isaac Moreno</strong> y el equipo ejecutivo de Armstrong después del análisis de las cinco rutas de carga compartidas el 7 de mayo.
+      </p>
+      <div style="display: flex; gap: 48px; align-items: baseline; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 14px; color: var(--ink-3); letter-spacing: 0.18em; text-transform: uppercase;">
+        <span>Software 360 para gestión financiera de flotas</span>
+        <span style="color: var(--ink-5);">·</span>
+        <span>Solución Fleet de Mastercard · LatAm</span>
+        <span style="color: var(--ink-5);">·</span>
+        <span>+50 flotas en operación</span>
+      </div>
+    </div>
+
+    <aside style="border-left: 1px solid var(--rule); padding-left: 56px; display: flex; flex-direction: column; justify-content: center; gap: 32px;">
+      <div>
+        <div class="ledger-h">Para esta sesión</div>
+        <div class="ledger">
+          <div class="row"><span class="lab">Cliente</span><span class="val">Grupo Armstrong</span></div>
+          <div class="row"><span class="lab">Industria</span><span class="val">Traslado de valores</span></div>
+          <div class="row"><span class="lab">Asistentes</span><span class="val">Finanzas · Dir. General</span></div>
+          <div class="row"><span class="lab">Folio</span><span class="val hi">UV-029/2026</span></div>
+          <div class="row"><span class="lab">Fecha</span><span class="val">07.05.2026</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">01 / 10</span>
+    <span>UVICUO × TEST CO.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 02 · AGENDA
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · No tocar la estructura de 5 bloques. Es deliberada.
+  · Tiempos default 3+8+8+5+6 = 30 min (post-fusión slides 07+08 y 09+10).
+  · Ajustar tiempos sólo si la sesión total NO es de 30 min.
+
+AGENT · CUSTOMIZACIÓN POR PERFIL DEL CHAMPION:
+  · CFO solo (estilo Isaac Moreno · Armstrong) → más tiempo en Tesis +
+    Cierre (3+8+6+5+8 = 30). Foco en datos auditables.
+  · COO solo (estilo Elola pattern) → más tiempo en Solución + Caso
+    (3+6+10+8+3 = 30). Foco en operación.
+  · Comité mixto (default) → balanceado 3+8+8+5+6.
+  · Sesión "post_mapeo" (ya hubo diagnóstico) → más tiempo en Cierre
+    (2+5+8+5+10 = 30). Foco en siguiente paso comercial.
+
+AGENT · QUÉ NOTAR:
+  · La agenda habla de la conversación, no del archivo. Por eso son
+    5 bloques temáticos y no 10 slides numeradas.
+  · El bloque 03 (Solución) absorbe la slide de Comparación post-fusión.
+  · El bloque 04 (Caso) absorbe la slide de Clientes post-fusión.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" data-screen-label="02 Agenda">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">02</span>
+    <span class="lab">Agenda</span>
+    <span class="pad">/</span>
+    <span>30 minutos · 5 bloques</span>
+  </div>
+
+  <h2 class="s-h2" style="max-width: 22ch; margin-bottom: 80px;">
+    Cinco preguntas. <span class="light">En orden.</span>
+  </h2>
+
+  <div class="card-grid" style="grid-template-columns: repeat(5, 1fr); flex: 0;">
+    <div class="card">
+      <div class="card-head"><span class="lid">01 · Tesis</span><span class="rng">3 min</span></div>
+      <h4>Por qué hablamos</h4>
+      <p>Lo que vimos en las cinco rutas de Armstrong y por qué les conviene escucharnos.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="lid">02 · Problema</span><span class="rng">8 min</span></div>
+      <h4>Dónde está el dinero</h4>
+      <p>El sobreprecio en monedero, peajes sin conciliar, viáticos con comisión, capital ocioso.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="lid">03 · Solución</span><span class="rng">6 min</span></div>
+      <h4>Qué hace Uvicuo</h4>
+      <p>Capacidades por categoría operativa, cómo encajamos con su Samsara, su SAM y la red Edenred actual.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="lid">04 · Caso</span><span class="rng">5 min</span></div>
+      <h4>Caso comparable</h4>
+      <p>Una flota nacional comparable + portfolio de clientes que ya pasaron por este diagnóstico.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="lid">05 · Cierre</span><span class="rng">8 min</span></div>
+      <h4>Qué pasa después</h4>
+      <p>Retorno esperado, próximos pasos, Q&amp;A en directo. Más tiempo aquí porque la decisión es de la Dirección General.</p>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">02 / 10</span>
+    <span>AGENDA</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 03 · ESTO ES UVICUO · marca temprana (default ON)
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · Default: incluir esta slide. Razón: deck se usa post-primer-contacto;
+    el champion conoce Uvicuo pero el resto del comité (CFO/COO/CIO)
+    NO. Esta slide les da el cuadro mental antes de la tesis.
+  · OMITIR esta slide solo si CHAMPION_FAMILIARITY = "alto" Y todo el
+    comité ya tuvo demo previa. Si la omites, renumerar slides 04-12
+    a 03-11 y total a /11.
+  · Resolver UVICUO_ONELINE según ARCHETYPE (ver opciones abajo).
+
+AGENT · CUSTOMIZACIÓN POR ARQUETIPO — frase canónica de Uvicuo:
+  · Default genérico (sin arquetipo claro o cliente cold) →
+      "Especialización en gastos operativos de flota — combustible,
+       peajes, viáticos y efectivo en una sola plataforma."
+      [Validado por Iker 2026-05-01]
+  · Cuando compite vs tarjeta corporativa moderna en el stack del
+    cliente (Mendel/Clara/Pomelo) →
+      "La operación logística de gastos para flotas — donde las
+       tarjetas corporativas estándar ofrecen una tarjeta de gastos."
+      NOTA: NO usar la palabra "generalista" — es slang interno.
+  · Tech in-house madura (Trayecto, Draiver) →
+      "La última milla del sistema que ya tienes — APIs en tiempo real
+       con concesionarias, IA en facturas, WhatsApp como UI."
+  · FMCG enterprise con licitación vigente (GEPP/PepsiCo) →
+      "Capa analítica encima de tu proveedor actual — sin tocarlo
+       durante la licitación."
+  · Distribución farma (Nadro) →
+      "Una plataforma para liberar el capital de cajas chicas
+       dispersas y recuperar deducibilidad por sucursal."
+  · Multi-empresa (Esférica, Esgari multi-RFC) →
+      "Una plataforma para las N sociedades del grupo — setup único,
+       escalable conforme se sumen."
+
+AGENT · 3 CARDS DE CREDIBILIDAD (sin label "Ancla"):
+  · Card 1 — RESPALDO: Mastercard como partner estratégico +
+    inversionista. Listar fondos secundarios:
+      Headline: "Solución Fleet de Mastercard para LatAm"
+      Sub: "partner estratégico + inversionista"
+      Sub2: "Respaldados también por 468 Capital · 6 Degrees Capital ·
+             Numundo Ventures · 17Sigma"
+    Para tech in-house madura → invertir énfasis (fondos primero,
+    Mastercard después).
+  · Card 2 — TRACCIÓN: logos por vertical (asimetría 2-2-3):
+      Headline: "+50 flotas en operación · 200 a 2,000+ unidades"
+      Vertical 1 (Última milla y mensajería): 99minutos · paquetexpress
+      Vertical 2 (Distribución FMCG): Bimbo · Dolphi
+      Vertical 3 (Distribución industrial y multi-industria):
+                  Sanimex · Lapisa · Esférica
+    Por arquetipo: reordenar para poner la vertical del cliente PRIMERO.
+  · Card 3 — MODELO (SIN PRICING — regla dura):
+      Default: "Modelo alineado con el éxito del cliente — pago por uso
+                recurrente, sin comisión sobre el gasto recuperado."
+      [Validado por Iker · opción β]
+      PROHIBIDO: ARPU, $14 USD/usuario/mes, success fee, cualquier
+      número de pricing en esta card. Pricing vive en el diagnóstico.
+
+AGENT · QUÉ EVITAR:
+  · La palabra "Ancla" como label de las cards (slang interno · prohibida).
+  · Frases tipo "Trabajamos con flotas que mueven México todos los días"
+    (filler genérico sin sustancia · prohibido).
+  · Mencionar pricing — ni siquiera como ARPU. Va al diagnóstico.
+  · Frases de propuesta de valor inventadas que el cliente no haya
+    conversado (ej. "sin cambiar cómo opera tu flota" — mentira honesta).
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide cream" data-screen-label="03 Esto es Uvicuo">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">03</span>
+    <span class="lab">Esto es Uvicuo</span>
+    <span class="pad">/</span>
+    <span>Marca + credibilidad antes de la tesis</span>
+  </div>
+
+  <h2 class="s-h2" style="max-width: 30ch; margin-bottom: 48px; font-size: 60px; line-height: 1.08;">
+    Especialización en gastos operativos de flota — <span class="light">combustible, peajes, viáticos y efectivo en una sola plataforma.</span>
+  </h2>
+
+  <div class="card-grid" style="flex: 0; gap: 28px;">
+    <div class="card" style="padding: 36px 36px 40px;">
+      <div class="card-head" style="margin-bottom: 8px;"><span class="lid">01 · Respaldo</span></div>
+      <h4 style="font-size: 26px; line-height: 1.2;">Solución Fleet de Mastercard para LatAm</h4>
+      <div style="display: flex; align-items: center; justify-content: center; padding: 24px 0 8px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 8px 0;">
+        <img src="assets/clients/mastercard-full.png" alt="Mastercard" style="height: 80px;" />
+      </div>
+      <p style="font-size: 19px; line-height: 1.5; color: var(--ink-2); margin: 0;"><strong>Partner estratégico + inversionista.</strong></p>
+      <p style="font-size: 16px; color: var(--ink-3); line-height: 1.5; margin: 0;">Respaldados también por 468 Capital · 6 Degrees Capital · Numundo Ventures · 17Sigma.</p>
+    </div>
+    <div class="card" style="padding: 36px 36px 40px;">
+      <div class="card-head" style="margin-bottom: 8px;"><span class="lid">02 · Tracción</span></div>
+      <h4 style="font-size: 26px; line-height: 1.2;">Donde se mueve transporte serio en México, opera Uvicuo</h4>
+      <p style="margin: 0 0 8px; color: var(--ink-3); font-size: 16px; line-height: 1.45;">+50 flotas · de 200 a 2,000+ unidades</p>
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Última milla</div>
+          <div style="display: flex; gap: 18px; align-items: center;">
+            <img src="assets/clients/99minutos.png" alt="99 Minutos" style="height: 24px;" />
+            <img src="assets/clients/paquetexpress.png" alt="Paquete Express" style="height: 32px;" />
+          </div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// FMCG</div>
+          <div style="display: flex; gap: 18px; align-items: center;">
+            <img src="assets/clients/bimbo.svg" alt="Bimbo" style="height: 28px;" />
+            <img src="assets/clients/dolphy.png" alt="Dolphi" style="height: 24px;" />
+            <img src="assets/clients/frutmex.png" alt="Frutmex" style="height: 32px;" />
+          </div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Industrial</div>
+          <div style="display: flex; gap: 18px; align-items: center;">
+            <img src="assets/clients/lapisa.png" alt="Lapisa" style="height: 22px;" />
+            <img src="assets/clients/sanimex.png" alt="Sanimex" style="height: 22px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding: 36px 36px 40px;">
+      <div class="card-head" style="margin-bottom: 8px;"><span class="lid">03 · Modelo</span></div>
+      <h4 style="font-size: 24px; line-height: 1.2;">Alineado con su éxito</h4>
+      <p style="font-size: 17px; line-height: 1.5; color: var(--ink-2); margin: 0 0 6px;">Pago por uso recurrente, sin comisión sobre el gasto recuperado.</p>
+      <p style="font-size: 17px; line-height: 1.5; color: var(--ink-2); margin: 0 0 14px;"><strong>APIs abiertas</strong> — su equipo de TI las consume desde el sistema que ya tienen.</p>
+
+      <div style="border-top: 1px solid var(--rule); padding-top: 12px; margin-top: auto;">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px;">// Compatible con stacks como</div>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 2px 6px; border: 1.5px solid var(--ink); border-radius: 3px;">TMS</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 2px 6px; border: 1.5px solid var(--ink); border-radius: 3px;">OTM</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.06em;">su sistema</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <img src="assets/clients/sap.png" alt="SAP" style="height: 16px; opacity: 0.85;" />
+          <img src="assets/clients/oracle.png" alt="Oracle" style="height: 12px; opacity: 0.85;" />
+          <img src="assets/clients/epicor.png" alt="Epicor" style="height: 12px; opacity: 0.85;" />
+          <img src="assets/clients/odoo.png" alt="Odoo" style="height: 14px; opacity: 0.85;" />
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.04em;">+ otros</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">03 / 10</span>
+    <span>ESTO ES UVICUO</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 04 · TESIS · slide oscura (deliberado)
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · La tesis tiene 4 zonas: (1) claim narrativo con 3 mecánicas + 4
+    categorías + magnitud · (2) las 3 mecánicas explicadas · (3) las 4
+    categorías + por qué ahora (costo trimestral) · (4) marco de prueba.
+  · Liderar con CATEGORÍAS y MECÁNICAS, no con %. El % es consecuencia
+    visible, no hero. Razón: el comité no cree un % aislado sin mecánica
+    explicable detrás.
+  · Mantener la simetría con slide 06 (Solución): las 3 mecánicas se
+    invierten en 3 capacidades de Uvicuo (Manualidad ↔ Automatización ·
+    Control reactivo ↔ Tiempo real con IA · Fragmentación ↔ Centralización).
+    Romper la simetría rompe la arquitectura narrativa del deck.
+
+AGENT · TESIS POR ARQUETIPO (frases canónicas, ver angles-by-archetype.md):
+  · Autotransporte de carga + monedero cerrado (Esgari, Bimbo, Lapisa) →
+      "[CLIENTE] paga entre 3% y 8% del OPEX en sobreprecio que el modelo
+       del proveedor de monedero está diseñado para no mostrar."
+  · Traslado de valores (Armstrong) →
+      "[CLIENTE] opera a ciegas con $X-Y MXN/mes en combustible —
+       sin reconciliación contra mercado abierto, sin alertas
+       en tiempo real. No es ineficiencia, es estructural."
+  · Distribución farma (Nadro) →
+      "[CLIENTE] tiene capital ocioso en cajas chicas dispersas y
+       deducibilidad fragmentada — entre 4% y 7% del OPEX, recuperable
+       sin tocar al proveedor de tarjeta corporativa."
+  · FMCG enterprise + licitación vigente (GEPP) →
+      "[CLIENTE] tiene 2-5% del OPEX en peajes y viáticos no auditados —
+       independiente de la licitación de combustible que ya está corriendo."
+  · Multi-empresa (Esférica, Esgari multi-RFC) →
+      "[CLIENTE] consolida N razones sociales con triple conciliación
+       manual — 3-6% del OPEX por empresa, recuperable con setup único."
+  · Mid-market + sistema propio (Elola) →
+      "El problema no es de operación, es de visibilidad. [CLIENTE]
+       tiene 3-6% del OPEX que su TMS no captura — sin que cambien sus
+       procesos."
+  · Tech in-house madura (Trayecto, Draiver) →
+      "[CLIENTE] ya optimizó lo grande con su sistema in-house. Lo que
+       falta es la última milla: APIs en tiempo real con concesionarias
+       y SAT. Entre 0.5% y 1% del OPEX, concentrado en peajes."
+
+AGENT · QUÉ AJUSTAR POR PERFIL DEL CHAMPION (CHAMPION_PROFILE):
+  · CFO → enfatizar la frase "está en sus estados de cuenta, hoy" en el
+    bottom del slide. Es lenguaje de auditor.
+  · COO → enfatizar "sin renegociar, sin migrar sistemas". Reduce fricción
+    operativa percibida.
+  · CIO → enfatizar "su sistema sigue siendo el cerebro" (anti-blocker
+    de protector del sistema).
+  · Operaciones (Director ops) → enfatizar el dato concreto del
+    DOMINANT_PAIN del cliente (el problema que YA reconoce).
+
+AGENT · QUÉ NOTAR:
+  · Esta es la única slide oscura del bloque narrativo (la otra es 10).
+  · Si haces más slides oscuras, rompes la jerarquía visual.
+  · La tesis decide si el comité te escucha los próximos 25 minutos.
+    Si no tienes ARCHETYPE claro, NO armar este slide — clarificar primero.
+
+AGENT · QUÉ EVITAR (frases prohibidas en HTML renderable):
+  · "ya están negociadas al hueso" — críptico, ni Iker lo entiende.
+  · "ningún proveedor actual tiene incentivo en mostrar" — cuasi-conspiratorio.
+  · "fricciones invisibles" sin sustancia — vago.
+  · Liderar con el % rango sin justificarlo con mecánicas concretas.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide dark" data-screen-label="04 Tesis">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-white.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">04</span>
+    <span class="lab">Tesis</span>
+    <span class="pad">/</span>
+    <span>La afirmación que sostiene este deck</span>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1500px;">
+    <h2 class="s-h2" style="font-size: 60px; line-height: 1.1; margin-bottom: 16px; max-width: 28ch;">
+      <strong>Armstrong</strong> opera a ciegas con $5-6M MXN/mes en combustible · sin reconciliación contra mercado abierto, sin alertas en tiempo real.
+    </h2>
+    <p style="font-size: 22px; color: rgba(255,255,255,0.72); line-height: 1.55; max-width: 80ch; margin: 0 0 56px;">
+      No es ineficiencia ni descuido del equipo. Es estructural al modelo del proveedor de monedero.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px;">
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 32px 32px 36px;">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#56CB2C" stroke-width="1.5">
+            <rect x="8" y="14" width="40" height="28" rx="2" />
+            <path d="M8 22 L48 22" />
+            <path d="M14 30 L26 30 M14 36 L22 36" />
+            <circle cx="40" cy="34" r="4" stroke-dasharray="2 2" />
+          </svg>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--uv); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;">Mecánica 01</div>
+        </div>
+        <div style="font-size: 30px; font-weight: 500; margin-bottom: 14px; line-height: 1.15;">Manualidad operativa</div>
+        <p style="font-size: 19px; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0;">Conciliaciones a mano que nadie revisa. Errores en facturas, peajes y comprobaciones que se vuelven costo aceptado.</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 32px 32px 36px;">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#56CB2C" stroke-width="1.5">
+            <circle cx="28" cy="28" r="20" />
+            <path d="M28 16 L28 28 L36 32" stroke-linecap="round" />
+            <path d="M48 12 L52 8" stroke-dasharray="2 2" />
+          </svg>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--uv); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;">Mecánica 02</div>
+        </div>
+        <div style="font-size: 30px; font-weight: 500; margin-bottom: 14px; line-height: 1.15;">Control reactivo</div>
+        <p style="font-size: 19px; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0;">La información llega días tarde. Cuando se detecta el problema ya pasó — sin alertas en tiempo real ni datos de mercado.</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 32px 32px 36px;">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#56CB2C" stroke-width="1.5">
+            <rect x="6" y="10" width="14" height="14" rx="1" />
+            <rect x="6" y="32" width="14" height="14" rx="1" />
+            <rect x="36" y="10" width="14" height="14" rx="1" />
+            <rect x="36" y="32" width="14" height="14" rx="1" />
+            <path d="M20 17 L36 17 M20 39 L36 39 M13 24 L13 32 M43 24 L43 32" stroke-dasharray="2 2" opacity="0.5" />
+          </svg>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--uv); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;">Mecánica 03</div>
+        </div>
+        <div style="font-size: 30px; font-weight: 500; margin-bottom: 14px; line-height: 1.15;">Fragmentación</div>
+        <p style="font-size: 19px; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0;">Un proveedor por categoría. Cada uno cobra comisión y licencia, ninguno ve el sistema completo.</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: end; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.18);">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px;">// Dónde se manifiesta</div>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: baseline;">
+          <div style="font-size: 28px; font-weight: 500;">Combustible</div>
+          <div style="width: 5px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 50%;"></div>
+          <div style="font-size: 28px; font-weight: 500;">Peajes</div>
+          <div style="width: 5px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 50%;"></div>
+          <div style="font-size: 28px; font-weight: 500;">Viáticos en ruta</div>
+          <div style="width: 5px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 50%;"></div>
+          <div style="font-size: 28px; font-weight: 500;">Efectivo</div>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-family: var(--font-mono); font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 8px;">// Magnitud anual</div>
+        <div style="font-size: 56px; font-weight: 300; letter-spacing: -0.03em; color: var(--uv); line-height: 1;">$5–10M</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.7); margin-top: 6px;">MXN · 4 palancas · combustible cuantificado, resto por validar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">04 / 10</span>
+    <span>TESIS</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 05 · EL PROBLEMA
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · La columna derecha (4 fricciones) cambia por arquetipo. Selecciona
+    de APPLICABLE_LEVERS. Si solo aplican 3, deja el cuarto como
+    "[por confirmar]" — NO inventes el cuarto.
+  · Resolver placeholders: {{N_DIAGNOSTICOS}}, {{AVG_PCT_RECUPERABLE}},
+    {{PCT_RANGE_LOW}}, {{PCT_RANGE_HIGH}}. NUNCA dejarlos literales.
+    Si no hay dato real, sustituir frase por "operaciones de tamaño
+    comparable" sin número.
+
+AGENT · CUSTOMIZACIÓN POR ARQUETIPO (ver knowledge/uvicuo/angles-by-archetype.md):
+  · Autotransporte de carga (Esgari, GEPP, Bimbo, Lapisa) →
+    rango 3-8% · palancas dominantes: combustible 3.5-5% + peajes 5-6%
+  · Traslado de valores (Armstrong) →
+    rango 3-7% · palancas: control granular + telemetría + Edenred
+  · Distribución farma (Nadro) →
+    rango 4-7% · palancas: cajas chicas + deducibilidad fiscal + capital ocioso
+  · FMCG enterprise (GEPP/PepsiCo) →
+    rango 2-5% · palancas: peajes + viáticos (combustible bloqueado por licitación)
+  · Logística multi-empresa (Esférica, Esgari multi-RFC) →
+    rango 3-6% · palancas: consolidación contable + viáticos C-suite
+  · Transportes mid-market (Elola) →
+    rango 3-6% · palancas: combustible + viáticos + Bot Fiscal
+  · Tech in-house madura (Trayecto, Draiver) →
+    rango 0.5-1% · palanca dominante: peajes (combustible cerrado por
+    autoconsumo o stack legacy). NO usar 5.2% promedio aquí.
+
+AGENT · QUÉ NOTAR:
+  · {{N_DIAGNOSTICOS}} debe ser real. Hoy hay 9 deals analizados al
+    cierre del sprint Trayecto (ver SESSION-CLOSE.md). Si el número
+    público difiere, validar con Iker antes de emitir.
+
+AGENT · QUÉ PREGUNTAR:
+  · Si no sabes qué palancas aplican: "¿Qué porcentaje del OPEX va a
+    cada categoría operativa?" Sin esto, el rango es muy genérico.
+  · Si no sabes el arquetipo: leer transcript primero para identificar
+    pistas (ver tabla de pistas en angles-by-archetype.md).
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" data-screen-label="05 El problema">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">05</span>
+    <span class="lab">Diagnóstico</span>
+    <span class="pad">/</span>
+    <span>El problema, en operaciones como la suya</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 0.8fr 1.5fr; gap: 56px; flex: 1; align-items: start;">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-4); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 16px;">// Anchor empírico · 5 rutas Armstrong · 905 estaciones</div>
+      <div style="font-weight: 300; font-size: 88px; line-height: 1; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 8px;">
+        −5.75<span style="font-size: 56px;">%</span>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 24px;">SOLO COMBUSTIBLE · DATA REAL</div>
+      <p class="body" style="font-size: 18px; color: var(--ink-2); max-width: 32ch; line-height: 1.5;">
+        Analizamos <strong>las 5 rutas de Armstrong</strong> contra 905 estaciones del corredor CRE.
+        Ahorro promedio ≤5km de desvío: <strong>5.75%</strong>. Óptimo absoluto: <strong>7.93%</strong>.
+      </p>
+      <p style="margin-top: 24px; font-size: 15px; color: var(--ink-3); font-style: italic;">
+        El rango de la demo (3.5-4.5%) era piso de industria. Con su data, el piso sube.
+      </p>
+    </div>
+
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px; font-weight: 700;">// Las cuatro palancas</div>
+      <h3 style="font-size: 28px; line-height: 1.15; margin: 0 0 18px; color: var(--ink); font-weight: 500;">Que se repiten en operaciones como la suya.</h3>
+
+      <div style="border-top: 1px solid var(--rule); padding-top: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+          <strong style="font-size: 23px; line-height: 1.25;">Combustible · Sobreprecio en red Edenred</strong>
+          <span style="font-family: var(--font-mono); font-size: 22px; color: var(--warn); font-weight: 600;">5.75–7.93%</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px;">// Fragmentación + Control reactivo · DATA REAL ARMSTRONG</div>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.5; margin: 0;">
+          Las 5 rutas analizadas pagan en promedio $1.56 por litro arriba del precio óptimo del corredor (≤5km de desvío). Colima y León concentran la mayor parte del valor.
+          <a href="../../analyses/uvi-029-armstrong-fuel/index.html" style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; margin-left: 8px;">→ Ver análisis ↗</a>
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--rule); padding-top: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+          <strong style="font-size: 23px; line-height: 1.25;">Peajes · Cobros TAG sin conciliar</strong>
+          <span style="font-family: var(--font-mono); font-size: 22px; color: var(--warn); font-weight: 600;">5–7%</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px;">// Manualidad + Control reactivo · estimación industria</div>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.5; margin: 0;">
+          Cobros dobles, errores de ejes y casetas mal asignadas que nadie concilia. El cruce manual contra GPS y bitácora es inviable a 600+ unidades. Por validar con su estado de cuenta TAG.
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--rule); padding-top: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+          <strong style="font-size: 23px; line-height: 1.25;">Viáticos · Comisión Ticket Empresarial</strong>
+          <span style="font-family: var(--font-mono); font-size: 22px; color: var(--warn); font-weight: 600;">2.5–4.5%</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px;">// Fragmentación · por confirmar % exacto</div>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.5; margin: 0;">
+          Cada movimiento del custodio genera comisión sobre el monto. Volumen estimado 20% del combustible (~$1M-$1.2M MXN/mes), comisión por confirmar en facturación.
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+          <strong style="font-size: 23px; line-height: 1.25;">Tesorería · Capital ocioso prefondeo Edenred</strong>
+          <span style="font-family: var(--font-mono); font-size: 22px; color: var(--warn); font-weight: 600;">1–2 meses</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px;">// Fragmentación + Manualidad</div>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.5; margin: 0;">
+          Saldo prefondeado al monedero = 1-2 meses de combustible inmovilizado. A $5.5M MXN/mes de gasto, $5-11M MXN inmovilizados como saldo, no auditable ni usable para tesorería.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">05 / 10</span>
+    <span>EL PROBLEMA</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 06 · SOLUCIÓN UVICUO · 4 cards por categoría + WhatsApp transversal
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · 4 cards por CATEGORÍA operativa (espejo 1:1 con las 4 palancas
+    de slide 05): Combustible · Peajes · Viáticos · Efectivo emergencias.
+    Cada card lleva un chip "Apela a: [mecánica X]" que reconecta
+    con las 3 mecánicas de la tesis (slide 04).
+  · BANNER WHATSAPP TRANSVERSAL entre las cards y la zona de innovación.
+    No metemos WhatsApp solo en una card — es capa core de TODA la
+    solución, no feature de una categoría.
+  · ZONA INNOVACIÓN al pie con 4 anclas únicas que sustentan la
+    afirmación "no hay parecido en el mercado".
+
+AGENT · CUSTOMIZACIÓN POR ARQUETIPO — qué 4 categorías destacar:
+  · Autotransporte de carga (Esgari, Bimbo, Lapisa) — DEFAULT:
+      Combustible · Peajes · Viáticos · Efectivo
+  · Traslado de valores (Armstrong) → control granular:
+      Hard Controls + Samsara · Validación IA · Dashboards · Anomalías
+  · Distribución farma (Nadro) → sustituir efectivo por fiscal:
+      Combustible · Multi-sucursal · Viáticos · Bot Fiscal/deducibilidad
+  · FMCG enterprise (GEPP) → capa analítica encima de incumbente:
+      Capa analítica · Peajes · Viáticos · APIs abiertas
+  · Multi-empresa (Esférica, Esgari multi-RFC) → consolidación:
+      Multi-RFC · Layout consolidado · Viáticos C-suite · Crédito grupo
+  · Mid-market (Elola) → integración + data:
+      Integración TMS · Dashboard · Bot Fiscal · WhatsApp adaptable
+  · Tech in-house madura (Trayecto, Draiver) → APIs + co-creación:
+      APIs Televía · IA conversacional · Co-creación TI · Atenuar combustible
+
+AGENT · ANCLAS DE INNOVACIÓN (Zona 4 · adaptables):
+  Default (autotransporte de carga):
+    · Recomendación de la estación más barata en ruta (combustible)
+    · Motor de fraude por IA + cruce odómetro/foto (combustible)
+    · APIs Televía industry-first + manejo de aclaraciones (peajes)
+    · Disposición de efectivo para emergencias en ruta
+  Tech in-house madura → reordenar:
+    · APIs Televía industry-first (#1)
+    · Co-creación con equipo de TI (#2)
+    · IA conversacional para facturas (#3)
+    · WhatsApp como UI única (#4)
+
+AGENT · QUÉ NOTAR:
+  · Esta slide responde la pregunta más frecuente del C-level:
+    "¿qué hace Uvicuo exactamente?" Sin ella, todo lo demás es ruido.
+  · Las 4 cards son **resultados con producto real visible**, no
+    abstracciones tipo "auditar y reasignar". El CFO debe poder traducir
+    cada card a una palanca operativa concreta de su negocio.
+  · Simetría narrativa con slide 05: mismas 4 categorías, mismo orden.
+    El comité lee slide 05 (problema por palanca) y slide 06 (solución
+    por palanca) como par espejo.
+  · {{EMBED_RUTA}} en card de combustible: si existe HTML/iframe del
+    mapa de análisis de ruta, embeber. Si no, omitir el placeholder.
+  · Para detalle del catálogo de features Uvicuo (15 features canónicas),
+    ver knowledge/uvicuo/value-props.md.
+
+AGENT · QUÉ EVITAR:
+  · "Auditar y reasignar gasto operativo" — lenguaje de consultoría.
+  · "Generalista" en HTML renderable — slang interno prohibido.
+  · "Bot Fiscal" sin explicación · "Hard Controls" sin explicación.
+    Si los usas, aterriza con 1 línea de qué hace.
+  · Mencionar pricing en cualquier card.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide cream" data-screen-label="06 Solución Uvicuo">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">06</span>
+    <span class="lab">Solución</span>
+    <span class="pad">/</span>
+    <span>Cómo resolvemos cada categoría</span>
+  </div>
+
+  <h2 class="s-h2" style="max-width: 36ch; margin-bottom: 10px; font-size: 38px; line-height: 1.12;">
+    Cada mecánica del problema se invierte <span class="light">con producto concreto en cada categoría operativa.</span>
+  </h2>
+  <p style="max-width: 90ch; margin: 0 0 20px; font-size: 16px; color: var(--ink-3); line-height: 1.5;">
+    Manualidad → Automatización · Control reactivo → Tiempo real con IA · Fragmentación → Centralización.
+  </p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 0 0 auto; margin-bottom: 14px;">
+    <div class="card" style="padding: 16px 22px; display: grid; grid-template-columns: 1fr 130px; gap: 16px; align-items: start;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <span class="lid">01 · Combustible</span>
+        </div>
+        <h4 style="font-size: 22px; line-height: 1.2; margin: 0 0 6px;">Red abierta Mastercard + recomendación inteligente</h4>
+        <ul style="font-size: 16px; line-height: 1.5; padding-left: 20px; margin: 0; color: var(--ink-2);">
+          <li><strong>Estación más barata en ruta</strong> — sin desviar al operador.</li>
+          <li>Validación IA: odómetro, ticket, foto post-carga y rendimiento histórico.</li>
+          <li>Motor de fraude integrado.</li>
+        </ul>
+        <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase;">
+          Apela a: Tiempo real · Centralización
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <img src="assets/clients/uvicuo-card-front.png" alt="Tarjeta Uvicuo · Mastercard" style="width: 130px; transform: rotate(-3deg); box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 9px;" />
+        <div style="font-family: var(--font-mono); font-size: 9px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; text-align: center; line-height: 1.3;">Tarjeta Uvicuo<br/>Mastercard</div>
+        <button onclick="document.getElementById('map-modal').style.display='flex'; var f=document.querySelector('#map-modal iframe'); f.src=f.src;" style="margin-top: 2px; background: var(--ink); color: var(--paper); border: 0; padding: 7px 12px; border-radius: 4px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+          <span style="display: inline-block; width: 10px; height: 10px;">▶</span> Ver mapa demo
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 16px 22px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="lid">02 · Peajes</span>
+        <img src="assets/clients/televia.png" alt="Televía" style="height: 22px;" />
+      </div>
+      <h4 style="font-size: 22px; line-height: 1.2; margin: 0 0 6px;">APIs en tiempo real con concesionarias</h4>
+      <ul style="font-size: 16px; line-height: 1.5; padding-left: 20px; margin: 0; color: var(--ink-2);">
+        <li><strong>Televía industry-first.</strong> Conciliación automática TAG ↔ GPS ↔ bitácora.</li>
+        <li>Manejo de aclaraciones (cobros dobles, errores de ejes, casetas) — único en el mercado.</li>
+      </ul>
+      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase;">
+        Apela a: Automatización · Tiempo real
+      </div>
+    </div>
+
+    <div class="card" style="padding: 16px 22px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="lid">03 · Viáticos en ruta</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;">// Sin comisión</span>
+      </div>
+      <h4 style="font-size: 22px; line-height: 1.2; margin: 0 0 6px;">Plan de gastos por viaje</h4>
+      <ul style="font-size: 16px; line-height: 1.5; padding-left: 20px; margin: 0; color: var(--ink-2);">
+        <li>Límites por categoría · auditoría continua de comprobación.</li>
+        <li>Multi-divisa nativa para viajes internacionales.</li>
+      </ul>
+      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase;">
+        Apela a: Centralización · Automatización
+      </div>
+    </div>
+
+    <div class="card" style="padding: 16px 22px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="lid">04 · Efectivo · Emergencias</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;">// Línea de crédito</span>
+      </div>
+      <h4 style="font-size: 22px; line-height: 1.2; margin: 0 0 6px;">Disposición instantánea en ruta</h4>
+      <ul style="font-size: 16px; line-height: 1.5; padding-left: 20px; margin: 0; color: var(--ink-2);">
+        <li>Autorización en tiempo real — sin que el operador llame al supervisor.</li>
+        <li>Sin comisión sobre el gasto · auditoría continua de cada disposición.</li>
+      </ul>
+      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase;">
+        Apela a: Centralización · Tiempo real
+      </div>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(90deg, #128C7E 0%, #25D366 100%); color: white; padding: 18px 28px; border-radius: 8px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; margin-bottom: 16px;">
+    <img src="assets/clients/whatsapp.png" alt="WhatsApp" style="height: 56px; width: 56px; flex-shrink: 0;" />
+    <div>
+      <div style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px;">Y todo orquestado desde WhatsApp</div>
+      <p style="font-size: 16px; line-height: 1.45; margin: 0; color: rgba(255,255,255,0.95);">Operadores no descargan apps. Comprobación, autorización, alertas y soporte por chat. Una sola capa para toda la flota — diseñada para alta rotación.</p>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">06 / 10</span>
+    <span>SOLUCIÓN UVICUO</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 07 · COMPARACIÓN · declaración de categoría + filtro de fit
+─────────────────────────────────────────────────────────────────────
+[Esta slide fusiona las viejas slides 07 (Hoy vs Con Uvicuo) y 08
+ (Diferenciadores) en una sola declaración categórica. Approach
+ declarativo, no comparativo fila-por-fila.]
+
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · Slide arriesgada por diseño: define la categoría con potencia
+    Y filtra fit. Si el cliente no encaja, el deck mismo le dice
+    que no es el documento que necesita. Hiper-verticalizados a
+    propósito.
+  · 4 zonas: (1) lo que NO somos · (2) lo que SÍ somos con prueba
+    operativa · (3) arquitectura de integración · (4) filtro fit + cierre.
+
+AGENT · CUSTOMIZACIÓN POR ARQUETIPO:
+  · Zona 1 (3 negaciones) — universal, estructura fija.
+  · Zona 2 (anclas operativas) — reordenar las 7 anclas según relevancia
+    al ARCHETYPE del cliente. Ej:
+      - Tech in-house madura → APIs Televía + integraciones OTM/TMS primero
+      - Farma → Bot Fiscal + manejo efectivo + WhatsApp primero
+      - FMCG enterprise → capa analítica encima de incumbente primero
+      - Mid-market → integración con TMS propio + dashboard primero
+  · Zona 3 (arquitectura) — si conocemos el sistema específico del
+    cliente, dibujar el nombre real (ej. "SAP" en lugar de "ERP",
+    "Oracle OTM" en lugar de "TMS genérico").
+  · Zona 4 (filtro de fit) — universal · pero el agente puede agregar
+    1 línea específica si DOMINANT_PAIN o STACK_ACTUAL lo amerita.
+
+AGENT · AUDIENCIAS DEL COMITÉ QUE TOCA ESTA SLIDE:
+  · Zona 1 negaciones → CFO + CEO (categoría de mercado)
+  · Zona 2 anclas operativas → COO + Director Operaciones (operación)
+  · Zona 3 arquitectura → CIO + CTO + Director TI (integración técnica)
+  · Zona 4 filtro + cierre → CEO + CFO (decisión de fit)
+  Único slide del deck que toca a los 4 perfiles del comité explícitamente.
+
+AGENT · QUÉ EVITAR:
+  · No comparar feature-a-feature. No ganamos en features individuales,
+    ganamos en la categoría que ocupamos.
+  · No usar la palabra "generalista" (slang interno).
+  · No suavizar el filtro de fit — es valiente a propósito.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" data-screen-label="07 Comparación">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">07</span>
+    <span class="lab">Comparación</span>
+    <span class="pad">/</span>
+    <span>Dónde encajamos en su stack actual</span>
+  </div>
+
+  <h2 class="s-h2" style="max-width: 38ch; margin-bottom: 10px; font-size: 46px; line-height: 1.1;">
+    Somos la capa intermedia <span class="light">entre su operación física y sus medios de pago.</span>
+  </h2>
+  <p style="font-size: 17px; line-height: 1.45; color: var(--ink-2); max-width: 88ch; margin: 0 0 22px;">
+    Uvicuo <strong>lee del mundo físico</strong> — su torre de control (OTM/TMS), telemetría (Geotab, Samsara y similares) y las concesionarias de telepeaje — y <strong>ejecuta controles sobre sus medios de pago actuales</strong> sin reemplazarlos. Sí, emitimos una tarjeta Mastercard, pero es <strong>un instrumento más</strong> que el software opera — igual que la línea de crédito o el efectivo en ruta.
+  </p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; flex: 1; min-height: 0;">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-4); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px;">// Lo que NO somos</div>
+      <div style="border-left: 3px solid var(--warn); padding: 7px 0 7px 16px; margin-bottom: 10px;">
+        <strong style="font-size: 20px; line-height: 1.2;">No somos un monedero de prepago.</strong>
+        <p style="font-size: 14px; color: var(--ink-3); margin: 3px 0 0; line-height: 1.4;">Su capital se inmoviliza 1-2 meses, y cobran comisión sobre el gasto.</p>
+      </div>
+      <div style="border-left: 3px solid var(--warn); padding: 7px 0 7px 16px; margin-bottom: 10px;">
+        <strong style="font-size: 20px; line-height: 1.2;">No somos una gestión de gastos.</strong>
+        <p style="font-size: 14px; color: var(--ink-3); margin: 3px 0 0; line-height: 1.4;">Eso lo cubre cualquier tarjeta corporativa moderna.</p>
+      </div>
+      <div style="border-left: 3px solid var(--warn); padding: 7px 0 7px 16px; margin-bottom: 18px;">
+        <strong style="font-size: 20px; line-height: 1.2;">No somos una tarjeta de crédito corporativa.</strong>
+        <p style="font-size: 14px; color: var(--ink-3); margin: 3px 0 0; line-height: 1.4;">Eso lo cubre cualquier banco. Nosotros emitimos una, sí — pero es <strong>un instrumento</strong> que el software opera, decide y reconcilia automáticamente con su ERP.</p>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600;">// Lo que SÍ somos</div>
+      <h3 style="font-size: 24px; line-height: 1.18; margin: 0 0 6px;">Software 360 para la gestión financiera de su flota.</h3>
+      <p style="font-size: 15px; color: var(--ink-2); line-height: 1.4; margin: 0 0 12px;">El layer operativo de sus finanzas en ruta — donde todo inicia con un viaje o un plan de gastos.</p>
+      <ul style="font-size: 14px; line-height: 1.45; padding-left: 18px; margin: 0; color: var(--ink-2);">
+        <li><strong>Línea de crédito operativa</strong> (no prepago) — devengada a 3-10 días, sin capital ocioso.</li>
+        <li>Plan de gastos por viaje como entidad central del sistema.</li>
+        <li>APIs hechas a la medida con concesionarias (Televía industry-first).</li>
+        <li>Motor de fraude IA + recomendación de estación en combustible.</li>
+        <li>Manejo de efectivo en ruta — clave en esta industria.</li>
+        <li><strong>WhatsApp como UI única</strong> — diseñado para alta rotación de operadores.</li>
+        <li><strong>Compatible con su stack actual</strong> — sus equipos integran Uvicuo a su TMS/OTM y ERP existente.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 14px; color: var(--ink-4); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px;">// La capa intermedia · cómo conectamos su mundo físico con su flujo financiero</div>
+
+      <div style="background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 22px;">
+        <!-- Top row: Torre de control (mundo físico) ←→ Uvicuo (capa intermedia) ←→ ERP + medios de pago (mundo financiero) -->
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; margin-bottom: 22px;">
+          <div style="border: 1px solid var(--rule); border-radius: 6px; padding: 14px 10px 12px; text-align: center; background: var(--paper-2);">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Mundo físico · torre de control</div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 28px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 3px 7px; border: 1.5px solid var(--ink); border-radius: 3px;">OTM</span>
+              <span style="color: var(--ink-4); font-size: 10px;">·</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 3px 7px; border: 1.5px solid var(--ink); border-radius: 3px;">TMS</span>
+              <span style="color: var(--ink-4); font-size: 10px;">·</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 3px 7px; border: 1.5px solid var(--ink); border-radius: 3px;">Telemetría</span>
+            </div>
+            <div style="font-size: 12px; color: var(--ink-3); margin-top: 6px;">Viajes · unidades · operadores · GPS</div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; padding: 0 4px;">
+            <div style="background: var(--accent); color: var(--paper); padding: 14px 20px; border-radius: 6px; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; box-shadow: 0 2px 0 0 rgba(0,0,0,0.08);">Uvicuo</div>
+          </div>
+          <div style="border: 1px solid var(--rule); border-radius: 6px; padding: 14px 10px 12px; text-align: center; background: var(--paper-2);">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Mundo financiero · ERP + medios de pago</div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 28px; flex-wrap: wrap;">
+              <img src="assets/clients/sap.png" alt="SAP" style="height: 18px;" />
+              <img src="assets/clients/oracle.png" alt="Oracle" style="height: 14px;" />
+              <img src="assets/clients/epicor.png" alt="Epicor" style="height: 14px;" />
+              <img src="assets/clients/odoo.png" alt="Odoo" style="height: 16px;" />
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em;">+ otros</span>
+            </div>
+            <div style="font-size: 12px; color: var(--ink-3); margin-top: 6px;">Contabilidad · tarjetas · monederos</div>
+          </div>
+        </div>
+
+        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-align: center; margin: 0 0 22px; letter-spacing: 0.06em; line-height: 1.5;">
+          Uvicuo lee de su torre de control y ejecuta sobre sus medios de pago. Compatible con SAP, Oracle, Epicor, Odoo, otros ERPs y sistemas in-house — sus equipos integran nuestras APIs sin migrar nada.
+        </p>
+
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; text-align: center;">// Capa Uvicuo · lo que ningún proveedor cubre</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px;">
+          <div style="border: 1px dashed var(--rule-2); border-radius: 6px; padding: 14px 10px; text-align: center; background: var(--paper);">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Concesionarias</div>
+            <img src="assets/clients/televia.png" alt="Televía" style="height: 22px; margin: 0 auto;" />
+          </div>
+          <div style="border: 1px dashed var(--rule-2); border-radius: 6px; padding: 14px 10px; text-align: center; background: var(--paper);">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// UI</div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <img src="assets/clients/whatsapp.png" alt="WhatsApp" style="height: 22px;" />
+              <strong style="font-size: 14px; color: var(--ink);">WhatsApp</strong>
+            </div>
+          </div>
+          <div style="border: 1px dashed var(--rule-2); border-radius: 6px; padding: 14px 10px; text-align: center; background: var(--paper);">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px;">// Decisión IA</div>
+            <strong style="font-size: 14px; color: var(--ink); display: block; line-height: 1.25;">Motor antifraude<br/>+ recomendación</strong>
+          </div>
+        </div>
+
+        <!-- Rail de instrumentos: tarjeta es uno entre varios -->
+        <div style="border-top: 1px dashed var(--rule); padding-top: 12px;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; text-align: center;">// Instrumentos financieros que el software opera</div>
+          <div style="display: flex; align-items: center; justify-content: space-around; gap: 10px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <img src="assets/clients/mastercard-full.png" alt="Mastercard" style="height: 18px;" />
+              <span style="font-size: 12px; color: var(--ink-3);">Tarjeta corp.</span>
+            </div>
+            <span style="color: var(--rule); font-size: 11px;">·</span>
+            <span style="font-size: 12px; color: var(--ink-3);">Línea de crédito</span>
+            <span style="color: var(--rule); font-size: 11px;">·</span>
+            <span style="font-size: 12px; color: var(--ink-3);">Efectivo en ruta</span>
+            <span style="color: var(--rule); font-size: 11px;">·</span>
+            <span style="font-size: 12px; color: var(--ink-3);">Pagos directos</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 14px; color: var(--ink-3); line-height: 1.45; margin: 14px 0 14px;">
+        Su stack sigue siendo el cerebro. Uvicuo es la capa financiera y operativa que se conecta a él — sin renegociar ni migrar lo que ya tienen.
+      </p>
+
+      <div style="background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 8px 14px; border-radius: 0 6px 6px 0;">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 3px;">// Filtro de fit</div>
+        <p style="font-size: 13px; line-height: 1.4; margin: 0; color: var(--ink-2);">
+          Si su operación tiene <strong>flota y gastos operativos en ruta</strong> — combustible, peajes, viáticos, efectivo — esto le hace sentido. Si es 100% oficina, no.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">07 / 10</span>
+    <span>COMPARACIÓN</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 08 · PRUEBA SOCIAL · fusión caso comparable + portfolio de clientes
+─────────────────────────────────────────────────────────────────────
+[Esta slide fusiona las viejas slides 09 (Caso comparable) y 10
+ (Clientes) en una. Testimonio destacado + stats + logos por vertical.]
+
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · Hero: testimonio anonimizado del caso comparable. Tipografía grande.
+  · Stats del caso debajo: flota / ahorro / duración / horas internas.
+  · Logos por vertical (asimetría 2-2-3 que validamos en slide 03):
+      V1 Última milla: 99minutos · paquetexpress
+      V2 Distribución FMCG: Bimbo · Dolphi
+      V3 Distribución industrial y multi-industria: Sanimex · Lapisa · Esférica
+  · Cierre 1 línea como bridge a slide 09 (Retorno).
+
+AGENT · MAPPING DE GHOST CASE + QUOTE POR ARQUETIPO:
+  · Autotransporte de carga (DEFAULT) →
+      Ghost: Transportista nacional · 800 unidades · cobertura nacional
+      Quote: "Lo que más me molesta no es el dinero. Es que lo teníamos
+              en los estados de cuenta y nadie lo veía." — CFO
+      Stats: $24.6M MXN/año · 6.1% del OPEX · 6 sem · 5.5h equipo
+  · Traslado de valores → Operador de blindaje · ~600 custodios
+      Quote: "Pasamos de defendernos del fraude a resolver anomalías." — Dir. Finanzas
+  · Distribución farma → Distribuidora farma · 400 unidades multi-sucursal
+      Quote: "Liberamos $2M MXN de capital ocioso en cajas chicas dispersas." — Tesorería
+  · FMCG enterprise → Embotelladora regional · 1,200 unidades
+      Quote: "Capa analítica encima de nuestro monedero — sin tocarlo." — Dir. Operaciones
+  · Multi-empresa → Grupo logístico · 4 razones sociales · 500 unidades total
+      Quote: "Una plataforma para las cuatro empresas. Setup único." — CFO del grupo
+  · Mid-market → Transportista mid-market · 200-300 operadores · TMS propio
+      Quote: "El problema no era operación, era visibilidad." — CFO
+  · Tech in-house madura → Paquetería con sistema premiado · 5,000+ unidades
+      Quote: "La última milla del sistema que ya teníamos." — CIO
+      Stats: 0.5-1% del OPEX concentrado en peajes.
+
+AGENT · QUÉ AJUSTAR POR PERFIL DEL CHAMPION:
+  · CFO → resaltar quote del CFO ghost (default).
+  · COO/Operaciones → resaltar quote del Director Operaciones si existe.
+  · CIO → privilegiar ghost de tech in-house madura o mid-market con TMS propio.
+
+AGENT · LOGOS POR VERTICAL — REORDENAR POR ARQUETIPO:
+  · Default (autotransporte de carga) → orden actual.
+  · Cliente FMCG → V2 (Bimbo · Dolphi) primero.
+  · Cliente farma → V3 (Lapisa primero) primero.
+  · Cliente e-commerce / última milla → V1 (99minutos · paquetexpress) primero.
+
+AGENT · QUÉ EVITAR:
+  · NUNCA dar nombre real del ghost case, ni bajo NDA verbal.
+  · No mezclar quote de un ghost con stats de otro.
+  · No agregar más logos a las verticales — quedarse con los validados.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide cream" data-screen-label="08 Prueba social">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">08</span>
+    <span class="lab">Prueba social</span>
+    <span class="pad">/</span>
+    <span>Una operación comparable + portfolio</span>
+  </div>
+
+  <div style="margin-bottom: 28px; padding: 28px 0; display: grid; grid-template-columns: 88px 1fr; gap: 24px; align-items: start; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule);">
+    <div style="font-family: var(--font-serif, Georgia, serif); font-size: 220px; line-height: 0.7; color: var(--accent); font-weight: 300; letter-spacing: -0.05em;">"</div>
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; font-weight: 600;">// Cita textual · sesión final del diagnóstico</div>
+      <p style="font-size: 44px; line-height: 1.22; font-weight: 400; color: var(--ink); margin: 0 0 18px; letter-spacing: -0.01em;">
+        Lo que más me molesta no es el dinero.<br />
+        Es que lo teníamos en los estados de cuenta y <strong style="color: var(--accent); font-weight: 600;">nadie lo veía</strong>.
+      </p>
+      <div style="display: flex; align-items: baseline; gap: 14px; padding-top: 14px; border-top: 1px solid var(--rule);">
+        <div style="width: 24px; height: 1px; background: var(--ink-3); position: relative; top: -5px;"></div>
+        <div style="font-size: 16px; color: var(--ink-2); line-height: 1.5;">
+          <strong style="font-size: 17px;">CFO</strong> de transportista nacional · 800 unidades<br/>
+          <span style="font-style: italic; color: var(--ink-3);">Cliente pidió no ser nombrado por confidencialidad. Operación comparable a Armstrong</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-strip" style="margin-bottom: 36px;">
+    <div class="cell">
+      <div class="l">Flota</div>
+      <div class="v">800</div>
+      <div class="d">Unidades · cobertura nacional</div>
+    </div>
+    <div class="cell">
+      <div class="l">Ahorro identificado</div>
+      <div class="v acc">$24.6M</div>
+      <div class="d">MXN/año · 6.1% del OPEX</div>
+    </div>
+    <div class="cell">
+      <div class="l">Duración</div>
+      <div class="v">6 sem</div>
+      <div class="d">De primera sesión a comité</div>
+    </div>
+    <div class="cell">
+      <div class="l">Horas internas</div>
+      <div class="v">5.5h</div>
+      <div class="d">De su equipo, en total</div>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid var(--rule); padding-top: 24px;">
+    <div style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px;">// +50 flotas en operación · 200 a 2,000+ unidades</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 36px; align-items: stretch;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px;">// Última milla</div>
+        <div style="display: flex; gap: 26px; align-items: center; min-height: 60px; flex-wrap: wrap;">
+          <img src="assets/clients/99minutos.png" alt="99 Minutos" style="height: 36px; object-fit: contain;" />
+          <img src="assets/clients/paquetexpress.png" alt="Paquete Express" style="height: 56px; object-fit: contain;" />
+          <img src="assets/clients/8w-express.png" alt="8W Express Sinaloa" style="height: 50px; object-fit: contain;" />
+        </div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px;">// FMCG y distribución</div>
+        <div style="display: flex; gap: 22px; align-items: center; min-height: 60px; flex-wrap: wrap;">
+          <img src="assets/clients/bimbo.svg" alt="Bimbo" style="height: 40px; object-fit: contain;" />
+          <img src="assets/clients/dolphy.png" alt="Dolphi" style="height: 34px; object-fit: contain;" />
+          <img src="assets/clients/frutmex.png" alt="Frutmex" style="height: 46px; object-fit: contain;" />
+          <img src="assets/clients/italian-coffee.png" alt="Italian Coffee" style="height: 44px; object-fit: contain;" />
+          <img src="assets/clients/garrom.png" alt="Garrom" style="height: 32px; object-fit: contain;" />
+        </div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px;">// Industrial y energía</div>
+        <div style="display: flex; gap: 22px; align-items: center; min-height: 60px; flex-wrap: wrap;">
+          <img src="assets/clients/lapisa.png" alt="Lapisa" style="height: 32px; object-fit: contain;" />
+          <img src="assets/clients/sanimex.png" alt="Sanimex" style="height: 32px; object-fit: contain;" />
+          <img src="assets/clients/energlobal.png" alt="Energlobal" style="height: 30px; object-fit: contain;" />
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 28px; font-size: 16px; color: var(--ink-2); font-style: italic; text-align: center;">
+      Cada uno de estos pasó por el mismo diagnóstico. El siguiente paso para <strong>Armstrong</strong> está en la slide siguiente.
+    </p>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">08 / 10</span>
+    <span>PRUEBA SOCIAL</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 09 · RETORNO · payback hero + magnitud + redirect a diagnóstico
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · LIDERA con PAYBACK + MAGNITUD ABSOLUTA en el hero (lo que el CFO
+    pregunta primero). El % del OPEX aparece subordinado en los 3
+    escenarios, NO como hero.
+  · NUNCA poner pricing aquí. Si la conversación aparece, redirige al
+    documento de diagnóstico (teaser-test-co/index.html).
+  · Resolver UNIT_ECONOMIC_ANCHOR + PAYBACK_MONTHS: anclas por unidad
+    por arquetipo. NUNCA dejar placeholders literales.
+  · Resolver los 3 rangos ($15M / $28M / $40M en el template) con datos
+    reales del deal. Los rangos hardcodeados son ejemplos.
+
+AGENT · CUSTOMIZACIÓN POR ARQUETIPO:
+  · Autotransporte de carga →
+      Anchor: "$X recuperable por unidad/año en escenario base"
+      Payback: 4-6 meses
+      Rango canónico: 3-8% del OPEX
+  · Traslado de valores →
+      Anchor: "$X por custodio/año + $Y en operación granular"
+      Payback: 5-7 meses
+      Rango: 3-7% del OPEX
+  · Distribución farma →
+      Anchor: "$X por sucursal/año + capital liberado de prefondeo"
+      Payback: 6-8 meses (capital ocioso liberado se materializa lento)
+      Rango: 4-7% del OPEX
+  · FMCG enterprise →
+      Anchor: "$X por unidad/año en peajes + viáticos"
+      Payback: 6-9 meses (combustible bloqueado por licitación)
+      Rango: 2-5% del OPEX
+  · Logística multi-empresa →
+      Anchor: "$X por razón social/año · cross-sell del grupo"
+      Payback: 4-6 meses primera empresa, después acelera
+      Rango: 3-6% del OPEX por empresa
+  · Transportes mid-market →
+      Anchor: "$X por unidad/año + Bot Fiscal recupera $Y de IVA"
+      Payback: 4-6 meses
+      Rango: 3-6% del OPEX
+  · Tech in-house madura (Trayecto, Draiver) →
+      Anchor: "$X por unidad/año en peajes (combustible cerrado)"
+      Payback: 2-9 meses (rango validado en deals tech in-house)
+      Rango: 0.5-1% del OPEX. NO usar 5.6% promedio aquí.
+
+AGENT · QUÉ NOTAR:
+  · La slide habla de RETORNO, no de costo. Si pones costo aquí,
+    rompiste la regla más importante de este deck.
+  · El UNIT_ECONOMIC_ANCHOR es lo que el CFO usa para validar el rango
+    contra su realidad ("para mi flota de N unidades, ¿cuánto?"). Sin él,
+    los rangos absolutos son frágiles bajo escrutinio.
+
+AGENT · QUÉ PREGUNTAR:
+  · Si el champion pidió ver pricing antes: "¿Quieres que envíe el
+    documento de diagnóstico antes de la sesión?" — el teaser ya
+    contiene la garantía y la mecánica.
+  · Si no tienes el UNIT_ECONOMIC_ANCHOR del arquetipo: pedir a Iker
+    el dato base por unidad antes de emitir.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" data-screen-label="09 Retorno">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-black.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">09</span>
+    <span class="lab">Retorno</span>
+    <span class="pad">/</span>
+    <span>Cuándo recupera la inversión</span>
+  </div>
+
+  <div style="text-align: center; margin: 24px 0 32px;">
+    <div style="font-family: var(--font-mono); font-size: 14px; color: var(--ink-4); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px;">// Lo que un CFO pregunta primero</div>
+    <h2 class="s-h2" style="font-size: 72px; line-height: 1.05; margin: 0;">
+      Payback típico en <span class="acc">5 a 7</span> meses.
+    </h2>
+    <h2 class="s-h2" style="font-size: 56px; line-height: 1.1; color: var(--ink-2); font-weight: 300; margin: 12px 0 0;">
+      <span class="acc" style="font-weight: 500;">$5 a 10M MXN</span> al año recuperables.
+    </h2>
+  </div>
+
+  <div style="border-top: 1px solid var(--rule); padding-top: 24px; margin-bottom: 24px;">
+    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px;">// 3 escenarios año 1</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <div style="background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 24px;">
+        <div class="ledger-h" style="margin-bottom: 8px;">Bajo</div>
+        <div style="font-weight: 300; font-size: 56px; line-height: 1; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 8px;">$3M</div>
+        <p style="font-size: 14px; line-height: 1.5; color: var(--ink-3); margin: 0;">Solo combustible · escenario conservador (≥3% por ruta) · <strong style="color: var(--ink);">~4% del OPEX flota</strong></p>
+      </div>
+      <div style="background: var(--accent); color: var(--paper); border-radius: 6px; padding: 24px;">
+        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 8px;">Base</div>
+        <div style="font-weight: 300; font-size: 56px; line-height: 1; letter-spacing: -0.04em; color: var(--paper); margin-bottom: 8px;">$5.6M</div>
+        <p style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.85); margin: 0;">Combustible data real Armstrong · 5 rutas mapeadas · <strong style="color: var(--paper);">5.75% del combustible</strong></p>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 24px;">
+        <div class="ledger-h" style="margin-bottom: 8px;">Alto</div>
+        <div style="font-weight: 300; font-size: 56px; line-height: 1; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 8px;">$10M</div>
+        <p style="font-size: 14px; line-height: 1.5; color: var(--ink-3); margin: 0;">4 palancas confirmadas en diagnóstico · <strong style="color: var(--ink);">~8% del OPEX flota</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 16px 24px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 24px;">
+    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px;">// Anclaje por unidad</div>
+    <p style="font-size: 16px; line-height: 1.5; color: var(--ink-2); margin: 0;"><strong>$8 a 15 mil MXN por unidad/año en escenario base</strong>, ponderado entre custodios operativos (consumo alto) y utilitarios (consumo medio). Aplicado a las 600-700 unidades de Armstrong.</p>
+  </div>
+
+  <div style="border-top: 1px solid var(--rule); padding-top: 18px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;">
+    <div>
+      <div class="ledger-h" style="margin-bottom: 4px;">Sobre pricing</div>
+      <p style="font-size: 16px; line-height: 1.5; color: var(--ink-2); margin: 0; max-width: 80ch;">El modelo comercial vive en el documento de <strong>diagnóstico</strong>. Lo compartimos cuando tenga sentido seguir — incluye garantía de 3% mínimo o no facturamos.</p>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; padding: 12px 18px; border: 1px solid var(--accent); border-radius: 4px;">→ Doc UV-029 · Diagnóstico</div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">09 / 10</span>
+    <span>RETORNO</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+SLIDE 10 · SIGUIENTE PASO · slide oscura · cierre del deck
+─────────────────────────────────────────────────────────────────────
+AGENT · QUÉ DEBE HACER AQUÍ:
+  · UNA acción concreta. Nunca tres.
+  · El número de WhatsApp y correo de Iker son fijos.
+  · Personalizar el lede según CHAMPION_PROFILE (ver variantes abajo).
+
+AGENT · CUSTOMIZACIÓN POR PERFIL DEL CHAMPION (CHAMPION_PROFILE):
+  · CFO (default) →
+      "Con CFO y Director de Operaciones. Iker se suma como su invitado,
+       presenta el rango específico y responde preguntas en directo."
+  · COO/Operaciones →
+      "Con COO + CFO. Iker presenta el rango y responde preguntas
+       en directo. Sin documentos adicionales — este deck es el material."
+  · CIO/Director TI →
+      "Con CIO + Director de Operaciones. 45 minutos — incluimos la
+       arquitectura de integración con su TMS/OTM y ERP."
+  · Champion intermediario (sin peso decisorio fuerte) →
+      "Antes del comité, 30 min 1:1 con [CHAMPION_NAME] para alinear
+       ángulo y stakeholders. Después agendamos comité formal."
+
+AGENT · QUÉ NOTAR:
+  · Es la segunda y última slide oscura. Cierra el ciclo abierto en
+    slide 04 (Tesis · también oscura).
+  · La pregunta del hero ("¿Reservamos 30 minutos?") es siempre concreta
+    y de bajo riesgo. NUNCA escalar a "30 min para cerrar contrato" o
+    similares — el deck NO cierra venta.
+
+AGENT · QUÉ EVITAR:
+  · Tres acciones diferentes. Una sola pregunta concreta.
+  · Lenguaje de venta agresivo. Tono ejecutivo, conversacional.
+═══════════════════════════════════════════════════════════════════ -->
+<section class="slide dark" data-screen-label="10 Siguiente paso">
+  <div class="chrome-top">
+    <div class="l"><img src="assets/wordmark-white.png" alt="Uvicuo" /><span class="pad">//</span><span>UV-029/2026</span></div>
+    <div class="r">CONFIDENCIAL</div>
+  </div>
+
+  <div class="folio-bar">
+    <span class="num-tag">10</span>
+    <span class="lab">Siguiente paso</span>
+    <span class="pad">/</span>
+    <span>Una sola acción</span>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1500px;">
+    <h1 class="s-h1" style="font-size: 104px;">
+      ¿Reservamos <span class="acc">30 minutos</span><br />
+      la próxima semana?
+    </h1>
+    <p class="lede" style="margin-top: 40px; font-size: 26px; max-width: 56ch; color: rgba(255,255,255,0.92);">
+      Con Isaac, la Dirección General y el equipo que ustedes convoquen. <strong>Iker Haro, CEO de Uvicuo</strong>, se suma personalmente. Armstrong es una de las pocas cuentas inbound que tratamos como estratégicas este año, y prefiere conducir la conversación él directamente.
+    </p>
+    <p style="margin-top: 24px; font-size: 18px; color: rgba(255,255,255,0.65); max-width: 60ch; line-height: 1.55;">
+      Presenta el rango específico para su operación, responde preguntas en directo y deja una sola decisión sobre la mesa. Sin documentos adicionales — este deck es el material.
+    </p>
+  </div>
+
+  <div class="next-row" style="margin-top: 56px;">
+    <div class="next-card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); color: var(--paper);">
+      <div class="ic">↗</div>
+      <div>
+        <div class="lab" style="color: rgba(255,255,255,0.55);">WhatsApp con Iker</div>
+        <div class="v" style="color: var(--paper);">+52 55 1700 1612</div>
+      </div>
+    </div>
+    <div class="next-card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); color: var(--paper);">
+      <div class="ic" style="background: var(--paper); color: var(--ink);">@</div>
+      <div>
+        <div class="lab" style="color: rgba(255,255,255,0.55);">Correo directo</div>
+        <div class="v" style="color: var(--paper);">iker@uvicuo.com</div>
+      </div>
+    </div>
+    <div class="next-card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); color: var(--paper);">
+      <div class="ic" style="background: var(--paper); color: var(--ink);">↩</div>
+      <div>
+        <div class="lab" style="color: rgba(255,255,255,0.55);">Responde en</div>
+        <div class="v" style="color: var(--paper);">24 horas hábiles</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chrome-bot">
+    <span class="pag">10 / 10</span>
+    <span>FIN · UV-029/2026</span>
+  </div>
+</section>
+
+
+<!-- ROUTE MAP MODAL · click to expand -->
+<div id="map-modal" style="display: none; position: fixed; inset: 0; background: rgba(15,20,17,0.88); z-index: 9999; align-items: center; justify-content: center; padding: 40px; backdrop-filter: blur(8px);" onclick="if(event.target===this) this.style.display='none';">
+  <div style="position: relative; width: 100%; max-width: 1400px; height: 100%; max-height: 900px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,0.4);">
+    <button onclick="document.getElementById('map-modal').style.display='none';" style="position: absolute; top: 14px; right: 14px; z-index: 10; background: white; border: 1px solid #e2e8f0; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15);" aria-label="Cerrar">×</button>
+    <div style="position: absolute; top: 14px; left: 14px; z-index: 10; background: white; padding: 8px 14px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; box-shadow: 0 2px 6px rgba(0,0,0,0.1); font-weight: 600;">// Colima → GDL · 147 estaciones · ahorro 8.97%</div>
+    <iframe src="../../analyses/uvi-029-armstrong-fuel/maps/02-colima.html" style="width: 100%; height: 100%; border: 0;" title="Ruta Colima → GDL · mapa interactivo"></iframe>
+  </div>
+</div>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>León → GDL · Análisis de combustible Armstrong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="theme.css" />
+
+<style>
+  .page-hero { padding: 56px 0 48px; border-bottom: 1px solid var(--rule); }
+  .page-hero-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 1fr 320px; gap: 56px; align-items: start; }
+  .page-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .page-tag .num { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--paper); border-radius: 4px; width: 28px; height: 28px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; }
+  .page-tag .lab { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+  .page-h1 { font-weight: 200; font-size: clamp(36px, 4.6vw, 60px); line-height: 1; letter-spacing: -0.035em; margin: 0 0 24px; max-width: 18ch; }
+  .page-h1 .acc { color: var(--warn); font-weight: 300; }
+  .page-sub { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin: 0 0 28px; }
+  .page-sub strong { color: var(--ink); font-weight: 600; }
+  .key-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .key-stats .stat { padding: 18px 24px 18px 0; border-right: 1px solid var(--rule); }
+  .key-stats .stat:last-child { border-right: 0; padding-right: 0; }
+  .key-stats .stat:not(:first-child) { padding-left: 24px; }
+  .key-stats .l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .key-stats .v { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+  .key-stats .v.warn { color: var(--warn); }
+  .ledger-side { border-left: 1px solid var(--rule); padding-left: 28px; }
+  .ledger-h { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--warn); letter-spacing: 0.18em; font-weight: 600; margin-bottom: 14px; }
+  .ledger-h::before { content: '// '; }
+  .ledger { font-size: 13.5px; }
+  .ledger .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--rule); gap: 12px; }
+  .ledger .row:last-child { border-bottom: 0; }
+  .ledger .lab { color: var(--ink-3); font-size: 12.5px; }
+  .ledger .val { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 12.5px; white-space: nowrap; }
+  .ledger .val.warn { color: var(--warn); font-weight: 600; }
+  @media (max-width: 980px) { .page-hero-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 36px; } .ledger-side { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 24px; } }
+
+  .section { padding: 56px 0; }
+  .section-h { margin-bottom: 28px; max-width: 720px; }
+  .section-h .lab { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--warn); letter-spacing: 0.18em; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+  .section-h h2 { font-weight: 300; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 12px; }
+  .section-h p { font-size: 15.5px; line-height: 1.55; color: var(--ink-3); max-width: 64ch; }
+  .narrative { font-size: 16px; line-height: 1.65; color: var(--ink-2); max-width: 68ch; }
+  .narrative p { margin: 0 0 18px; }
+  .narrative p strong { color: var(--ink); font-weight: 600; }
+
+  .stations-table { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+  .stations-table th { text-align: left; padding: 12px 14px; background: var(--paper-2); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  .stations-table th.right { text-align: right; }
+  .stations-table td { padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  .stations-table td.right { text-align: right; }
+  .stations-table tr:last-child td { border-bottom: 0; }
+  .stations-table tr.base { background: var(--warn-tint); }
+  .stations-table tr.base td { font-weight: 600; }
+  .stations-table .num-cell { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .stations-table .pct { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--warn); }
+  .stations-table .pct.zero { color: var(--ink-4); }
+  .stations-table .station-name { font-weight: 500; }
+  .stations-table .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; }
+  .stations-table .badge.card { background: #E5F0E2; color: #2D6B3F; }
+  .stations-table .badge.no-card { background: var(--paper-2); color: var(--ink-4); }
+  .stations-table .badge.base { background: var(--warn); color: white; }
+
+  .map-wrap { padding: 56px 0; background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .map-wrap .container { max-width: 1240px; margin: 0 auto; padding: 0 56px; }
+  .map-frame { width: 100%; height: 720px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+  .map-caption { font-size: 12.5px; color: var(--ink-4); margin-top: 12px; line-height: 1.5; }
+  .map-caption strong { color: var(--ink-3); }
+  @media (max-width: 720px) { .map-frame { height: 520px; } .map-wrap .container { padding: 0 24px; } }
+
+  .foot-nav { padding: 32px 0 80px; }
+  .foot-nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .foot-link { display: block; padding: 24px 28px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; text-decoration: none; color: var(--ink); transition: transform 140ms, border-color 140ms; }
+  .foot-link:hover { transform: translateY(-2px); border-color: var(--rule-2); }
+  .foot-link .l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .foot-link h4 { font-size: 16px; font-weight: 600; margin: 0; letter-spacing: -0.005em; }
+  .foot-link.next { text-align: right; }
+  @media (max-width: 720px) { .foot-nav-inner { grid-template-columns: 1fr; padding: 0 24px; } .foot-link.next { text-align: left; } }
+</style>
+</head>
+<body data-screen-label="05 León → GDL">
+
+<script src="nav.js" data-active="leon"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-tag">
+        <span class="num">05</span>
+        <span class="lab">Ruta cinco · León a GDL</span>
+      </div>
+
+      <h1 class="page-h1">
+        Don Bosco sobre la ruta. <span class="acc">6.70% en cero km de desvío.</span>
+      </h1>
+
+      <p class="page-sub">
+        Mega Gasolineras, donde Armstrong carga hoy en León, está $1.64 por litro arriba de Servicio Niño Don Bosco, una estación que <strong>queda exactamente sobre la ruta planificada</strong>. Junto con Colima, este corredor concentra la mayor parte del valor del cambio de estación.
+      </p>
+
+      <div class="key-stats">
+        <div class="stat">
+          <div class="l">Estaciones evaluadas</div>
+          <div class="v">269</div>
+        </div>
+        <div class="stat">
+          <div class="l">Más baratas que base</div>
+          <div class="v warn">253</div>
+        </div>
+        <div class="stat">
+          <div class="l">Ahorro disponible ≤5km</div>
+          <div class="v warn">6.70%</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="ledger-side">
+      <div class="ledger-h">Datos de la ruta</div>
+      <div class="ledger">
+        <div class="row"><span class="lab">Tipo</span><span class="val">Interurbana</span></div>
+        <div class="row"><span class="lab">Combustible</span><span class="val">Magna</span></div>
+        <div class="row"><span class="lab">Estación base</span><span class="val">Mega Gasolineras</span></div>
+        <div class="row"><span class="lab">Precio base</span><span class="val">$24.49 / L</span></div>
+        <div class="row"><span class="lab">Mejor ≤5 km</span><span class="val warn">$22.85 / L</span></div>
+        <div class="row"><span class="lab">Mejor absoluto</span><span class="val warn">$22.56 / L</span></div>
+        <div class="row"><span class="lab">Ahorro $/L</span><span class="val warn">$1.64</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-h">
+      <div class="lab">/ Lectura del corredor</div>
+      <h2>94% del corredor está abajo del precio actual.</h2>
+    </div>
+
+    <div class="narrative">
+      <p>El corredor León a GDL es el más denso del análisis: <strong>269 estaciones evaluadas en una de las rutas más transitadas del Bajío</strong>. La densidad refleja el volumen comercial entre León (Guanajuato) y Guadalajara, con presencia de cadenas grandes y cantidad alta de estaciones independientes compitiendo por flota.</p>
+
+      <p>De esas 269 estaciones, <strong>253 cobran menos que Mega Gasolineras</strong>. Es el porcentaje más alto del análisis (94%), lo que confirma que Armstrong está en el extremo caro del corredor. La estación más barata, Servicio Niño Don Bosco, está literalmente sobre la ruta a $22.85 por litro: <strong>$1.64 por litro abajo, cero km de desvío</strong>.</p>
+
+      <p>La fricción operativa para capturar este ahorro es esencialmente cero: misma ruta, mismo recorrido. La fricción más relevante es que Don Bosco no acepta tarjeta hoy. Si se requiere conservar el flujo de pago actual, la mejor alternativa con tarjeta es Gasolinera Santa Bárbara a $23.45, una diferencia de $1.04 por litro y 0.1 km de desvío. <strong>El ahorro neto con esa alternativa es 4.25%.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-h">
+      <div class="lab">/ Top alternativas dentro de 5 km</div>
+      <h2>Tres estaciones a $22.85/L. Don Bosco, sobre la ruta.</h2>
+    </div>
+
+    <table class="stations-table">
+      <thead>
+        <tr>
+          <th>Estación</th>
+          <th class="right">Precio ($/L)</th>
+          <th class="right">Desvío (km)</th>
+          <th class="right">Ahorro vs base</th>
+          <th>Tarjeta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="base">
+          <td><span class="station-name">Mega Gasolineras <span class="badge base">BASE ACTUAL</span></span></td>
+          <td class="right num-cell">24.49</td>
+          <td class="right num-cell">2.1</td>
+          <td class="right"><span class="pct zero">—</span></td>
+          <td><span class="badge card">SÍ</span></td>
+        </tr>
+        <tr>
+          <td><span class="station-name">Servicio Niño Don Bosco</span></td>
+          <td class="right num-cell">22.85</td>
+          <td class="right num-cell">0.0</td>
+          <td class="right"><span class="pct">6.70%</span></td>
+          <td><span class="badge no-card">NO</span></td>
+        </tr>
+        <tr>
+          <td><span class="station-name">Mauricio Enriquez Moreno</span></td>
+          <td class="right num-cell">22.85</td>
+          <td class="right num-cell">3.9</td>
+          <td class="right"><span class="pct">6.70%</span></td>
+          <td><span class="badge no-card">NO</span></td>
+        </tr>
+        <tr>
+          <td><span class="station-name">Servicio Niño Don Bosco (alt.)</span></td>
+          <td class="right num-cell">22.85</td>
+          <td class="right num-cell">4.8</td>
+          <td class="right"><span class="pct">6.70%</span></td>
+          <td><span class="badge no-card">NO</span></td>
+        </tr>
+        <tr>
+          <td><span class="station-name">ES Gas</span></td>
+          <td class="right num-cell">23.08</td>
+          <td class="right num-cell">4.9</td>
+          <td class="right"><span class="pct">5.76%</span></td>
+          <td><span class="badge card">SÍ</span></td>
+        </tr>
+        <tr>
+          <td><span class="station-name">Gasolinera Santa Bárbara</span></td>
+          <td class="right num-cell">23.45</td>
+          <td class="right num-cell">0.1</td>
+          <td class="right"><span class="pct">4.25%</span></td>
+          <td><span class="badge card">SÍ</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: var(--ink-4); margin-top: 14px; line-height: 1.55; max-width: 64ch;">
+      Tres alternativas a $22.85/L (la más barata del corredor) sin tarjeta. Si se requiere tarjeta, ES Gas a $23.08 (5.76% de ahorro) o Santa Bárbara a $23.45 sobre la ruta (4.25% de ahorro).
+    </p>
+  </div>
+</section>
+
+<section class="map-wrap">
+  <div class="container">
+    <div class="section-h" style="margin-bottom: 20px;">
+      <div class="lab">/ Mapa interactivo</div>
+      <h2>El corredor completo · 269 estaciones georreferenciadas.</h2>
+    </div>
+    <iframe class="map-frame" src="maps/05-leon.html" title="Mapa interactivo · León a GDL"></iframe>
+    <p class="map-caption">
+      <strong>Lectura del mapa:</strong> el pin rojo es Mega Gasolineras (base actual). Los conos verdes son estaciones más baratas; los conos rojos son más caras. La densidad de verdes a lo largo de todo el corredor refleja el carácter competitivo de la ruta del Bajío.
+    </p>
+  </div>
+</section>
+
+<section class="foot-nav">
+  <div class="foot-nav-inner">
+    <a class="foot-link prev" href="04-tepic.html">
+      <div class="l">← Anterior · 04</div>
+      <h4>Tepic → GDL</h4>
+    </a>
+    <a class="foot-link next" href="06-metodologia.html">
+      <div class="l">Siguiente · 06 →</div>
+      <h4>Método y caveats</h4>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><strong>UV-029 · FUEL</strong> · UVICUO × ARMSTRONG</div>
+    <div>RUTA 05 · LEÓN → GDL · MAGNA</div>
+    <div>CONFIDENCIAL · USO INTERNO</div>
+  </div>
+</footer>
+
+</body>
+</html>

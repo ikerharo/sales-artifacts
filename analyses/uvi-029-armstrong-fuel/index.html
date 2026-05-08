@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Análisis de combustible · Uvicuo × Armstrong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="theme.css" />
+
+<style>
+  /* ─── Cover ─── */
+  .cover { position: relative; padding: 80px 0 96px; border-bottom: 1px solid var(--rule); }
+  .cover-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 1fr 360px; gap: 64px; }
+  .cover-folio { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
+  .folio-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.14em; }
+  .folio-num::before { content: '// '; color: var(--warn); }
+  .seal { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--gold); border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8A6F45; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+  .seal::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .cover-pre { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--warn); letter-spacing: 0.2em; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .cover-pre::before { content: ''; width: 28px; height: 1px; background: var(--warn); }
+  .cover-h1 { font-weight: 200; font-size: clamp(44px, 5.4vw, 76px); line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 32px; max-width: 17ch; }
+  .cover-h1 .acc { color: var(--warn); font-weight: 300; }
+  .cover-h1 .num { font-weight: 500; }
+  .cover-sub { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin: 0 0 48px; text-wrap: pretty; }
+  .cover-sub strong { color: var(--ink); font-weight: 600; }
+  .cover-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .stat { padding: 22px 28px 22px 0; border-right: 1px solid var(--rule); }
+  .stat:last-child { border-right: 0; padding-right: 0; }
+  .stat:not(:first-child) { padding-left: 28px; }
+  .stat-l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .stat-v { font-size: 30px; font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
+  .stat-v .num { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+  .stat-v .unit { font-size: 14px; font-weight: 400; color: var(--ink-3); margin-left: 4px; }
+
+  .cover-side { border-left: 1px solid var(--rule); padding-left: 32px; display: flex; flex-direction: column; gap: 28px; }
+  .ledger-h { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--warn); letter-spacing: 0.18em; font-weight: 600; margin-bottom: 16px; }
+  .ledger-h::before { content: '// '; }
+  .ledger { font-size: 14px; }
+  .ledger .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
+  .ledger .row:last-child { border-bottom: 0; }
+  .ledger .lab { color: var(--ink-3); font-size: 13px; }
+  .ledger .val { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 13.5px; white-space: nowrap; }
+  .ledger .val.warn { color: var(--warn); font-weight: 600; }
+  .ledger .val.ok { color: #2D6B3F; font-weight: 600; }
+
+  @media (max-width: 980px) {
+    .cover { padding: 56px 0 64px; }
+    .cover-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 48px; }
+    .cover-side { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 32px; }
+    .cover-stats { grid-template-columns: 1fr; }
+    .stat { border-right: 0; padding: 18px 0; border-bottom: 1px solid var(--rule); padding-left: 0 !important; }
+    .stat:last-child { border-bottom: 0; }
+  }
+
+  /* ─── Comparativo demo vs data ─── */
+  .compare { padding: 64px 0 24px; background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+  .compare-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; }
+  .compare h2 { font-weight: 300; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 12px; max-width: 24ch; }
+  .compare-sub { color: var(--ink-3); font-size: 15.5px; line-height: 1.5; max-width: 60ch; margin: 0 0 36px; }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--paper); }
+  .compare-col { padding: 28px 32px; }
+  .compare-col + .compare-col { border-left: 1px solid var(--rule); }
+  .compare-col .label { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+  .compare-col .label.now { color: var(--warn); }
+  .compare-col .num { font-size: 42px; font-weight: 500; letter-spacing: -0.025em; line-height: 1; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+  .compare-col .num.now { color: var(--warn); }
+  .compare-col .row2 { font-size: 14px; color: var(--ink-3); line-height: 1.5; }
+  .compare-col .row2 strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px) { .compare-grid { grid-template-columns: 1fr; } .compare-col + .compare-col { border-left: 0; border-top: 1px solid var(--rule); } }
+
+  /* ─── Tabla agregada ─── */
+  .agg { padding: 88px 0 32px; }
+  .agg-h { margin-bottom: 32px; max-width: 720px; }
+  .agg-h h2 { font-weight: 300; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 12px; }
+  .agg-h p { font-size: 15.5px; line-height: 1.55; color: var(--ink-3); max-width: 56ch; }
+  .routes-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+  .routes-table th { text-align: left; padding: 14px 18px; background: var(--paper-2); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid var(--rule); }
+  .routes-table td { padding: 14px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .routes-table tr:last-child td { border-bottom: 0; }
+  .routes-table .num-cell { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .routes-table .pct { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--warn); }
+  .routes-table .pct.lo { color: var(--ink-3); font-weight: 500; }
+  .routes-table .route-name { font-weight: 600; color: var(--ink); }
+  .routes-table .route-name .sub { display: block; font-weight: 400; font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .routes-table tfoot td { background: var(--paper-2); font-weight: 600; }
+  .routes-table tfoot .pct { font-size: 16px; }
+
+  /* ─── Cards drill-down ─── */
+  .drilldown { padding: 64px 0; }
+  .drilldown-h { margin-bottom: 32px; max-width: 720px; }
+  .drilldown-h h2 { font-weight: 300; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 12px; }
+  .drilldown-h p { font-size: 15px; color: var(--ink-3); max-width: 60ch; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .route-card { display: block; padding: 24px 26px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; text-decoration: none; color: var(--ink); transition: transform 140ms, border-color 140ms; }
+  .route-card:hover { transform: translateY(-2px); border-color: var(--rule-2); }
+  .route-card .n { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.18em; font-weight: 600; margin-bottom: 12px; }
+  .route-card h3 { font-size: 17px; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .route-card .meta { font-size: 12.5px; color: var(--ink-4); margin-bottom: 18px; }
+  .route-card .saving { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+  .route-card .saving .pct { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; color: var(--warn); letter-spacing: -0.02em; }
+  .route-card .saving .delta { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--ink-3); }
+  .route-card .arrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--warn); }
+
+  /* ─── CTA puente ─── */
+  .bridge { padding: 24px 0 96px; }
+  .bridge-inner { max-width: 1240px; margin: 0 auto; padding: 56px 48px; background: var(--ink); color: var(--paper); border-radius: 6px; }
+  .bridge-l { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--uv); letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+  .bridge h3 { font-weight: 300; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 16px; max-width: 28ch; color: var(--paper); }
+  .bridge p { font-size: 15.5px; line-height: 1.55; color: rgba(232,237,233,0.78); margin: 0 0 28px; max-width: 64ch; }
+  .bridge-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: transform 140ms; }
+  .btn-primary { background: var(--uv); color: var(--ink); }
+  .btn-secondary { background: transparent; color: var(--paper); border: 1px solid rgba(232,237,233,0.35); }
+  .btn-primary:hover, .btn-secondary:hover { transform: translateY(-1px); }
+
+  @media (max-width: 720px) {
+    .agg, .drilldown, .bridge { padding-left: 0; padding-right: 0; }
+    .compare-inner, .agg .container, .drilldown .container, .bridge-inner { padding-left: 24px; padding-right: 24px; }
+    .bridge-inner { padding: 36px 24px; }
+    .routes-table th, .routes-table td { padding: 11px 12px; font-size: 13px; }
+  }
+</style>
+</head>
+<body data-screen-label="00 Resumen · Análisis combustible Armstrong">
+
+<script src="nav.js" data-active="index"></script>
+
+<!-- ──────────  Cover ────────── -->
+<section class="cover">
+  <div class="cover-inner">
+    <div>
+      <div class="cover-folio">
+        <span class="folio-num">EXPEDIENTE UV-029 · ARMSTRONG</span>
+        <span class="seal">Análisis de combustible</span>
+      </div>
+
+      <div class="cover-pre">RUTAS REALES · ESTACIONES REALES · PRECIOS CRE 2026</div>
+
+      <h1 class="cover-h1">
+        En las cinco rutas de Armstrong, la red abierta paga <span class="acc"><span class="num">5.75%</span> menos</span> que la red de monedero.
+      </h1>
+
+      <p class="cover-sub">
+        Mapeo punto por punto de las cinco rutas que Gabriel y el equipo identificaron con ustedes. <strong>905 estaciones evaluadas</strong> en los corredores donde su flota carga hoy. Todas las cifras adentro vienen de precios públicos CRE de las semanas del 31-mar al 22-abr 2026, contrastados contra la estación específica donde hoy compran combustible. <strong>Es reproducible: cada precio se puede auditar.</strong>
+      </p>
+
+      <div class="cover-stats">
+        <div class="stat">
+          <div class="stat-l">Rutas analizadas</div>
+          <div class="stat-v"><span class="num">5</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-l">Estaciones evaluadas</div>
+          <div class="stat-v"><span class="num">905</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-l">Ahorro identificado</div>
+          <div class="stat-v"><span class="num">$5.6M</span><span class="unit">MXN/año</span></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="cover-side">
+      <div>
+        <div class="ledger-h">Cifras del análisis</div>
+        <div class="ledger">
+          <div class="row"><span class="lab">Volumen mensual</span><span class="val">300,000 L</span></div>
+          <div class="row"><span class="lab">Gasto mensual ancla</span><span class="val">$5–6M MXN</span></div>
+          <div class="row"><span class="lab">Estaciones base evaluadas</span><span class="val">5</span></div>
+          <div class="row"><span class="lab">Universo CRE comparado</span><span class="val">905</span></div>
+          <div class="row"><span class="lab">Ahorro promedio ≤5km</span><span class="val warn">5.75%</span></div>
+          <div class="row"><span class="lab">Ahorro óptimo ≤15km</span><span class="val warn">7.93%</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ledger-h">Cómo se hizo</div>
+        <div class="ledger">
+          <div class="row"><span class="lab">Insumos</span><span class="val">5 reportes ruta</span></div>
+          <div class="row"><span class="lab">Fuente precios</span><span class="val">CRE pública</span></div>
+          <div class="row"><span class="lab">Ventana de datos</span><span class="val">31-mar / 22-abr</span></div>
+          <div class="row"><span class="lab">Equipo Uvicuo</span><span class="val">Gabriel · Iker</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ──────────  Comparativa pre-mapa vs post-mapa ────────── -->
+<section class="compare">
+  <div class="compare-inner">
+    <h2>Lo que cambió respecto a la estimación de la demo.</h2>
+    <p class="compare-sub">El 26 de marzo dimos un rango basado en benchmark de industria CRE. Ese era el piso defendible sin tocar su data. Con las cinco rutas en mano, el piso sube.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="label">Estimación del 26 de marzo</div>
+        <div class="num">3.5–4.5%</div>
+        <div class="row2">$2.1–2.5M MXN/año · <strong>basado en benchmark</strong> CRE de industria, sin estaciones específicas de Armstrong.</div>
+      </div>
+      <div class="compare-col">
+        <div class="label now">Hoy · 7 de mayo</div>
+        <div class="num now">5.75–7.93%</div>
+        <div class="row2">$5.6–7.9M MXN/año · <strong>basado en data real</strong> de las 5 rutas de Armstrong vs 905 estaciones del corredor.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────  Tabla agregada por ruta ────────── -->
+<section class="agg">
+  <div class="container">
+    <div class="agg-h">
+      <h2>Las cinco rutas, lado a lado.</h2>
+      <p>El ahorro en cada corredor depende de la dispersión de precios local. Colima y León concentran la mayor parte del valor; GDL local es zona competitiva donde el dinero está en control de fugas, no en precio.</p>
+    </div>
+
+    <table class="routes-table">
+      <thead>
+        <tr>
+          <th>Ruta</th>
+          <th>Estación base actual</th>
+          <th>Precio base ($/L)</th>
+          <th>Mejor ≤5km ($/L)</th>
+          <th>Δ$/L</th>
+          <th>% ahorro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="route-name">GDL · radio<span class="sub">Diésel · zona urbana</span></span></td>
+          <td>Servicio Pureza</td>
+          <td class="num-cell">28.69</td>
+          <td class="num-cell">27.89</td>
+          <td class="num-cell">0.80</td>
+          <td><span class="pct lo">2.79%</span></td>
+        </tr>
+        <tr>
+          <td><span class="route-name">Colima → GDL<span class="sub">Diésel · interurbana</span></span></td>
+          <td>Trenogas</td>
+          <td class="num-cell">29.87</td>
+          <td class="num-cell">27.19</td>
+          <td class="num-cell">2.68</td>
+          <td><span class="pct">8.97%</span></td>
+        </tr>
+        <tr>
+          <td><span class="route-name">Puerto Vallarta → GDL<span class="sub">Magna · interurbana</span></span></td>
+          <td>Grupo Octano</td>
+          <td class="num-cell">24.59</td>
+          <td class="num-cell">22.99</td>
+          <td class="num-cell">1.60</td>
+          <td><span class="pct">6.51%</span></td>
+        </tr>
+        <tr>
+          <td><span class="route-name">Tepic → GDL<span class="sub">Diésel · interurbana</span></span></td>
+          <td>Gasolinera Vázquez</td>
+          <td class="num-cell">28.99</td>
+          <td class="num-cell">27.89</td>
+          <td class="num-cell">1.10</td>
+          <td><span class="pct">3.79%</span></td>
+        </tr>
+        <tr>
+          <td><span class="route-name">León → GDL<span class="sub">Magna · interurbana</span></span></td>
+          <td>Mega Gasolineras</td>
+          <td class="num-cell">24.49</td>
+          <td class="num-cell">22.85</td>
+          <td class="num-cell">1.64</td>
+          <td><span class="pct">6.70%</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Promedio simple · 5 rutas · escenario A (smart, ≤5km de desvío)</td>
+          <td class="num-cell">1.56</td>
+          <td><span class="pct">5.75%</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- ──────────  Drill-down cards ────────── -->
+<section class="drilldown">
+  <div class="container">
+    <div class="drilldown-h">
+      <h2>Abre cada ruta · mapa interactivo.</h2>
+      <p>Cada página muestra el corredor completo con la estación actual, las alternativas dentro de 5 km y el detalle de precio por estación.</p>
+    </div>
+
+    <div class="cards">
+      <a class="route-card" href="01-gdl-radio.html">
+        <div class="n">/ 01</div>
+        <h3>GDL · radio Pureza</h3>
+        <div class="meta">Diésel · 113 estaciones · zona urbana GDL</div>
+        <div class="saving">
+          <span class="pct">2.79%</span>
+          <span class="delta">$0.80/L</span>
+        </div>
+        <div class="arrow">VER MAPA →</div>
+      </a>
+
+      <a class="route-card" href="02-colima.html">
+        <div class="n">/ 02</div>
+        <h3>Colima → GDL</h3>
+        <div class="meta">Diésel · 147 estaciones · ruta interurbana</div>
+        <div class="saving">
+          <span class="pct">8.97%</span>
+          <span class="delta">$2.68/L</span>
+        </div>
+        <div class="arrow">VER MAPA →</div>
+      </a>
+
+      <a class="route-card" href="03-vallarta.html">
+        <div class="n">/ 03</div>
+        <h3>Puerto Vallarta → GDL</h3>
+        <div class="meta">Magna · 242 estaciones · ruta interurbana</div>
+        <div class="saving">
+          <span class="pct">6.51%</span>
+          <span class="delta">$1.60/L</span>
+        </div>
+        <div class="arrow">VER MAPA →</div>
+      </a>
+
+      <a class="route-card" href="04-tepic.html">
+        <div class="n">/ 04</div>
+        <h3>Tepic → GDL</h3>
+        <div class="meta">Diésel · 134 estaciones · ruta interurbana</div>
+        <div class="saving">
+          <span class="pct">3.79%</span>
+          <span class="delta">$1.10/L</span>
+        </div>
+        <div class="arrow">VER MAPA →</div>
+      </a>
+
+      <a class="route-card" href="05-leon.html">
+        <div class="n">/ 05</div>
+        <h3>León → GDL</h3>
+        <div class="meta">Magna · 269 estaciones · ruta interurbana</div>
+        <div class="saving">
+          <span class="pct">6.70%</span>
+          <span class="delta">$1.64/L</span>
+        </div>
+        <div class="arrow">VER MAPA →</div>
+      </a>
+
+      <a class="route-card" href="06-metodologia.html" style="background: var(--paper-2);">
+        <div class="n">/ 06</div>
+        <h3>Método y caveats</h3>
+        <div class="meta">Cómo se construyó el rango y qué falta para cerrarlo</div>
+        <div class="saving">
+          <span class="pct" style="color: var(--ink-3); font-size: 20px;">Lectura</span>
+        </div>
+        <div class="arrow" style="color: var(--ink-3);">VER NOTAS →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────  Bridge ────────── -->
+<section class="bridge">
+  <div class="container">
+    <div class="bridge-inner">
+      <div class="bridge-l">/ Lo que sigue</div>
+      <h3>Esto es solo combustible. La conversación completa tiene cuatro palancas.</h3>
+      <p>El análisis de las 5 rutas es la pieza más cuantificada hoy. El diagnóstico completo (4 a 6 semanas, sin costo para Armstrong) cierra el rango con sus litros reales y agrega comisión Edenred, peajes, viáticos Ticket Empresarial y capital ocioso prepago. Si los ahorros son tal cual, en palabras de Isaac, le damos prioridad alta.</p>
+      <div class="bridge-actions">
+        <a class="btn-primary" href="06-metodologia.html">Ver método y próximos pasos →</a>
+        <a class="btn-secondary" href="01-gdl-radio.html">Empezar por la primera ruta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><strong>UV-029 · FUEL</strong> · UVICUO × ARMSTRONG</div>
+    <div>ANÁLISIS DE COMBUSTIBLE · 7 MAYO 2026</div>
+    <div>CONFIDENCIAL · USO INTERNO</div>
+  </div>
+</footer>
+
+</body>
+</html>

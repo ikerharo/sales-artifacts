@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Método y caveats · Análisis de combustible Armstrong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="theme.css" />
+
+<style>
+  .page-hero { padding: 56px 0 48px; border-bottom: 1px solid var(--rule); }
+  .page-hero-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; }
+  .page-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .page-tag .num { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--paper); border-radius: 4px; width: 28px; height: 28px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; }
+  .page-tag .lab { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+  .page-h1 { font-weight: 200; font-size: clamp(36px, 4.6vw, 60px); line-height: 1; letter-spacing: -0.035em; margin: 0 0 24px; max-width: 22ch; }
+  .page-h1 .acc { color: var(--warn); font-weight: 300; }
+  .page-sub { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 64ch; margin: 0; }
+  .page-sub strong { color: var(--ink); font-weight: 600; }
+
+  .section { padding: 56px 0; }
+  .section-h { margin-bottom: 28px; max-width: 720px; }
+  .section-h .lab { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--warn); letter-spacing: 0.18em; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+  .section-h h2 { font-weight: 300; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 12px; }
+  .section-h p { font-size: 15.5px; line-height: 1.55; color: var(--ink-3); max-width: 64ch; }
+
+  .scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--paper); margin-bottom: 8px; }
+  .scenario { padding: 28px 28px; }
+  .scenario + .scenario { border-left: 1px solid var(--rule); }
+  .scenario .l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+  .scenario .name { font-size: 16px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.005em; }
+  .scenario .pct { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 600; color: var(--warn); letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; }
+  .scenario .yr { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-2); margin-bottom: 14px; }
+  .scenario .desc { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+  @media (max-width: 720px) { .scenarios { grid-template-columns: 1fr; } .scenario + .scenario { border-left: 0; border-top: 1px solid var(--rule); } }
+
+  .caveats { display: grid; gap: 12px; }
+  .caveat { padding: 22px 26px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; }
+  .caveat .num { display: inline-flex; align-items: center; justify-content: center; background: var(--paper-2); color: var(--ink-3); border-radius: 4px; width: 28px; height: 28px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; margin-right: 10px; vertical-align: middle; }
+  .caveat h4 { display: inline; font-size: 16px; font-weight: 600; letter-spacing: -0.005em; }
+  .caveat p { margin: 12px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+  .caveat p strong { color: var(--ink); font-weight: 600; }
+
+  .pediria { display: grid; gap: 14px; }
+  .pediria-item { padding: 22px 26px; background: var(--paper); border-left: 4px solid var(--warn); border-radius: 0 6px 6px 0; }
+  .pediria-item .l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--warn); letter-spacing: 0.18em; font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+  .pediria-item h4 { font-size: 16px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.005em; }
+  .pediria-item p { font-size: 14px; line-height: 1.55; color: var(--ink-3); margin: 0; }
+
+  .next-step { padding: 56px 0 96px; }
+  .next-step-inner { max-width: 1240px; margin: 0 auto; padding: 56px 48px; background: var(--ink); color: var(--paper); border-radius: 6px; }
+  .next-step-inner .l { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--uv); letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+  .next-step-inner h3 { font-weight: 300; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 16px; max-width: 28ch; color: var(--paper); }
+  .next-step-inner p { font-size: 15.5px; line-height: 1.6; color: rgba(232,237,233,0.78); margin: 0 0 28px; max-width: 64ch; }
+  .next-step-inner .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: transform 140ms; }
+  .btn-primary { background: var(--uv); color: var(--ink); }
+  .btn-secondary { background: transparent; color: var(--paper); border: 1px solid rgba(232,237,233,0.35); }
+  .btn-primary:hover, .btn-secondary:hover { transform: translateY(-1px); }
+
+  .foot-nav { padding: 32px 0 80px; }
+  .foot-nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .foot-link { display: block; padding: 24px 28px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; text-decoration: none; color: var(--ink); transition: transform 140ms, border-color 140ms; }
+  .foot-link:hover { transform: translateY(-2px); border-color: var(--rule-2); }
+  .foot-link .l { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .foot-link h4 { font-size: 16px; font-weight: 600; margin: 0; letter-spacing: -0.005em; }
+  .foot-link.next { text-align: right; }
+  @media (max-width: 720px) { .foot-nav-inner { grid-template-columns: 1fr; padding: 0 24px; } .foot-link.next { text-align: left; } .next-step-inner { padding: 36px 28px; } }
+</style>
+</head>
+<body data-screen-label="06 Método y caveats">
+
+<script src="nav.js" data-active="metod"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">
+      <span class="num">06</span>
+      <span class="lab">Método y caveats</span>
+    </div>
+
+    <h1 class="page-h1">
+      Cómo se construyó este rango y qué falta para cerrarlo.
+    </h1>
+
+    <p class="page-sub">
+      El análisis se construyó sobre cinco rutas representativas de la operación de Armstrong. Aquí explicamos los tres escenarios de ahorro, los seis caveats que matizan el rango, y los cuatro inputs que necesitamos de Armstrong para pasar de rango a cifra final auditable.
+    </p>
+  </div>
+</section>
+
+<!-- ─── Tres escenarios ─── -->
+<section class="section">
+  <div class="container">
+    <div class="section-h">
+      <div class="lab">/ Tres escenarios de ahorro</div>
+      <h2>De más conservador a más agresivo, según fricción operativa.</h2>
+      <p>Definimos el ahorro disponible bajo tres lentes para que el comité ejecutivo pueda elegir el más defendible según su lectura del cambio operativo.</p>
+    </div>
+
+    <div class="scenarios">
+      <div class="scenario">
+        <div class="l">Escenario A · Smart routing</div>
+        <div class="name">Estación más barata dentro de 5 km</div>
+        <div class="pct">5.75%</div>
+        <div class="yr">$469K MXN/mes · $5.6M MXN/año</div>
+        <div class="desc">Cero cambio operativo significativo. El operador toma el mismo recorrido con un desvío mínimo. Asume capacidad de elegir estación día a día.</div>
+      </div>
+      <div class="scenario">
+        <div class="l">Escenario B · Óptimo absoluto</div>
+        <div class="name">Mejor precio del corredor (≤15 km)</div>
+        <div class="pct">7.93%</div>
+        <div class="yr">$651K MXN/mes · $7.9M MXN/año</div>
+        <div class="desc">Captura todo el spread de precios. Asume flexibilidad de ruta. Útil como techo del rango defendible.</div>
+      </div>
+      <div class="scenario">
+        <div class="l">Escenario C · Conservador</div>
+        <div class="name">Solo rutas con ≥3% real</div>
+        <div class="pct">6.49%</div>
+        <div class="yr">$529K MXN/mes · $6.3M MXN/año</div>
+        <div class="desc">Descarta GDL local (la única ruta con ahorro &lt;3%). Reporta solo donde la diferencia es material. 4 de 5 rutas.</div>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--ink-4); margin-top: 16px; line-height: 1.55; max-width: 64ch;">
+      Los tres escenarios usan 300,000 L/mes como volumen ancla (cifra del cliente, por validar). Cada uno aplica el ahorro promedio simple de las 5 rutas; un análisis ponderado por consumo real por corredor cerrará el rango más fino.
+    </p>
+  </div>
+</section>
+
+<!-- ─── Caveats ─── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-h">
+      <div class="lab">/ Caveats honestos</div>
+      <h2>Lo que NO cubre este análisis.</h2>
+      <p>El rango es defendible porque tiene piso en data pública CRE. También tiene techo: todo lo que sigue suma o resta al número final.</p>
+    </div>
+
+    <div class="caveats">
+      <div class="caveat">
+        <span class="num">01</span>
+        <h4>No es la flota completa.</h4>
+        <p>Cinco rutas son una <strong>muestra representativa</strong>, no el total del consumo. Si Armstrong comparte el split real de litros por corredor, podemos pasar de "promedio simple de 5 rutas" a "promedio ponderado por consumo real". El número podría subir o bajar; el método ya está construido.</p>
+      </div>
+      <div class="caveat">
+        <span class="num">02</span>
+        <h4>No incluye comisión Edenred ni cashback.</h4>
+        <p>La diferencia de precio CRE no captura la comisión adicional que cobra el monedero (típicamente 1-2% sobre el ticket). Ese ahorro extra <strong>se suma</strong> al cambio de estación. Por validar el porcentaje exacto en factura mensual de Armstrong.</p>
+      </div>
+      <div class="caveat">
+        <span class="num">03</span>
+        <h4>No incluye sobrecosto de viáticos ni peajes.</h4>
+        <p>Este análisis es 100% combustible. El business case completo para el comité ejecutivo agrega comisión Ticket Empresarial (~2.5% sobre viáticos), sobrecosto peajes sin conciliación (5-7%) y capital ocioso prepago Edenred (1-2 meses de saldo). Cada uno se cuantifica en el diagnóstico.</p>
+      </div>
+      <div class="caveat">
+        <span class="num">04</span>
+        <h4>Asume comportamiento similar en el resto de rutas.</h4>
+        <p>905 estaciones evaluadas dan robustez al método. Pero la flota tiene 600-700 unidades operando varios corredores; si hay rutas con menos dispersión de precios (como GDL local), el promedio agregado podría estar 1-2 puntos abajo. <strong>Por eso el rango y no un solo número</strong>.</p>
+      </div>
+      <div class="caveat">
+        <span class="num">05</span>
+        <h4>Los precios CRE están sin IVA en el reporte oficial.</h4>
+        <p>Las cifras reportadas aquí son <strong>comparables entre sí</strong> (consistente para Armstrong y alternativas). El ahorro neto en factura es el mismo en porcentaje y en términos absolutos. Donde hay sutileza es en la cuantificación contra el gasto bruto de Armstrong, donde sí entra IVA.</p>
+      </div>
+      <div class="caveat">
+        <span class="num">06</span>
+        <h4>No considera cambio de horario operativo.</h4>
+        <p>El ahorro asume que el chofer puede llegar a la nueva estación en horario de operación. Las opciones presentadas son típicamente cadenas con horario extendido o 24/7, pero requiere validar disponibilidad en ventanas de carga reales de la flota.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Lo que pediríamos ─── -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-h">
+      <div class="lab">/ Para cerrar el rango</div>
+      <h2>Cuatro inputs y pasamos de rango a cifra única auditada.</h2>
+      <p>Con estos cuatro insumos podemos construir el modelo financiero auditable en .xlsx que entregamos al comité ejecutivo como anexo del diagnóstico.</p>
+    </div>
+
+    <div class="pediria">
+      <div class="pediria-item">
+        <div class="l">Input · 01</div>
+        <h4>Tres meses de facturación Edenred</h4>
+        <p>Para validar el precio promedio efectivo que pagan hoy y la comisión real del monedero. Esto convierte el ahorro de "estimación CRE" a "delta exacto factura por factura". Habitualmente sale el mismo día que se solicita.</p>
+      </div>
+      <div class="pediria-item">
+        <div class="l">Input · 02</div>
+        <h4>Split de litros por ruta o corredor</h4>
+        <p>Idealmente desde Samsara con odómetro y bitácora. El método permite el promedio simple de 5 rutas (lo que se reportó arriba); con el split real, el promedio se vuelve ponderado y el rango se aprieta. Si Colima y León concentran más volumen, el ahorro consolidado sube.</p>
+      </div>
+      <div class="pediria-item">
+        <div class="l">Input · 03</div>
+        <h4>Estado de cuenta TAG (peajes)</h4>
+        <p>Fuera de scope de este documento, pero parte del business case completo. Patrón típico del sector: 5-7% de sobrecosto en cruces no conciliados, antenas mal lectoras o ejes mal cobrados. Se valida cruzando contra GPS y bitácora.</p>
+      </div>
+      <div class="pediria-item">
+        <div class="l">Input · 04</div>
+        <h4>Comisión real de Ticket Empresarial</h4>
+        <p>Isaac mencionó en demo que la iba a confirmar. Asunción conservadora: 2.5% sobre un volumen estimado en 20% del combustible (~$1M-$1.2M MXN/mes). Ahorro mensual estimado: $25-30K MXN. Por validar el porcentaje exacto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Next step ─── -->
+<section class="next-step">
+  <div class="container">
+    <div class="next-step-inner">
+      <div class="l">/ Siguiente paso</div>
+      <h3>Validar este análisis y arrancar el diagnóstico completo.</h3>
+      <p>Si los ahorros son tal cual, en palabras de Isaac, le damos prioridad alta. Este análisis de combustible es la pieza más cuantificada hoy. El diagnóstico completo (4 a 6 semanas, sin costo para Armstrong) cierra el rango con sus litros reales y agrega las otras tres palancas. Producto final: cinco documentos auditables y un modelo financiero entregado al comité ejecutivo.</p>
+      <div class="actions">
+        <a class="btn-primary" href="index.html">Volver al resumen →</a>
+        <a class="btn-secondary" href="01-gdl-radio.html">Releer las rutas en orden</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="foot-nav">
+  <div class="foot-nav-inner">
+    <a class="foot-link prev" href="05-leon.html">
+      <div class="l">← Anterior · 05</div>
+      <h4>León → GDL</h4>
+    </a>
+    <a class="foot-link next" href="index.html">
+      <div class="l">Volver al inicio →</div>
+      <h4>Resumen del análisis</h4>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><strong>UV-029 · FUEL</strong> · UVICUO × ARMSTRONG</div>
+    <div>MÉTODO Y CAVEATS · 7 MAYO 2026</div>
+    <div>CONFIDENCIAL · USO INTERNO</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico Uvicuo · Armstrong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · DOCUMENTO ADAPTABLE POR AGENTE CONTEXTUAL
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. Documento que se entrega a la persona que
+  ya tuvo contacto profundo con Uvicuo (demo, llamada, reunión, etc.) para
+  que lo lleve internamente a su CFO/COO/CEO. Tono "conseguí esto" — selección
+  y exclusividad.
+
+  CAMPOS PARAMETRIZABLES (para conexión con CMS):
+  · COMPANY_NAME           → "Armstrong"
+  · CHAMPION_NAME          → "Isaac Moreno"
+  · FOLIO                  → "UV-029/2026"
+  · QUARTER_SLOT_TOTAL     → "12 al trimestre"
+  · FLEET_SIZE             → "~600 unidades"
+  · ANNUAL_OPEX_MXN        → "$500M"
+  · ESTIMATED_RANGE_MXN    → "$15–40M"
+  · PERCENT_RANGE          → "3% a 8%"
+  · CONTEXT_HOOK           → frase específica del último contacto (lo que
+                             dijo el champion en demo / call / reunión).
+                             Si no hay frase, usar hook genérico de la industria.
+  · DOMINANT_LEVER         → combustible | peajes | viaticos | tesoreria
+  · APPLICABLE_LEVERS      → cuáles aplican (resto van a "por confirmar")
+  · COMPARABLE_CASE        → caso ghost a usar (transportista 800u | otro)
+  · OPEX_BREAKDOWN         → composición % por categoría (combustible/peajes/...)
+  · FIREFLIES_TRANSCRIPT_URL → URL real del transcript de la última call con el
+                             champion (Fireflies u otro). OBLIGATORIO resolver
+                             antes de emitir; nunca dejar como literal.
+
+  REGLAS DE ADAPTACIÓN:
+  · Mantén siempre folio único + sello dorado (activo emocional clave).
+  · Verbo: "conseguiste", nunca "te ofrecemos".
+  · NO asumas que hubo demo. Usa frases neutras ("nuestro último contacto",
+    "lo que conversamos") que funcionen para demo, llamada, junta presencial,
+    intro por referido, etc.
+  · Caso fantasma siempre anonimizado.
+  · Solo mostrar palancas que aplican; resto va a "por confirmar".
+  · CTAs finales: WhatsApp + correo de Iker. No agregar Calendly.
+  · No agregar secciones de "material para imprimir" / "descargar PDF" —
+    el doc en sí es el material; eso solo agrega fricción.
+  · Sweep obligatorio antes de emitir: si el HTML contiene la cadena literal
+    "{{" o "[link]", el sweep falla. Todo placeholder debe estar resuelto.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="teaser.css" />
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-029 · ARMSTRONG</span>
+      <div class="right">
+        <span class="ts">PARA ISAAC MORENO</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-029/2026</strong> · ARMSTRONG</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Armstrong después de nuestras conversaciones. <strong>Está diseñado para que lo lleves a tu equipo</strong> — al CFO, a la Dirección de Operaciones, al CEO si aplica — y los tres entiendan en cinco minutos por qué arrancar.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Armstrong cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: tamaño (~650 unidades operativas y utilitarias), cobertura nacional desde GDL, champion con poder ejecutivo (Isaac, Finanzas), voluntad validada (<em>"si los ahorros son tal cual, le damos prioridad alta"</em>). <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>04</span><span class="of">/</span><span class="total">04</span></div>
+          </div>
+          <div class="ckey">// Q2 · 2026 · FOLIO 029</div>
+        </div>
+      </div>
+    </header>
+
+<!--
+  AGENT_NOTE · HERO
+  · Folio único + sello dorado + verbo "conseguiste" son obligatorios. No reemplazar por "te ofrecemos".
+  · Stamp circular (FOLIO/N/AÑO) y "04/12 slots usados" comunican exclusividad real, no decoración.
+  · Ajustar SLOT_USED y SLOT_TOTAL al CMS según trimestre activo.
+-->
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Isaac,</p>
+      <p>Después de la demo, <strong>algo de lo que dijiste se nos quedó en la cabeza</strong>: que están operando muy manual, cargando donde haya y no necesariamente donde es más barato. Ese patrón, en cuentas como Armstrong, suele <span class="acc">esconder entre 5% y 8% del gasto de combustible</span>. No porque alguien haga las cosas mal: porque <strong>el modelo del proveedor de monedero está diseñado para que no se vea</strong>.</p>
+      <p>Lo confirmamos esta semana: mapeamos las cinco rutas que nos compartieron contra las 905 estaciones del corredor CRE. <strong>El ahorro real disponible solo en combustible es de $5.6 millones de pesos al año</strong> — más alto que el rango que les dimos en la demo. Los detalles, ruta por ruta, están en el documento anexo.</p>
+      <p>Por eso quisimos formalizar la invitación. Lo que sigue es <strong>tu kit para llevar a la siguiente sesión interna con la Dirección General</strong>: el rango que estimamos, un caso real comparable, cómo lo haríamos, y qué decir cuando te pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyectes en una sala de juntas, no para que lo leas tú solo.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA INDIVIDUAL · UV-029</div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · LETTER
+  · Personalizar el segundo párrafo con CONTEXT_HOOK específico del último contacto.
+  · La frase abierta "después de nuestra conversación" funciona para demo, llamada, junta presencial o referido.
+  · NO usar comillas literales en el quote a menos que el champion lo haya dicho textual; usar paráfrasis en su defecto.
+-->
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Ahorros estimados"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS PARA ARMSTRONG</div>
+      <div class="big"><span class="light">$</span>5–10<span class="scale">M</span></div>
+      <div class="unit">MXN AL AÑO · BASE 650 UNIDADES</div>
+      <div class="annot">Combustible cuantificado con data real (las cinco rutas mapeadas), tres palancas adicionales estimadas con benchmarks de industria. La cifra exacta se cierra al revisar tres meses de facturación. <strong>El rango lo apostamos hoy.</strong></div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está el dinero recuperable</span>
+          <span class="sub">Cada barra es el 100% del gasto anual en esa categoría. La franja verde marca el porcentaje recuperable que estimamos para Armstrong. <strong>Todas las cifras son anuales y están en MXN.</strong></span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible · Sobreprecio en red Edenred <small>$66M est. · ancla cliente $5.5M/mes</small></div>
+              <div class="rec">−$5.6M <small>−5.75% · DATA REAL</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:5.75%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Peajes · Cobros TAG sin conciliar <small>$26M est. · 18% del OPEX flota</small></div>
+              <div class="rec">−$1.5M <small>−5.7% est.</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:5.7%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Viáticos · Comisión Ticket Empresarial <small>$12M est. · 8% del OPEX</small></div>
+              <div class="rec">−$0.3M <small>−2.5% est.</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:2.5%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Tesorería · Capital ocioso prefondeo <small>1-2 meses de gasto · por confirmar</small></div>
+              <div class="rec">+$1M <small>est. liberado</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:6%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>Cada barra es el 100% del gasto anual · franja verde = recuperable</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto anual actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable estimado</span>
+          </span>
+        </div>
+
+        <!--
+          AGENT_NOTE · VALUE-SPLIT (opcional · ver teaser.css)
+          ·  Descomentar SOLO si el deal tiene un baseline commodity (deducibilidad
+             fiscal MX, comisión Edenred, cobertura combustible base, etc.) que
+             cualquier alternativa del mercado resuelve y conviene separar
+             visualmente del valor-add Uvicuo.
+          ·  Si el deal NO tiene baseline commodity (ej. cliente MX-only sin stack
+             extranjero) → dejar comentado, el dashboard simple funciona.
+          ·  Validado en Draiver UV-028 (2026-05-01) con "Me gusta!" verbatim
+             de Iker. Promovido a CSS canónico mismo día.
+        -->
+        <!--
+        <div class="value-split">
+          <div class="value-split-h">De los $X-Y, ¿cuánto es solo Uvicuo?</div>
+          <div class="value-split-grid">
+            <div class="value-split-col">
+              <div class="value-split-amount">~$N</div>
+              <div class="value-split-label">Baseline · Cualquier alternativa</div>
+              <p class="value-split-desc">Razón del baseline (deducibilidad MX, comisión Edenred, etc.).</p>
+            </div>
+            <div class="value-split-col is-uvicuo">
+              <div class="value-split-amount">~$M</div>
+              <div class="value-split-label">Solo con Uvicuo</div>
+              <p class="value-split-desc">Lista los 3-4 diferenciadores Uvicuo concretos del deal.</p>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Testimonio de cliente</span>
+
+      <h2>Una transportista nacional con <span class="light">800 unidades.</span> Ya estaban "optimizados".</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el director de operaciones de una transportista nacional —que pidió no ser nombrada— nos dijo que <strong>su gasto de combustible ya estaba al hueso</strong>. Tres años con el mismo proveedor de monedero. Habían renegociado dos veces. El CFO daba el tema por cerrado.</p>
+          <p>Aceptaron el diagnóstico más por curiosidad. <strong>Seis semanas después</strong>, presentamos al comité una sola gráfica: el precio promedio que pagaban en el monedero, semana a semana, vs el precio del mercado abierto en las mismas estaciones donde sus operadores cargaban.</p>
+          <p>La diferencia promedio fue de <span class="acc">$1.42 por litro</span>. Multiplicado por su volumen anual: <span class="acc">$24.6M MXN/año</span>, sin tocar al proveedor — solo cambiando el modelo operativo que les obligaba a llenar dentro de la red cerrada.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el CFO</div>
+          <div class="qtext">Lo que más me molesta no es el dinero. Es que lo teníamos en los estados de cuenta y nadie lo veía.</div>
+          <div class="qattr"><strong>CFO · Transportista nacional</strong><br>800 unidades · cobertura nacional · sesión final del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Flota</div><div class="ov">800</div><div class="od">Unidades, cobertura nacional</div></div>
+        <div class="o"><div class="ok">Ahorro identificado</div><div class="ov uv">$24.6M</div><div class="od">MXN/año · 6.1% del gasto operativo</div></div>
+        <div class="o"><div class="ok">Duración</div><div class="ov">6 sem</div><div class="od">De primera sesión a presentación final</div></div>
+      </div>
+
+      <div class="pivot"><strong>Armstrong nos recuerda mucho a esa cuenta.</strong> Tamaño parecido (~650 unidades vs 800), modelo de monedero cerrado con Edenred al 80% del gasto, equipo operativo profesional convencido de que ya está controlado. Por eso el rango de $5-10M MXN/año no es agresivo. Es lo que hemos visto, una y otra vez, en operaciones casi idénticas.</div>
+    </section>
+
+<!--
+  AGENT_NOTE · CASO FANTASMA
+  · Caso intercambiable por DOMINANT_LEVER (combustible | peajes | viaticos | tesoreria).
+  · Pivote final ("Armstrong nos recuerda mucho a esa cuenta") es OBLIGATORIO.
+  · Nunca dar nombre real del comparable.
+-->
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Metodología"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. El cronograma depende de la disponibilidad de su equipo y de los datos. Hemos cerrado diagnósticos en nueve días y otros en siete semanas.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión de mapeo</h4>
+            <p>Sesión presencial con 3-5 personas de su equipo operativo. Construimos el AS-IS en pizarra: cómo se autoriza, ejecuta y concilia el gasto.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión estratégica</h4>
+            <p>Con el champion para validar ángulo, priorizar palancas y acordar qué datos compartir. Definimos alcance específico para Armstrong</p>
+            <div class="dur">45–60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con factura, estado de cuenta TAG, reporte de viáticos. Sin acceso directo a sus sistemas. Construcción del modelo financiero auditable.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con el equipo ejecutivo que ustedes convoquen. Entregamos documento, modelo y roadmap. Q&amp;A abierto. El material queda en sus manos.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Armstrong · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="Las palancas"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>Cuatro palancas, <span class="light">una cuantificada con data real.</span></h2>
+      <p class="deck">Combustible está cuantificado contra precios CRE de las cinco rutas de Armstrong (data real). Peajes y viáticos siguen patrones típicos de la industria, por validar con su facturación. Tesorería se confirma al revisar el saldo prefondeado.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Combustible</span><span class="rng">5.75–7.93%</span></div>
+          <h4>Sobreprecio en red Edenred · DATA REAL</h4>
+          <p>Mapeamos las cinco rutas de Armstrong contra 905 estaciones del corredor CRE. Las estaciones donde cargan hoy pagan en promedio $1.56 por litro arriba del óptimo dentro de 5 km de desvío. Colima y León concentran la mayor parte del valor.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Peajes</span><span class="rng">5–7%</span></div>
+          <h4>Cobros TAG sin conciliación</h4>
+          <p>Cruces no auditados contra GPS y bitácora generan duplicados, casetas mal asignadas, sobrecostos invisibles. Patrón típico del sector — por validar contra estado de cuenta TAG de Armstrong.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/03 · Viáticos</span><span class="rng">2.5–4.5%</span></div>
+          <h4>Comisión Ticket Empresarial</h4>
+          <p>Cada movimiento del custodio en Ticket Empresarial genera comisión sobre el monto. Volumen estimado 20% del combustible (~$1M-$1.2M MXN/mes). Comisión real por confirmar contra factura.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">P/04 por confirmar</span><span class="rng">+$1M est.</span></div>
+          <h4>Tesorería · Capital ocioso prefondeo</h4>
+          <p>Saldo cargado al monedero Edenred = 1-2 meses de combustible inmovilizado. A $5.5M MXN/mes de gasto, $5-11M MXN inmovilizados como saldo. Se libera con línea de crédito operativa.</p>
+        </div>
+      </div>
+    </section>
+
+<!--
+  AGENT_NOTE · PALANCAS
+  · Solo mostrar APPLICABLE_LEVERS con número y rango.
+  · Las que no aplican van agrupadas en bloque "por confirmar" con estilo dashed.
+  · Si la palanca dominante cambia, reordenar para que esa sea P/01.
+-->
+
+    <!-- ─── 07 CHAMPION KIT (simplificado · checklist + plantilla) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a tu siguiente reunión interna.</span></h2>
+        <p>Convoca <strong>30 minutos</strong> con la Dirección General. Iker se suma como tu invitado, presenta el rango específico de Armstrong y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Dirección General · Director de Operaciones · Tú (Finanzas, champion) · Sistemas / TI <span class="opt">(opcional, para validar integración Samsara)</span></div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">30 minutos · 20 de presentación + 10 de preguntas</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las 3 preguntas que te van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta?</strong> Cero. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Cambiamos de proveedor?</strong> No para arrancar.</li>
+              <li><strong>¿Cuánto tiempo nos toma?</strong> 5 a 7 horas totales en 4–6 semanas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: 30 min · Uvicuo · oportunidad de optimización operativa
+
+Hola [Nombre],
+
+Estuvimos hablando con Uvicuo, la fintech líder en gestión financiera de flotas en México. Trabajan con flotas como la nuestra para liberar capital atrapado en operación: combustible, peajes, viáticos, tesorería.
+
+Armstrong fue seleccionada para uno de sus diagnósticos del trimestre. Sin costo para nosotros. Mapearon nuestras cinco rutas de carga contra 905 estaciones del corredor CRE: identificaron $5.6 millones de pesos al año recuperables solo en combustible, sin renegociar con Edenred. Con las otras tres palancas (peajes, viáticos, tesorería), el rango sube a $5-10 millones al año.
+
+Antes de aceptar, me gustaría que escuches con tus propias preguntas. ¿Tienes 30 minutos esta o la próxima semana? Iker (CEO de Uvicuo) se suma como nuestro invitado.
+
+Adjunto el resumen completo + el análisis ruta por ruta.</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Roadmap de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>Convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operación</strong> <span class="t">1.5 h</span><small>3–5 líderes construyen el AS-IS con nosotros</small></li>
+            <li><strong>Contabilidad</strong> <span class="t">30–90 min</span><small>Validan deducibilidad recuperable</small></li>
+            <li><strong>TI / Sistemas</strong> <span class="t">25–45 min</span><small>Solo si hay integración relevante</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Armstrong</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Armstrong</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong>, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <!--
+      AGENT_NOTE · CTA
+      · El WhatsApp pre-cargado debe personalizarse con CHAMPION_NAME y COMPANY_NAME ANTES de generar el doc.
+      · Verificar que el folio en la URL del WA y mailto coincida con FOLIO del documento.
+      · No agregar Calendly. Solo WhatsApp + correo directo de Iker.
+    -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Armstrong desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes — no una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero y un roadmap accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Stakeholder%20Test%20de%20Test%20Co.%20Sobre%20el%20diagn%C3%B3stico%20UV-029..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagnóstico Armstrong · UV-029&amp;body=Hola Iker," class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-029<span class="pad">//</span>Confidencial<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
