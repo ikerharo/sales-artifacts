@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Anexo financiero · Kugar · Uvicuo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="assets/teaser.css" />
+
+<style>
+  /* Overrides sobrios para anexo técnico · documento de revisión, no trofeo */
+  .anexo-shell { max-width: 920px; margin: 0 auto; padding: 56px 32px 96px; }
+  .anexo-h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; line-height: 1.1; }
+  .anexo-sub { font-size: 17px; color: var(--ink-3); margin-bottom: 32px; line-height: 1.5; }
+  .anexo-meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); background: var(--paper-2); border-left: 3px solid var(--uv); padding: 16px 20px; margin: 24px 0 48px; line-height: 1.7; }
+  .anexo-meta strong { color: var(--ink); }
+  .anexo-section { margin: 56px 0; }
+  .anexo-section h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 16px; line-height: 1.25; border-top: 1px solid var(--rule); padding-top: 32px; color: var(--ink); }
+  .anexo-section h2 .num { font-family: var(--font-mono); font-size: 13px; color: var(--ink-4); letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+  .anexo-section h3 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; color: var(--ink-2); }
+  .anexo-section p { font-size: 16px; line-height: 1.7; color: var(--ink-2); margin: 0 0 14px; }
+  .anexo-section p strong { color: var(--ink); }
+  .anexo-section ul { margin: 0 0 14px; padding-left: 24px; }
+  .anexo-section li { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin-bottom: 8px; }
+  .anexo-section li strong { color: var(--ink); }
+  .anexo-section table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: 14px; }
+  .anexo-section th { text-align: left; font-weight: 600; background: var(--paper-2); border-bottom: 2px solid var(--rule-2); padding: 12px 14px; font-size: 13px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-3); }
+  .anexo-section td { padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-2); }
+  .anexo-section td strong { color: var(--ink); }
+  .compare-table th:first-child { width: 25%; }
+  .compare-table td:nth-child(2) { background: rgba(199, 82, 28, 0.04); }
+  .compare-table td:nth-child(3) { background: rgba(86, 203, 44, 0.05); }
+  .pull { background: var(--paper-2); border-left: 4px solid var(--uv); padding: 20px 24px; margin: 28px 0; }
+  .pull p { margin: 0; font-size: 17px; color: var(--ink); font-weight: 500; line-height: 1.55; }
+  .anexo-back { display: inline-block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-3); text-decoration: none; margin-bottom: 32px; }
+  .anexo-back:hover { color: var(--ink); }
+  .question-list li { margin-bottom: 16px; }
+  .question-list li strong { display: block; margin-bottom: 4px; }
+  .closing-block { background: var(--paper-2); padding: 28px 32px; border-radius: 4px; margin-top: 48px; }
+  .closing-block h3 { margin-top: 0; font-size: 17px; }
+  .closing-block ol { margin-bottom: 0; padding-left: 22px; }
+  .closing-block li { font-weight: 500; color: var(--ink); }
+  .accounting-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  .accounting-grid h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 8px; }
+  @media (max-width: 720px) { .accounting-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">UV-032 · KUGAR · ANEXO FINANCIERO</span>
+      <div class="right">
+        <span class="ts">PARA REVISIÓN DEL ÁREA FINANCIERA</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="anexo-shell">
+
+<a href="index.html" class="anexo-back">← Volver al teaser</a>
+
+<h1 class="anexo-h1">Anexo financiero · revisión técnica</h1>
+<p class="anexo-sub">Documento dirigido al equipo financiero de Kugar para resolver, antes de la mesa corporativa, las preguntas de fondo sobre estructura legal, tratamiento contable, integración con su ERP y manejo de riesgo.</p>
+
+<div class="anexo-meta">
+<strong>Para:</strong> Elías y equipo financiero de Kugar<br/>
+<strong>De:</strong> Iker Haro Escandón · Founder &amp; CEO Uvicuo<br/>
+<strong>Vinculado al teaser:</strong> UV-032/2026 · Kugar<br/>
+<strong>Continuidad:</strong> trabajo iniciado en octubre de 2025 con Verónica Velasco, Aremis Cruz y Héctor Jiménez · validado el 7 de mayo de 2026 con Alfonso Tuccella
+</div>
+
+<!-- ─── 0. Apertura ─── -->
+<div class="anexo-section">
+  <p>Alfonso fue claro la semana pasada: si el corporativo valida que no hay bloqueo de fondo desde finanzas, gobierno y auditoría, podemos arrancar el diagnóstico. Este documento existe para que tú, Elías, llegues a esa mesa con el modelo entendido y las preguntas técnicas resueltas, no para venderte nada.</p>
+  <p>Lo que sigue son nueve secciones. Las leíste en treinta minutos si quieres profundidad; en diez si solo quieres validar que no hay sorpresas. La primera mitad responde "¿esto cómo opera legalmente, fiscalmente y contablemente?". La segunda mitad responde "¿qué pasa en los escenarios que me preocupan?".</p>
+</div>
+
+<!-- ─── 1. Por qué este modelo no genera contingencia ─── -->
+<div class="anexo-section">
+  <h2><span class="num">01 · Estructura</span>Por qué este modelo no genera contingencia regulatoria</h2>
+  <p>Uvicuo es una <strong>Sociedad Anónima Promotora de Inversión (SAPI)</strong> mexicana. <strong>No realizamos captación de recursos del público</strong>, lo que nos coloca explícitamente fuera del régimen bancario, fuera del esquema SOFIPO y fuera del régimen IFPE. Operamos como sociedad de servicios financieros empresariales con autorización de Mastercard como emisor de tarjetas en su red.</p>
+  <p>La relación contractual con Kugar tendría dos componentes simultáneos:</p>
+  <ul>
+    <li><strong>Contrato de servicios.</strong> Uso de la plataforma, soporte, configuración de políticas de gasto, integración con Webfleet, gestión de comprobantes.</li>
+    <li><strong>Contrato de línea de crédito revolvente empresarial.</strong> Habilitación de la línea sobre la cual operan las tarjetas. Es crédito empresarial estándar, no crédito al operador.</li>
+  </ul>
+  <p>Las tarjetas físicas se emiten <strong>a nombre de Transportes Kugar</strong>. Nunca a nombre de un operador. El operador porta una tarjeta empresarial cuyas restricciones de gasto se preconfiguran por el equipo administrativo de Kugar. <strong>El operador no recibe crédito personal, no genera ingreso adicional sujeto a retención y no impacta el convenio IMSS-Canacar.</strong></p>
+  <div class="pull">
+    <p>Es la diferencia exacta con el caso Banamex que describió Alfonso: hoy ustedes le depositan al operador en una tarjeta a su nombre, y eso le da historial de crédito personal con un banco que después le ofrece más línea. Con la tarjeta empresarial, el operador no construye historial; el gasto operativo nunca toca su persona fiscal.</p>
+  </div>
+</div>
+
+<!-- ─── 2. Flujo de fondos paso a paso ─── -->
+<div class="anexo-section">
+  <h2><span class="num">02 · Flujo</span>Cómo se ejecuta una transacción típica</h2>
+  <p>Tomemos un ejemplo recurrente: viaje desde la base Tuxtepec con dos pagos en ruta, una caseta en efectivo de 300 pesos y una talacha de 1,500 pesos.</p>
+
+  <h3>Paso 1 · Configuración (una sola vez)</h3>
+  <p>Logística carga las políticas de gasto en Uvicuo. Para esta ruta, el operador tiene autorizados 300 pesos en categoría "casetas en efectivo" y 1,500 pesos en categoría "talachas". <strong>Cualquier intento fuera de estos límites es declinado por la red Mastercard antes de llegar al comercio.</strong></p>
+
+  <h3>Paso 2 · Bajada de fondos</h3>
+  <p>El equipo de Kugar baja a la línea de crédito el monto disponible para las tarjetas. Esto reemplaza el flujo actual donde Tesorería hace dispersiones individuales por viaje.</p>
+
+  <h3>Paso 3 · Consumo</h3>
+  <p>El operador retira los 300 pesos en cajero (chip y PIN de la tarjeta empresarial) y paga la talacha de 1,500 pesos directo en el comercio.</p>
+
+  <h3>Paso 4 · Facturación de los comercios</h3>
+  <p>La talachera factura <strong>directamente a Transportes Kugar con su RFC</strong>. <strong>Uvicuo no se interpone en el CFDI del comercio.</strong> La factura del proveedor llega como hoy. Para los casos donde el ticket no llega como factura (gasolineras, peajes, talleres), Uvicuo opera un proceso automatizado que persigue el CFDI en el portal del comercio y lo entrega como XML+PDF en la plataforma. Es un servicio operativo, no un cambio fiscal.</p>
+
+  <h3>Paso 5 · Comprobación</h3>
+  <p>El operador, vía WhatsApp, sube la evidencia que la política exige (foto con marca de agua geolocalizada). Auditoría/Tráfico aprueba o rechaza desde la plataforma. <strong>Reemplaza el flujo de buzón físico que hoy maneja Verónica.</strong></p>
+
+  <h3>Paso 6 · Liquidación con el operador</h3>
+  <p>La liquidación de comisión y los descuentos al operador (pensión alimenticia, Infonavit, anticipos) <strong>no cambian</strong>. Sigue siendo el proceso que tiene hoy Verónica con su nómina vía Banamex.</p>
+
+  <h3>Paso 7 · Pago a la línea</h3>
+  <p>Kugar paga lo consumido de la línea revolvente en su ciclo natural de tesorería.</p>
+</div>
+
+<!-- ─── 3. Lo que NO cambia en su cierre de mes ─── -->
+<div class="anexo-section">
+  <h2><span class="num">03 · Cierre de mes</span>Lo que no cambia en su política fiscal</h2>
+  <p>Esta es probablemente tu lectura más rápida: <strong>la política fiscal de Kugar no se modifica</strong>. Lo que cambia es la digitalización del proceso, no la lógica fiscal.</p>
+  <ul>
+    <li><strong>IVA acreditable.</strong> Sin cambio. Las facturas de los proveedores siguen llegando con el RFC de Kugar. Uvicuo no participa en el flujo del IVA del gasto operativo. El acreditamiento se ejerce como hoy.</li>
+    <li><strong>Categorías de gasto.</strong> La plataforma replica las que ya usa Verónica en SAP: gasto con comprobante con IVA, gasto con comprobante sin IVA (multas, gobierno, parte exenta de combustible), gasto sin comprobante (mochadas, gratificaciones, propinas con tratamiento fiscal definido en su política interna).</li>
+    <li><strong>Régimen del operador.</strong> El operador sigue recibiendo su sueldo por nómina. El gasto operativo viaja por una vía completamente separada. No hay riesgo de que la autoridad lo recaracterice como ingreso del operador.</li>
+  </ul>
+</div>
+
+<!-- ─── 4. Asientos contables ─── -->
+<div class="anexo-section">
+  <h2><span class="num">04 · Asiento contable</span>Cómo se ve esto en sus libros</h2>
+  <p>Asiento ilustrativo para una transacción típica con comprobante:</p>
+
+  <div class="accounting-grid">
+    <div>
+      <h4>Al consumir la línea</h4>
+      <table>
+        <thead><tr><th>Cuenta</th><th>Cargo</th><th>Abono</th></tr></thead>
+        <tbody>
+          <tr><td>Gasto operativo (combustible, casetas, mantenimiento)</td><td>$1,293.10</td><td></td></tr>
+          <tr><td>IVA acreditable</td><td>$206.90</td><td></td></tr>
+          <tr><td>Línea de crédito Uvicuo (pasivo CP)</td><td></td><td>$1,500.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4>Al pagar la línea</h4>
+      <table>
+        <thead><tr><th>Cuenta</th><th>Cargo</th><th>Abono</th></tr></thead>
+        <tbody>
+          <tr><td>Línea de crédito Uvicuo (pasivo CP)</td><td>$1,500.00</td><td></td></tr>
+          <tr><td>Bancos</td><td></td><td>$1,500.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>Para gasto sin comprobante (mochadas, gratificaciones), el asiento mantiene la misma estructura, sin línea de IVA acreditable, contra la cuenta de gastos no deducibles que Kugar ya tiene definida en su catálogo. <strong>No se introducen cuentas nuevas.</strong></p>
+  <p>El paso que hoy más alarga el cierre, la conciliación de PASE y la búsqueda de facturas perdidas, se reduce significativamente. Uvicuo entrega el archivo de cruces conciliado contra Webfleet y los CFDI ya están adjuntos a cada transacción. La preparación de papeles de trabajo del mes baja en horas-equipo.</p>
+</div>
+
+<!-- ─── 5. La línea de crédito ─── -->
+<div class="anexo-section">
+  <h2><span class="num">05 · Línea de crédito</span>La línea, en una página</h2>
+  <p>La línea funciona como una revolvente empresarial estándar. Kugar habilita un monto disponible para que las tarjetas operen, lo va consumiendo conforme la operación lo requiere y lo reembolsa en el ciclo de tesorería que mejor se ajuste a su flujo.</p>
+  <p>Existe un costo financiero asociado, predecible y planeable. <strong>En operación con tesorería disciplinada queda sustancialmente por debajo del costo total que hoy tiene su stack.</strong> El costo total actual incluye comisiones que les cobran los monederos de red cerrada en cargas foráneas, el sobreprecio del litro en esas mismas estaciones, los doble cobros de PASE que se descubren tarde y se contracargan parcialmente, y la fragilidad operativa de redes cerradas que se caen.</p>
+  <div class="pull">
+    <p>Uvicuo no es un tercero que cobra comisión por transacción al merchant como un monedero de red cerrada. Las gasolineras y talleres ya no le cobran a Kugar la comisión que pagan hoy. Nuestro modelo económico se compone de interchange Mastercard que la red nos paga por uso de la tarjeta y una suscripción mensual por usuario activo. La cifra exacta se construye en la propuesta comercial post-diagnóstico.</p>
+  </div>
+</div>
+
+<!-- ─── 6. Lo que pasa en una auditoría SAT ─── -->
+<div class="anexo-section">
+  <h2><span class="num">06 · Auditoría</span>Lo que pasa en una revisión SAT</h2>
+  <p>Es probablemente la pregunta que llevas en la cabeza. La respuesta corta: <strong>en una revisión SAT, ustedes salen mejor parados que hoy</strong>, no peor.</p>
+  <ul>
+    <li><strong>CFDI por cada gasto deducible</strong>, con RFC de Kugar como receptor, capturado y archivado en la plataforma.</li>
+    <li><strong>Comprobación digital con evidencia geolocalizada</strong> (foto con marca de agua de fecha, hora y coordenadas), trazabilidad por operador y por viaje.</li>
+    <li><strong>Layout de salida con los gastos clasificados</strong> según el catálogo contable de Kugar, exportable como CSV o JSON al ERP.</li>
+    <li><strong>Carpeta del auditor</strong> generada desde la plataforma en lugar de armarse manualmente desde papeles físicos.</li>
+  </ul>
+  <p>Comparado con el flujo actual donde Verónica recibe documentos físicos en buzón y persigue facturas en portales de gasolineras y peajes, el expediente fiscal queda más completo y más rápido de presentar.</p>
+</div>
+
+<!-- ─── 7. Comparativa con stack actual ─── -->
+<div class="anexo-section">
+  <h2><span class="num">07 · Comparativa</span>Lado a lado, con su operación de hoy</h2>
+  <table class="compare-table">
+    <thead>
+      <tr><th>Variable</th><th>Hoy en Kugar</th><th>Con Uvicuo</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>IVA acreditable</strong></td>
+        <td>Acreditamiento estándar contra factura del comercio</td>
+        <td>Idéntico. Uvicuo no toca el flujo de IVA</td>
+      </tr>
+      <tr>
+        <td><strong>Recuperación de facturas</strong></td>
+        <td>Verónica entra a portales de gasolineras y peajes manualmente; lo que no alcanza se asume como pérdida</td>
+        <td>Bot persigue el CFDI por ustedes en cada portal y lo entrega en la plataforma con XML+PDF</td>
+      </tr>
+      <tr>
+        <td><strong>Conciliación PASE</strong></td>
+        <td>~157 mil MXN/mes recuperados manualmente, "a ojo de buen cubero", el resto se pierde</td>
+        <td>Automática contra Webfleet, exhaustiva, continua, no depende de capacidad humana</td>
+      </tr>
+      <tr>
+        <td><strong>Tarjeta del operador</strong></td>
+        <td>Banamex personal, genera historial de crédito, exposición laboral</td>
+        <td>Mastercard empresarial a nombre de Kugar, sin historial personal del operador</td>
+      </tr>
+      <tr>
+        <td><strong>Cierre administrativo</strong></td>
+        <td>3 días promedio, 30 minutos por viaje complejo, reproceso por cancelaciones SAP</td>
+        <td>Horas, comprobación en tiempo real vía WhatsApp, cancelaciones gestionadas en plataforma</td>
+      </tr>
+      <tr>
+        <td><strong>Comisión a monederos</strong></td>
+        <td>Comisión transaccional + sobreprecio del litro en cargas foráneas</td>
+        <td>Sin comisión a monedero, red abierta Mastercard, cashback por uso</td>
+      </tr>
+      <tr>
+        <td><strong>Auditoría SAT</strong></td>
+        <td>Carpeta armada desde papeles físicos y archivos múltiples</td>
+        <td>Carpeta exportable desde la plataforma con CFDI y evidencia adjunta por viaje</td>
+      </tr>
+      <tr>
+        <td><strong>Migración a NetSuite</strong></td>
+        <td>Cambio de ERP requiere desarrollo de cabecera contable nuevo</td>
+        <td>Mismo archivo de salida; cuando NetSuite arranque, cambia la cabecera, no el contenido</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── 8. Riesgos pensados ─── -->
+<div class="anexo-section">
+  <h2><span class="num">08 · Riesgo</span>Los escenarios que ya pensamos</h2>
+
+  <h3>Fraude o uso indebido de la tarjeta</h3>
+  <p>Tres capas de control. Primero, la política preconfigurada declina cualquier transacción fuera de límite por categoría, monto por transacción o monto global. Segundo, el bloqueo de la tarjeta es de un clic desde la plataforma; el operador ya no puede usarla. Tercero, en caso de fraude con un comercio (cargo no autorizado, cobro duplicado), levantamos el contracargo Mastercard por ustedes y la red lo resuelve en menos de 30 días.</p>
+
+  <h3>Disputa con un comercio</h3>
+  <p>Uvicuo gestiona el contracargo administrativo por Kugar. Su equipo no pelea con el comercio; nosotros lo hacemos.</p>
+
+  <h3>Un mes con sobre-consumo o tesorería retrasada</h3>
+  <p>La línea no se cierra automáticamente. Cuando hay un mes complicado, se trabaja con el cliente para regularizar. El costo financiero sobre saldo no pagado es predecible y conocido de antemano.</p>
+
+  <h3>La migración a NetSuite tropieza o se atrasa</h3>
+  <p>Uvicuo entrega el mismo archivo plano consumible al SAP actual sin desarrollo. Si NetSuite avanza, mismo archivo, distinto consumo. <strong>No quedan atados al timing del ERP.</strong> Lo que invertimos en el flujo Uvicuo ahora no se desperdicia si NetSuite se mueve.</p>
+
+  <h3>Cancelación del contrato</h3>
+  <p>La línea se cierra y la información histórica queda exportable en su poder. No hay vendor lock-in en el dato.</p>
+</div>
+
+<!-- ─── 9. Referencia operativa ─── -->
+<div class="anexo-section">
+  <h2><span class="num">09 · Referencia</span>Quién más opera así, con SAP</h2>
+  <p><strong>Grupo Sanimex</strong> opera con Uvicuo sobre stack SAP, con más de 600 usuarios dados de alta en la plataforma. Es la referencia más cercana al perfil de Kugar en términos de tamaño operativo y de ERP.</p>
+  <p>La conversación directa con su equipo financiero está disponible en la siguiente etapa, después de la decisión interna que ustedes están tomando hoy. Preferimos coordinarla cuando ya tengas tus preguntas concretas formuladas; así esa llamada vale más para Kugar que un testimonio genérico.</p>
+</div>
+
+<!-- ─── 10. Las preguntas que ya nos han hecho otros CFOs ─── -->
+<div class="anexo-section">
+  <h2><span class="num">10 · CFO checklist</span>Las preguntas que ya nos han hecho otros directores financieros</h2>
+  <ul class="question-list">
+    <li><strong>¿Cuánto cuesta exactamente todo esto?</strong>
+    El costo total tiene dos componentes, la línea de crédito (descrita en sección 05) y la suscripción mensual por usuario activo. La cifra exacta de suscripción depende del número de operadores en el programa y del tipo de compromiso comercial. La construimos con los números del diagnóstico, no antes; cualquier asunción previa sería imprecisa.</li>
+    <li><strong>¿Qué pasa si tenemos un mes malo y no podemos pagar la línea?</strong>
+    Sección 08. La línea no se cierra automáticamente. El costo sobre saldo no pagado es predecible.</li>
+    <li><strong>¿Cómo se ve esto en una auditoría SAT?</strong>
+    Sección 06. Salen mejor parados que hoy, no peor. Carpeta digital exportable con CFDI y evidencia geolocalizada por viaje.</li>
+    <li><strong>¿La tarjeta genera ingreso fiscal del operador?</strong>
+    No. Sección 01. Tarjeta a nombre de Kugar; el operador no recibe ingreso ni construye historial de crédito personal.</li>
+    <li><strong>¿Cómo se integra con NetSuite cuando arranquemos?</strong>
+    Mismo archivo plano que entregamos al SAP actual. Cuando NetSuite avance, cambia la cabecera del consumo, no el contenido.</li>
+    <li><strong>¿Cambiamos de proveedor de monederos, de PASE, de gasolineras?</strong>
+    No para arrancar. Uvicuo se posiciona encima del stack actual, no compite con él. La integración con PASE se extiende durante la fase de co-creación.</li>
+    <li><strong>¿Qué pasa con nuestro autoconsumo en Mariposa, Apan y Zacatecas?</strong>
+    Se mantiene. La tarjeta puede operar en Mariposa y se puede priorizar como estación preferente en las políticas de gasto. El crédito interno con la gasolinera del grupo no se rompe; se integra.</li>
+    <li><strong>¿Y si después del diagnóstico decidimos no implementar?</strong>
+    El documento del diagnóstico es de Kugar y no se factura. Si no hay caso de negocio claro, mejor lo entendemos en el diagnóstico que después de implementar.</li>
+  </ul>
+</div>
+
+<!-- ─── 11. Lo que pedimos validar ─── -->
+<div class="anexo-section">
+  <div class="closing-block">
+    <h3>Lo que te pedimos validar antes de la mesa corporativa</h3>
+    <ol>
+      <li>Que la estructura legal y fiscal de las secciones 01 a 04 no genera contingencia para Kugar.</li>
+      <li>Que el tratamiento contable de las secciones 04 y 05 es consistente con su política de cuentas y con el cierre de mes que opera Verónica.</li>
+      <li>Que los escenarios de riesgo de la sección 08 están bien acotados desde tu lectura.</li>
+    </ol>
+    <p style="margin-top: 18px; font-size: 14px; color: var(--ink-3);">Si después de este documento queda alguna pregunta abierta, mándamela vía Juan Pablo y la respondo por escrito antes de la mesa corporativa. Si la respuesta requiere más profundidad de la que cabe en correo, podemos tener una llamada de 30 minutos uno a uno; tú decides cuándo y si encaja.</p>
+  </div>
+</div>
+
+<div style="margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: 0.04em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+  <div><a href="index.html" class="anexo-back" style="margin: 0;">← Volver al teaser</a></div>
+  <div>UVICUO · UV-032/2026 · KUGAR · ANEXO FINANCIERO · CONFIDENCIAL</div>
+</div>
+
+</main>
+
+</body>
+</html>
