@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Diagnóstico Uvicuo · Kugar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  AGENT BRIEF · UV-032 · KUGAR · 2026-05-07
+  ═══════════════════════════════════════════════════════════════════════════
+  PROPÓSITO: Trofeo del champion. JP García lo lleva a la mesa corporativa
+  convocada con Alfonso Tuccella (DG), Elías (DF), Gaby (Dir. Corporativo),
+  Aremis Cruz (Gte. Auditoría), Robert (familia JP) y Gastón.
+
+  PARÁMETROS APLICADOS (UV-032 · KUGAR):
+  · COMPANY_NAME           → Kugar (Transportes Kugar / Grupo Kugar; incluye Moss y JK Corporativo)
+  · CHAMPION_NAME          → Juan Pablo García (Procesos Internos / Auditoría)
+  · FOLIO                  → UV-032/2026
+  · QUARTER_SLOT           → 02/04 · Q2 2026
+  · FLEET_SIZE             → ~500 operadores entre Kugar + Moss
+  · ANNUAL_OPEX_MXN        → NO compartido por cliente · usar % aplicable, no MXN agregado
+  · CONTEXT_HOOK_DOBLE     → Vero (oct-2025) cifra documentada + Alfonso (7-may) destrabador
+  · DOMINANT_LEVER         → peajes (157K MXN/mes documentado en aclaraciones PASE)
+  · APPLICABLE_LEVERS      → peajes + viáticos en ruta + combustible foráneo (complemento)
+  · COMPARABLE_CASE        → carga seca con autoconsumo en bases + monederos foráneos
+  · OPEX_BREAKDOWN         → desconocido · % por palanca, sin MXN agregado
+
+  REGLAS APLICADAS:
+  · Cliente NO compartió data cruda agregada: number-block usa porcentajes (no MXN).
+  · Cifra ancla absoluta: 157 mil MXN/mes en aclaraciones PASE (Vero, oct-2025).
+  · Frame del wedge: casetas + efectivos en ruta. Combustible es complemento (autoconsumo maduro Mariposa).
+  · Caso fantasma: distribuidor de carga seca con autoconsumo (anonimizado).
+  · NO comparar contra marcas competidoras (memoria · usar genéricos por categoría).
+  · NO usar deducibilidad fiscal como diferenciador (memoria · es baseline en MX).
+  · NO usar "tarjeta de crédito al operador" (palabra prohibida · siempre "tarjeta empresarial").
+  · NO posicionar combustible al frente (memoria · cliente con autoconsumo maduro).
+  · PASE = "extenderíamos integración durante co-creación", NO afirmar APIs PASE existentes.
+  · Hipótesis declaradas como tales: el teaser invita al diagnóstico, no promete números.
+  · Mini-FAQ expandido en Champion Kit · 6 preguntas anticipadas (no 3 del default).
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="stylesheet" href="assets/uvicuo-base.css" />
+<link rel="stylesheet" href="assets/theme-teaser.css" />
+<link rel="stylesheet" href="assets/teaser.css" />
+
+</head>
+<body>
+
+<!-- ─── TOP NAV (slim · single row) ─── -->
+<header class="topnav">
+  <div class="topnav-row1">
+    <div class="topnav-row1-in">
+      <span class="led"></span>
+      <img src="assets/wordmark-white.png?v=2" alt="Uvicuo" class="wm" />
+      <span class="pad">//</span>
+      <span class="meta">FOLIO UV-032 · KUGAR</span>
+      <div class="right">
+        <span class="ts">PARA JUAN PABLO</span>
+        <span class="pad">·</span>
+        <span>CONFIDENCIAL</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="shell">
+  <main class="doc">
+
+    <!-- ─── 00 SELECTION HERO ─── -->
+    <header class="hero" id="sec-hero">
+      <div class="selno">
+        <span class="serial">// FOLIO <strong>UV-032/2026</strong> · KUGAR</span>
+      </div>
+      <h1 class="h1">Conseguiste un diagnóstico <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" class="wm-inline" /> <span class="light">para tu equipo.</span></h1>
+      <p class="lede">No es un sales deck genérico. Es un documento construido específicamente para Kugar después del trabajo que hicimos con Vero, Aremis y Héctor en otoño, y de la conversación con Alfonso la semana pasada. <strong>Está diseñado para que lo lleves a tu reunión corporativa</strong>: a Alfonso, Elías en finanzas, Gaby en gobierno, Aremis en auditoría, Robert y Gastón. Los seis deben entender en cinco minutos por qué arrancar el diagnóstico.</p>
+
+      <div class="seal">
+        <div class="crit">
+          <div class="st">Criterio de selección</div>
+          <div class="sd-text">Kugar cumple los <strong>cuatro criterios</strong> que usamos para decidir cuándo invertimos un diagnóstico: operación de carga consolidada con tres bases (Tuxtepec, Apan, Zacatecas) más Moss en contenedores, equipo operativo que ya mapeó procesos a fondo en sesiones presenciales con Vero y Aremis, validación del director general (Alfonso) sobre el modelo de tarjeta empresarial, voluntad explícita de involucrar al corporativo en la conversación. <strong>No corremos diagnóstico en cuentas que no los cumplen.</strong></div>
+        </div>
+        <div class="counter">
+          <div>
+            <div class="clab">Slots usados<br>este trimestre</div>
+            <div class="cval"><span>02</span><span class="of">/</span><span class="total">04</span></div>
+          </div>
+          <div class="ckey">// Q2 · 2026 · FOLIO 032</div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ─── 01 LETTER ─── -->
+    <section class="letter" id="sec-letter">
+      <p class="greet">Juan Pablo,</p>
+      <p>Cuando Verónica nos mostró el portal de PASE en octubre, dijo una frase que se nos quedó: que ella metía <strong>134 mil pesos en aclaraciones de un solo periodo</strong>, los usuarios de SAP otros 22, y reconocía que pudo haber sido más, pero a ojo de buen cubero ya no se cacha. Esa cifra es el piso visible de un proceso que hoy depende de la capacidad humana del equipo de tráfico y se pierde lo que no alcanza a revisarse.</p>
+      <p>La semana pasada, Alfonso lo formuló desde otro ángulo: <span class="acc">"si el valor agregado es más de lo que cuesta, yo no tengo inconveniente, pero quiero que el corporativo diga que nos beneficia."</span> Es la frase que destrabó la conversación y la que define lo que viene: que Elías, Gaby, Aremis, Robert y Gastón validen que esto no genera bloqueos de fondo desde su área.</p>
+      <p>En operaciones de carga con autoconsumo en bases del grupo y monederos foráneos para ruta, similares a la de Kugar, ese patrón de aclaraciones manuales y depósito personal a operadores suele esconder <strong>entre 3% y 8% del gasto operativo anual</strong> en peajes mal cobrados, comisiones de monederos generalistas y carga administrativa de liquidación. La cifra exacta para Kugar se construye con sus datos en el diagnóstico.</p>
+      <p>Por eso quisimos formalizar la invitación. Lo que sigue es <strong>tu kit para llevar a la mesa corporativa</strong>: las palancas que aplican, un caso real comparable de la misma categoría, cómo se lleva a cabo, y qué decir cuando te pregunten "¿y esto cuánto cuesta?". Diseñado para que lo proyectes en la sala con Alfonso y su equipo, no para que lo leas tú solo.</p>
+      <div class="signature">
+        <div class="sig-name">Iker Haro Escandón<small>FOUNDER &amp; CEO · UVICUO</small></div>
+        <div class="sig-meta">// CARTA INDIVIDUAL · UV-032</div>
+      </div>
+    </section>
+
+
+    <!-- ─── 02 NUMBER ─── -->
+    <div class="section-divider" data-step="02" data-title="Lo que estimamos"></div>
+    <div class="number-block" id="sec-numero">
+      <div class="lab">EN UNA LÍNEA · LO QUE ESTIMAMOS RECUPERABLE PARA KUGAR</div>
+      <div class="big">3–8<span class="scale">%</span></div>
+      <div class="unit">DEL GASTO OPERATIVO ANUAL · DISTRIBUIDO ENTRE PALANCAS</div>
+      <div class="annot">El porcentaje agregado <strong>aplica al subset de gasto donde cada palanca opera</strong>, no al OPEX total. La cifra absoluta en MXN se construye con los datos de Kugar en el diagnóstico: en nuestras conversaciones de octubre y noviembre, el equipo de Verónica documentó cifras parciales (157 mil MXN al mes en aclaraciones de PASE) que son piso visible, no agregado anual completo. <strong>El rango por palanca lo apostamos hoy</strong>; el monto exacto lo cuantifica el diagnóstico.</div>
+
+      <div class="compo">
+        <div class="ch">
+          <span class="ttl">Dónde está la oportunidad por palanca</span>
+          <span class="sub">Cada barra es el 100% del gasto anual en esa categoría. La franja verde marca el porcentaje recuperable observado en operaciones de carga comparables. <strong>Los porcentajes aplican a la palanca, no al OPEX total.</strong></span>
+        </div>
+
+        <div class="bars">
+          <div class="row">
+            <div class="rh">
+              <div class="name">Peajes <small>aclaraciones PASE manuales sin conciliación auditada</small></div>
+              <div class="rec">5–7% <small>de los cargos anuales</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:6%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Viáticos en ruta <small>tarjeta personal del operador y depósitos manuales</small></div>
+              <div class="rec">2–4% <small>del gasto en ruta</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:3%"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rh">
+              <div class="name">Combustible foráneo <small>cargas fuera de la red Mariposa, comisión de monedero</small></div>
+              <div class="rec">3–5% <small>del gasto foráneo, no del total</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:4%"></div>
+            </div>
+          </div>
+
+          <div class="row tbc">
+            <div class="rh">
+              <div class="name">Tesorería + cierre <small>por confirmar</small></div>
+              <div class="rec">+est. <small>2–4%</small></div>
+            </div>
+            <div class="bar">
+              <div class="fill-base"></div>
+              <div class="fill-loss" style="width:3%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-row">
+          <span>Cada barra es el 100% del gasto anual en su categoría · franja verde = recuperable</span>
+          <span class="legend">
+            <span class="swatch"><span class="sw base"></span>Gasto anual actual</span>
+            <span class="swatch"><span class="sw loss"></span>Recuperable estimado</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 04 CASE FANTASMA · TESTIMONIO ─── -->
+    <section class="case" id="sec-caso">
+      <span class="testimonial-pill">Operación comparable</span>
+
+      <h2>Un transportista de carga consolidada con <span class="light">cobertura nacional y autoconsumo en bases.</span> El equipo aseguraba tener el control.</h2>
+
+      <div class="case-grid">
+        <div class="story">
+          <p>El año pasado, el director de operaciones de un grupo transportista nacional (que pidió no ser nombrado) nos dijo que <strong>ya tenía controlado el gasto operativo</strong>. Autoconsumo de combustible en sus tres bases principales, monederos foráneos para cargas externas en ruta, tarjeta bancaria del operador para depósitos de viáticos y complementos, conciliación manual contra portal de su proveedor de TAG. La estructura era casi idéntica a la de Kugar.</p>
+          <p>Aceptaron el diagnóstico más por curiosidad que por urgencia. <strong>Cinco semanas después</strong>, la primera lámina del comité no fue una promesa de ahorro. Fue una sola gráfica: el costo administrativo invisible de las aclaraciones manuales en peajes, los doble cobros que se descubrían tarde, y la deuda implícita que cargaban los operadores con crédito personal en su tarjeta de nómina.</p>
+          <p>El recuperable no estaba en cambiar de proveedor. Estaba en <span class="acc">automatizar la conciliación que hoy depende de la capacidad humana del equipo de tráfico</span>. Cinco oportunidades concretas, dos implementables sin tocar contratos vigentes, tres de mediano plazo con co-creación.</p>
+        </div>
+
+        <aside class="quote-hero">
+          <div class="qlabel">Lo que dijo el director</div>
+          <div class="qtext">No estábamos haciendo las cosas mal. Es que la mitad del control vivía en la cabeza de mi gente de tráfico, y la otra mitad en aclaraciones que metían a ojo de buen cubero.</div>
+          <div class="qattr"><strong>Dirección de operaciones · Transportista de carga</strong><br>Cobertura nacional · sesión final del diagnóstico</div>
+        </aside>
+      </div>
+
+      <div class="out">
+        <div class="o"><div class="ok">Flota</div><div class="ov">~600</div><div class="od">Operadores · 3 bases con autoconsumo</div></div>
+        <div class="o"><div class="ok">Oportunidades</div><div class="ov uv">5</div><div class="od">2 sin tocar contratos · 3 de co-creación</div></div>
+        <div class="o"><div class="ok">Duración</div><div class="ov">5 sem</div><div class="od">De primera sesión a presentación final</div></div>
+      </div>
+
+      <div class="pivot"><strong>Kugar nos recuerda mucho a esa cuenta.</strong> Tamaño parecido, autoconsumo en bases del grupo, monedero foráneo para cargas en ruta, tarjeta personal del operador para complementos, equipo profesional convencido de que el gasto está controlado. Por eso el rango de 3 a 8% no es agresivo: es lo que hemos visto, una y otra vez, en operaciones casi idénticas.</div>
+    </section>
+
+    <!-- ─── 05 MÉTODO ─── -->
+    <div class="section-divider" data-step="03" data-title="Metodología"></div>
+    <section class="method" id="sec-metodo">
+      <h2>Cómo se lleva a cabo, <span class="light">de principio a fin.</span></h2>
+      <p class="deck">Cuatro fases, cuatro a seis semanas. El cronograma depende de la disponibilidad del equipo (Verónica, Aremis, Héctor en operativo; Elías y Gaby en corporativo) y de los datos. Hemos cerrado diagnósticos en nueve días y otros en siete semanas.</p>
+
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="phases">
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 01 · Sem 1</div>
+            <h4>Sesión de mapeo</h4>
+            <p>Sesión presencial en su corporativo o virtual con el equipo de Verónica. Ya tenemos avance del otoño pasado: lo extendemos a la conversación con Elías y Aremis para mapear el AS-IS completo de aclaraciones, liquidación y depósito a operadores.</p>
+            <div class="dur">90 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 02 · Sem 1–2</div>
+            <h4>Sesión estratégica</h4>
+            <p>Con Juan Pablo y Aremis (champion + auditoría) más Elías (finanzas) para validar ángulo, priorizar palancas y acordar qué datos compartir. Definimos alcance específico para Kugar y, si aplica, para Moss.</p>
+            <div class="dur">60 min · 1 sesión</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 03 · Sem 2–5</div>
+            <h4>Análisis de datos</h4>
+            <p>En gabinete con factura de combustible, estado de cuenta de PASE, reporte de liquidación SAP. Sin acceso directo a sus sistemas. Construcción del modelo financiero auditable.</p>
+            <div class="dur">2–4 sem · gabinete</div>
+          </div>
+          <div class="ph">
+            <div class="node"></div>
+            <div class="pn">// Fase 04 · Sem 5–6</div>
+            <h4>Presentación al comité</h4>
+            <p>Sesión final con el equipo ejecutivo que ustedes convoquen. Entregamos documento, modelo y plan priorizado. Q&amp;A abierto. El material queda en sus manos.</p>
+            <div class="dur">60–90 min · 1 sesión</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-foot">
+        <div>Tiempo total del equipo Kugar · <strong>5 a 7 horas en 4 roles</strong></div>
+        <div>Entregables · <strong>5 documentos auditables</strong></div>
+      </div>
+    </section>
+
+    <!-- ─── 06 LEVERS ─── -->
+    <div class="section-divider" data-step="03.B" data-title="Las palancas"></div>
+    <section class="levers" id="sec-palancas">
+      <h2>De las cinco palancas, <span class="light">tres aplican a Kugar.</span></h2>
+      <p class="deck">Lo identificamos en el trabajo de octubre y noviembre con su equipo. La cuarta (tesorería y cierre) se confirma al revisar tres meses de facturación. Las que destacamos abajo concentran la mayor parte del rango estimado.</p>
+
+      <div class="feat">
+        <div class="lev">
+          <div class="top"><span class="lid">P/01 · Peajes</span><span class="rng">5–7%</span></div>
+          <h4>Aclaraciones PASE sin conciliación auditada</h4>
+          <p>Verónica documentó 157 mil pesos en aclaraciones manuales de un solo periodo, a ojo de buen cubero. La conciliación contra estado de cuenta y bitácora no escala, así que los errores que no se alcanzan a revisar se asumen como pérdida operativa. Extenderíamos la integración con PASE durante la fase de co-creación.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/02 · Viáticos</span><span class="rng">2–4%</span></div>
+          <h4>Tarjeta personal del operador y depósitos manuales</h4>
+          <p>Hoy los anticipos y complementos en ruta pasan por la tarjeta bancaria del operador. Como Alfonso describió, eso genera el riesgo de operadores con crédito personal sobreendeudados. La tarjeta empresarial separa el ingreso del operador del gasto operativo de la empresa, sin tocar el convenio laboral.</p>
+        </div>
+        <div class="lev">
+          <div class="top"><span class="lid">P/03 · Combustible</span><span class="rng">3–5%</span></div>
+          <h4>Cargas foráneas en monederos generalistas</h4>
+          <p>El autoconsumo en Mariposa, Apan y Zacatecas está consolidado y se mantiene como hoy. Donde hay margen es en las cargas foráneas que pasan por monederos de red cerrada, donde la comisión y el sobreprecio del litro impactan el costo total. Aplica al subset foráneo, no al gasto total de combustible.</p>
+        </div>
+        <div class="lev todo">
+          <div class="top"><span class="lid">+1 por confirmar</span><span class="rng">2–4%</span></div>
+          <h4>Tesorería &amp; cierre contable</h4>
+          <p>Reproceso por cancelaciones en SAP, capital ocioso en saldos prepago, retraso del cierre contable por aclaraciones pendientes. Se confirma al revisar tres meses de facturación de Kugar.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── 07 CHAMPION KIT (mini-FAQ expandido a 6 preguntas) ─── -->
+    <div class="section-divider" data-step="04" data-title="Siguientes pasos"></div>
+    <section class="kit" id="sec-kit">
+      <div class="kit-intro">
+        <span class="pill-gold">Kit del champion · uso interno</span>
+        <h2>Para llevarlo <span class="light">a la mesa corporativa.</span></h2>
+        <p>Convoca <strong>45 a 60 minutos</strong> con Alfonso, Elías, Gaby, Aremis, Robert y Gastón. Iker se suma como tu invitado, presenta el rango y responde preguntas en directo.</p>
+      </div>
+
+      <div class="kit-list">
+        <div class="kit-row">
+          <div class="kit-row-num">01</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Quiénes deben estar</div>
+            <div class="kit-row-tx">Alfonso (DG) · Elías (DF, validación fiscal) · Gaby (Dir. Corporativo, gobierno) · Aremis (auditoría, ya conoce Uvicuo) · Robert · Gastón · Tú (champion)</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">02</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Cuánto dura</div>
+            <div class="kit-row-tx">45 a 60 minutos · 20 de presentación + Q&amp;A abierto</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">03</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Qué se proyecta</div>
+            <div class="kit-row-tx">Este mismo documento · sin material adicional</div>
+          </div>
+        </div>
+        <div class="kit-row">
+          <div class="kit-row-num">04</div>
+          <div class="kit-row-body">
+            <div class="kit-row-ti">Las preguntas que les van a hacer</div>
+            <ul class="kit-qa">
+              <li><strong>¿Cuánto cuesta el diagnóstico?</strong> Cero. Garantía de 3% mínimo o no pedimos nada más.</li>
+              <li><strong>¿Cambiamos de proveedor?</strong> No para arrancar. Uvicuo se posiciona encima de su Webfleet, su SAP migrando a NetSuite, sus monederos y su PASE. No compite con ellos.</li>
+              <li><strong>¿La tarjeta genera ingreso fiscal del operador?</strong> No. Se emite a nombre de Kugar, no del operador. Separa el sueldo del gasto operativo, no toca el convenio IMSS-Canacar.</li>
+              <li><strong>¿Cómo facturan los comercios?</strong> Directo a Kugar con su RFC. Uvicuo no se interpone en el CFDI; cuando el ticket no llega como factura, la pedimos por ustedes en el portal del comercio.</li>
+              <li><strong>¿Cómo se integra con NetSuite?</strong> Layout JSON o CSV con XML+PDF de cada transacción. Cuando NetSuite arranque, el archivo cambia de cabecera, no de contenido. Sin desarrollo desperdiciado en SAP.</li>
+              <li><strong>¿Qué pasa si decidimos no implementar después del diagnóstico?</strong> El documento es de Kugar. No se factura. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-template">
+        <div class="kit-template-h">
+          <span class="ct">Plantilla de invitación · copia y pega</span>
+          <button class="copy" data-target="mail-copy">Copiar</button>
+        </div>
+<pre id="mail-copy">Asunto: 45 min · Uvicuo · diagnóstico operativo Kugar · convocatoria corporativa
+
+Hola equipo,
+
+Como conversamos con Alfonso la semana pasada, los convoco para revisar la oportunidad de un diagnóstico con Uvicuo. Trabajan con flotas como la nuestra (carga, paquetería, distribución) para liberar capital atrapado en peajes, viáticos en ruta y comisiones de monederos foráneos.
+
+Kugar fue seleccionada para uno de sus diagnósticos del trimestre, sin costo. En octubre y noviembre el equipo de Vero, Aremis y Héctor mapeó procesos a fondo; ahora Iker quiere alinear la conversación con el corporativo antes de arrancar formalmente, como pidió Alfonso.
+
+El objetivo de la sesión: validar que no hay bloqueos fiscales, laborales o contables desde su área. Si está limpio, salimos con fecha de diagnóstico.
+
+Adjunto el resumen completo: [LINK GITHUB PAGES · pegar al hostear]
+</pre>
+      </div>
+    </section>
+
+    <!-- ─── LETRA CHICA · 3 columnas siempre visibles ─── -->
+    <section class="finep" id="sec-detalle">
+      <div class="finep-intro">
+        <div class="lab">El detalle del detalle</div>
+        <h3>La letra chica, <span class="light">a la vista.</span></h3>
+      </div>
+
+      <div class="finep-grid">
+        <div class="finep-col">
+          <div class="finep-num">01</div>
+          <h4>Qué entregamos</h4>
+          <div class="finep-sub">5 documentos auditables</div>
+          <ul class="finep-list">
+            <li>Mapeo operativo del AS-IS</li>
+            <li>Cuantificación por palanca con sus datos</li>
+            <li>Plan de intervención priorizado</li>
+            <li>Modelo financiero auditable en .xlsx</li>
+            <li>Sesión de presentación al comité</li>
+          </ul>
+        </div>
+
+        <div class="finep-col">
+          <div class="finep-num">02</div>
+          <h4>Quiénes participan</h4>
+          <div class="finep-sub">5 a 7 horas · 4 roles</div>
+          <ul class="finep-list finep-roles">
+            <li><strong>Champion</strong> <span class="t">2–3 h</span><small>JP convoca, comparte datos, valida hallazgos</small></li>
+            <li><strong>Operativo</strong> <span class="t">1.5 h</span><small>Vero, Aremis, Héctor extienden el mapeo del otoño</small></li>
+            <li><strong>Finanzas</strong> <span class="t">30–90 min</span><small>Elías valida tratamiento contable y NetSuite</small></li>
+            <li><strong>Gobierno corporativo</strong> <span class="t">25–45 min</span><small>Gaby valida implicaciones laborales y de grupo</small></li>
+          </ul>
+        </div>
+
+        <div class="finep-col finep-col--accent">
+          <div class="finep-num">03</div>
+          <h4>Inversión y garantía</h4>
+          <div class="finep-sub">$0 para Kugar</div>
+          <div class="finep-price">
+            <div class="strike">$180–360K MXN</div>
+            <div class="free">SIN COSTO</div>
+          </div>
+          <p class="finep-p">Cada diagnóstico cuesta entre <strong>$180–360K MXN</strong> de tiempo fundador. No facturamos a Kugar: la inversión la asumimos como continuidad del trabajo iniciado con Verónica, Aremis y Héctor en otoño 2025.</p>
+          <div class="finep-guar">
+            <div class="glab">Garantía</div>
+            <div class="gtxt">Si no identificamos al menos <strong>3% de ahorro potencial</strong>, no les pedimos nada más.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BAR ─── -->
+    <div class="cta-bar" id="sec-cierre">
+      <div class="lab">Siguiente paso</div>
+      <h3>Nuestro compromiso: <span class="light">agregarle valor a Kugar desde la primera conversación.</span></h3>
+      <p>Este diagnóstico es lo primero que queremos hacer por ustedes, no una propuesta comercial disfrazada. Sea o no Uvicuo el camino, salen con un mapa cuantificado de dónde se está yendo el dinero entre peajes, viáticos en ruta y combustible foráneo, y un plan accionable. Si después tiene sentido seguir, seguimos. Si no, el trabajo es suyo.</p>
+      <div class="ctas">
+        <a href="https://wa.me/+5215517001612?text=Hola%20Iker%2C%20soy%20Juan%20Pablo%20de%20Kugar.%20Sobre%20el%20diagn%C3%B3stico%20UV-032..." class="primary"><span class="ic">↗</span>WhatsApp con Iker</a>
+        <a href="mailto:iker@uvicuo.com?subject=Diagn%C3%B3stico%20Kugar%20%C2%B7%20UV-032&amp;body=Hola%20Iker%2C" class="ghost"><span class="ic">@</span>iker@uvicuo.com</a>
+      </div>
+      <div class="signoff">
+        <span>IKER HARO ESCANDÓN</span>
+        <span class="pad">·</span>
+        <span><strong>Founder &amp; CEO Uvicuo</strong></span>
+        <span class="pad">·</span>
+        <span>Responde 24h hábiles</span>
+      </div>
+      <img src="assets/wordmark-white.png?v=2" alt="" class="wm-seal" aria-hidden="true" />
+    </div>
+
+    <!-- ─── CLIENT STRIP ─── -->
+    <section class="clientstrip">
+      <div class="hd">
+        <div class="ti"><small>Confianza operativa</small>+50 empresas confían en Uvicuo para la gestión de sus gastos en ruta</div>
+      </div>
+      <div class="grid">
+        <div class="cell"><img src="assets/clients/paquetexpress.png?v=2" alt="Paquete Express" /></div>
+        <div class="cell"><img src="assets/clients/99minutos.png?v=2" alt="99 Minutos" /></div>
+        <div class="cell"><img src="assets/clients/lapisa.png?v=2" alt="Lapisa" /></div>
+        <div class="cell"><img src="assets/clients/dolphy.png?v=2" alt="Dolphy" /></div>
+        <div class="cell"><img src="assets/clients/bimbo.svg?v=2" alt="Bimbo" /></div>
+        <div class="cell"><img src="assets/clients/mastercard.svg?v=2" alt="Mastercard" /></div>
+      </div>
+    </section>
+
+    <!-- ─── COLOPHON ─── -->
+    <div class="colo">
+      <div class="clients">
+        <img src="assets/wordmark-green.png?v=2" alt="Uvicuo" style="height:14px;width:auto;vertical-align:middle;margin-right:10px;" />
+      </div>
+      <div class="right">
+        Folio UV-032<span class="pad">//</span>Confidencial<span class="pad">//</span><span class="v">2026</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<a href="#sec-hero" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+
+<script>
+// Copy-to-clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+
+// Scroll progress + back to top
+(() => {
+  const progress = document.getElementById('progress');
+  const totop = document.getElementById('totop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = Math.min(100, (y / Math.max(h, 1)) * 100) + '%';
+    totop.classList.toggle('visible', y > 600);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
