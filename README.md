@@ -10,6 +10,8 @@ sales-artifacts/
 │   └── uvi-NNN-empresa/
 ├── decks/            · Deck comercial 10 slides · post-primer-contacto
 │   └── uvi-NNN-empresa/
+├── kits/             · Kits multi-pieza · pre/post reunión corporativa
+│   └── uvi-NNN-empresa/
 ├── propuestas/       · Propuesta cerrada · post-diagnóstico (futuro)
 └── diagnosticos/     · Documento consultivo completo (futuro)
 ```
@@ -18,6 +20,7 @@ sales-artifacts/
 
 - Teaser: `https://ikerharo.github.io/sales-artifacts/teasers/uvi-NNN-empresa/`
 - Deck:   `https://ikerharo.github.io/sales-artifacts/decks/uvi-NNN-empresa/`
+- Kit:    `https://ikerharo.github.io/sales-artifacts/kits/uvi-NNN-empresa/`
 
 ## Convenciones
 
