@@ -460,6 +460,64 @@
   }
   .check-item strong { color: var(--ink); font-weight: 600; }
 
+  /* Próximos pasos (numbered steps) */
+  .steps {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 920px;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 22px 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .step.primary {
+    border-color: var(--uv-green);
+    border-width: 2px;
+    background: var(--uv-green-soft);
+  }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--uv-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .step.primary .step-num { background: var(--uv-green-deep); }
+  .step h4 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .step p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Hero accent for title slide */
+  .title-accent {
+    width: 80px;
+    height: 4px;
+    background: var(--uv-green);
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
   /* Final slide */
   .final {
     text-align: left;
@@ -604,6 +662,16 @@
     .check-item { grid-template-columns: 22px 1fr; padding: 13px 0; font-size: 14.5px; line-height: 1.4; }
     .check-item:before { font-size: 18px; }
 
+    /* Steps */
+    .steps { margin-top: 20px; gap: 10px; }
+    .step { grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 18px; }
+    .step-num { width: 28px; height: 28px; font-size: 13px; }
+    .step h4 { font-size: 16px; }
+    .step p { font-size: 13.5px; line-height: 1.45; }
+
+    /* Title accent */
+    .title-accent { width: 60px; height: 3px; margin-bottom: 20px; }
+
     /* Final */
     .final h2 { font-size: 30px; }
     .final .body { font-size: 17px; margin-top: 22px; }
@@ -621,95 +689,87 @@
 
   <!-- 1. TITLE -->
   <section class="slide active title-slide">
-    <div class="eyebrow">Reset comercial · Batch 1</div>
+    <div class="title-accent"></div>
+    <div class="eyebrow">Uvicuo 3.0 · Mayo 2026</div>
     <h1>Metepori</h1>
-    <div class="sub">Cómo cerramos el ciclo y reescribimos las condiciones.</div>
+    <div class="sub">Llegó la plataforma que estuvimos construyendo. Y con ella, una propuesta para abrir el siguiente capítulo juntos.</div>
     <div class="deck-meta">
-      <span>Mayo 2026</span>
-      <span>Discusión interna</span>
-      <span>Iker</span>
+      <span>Para su equipo directivo</span>
+      <span>Propuesta comercial</span>
     </div>
   </section>
 
-  <!-- 2. TL;DR -->
+  <!-- 2. EL SIGUIENTE PASO -->
   <section class="slide">
-    <div class="eyebrow">Resumen</div>
-    <h2>En una página.</h2>
+    <div class="eyebrow">El siguiente paso</div>
+    <h2>Lo que viene para Metepori.</h2>
     <div class="body">
-      <p>Metepori opera hoy con condiciones diseñadas para <strong>100 usuarios</strong>. Tiene <strong>16</strong>.</p>
-      <p>El costo de capital que asumimos no se justifica con el ingreso que recibimos. Y las mejoras que ellos pidieron las reservamos para Uvicuo 3.0 — que ya está.</p>
-      <p>Proponemos dos rutas con <strong>pricing alineado al tamaño real</strong>, nuevos términos de financiamiento y cashback 12 meses como promoción. La decisión del cliente es binaria — A o B, no hay C.</p>
+      <p>Uvicuo 3.0 ya está vivo, y trae lo que nos pidieron en su momento: <strong>reportes nuevos, controles diferenciados por tipo de usuario, automatizaciones</strong>.</p>
+      <p>Junto con la nueva plataforma, llega un modelo comercial más simple: pricing por tiers, términos de financiamiento predecibles y un <strong>cashback promocional de 12 meses</strong> como bienvenida.</p>
+      <p>Y dos rutas para que elijan la que mejor encaja con su plan. Esta presentación las describe.</p>
     </div>
   </section>
 
-  <!-- 3. EL PROBLEMA -->
+  <!-- 3. SU OPERACIÓN -->
   <section class="slide">
-    <div class="eyebrow">El problema</div>
-    <h2>La distorsión, en números.</h2>
+    <div class="eyebrow">Su operación con Uvicuo</div>
+    <h2>Lo que han construido.</h2>
     <div class="stats">
       <div class="stat">
-        <div class="stat-num">16<span class="unit">/100</span></div>
-        <div class="stat-label">Usuarios activos vs prometidos</div>
+        <div class="stat-num">16</div>
+        <div class="stat-label">Usuarios activos en la plataforma</div>
       </div>
       <div class="stat">
         <div class="stat-num">$150K<span class="unit">MXN</span></div>
         <div class="stat-label">Línea de crédito vigente</div>
-        <div class="stat-context">Dimensionada para los 100</div>
       </div>
       <div class="stat highlight">
         <div class="stat-num">$1.0M<span class="unit">MXN</span></div>
         <div class="stat-label">Flujo mensual operado</div>
-        <div class="stat-context">Rotación 6.78x sobre la línea</div>
+        <div class="stat-context">A través de su línea revolvente</div>
       </div>
       <div class="stat">
-        <div class="stat-num">$7.7K<span class="unit">MXN</span></div>
-        <div class="stat-label">Ingreso mensual Uvicuo (total)</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">0.34<span class="unit">%</span></div>
-        <div class="stat-label">Margen sobre el flujo intermediado</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">$279<span class="unit">MXN</span></div>
-        <div class="stat-label">Costo por empleado (preferencial)</div>
+        <div class="stat-num">6.78<span class="unit">×</span></div>
+        <div class="stat-label">Rotación mensual de su línea</div>
+        <div class="stat-context">Indicador de uso intensivo</div>
       </div>
     </div>
     <div class="punch">
-      El precio que paga Metepori hoy fue diseñado para una compañía 6× más grande que la que terminó siendo. Y nosotros seguimos fondeando el flujo como si ya estuvieran ahí.
+      El flujo creció más rápido que la estructura. La línea, el pricing y los términos fueron pensados para una etapa distinta — es momento de actualizarlos al tamaño y planes reales de hoy.
     </div>
   </section>
 
-  <!-- 4. HISTORIA -->
+  <!-- 4. EL CAMINO -->
   <section class="slide">
-    <div class="eyebrow">Cómo llegamos aquí</div>
-    <h2>Una historia de promesas a medias.</h2>
+    <div class="eyebrow">El camino</div>
+    <h2>Cómo llegamos aquí, juntos.</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-num">01</div>
         <div>
-          <div class="tl-title">Inicio. Metepori se compromete a 100 usuarios.</div>
-          <div class="tl-body">Diseñamos pricing preferencial, línea de crédito y términos pensando en ese tamaño.</div>
+          <div class="tl-title">Arrancamos con una visión ambiciosa.</div>
+          <div class="tl-body">Diseñamos términos preferenciales pensando en una trayectoria de crecimiento conjunta.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">02</div>
         <div>
-          <div class="tl-title">El estancamiento. Llegan a 16 y ahí se quedan.</div>
-          <div class="tl-body">La operación sigue creciendo en flujo, pero no en usuarios. Empiezan a empujar la línea más allá de su uso natural.</div>
+          <div class="tl-title">Su operación creció — en flujo y en solidez.</div>
+          <div class="tl-body">Metepori se consolidó. Y desde ahí nos pidieron mejoras puntuales para dar el siguiente salto: reportes, controles diferenciados, automatización de peajes.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">03</div>
         <div>
-          <div class="tl-title">El pedido. Nos solicitan mejoras para poder escalar.</div>
-          <div class="tl-body">Reportes, controles diferenciados por tipo de usuario, automatización de peajes. Los reservamos para Uvicuo 3.0.</div>
+          <div class="tl-title">Esas mejoras requerían refundar la plataforma.</div>
+          <div class="tl-body">Lo guardamos para Uvicuo 3.0. Y hoy ya está vivo — con todo lo que pidieron y más.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-num">04</div>
         <div>
-          <div class="tl-title">El desbalance que cargamos los dos.</div>
-          <div class="tl-body">Condiciones congeladas. Costo de capital real para Uvicuo. Cliente sin las herramientas que necesitaba para escalar. Ambos cumplimos a medias.</div>
+          <div class="tl-title">Es momento de retomar la trayectoria.</div>
+          <div class="tl-body">Con la nueva plataforma y un modelo comercial más simple, podemos volver a alinear los términos al plan real de Metepori.</div>
         </div>
       </div>
     </div>
@@ -717,42 +777,42 @@
 
   <!-- 5. LO QUE CAMBIA: 3 PALANCAS -->
   <section class="slide">
-    <div class="eyebrow">Lo que cambia ahora</div>
-    <h2>Tres palancas, independiente de A o B.</h2>
+    <div class="eyebrow">Lo que cambia</div>
+    <h2>Tres palancas, una nueva forma de operar.</h2>
     <div class="cards-3">
       <div class="card">
         <div class="card-num">1</div>
-        <h4>Uvicuo 3.0 destraba lo que pidieron.</h4>
-        <p>Reportes nuevos, auto-aprobación diferenciada por grupo de usuarios (operadores vs admin/ejecutivos), facturación automática de peajes. Lo que reservamos vuelve a estar sobre la mesa.</p>
+        <h4>Uvicuo 3.0 trae lo que nos pidieron.</h4>
+        <p>Reportes nuevos, auto-aprobación diferenciada por tipo de usuario (operadores vs admin/ejecutivos), facturación automática de peajes. Las herramientas para crecer sin fricción operativa.</p>
       </div>
       <div class="card">
         <div class="card-num">2</div>
-        <h4>Términos de financiamiento simplificados.</h4>
-        <p>Adiós a la penalización por revolvencia compleja. Ahora: <strong>primeros 5 días con cashback, intereses a partir del día 6</strong>. Mismo modelo para todo el portafolio.</p>
+        <h4>Términos de financiamiento simples.</h4>
+        <p>Primeros 5 días con <strong>cashback</strong>, intereses a partir del día 6. Predecible, presupuestable, comparable contra el costo de oportunidad de su cash.</p>
       </div>
       <div class="card">
         <div class="card-num">3</div>
         <h4>Cashback promocional 12 meses.</h4>
-        <p>Incentivo de transición al nuevo modelo. Aplica desde el primer mes del nuevo contrato. Es la "compensación" implícita por las mejoras que llegaron tarde.</p>
+        <p>Activo desde el primer mes del nuevo contrato. Una bienvenida al nuevo modelo — un retorno tangible sobre cada peso utilizado en la plataforma.</p>
       </div>
     </div>
   </section>
 
   <!-- 6. PRICING TIERS -->
   <section class="slide">
-    <div class="eyebrow">Pricing estandarizado · Aplica a todo el portafolio</div>
-    <h2>Tres tiers. Sin precios ad hoc.</h2>
+    <div class="eyebrow">Pricing transparente</div>
+    <h2>Tres tiers. Mismo trato para todos.</h2>
     <div class="body" style="max-width: 920px; margin-bottom: 8px;">
-      <p>Acabamos con el patchwork heredado (5 modelos coexistiendo). Pricing por usuario ahora depende solo del tamaño del cliente — el mismo trato para todos en el mismo tier.</p>
+      <p>Pricing por usuario depende solo del tamaño de la operación. Sin negociaciones caso a caso, sin precios opacos. La tabla es pública para todo nuestro portafolio.</p>
     </div>
     <div class="tiers">
       <div class="tier current">
-        <div class="tier-tag">Metepori hoy</div>
+        <div class="tier-tag">Su tier hoy</div>
         <div>
           <div class="tier-band">&lt; 20 usuarios</div>
           <div class="tier-meta">Tier de entrada</div>
         </div>
-        <div class="tier-meta">Cliente paga precio sin descuento por volumen — refleja el costo real de servir cuentas pequeñas.</div>
+        <div class="tier-meta">Donde están hoy con sus 16 usuarios activos.</div>
         <div class="tier-price">
           <span class="currency">$</span>20<span class="currency"> USD</span>
           <span class="per">por usuario / mes</span>
@@ -764,19 +824,19 @@
           <div class="tier-band">50 usuarios</div>
           <div class="tier-meta">Tier intermedio</div>
         </div>
-        <div class="tier-meta">Descuento por volumen entra al cruzar el primer umbral. <em>Pendiente confirmar breakpoint exacto.</em></div>
+        <div class="tier-meta">Primer descuento por volumen.</div>
         <div class="tier-price">
           <span class="currency">$</span>16.50<span class="currency"> USD</span>
           <span class="per">por usuario / mes</span>
         </div>
       </div>
       <div class="tier target">
-        <div class="tier-tag">Metepori si escala (Opción B)</div>
+        <div class="tier-tag">Tier al que pueden llegar</div>
         <div>
           <div class="tier-band">100+ usuarios</div>
           <div class="tier-meta">Tier de volumen</div>
         </div>
-        <div class="tier-meta">Pricing de cuenta grande. El upside para Uvicuo viene del flujo de financiamiento, no del SaaS unitario.</div>
+        <div class="tier-meta">Pricing más bajo por usuario — el descuento que aplica al cruzar los 100.</div>
         <div class="tier-price">
           <span class="currency">$</span>14<span class="currency"> USD</span>
           <span class="per">por usuario / mes</span>
@@ -784,24 +844,24 @@
       </div>
     </div>
     <div class="punch" style="margin-top: 28px;">
-      Misma lógica para todos: si Metepori escala a 100, su precio por usuario <strong>baja 30%</strong> (de $20 a $14). El "beneficio por volumen" no se negocia caso a caso — está escrito en la tabla.
+      Si Metepori escala a 100 usuarios, su precio por usuario <strong>baja 30%</strong> (de $20 a $14 USD). El beneficio por volumen está escrito en la tabla, no se negocia.
     </div>
   </section>
 
   <!-- 7. FINANCIAMIENTO ANTES / DESPUES -->
   <section class="slide">
-    <div class="eyebrow">Palanca 2 — Financiamiento</div>
-    <h2>Lo opaco se va. Lo nuevo es legible en una línea.</h2>
+    <div class="eyebrow">Financiamiento · Más simple</div>
+    <h2>Lo opaco se va. Lo nuevo, en una línea.</h2>
     <div class="ba-grid">
       <div class="ba-card">
         <div class="ba-tag before">Antes</div>
-        <h4>Penalización por revolvencia compleja</h4>
-        <p>Reglas de comisión escalonada difíciles de explicar y de presupuestar. El cliente no podía simular el costo de capital de su mes antes de empezarlo.</p>
+        <h4>Comisión escalonada compleja</h4>
+        <p>Reglas difíciles de simular antes de empezar el mes. El costo de capital quedaba en una zona gris hasta el cierre.</p>
       </div>
       <div class="ba-card after">
         <div class="ba-tag after">Ahora</div>
-        <h4>5 días cashback, después intereses</h4>
-        <p>Primeros 5 días generan <strong>cashback</strong>. A partir del día 6 corre interés. Predecible, explicable en una junta, comparable contra el costo de oportunidad del cash propio.</p>
+        <h4>5 días con cashback, después interés</h4>
+        <p>Días 1 al 5: <strong>cashback</strong> sobre cada peso utilizado. Desde el día 6 corre interés. Simulable al inicio del mes, comparable con el costo de su cash propio.</p>
       </div>
     </div>
   </section>
@@ -809,12 +869,12 @@
   <!-- 8. OPCION A -->
   <section class="slide">
     <div class="eyebrow">Ruta uno</div>
-    <h2>Opción A — Mantener tamaño.</h2>
+    <h2>Opción A — Consolidar su tamaño actual.</h2>
     <div class="option-card">
       <div class="option-header">
-        <div class="option-label">Para si no hay apetito de crecimiento ahora</div>
+        <div class="option-label">Para los que prefieren afianzar antes de crecer</div>
       </div>
-      <div class="option-sub">Operar sano en 16 usuarios, con pricing del tier &lt;20.</div>
+      <div class="option-sub">Misma escala, nueva plataforma, nuevos términos.</div>
       <div class="terms">
         <div>
           <div class="term-label">Usuarios</div>
@@ -825,16 +885,16 @@
           <div class="term-value">$20 USD <span class="small">/mes — tier &lt;20</span></div>
         </div>
         <div>
-          <div class="term-label">SaaS base / mes</div>
+          <div class="term-label">SaaS / mes</div>
           <div class="term-value">~$320 USD <span class="small">≈ $5,650 MXN</span></div>
         </div>
         <div>
           <div class="term-label">Línea de crédito</div>
-          <div class="term-value">Ajustada al tamaño <span class="small">[cifra a definir]</span></div>
+          <div class="term-value">Ajustada al tamaño actual</div>
         </div>
         <div>
           <div class="term-label">Financiamiento</div>
-          <div class="term-value">5 días cashback + interés <span class="small">reemplaza el cobro de utilización actual</span></div>
+          <div class="term-value">5 días cashback + interés <span class="small">reemplaza la comisión escalonada</span></div>
         </div>
         <div>
           <div class="term-label">Cashback promo 12 meses</div>
@@ -842,7 +902,7 @@
         </div>
       </div>
       <div class="quote-msg">
-        "Reconocemos que se quedaron donde se quedaron. Esta es la propuesta para operar sano en ese tamaño — pricing estándar del tier &lt;20, financiamiento simple, sin el costo de servirles como si fueran 100."
+        Para quienes valoran consolidar lo construido antes del siguiente salto. Pricing del tier actual, financiamiento transparente, cashback de bienvenida — todas las mejoras de la nueva plataforma, al tamaño de hoy.
       </div>
     </div>
   </section>
@@ -850,32 +910,32 @@
   <!-- 9. OPCION B -->
   <section class="slide">
     <div class="eyebrow">Ruta dos</div>
-    <h2>Opción B — Volver a la trayectoria original.</h2>
+    <h2>Opción B — Acelerar el siguiente capítulo.</h2>
     <div class="option-card B">
       <div class="option-header">
-        <div class="option-label">Para si ahora sí están listos para llegar a 100</div>
+        <div class="option-label">Para los que están listos para el siguiente salto</div>
       </div>
-      <div class="option-sub">Compromiso de 100 usuarios. Cruzan el tier de volumen — pricing por usuario baja 30%.</div>
+      <div class="option-sub">100 usuarios. Tier de volumen. Línea ampliada para respaldar el crecimiento.</div>
       <div class="terms">
         <div>
           <div class="term-label">Usuarios objetivo</div>
-          <div class="term-value">100 <span class="small">commitment con ramp-up</span></div>
+          <div class="term-value">100 <span class="small">con ramp-up calendarizado</span></div>
         </div>
         <div>
           <div class="term-label">Pricing por usuario</div>
           <div class="term-value">$14 USD <span class="small">/mes — tier 100+ (vs $20 en A)</span></div>
         </div>
         <div>
-          <div class="term-label">SaaS base / mes (a 100)</div>
+          <div class="term-label">SaaS / mes (a 100)</div>
           <div class="term-value">~$1,400 USD <span class="small">≈ $24,700 MXN</span></div>
         </div>
         <div>
           <div class="term-label">Línea de crédito</div>
-          <div class="term-value">Ampliada <span class="small">[cifra a definir]</span></div>
+          <div class="term-value">Ampliada <span class="small">para apalancar el crecimiento</span></div>
         </div>
         <div>
           <div class="term-label">Financiamiento</div>
-          <div class="term-value">5 días cashback + interés <span class="small">mayor flujo = mayor revenue financiero</span></div>
+          <div class="term-value">5 días cashback + interés</div>
         </div>
         <div>
           <div class="term-label">Cashback promo 12 meses</div>
@@ -883,21 +943,21 @@
         </div>
       </div>
       <div class="quote-msg">
-        "Si ahora sí están listos para llegar a donde dijimos hace un año, vamos. El descuento por volumen no es favor — es la tabla estándar. Lo que viene atado al commitment es la línea más grande para apalancar el crecimiento."
+        Si están listos para acelerar, esta es la propuesta que los acompaña. Precio por usuario 30% más bajo, línea ampliada para apalancar el crecimiento, y el respaldo completo de Uvicuo 3.0 desde el día uno.
       </div>
     </div>
   </section>
 
-  <!-- 9. A vs B -->
+  <!-- 10. A vs B -->
   <section class="slide">
-    <div class="eyebrow">A vs B, lado a lado</div>
-    <h2>La decisión es binaria.</h2>
+    <div class="eyebrow">A vs B</div>
+    <h2>Lado a lado.</h2>
     <table class="compare">
       <thead>
         <tr>
           <th></th>
-          <th>A — Mantener</th>
-          <th class="b-col">B — Escalar a 100</th>
+          <th>A — Consolidar</th>
+          <th class="b-col">B — Acelerar a 100</th>
         </tr>
       </thead>
       <tbody>
@@ -912,7 +972,7 @@
           <td class="num b-col">$14 USD <span style="font-weight:400; color: var(--uv-green-deep); font-size: 13px; margin-left: 6px;">−30%</span></td>
         </tr>
         <tr>
-          <td class="feature">SaaS base / mes (target)</td>
+          <td class="feature">SaaS / mes (target)</td>
           <td class="num">~$5,650 MXN</td>
           <td class="num b-col">~$24,700 MXN</td>
         </tr>
@@ -937,39 +997,67 @@
           <td class="b-col"><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td class="feature">Uvicuo 3.0 (reportes + auto-aprobación)</td>
+          <td class="feature">Uvicuo 3.0 completo</td>
           <td><span class="check">✓</span></td>
           <td class="b-col"><span class="check">✓</span></td>
         </tr>
       </tbody>
     </table>
     <div class="punch">
-      No hay opción C. La conversación con Metepori arranca aceptando que el statu quo se rompe — la única pregunta es en qué dirección.
+      Las dos rutas vienen con la plataforma nueva, los nuevos términos y el cashback de bienvenida. La diferencia es el ritmo de crecimiento al que quieren ir.
     </div>
   </section>
 
-  <!-- 10. PENDIENTES DEL EQUIPO -->
+  <!-- 11. PRÓXIMOS PASOS -->
   <section class="slide">
-    <div class="eyebrow">Lo que necesitamos del equipo</div>
-    <h2>Para destrabar antes de mandar.</h2>
-    <div class="checklist">
-      <div class="check-item"><span><strong>Tier intermedio</strong> — ¿el breakpoint es 50 usuarios? ¿Otro número? Hay que cerrarlo antes de mandar al cliente.</span></div>
-      <div class="check-item"><span><strong>Línea de crédito A</strong> — ¿bajamos a $80K, mantenemos $150K, ajustamos cobro de utilización?</span></div>
-      <div class="check-item"><span><strong>Línea de crédito B</strong> — ¿$500K? ¿$750K al llegar a 100?</span></div>
-      <div class="check-item"><span><strong>Ramp-up B</strong> — ¿12, 18, 24 meses para llegar a los 100? ¿Hay penalización si no llegan?</span></div>
-      <div class="check-item"><span><strong>Reportes específicos</strong> — qué prometemos como "ya arreglado en 3.0" para honrar el pedido original</span></div>
-      <div class="check-item"><span><strong>Plazo de decisión</strong> — ¿2 semanas? ¿1 mes? ¿condicionado a fecha de migración Batch 1?</span></div>
-      <div class="check-item"><span><strong>Formato y quién presenta</strong> — ¿email previo + junta, o solo junta? ¿Iker / comercial / CFO?</span></div>
+    <div class="eyebrow">Próximos pasos</div>
+    <h2>Cómo arrancamos el nuevo capítulo.</h2>
+    <div class="steps">
+      <div class="step primary">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Cargar sus documentos</h4>
+          <p>KYC actualizado y documentación para activar su cuenta en la nueva plataforma. Es el primer paso — desbloquea todo lo demás.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Elegir su ruta — A o B</h4>
+          <p>Una conversación de 30 minutos con su CFO/COO para alinear cuál encaja mejor con su plan 2026.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Firma de términos actualizados</h4>
+          <p>Adenda al contrato vigente con el pricing nuevo, los términos de financiamiento y la línea ajustada.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Migración a Uvicuo 3.0</h4>
+          <p>Nuestro equipo de operaciones acompaña la transición. Sin downtime, sin disrupciones para sus usuarios.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Kick-off con su equipo operativo</h4>
+          <p>Recorrido por las nuevas funcionalidades con quienes las usarán día a día. Activamos el cashback de bienvenida.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 11. CIERRE -->
+  <!-- 12. CIERRE -->
   <section class="slide final">
-    <div class="eyebrow">Cierre</div>
-    <h2>Metepori es el primer caso.<br>La plantilla del Batch 1 se define aquí.</h2>
+    <div class="eyebrow">Final</div>
+    <h2>Llevamos un camino juntos.<br>Lo siguiente, lo escribimos con ustedes.</h2>
     <div class="body">
-      <p>La narrativa de reset honesto, la estructura A/B con commitment, los nuevos términos y el cashback promocional aplican —con ajustes— a los otros 6 deals del batch: Custodias, SAC, Fulem, Dolphy, Garrom, TMT.</p>
-      <p>Si esta conversación se cierra bien, las siguientes seis se mueven más rápido.</p>
+      <p>Esta presentación es el inicio de una conversación, no el cierre. Tienen las preguntas, las prioridades y el contexto de su operación que nosotros no tenemos.</p>
+      <p>Cuando estén listos, agendamos.</p>
     </div>
   </section>
 
