@@ -460,6 +460,61 @@
   }
   .check-item strong { color: var(--ink); font-weight: 600; }
 
+  /* Glide path · phases */
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1fr;
+    gap: 10px;
+    align-items: stretch;
+    margin-top: 32px;
+    max-width: 1100px;
+  }
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  .phase.past { background: #F2F0E8; }
+  .phase.bridge { border-color: var(--amber); border-width: 2px; background: var(--amber-soft); }
+  .phase.target { border-color: var(--uv-green); border-width: 2px; background: var(--uv-green-soft); }
+  .phase-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .phase.bridge .phase-label { color: var(--amber); }
+  .phase.target .phase-label { color: var(--uv-green-deep); }
+  .phase-price {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .phase-unit { font-size: 16px; color: var(--muted); font-weight: 500; margin-left: 4px; }
+  .phase-meta {
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .phase-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
   /* Próximos pasos (numbered steps) */
   .steps {
     margin-top: 28px;
@@ -669,6 +724,21 @@
     .step h4 { font-size: 16px; }
     .step p { font-size: 13.5px; line-height: 1.45; }
 
+    /* Phases */
+    .phases {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .phase { padding: 18px 18px; }
+    .phase-price { font-size: 28px; }
+    .phase-price .phase-unit { font-size: 14px; }
+    .phase-arrow {
+      transform: rotate(90deg);
+      padding: 2px 0;
+      font-size: 18px;
+    }
+
     /* Title accent */
     .title-accent { width: 60px; height: 3px; margin-bottom: 20px; }
 
@@ -848,7 +918,38 @@
     </div>
   </section>
 
-  <!-- 7. FINANCIAMIENTO ANTES / DESPUES -->
+  <!-- 7. GLIDE PATH -->
+  <section class="slide">
+    <div class="eyebrow">Transición · Glide path</div>
+    <h2>Una transición suave. No un brinco.</h2>
+    <div class="body" style="max-width: 980px; margin-bottom: 8px;">
+      <p>Tomamos lo que pagan hoy y lo expresamos en el nuevo formato por usuario. Durante los <strong>primeros 3 meses</strong> mantenemos esa tarifa — sin cambios de bolsillo. A partir del mes 4 entran al tier estándar que corresponda según la ruta que elijan.</p>
+    </div>
+    <div class="phases">
+      <div class="phase past">
+        <div class="phase-label">Hoy</div>
+        <div class="phase-price">~$484 <span class="phase-unit">MXN/u</span></div>
+        <div class="phase-meta">Lo que pagan hoy entre sus 16 usuarios — formato mixto (fee SaaS + cobro drivers + utilización de línea).</div>
+      </div>
+      <div class="phase-arrow">→</div>
+      <div class="phase bridge">
+        <div class="phase-label">Meses 1–3 · Puente</div>
+        <div class="phase-price">$27.40 <span class="phase-unit">USD/u</span></div>
+        <div class="phase-meta">Replica exactamente su costo actual, ya expresado por usuario. Sin sorpresas en la transición.</div>
+      </div>
+      <div class="phase-arrow">→</div>
+      <div class="phase target">
+        <div class="phase-label">Mes 4+ · Tier estándar</div>
+        <div class="phase-price">$20 / $14 <span class="phase-unit">USD/u</span></div>
+        <div class="phase-meta">$20 USD/u en Opción A · $14 USD/u en Opción B. Más el nuevo financiamiento por separado (5 días cashback + interés).</div>
+      </div>
+    </div>
+    <div class="punch" style="margin-top: 28px;">
+      El bridge mantiene su costo idéntico al de hoy. Desde el mes 4 los ahorros vienen por dos lados: el SaaS baja al tier estándar, y el financiamiento pasa al modelo nuevo predecible. Encima, las primeras 12 mensualidades vienen con cashback promocional.
+    </div>
+  </section>
+
+  <!-- 8. FINANCIAMIENTO ANTES / DESPUES -->
   <section class="slide">
     <div class="eyebrow">Financiamiento · Más simple</div>
     <h2>Lo opaco se va. Lo nuevo, en una línea.</h2>
@@ -882,15 +983,19 @@
         </div>
         <div>
           <div class="term-label">Pricing por usuario</div>
-          <div class="term-value">$20 USD <span class="small">/mes — tier &lt;20</span></div>
+          <div class="term-value">$20 USD <span class="small">/mes — tier &lt;20 desde mes 4</span></div>
         </div>
         <div>
-          <div class="term-label">SaaS / mes</div>
+          <div class="term-label">Transición meses 1–3</div>
+          <div class="term-value">$27.40 USD <span class="small">/u — replica su costo actual</span></div>
+        </div>
+        <div>
+          <div class="term-label">SaaS / mes (mes 4+)</div>
           <div class="term-value">~$320 USD <span class="small">≈ $5,650 MXN</span></div>
         </div>
         <div>
           <div class="term-label">Línea de crédito</div>
-          <div class="term-value">Ajustada al tamaño actual</div>
+          <div class="term-value">$160K MXN <span class="small">($10K/u × 16 usuarios)</span></div>
         </div>
         <div>
           <div class="term-label">Financiamiento</div>
@@ -923,15 +1028,19 @@
         </div>
         <div>
           <div class="term-label">Pricing por usuario</div>
-          <div class="term-value">$14 USD <span class="small">/mes — tier 100+ (vs $20 en A)</span></div>
+          <div class="term-value">$14 USD <span class="small">/mes — tier 100+ desde mes 4</span></div>
         </div>
         <div>
-          <div class="term-label">SaaS / mes (a 100)</div>
+          <div class="term-label">Transición meses 1–3</div>
+          <div class="term-value">$27.40 USD <span class="small">/u — replica su costo actual</span></div>
+        </div>
+        <div>
+          <div class="term-label">SaaS / mes (a 100, mes 4+)</div>
           <div class="term-value">~$1,400 USD <span class="small">≈ $24,700 MXN</span></div>
         </div>
         <div>
           <div class="term-label">Línea de crédito</div>
-          <div class="term-value">Ampliada <span class="small">para apalancar el crecimiento</span></div>
+          <div class="term-value">$1.0M MXN <span class="small">($10K/u × 100 usuarios)</span></div>
         </div>
         <div>
           <div class="term-label">Financiamiento</div>
@@ -967,19 +1076,29 @@
           <td class="num b-col">100</td>
         </tr>
         <tr>
-          <td class="feature">Pricing por usuario / mes</td>
+          <td class="feature">Pricing por usuario / mes (desde mes 4)</td>
           <td class="num">$20 USD</td>
           <td class="num b-col">$14 USD <span style="font-weight:400; color: var(--uv-green-deep); font-size: 13px; margin-left: 6px;">−30%</span></td>
         </tr>
         <tr>
-          <td class="feature">SaaS / mes (target)</td>
+          <td class="feature">Transición meses 1–3 · $/u</td>
+          <td class="num">$27.40 USD</td>
+          <td class="num b-col">$27.40 USD</td>
+        </tr>
+        <tr>
+          <td class="feature">SaaS / mes (mes 4+, target)</td>
           <td class="num">~$5,650 MXN</td>
           <td class="num b-col">~$24,700 MXN</td>
         </tr>
         <tr>
           <td class="feature">Línea de crédito</td>
-          <td>Ajustada al tamaño</td>
-          <td class="b-col">Ampliada</td>
+          <td class="num">$160K MXN</td>
+          <td class="num b-col">$1.0M MXN</td>
+        </tr>
+        <tr>
+          <td class="feature">Crédito por usuario</td>
+          <td class="num">$10K MXN</td>
+          <td class="num b-col">$10K MXN</td>
         </tr>
         <tr>
           <td class="feature">Compromiso de crecimiento</td>
