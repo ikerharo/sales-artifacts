@@ -499,9 +499,11 @@
     font-size: 18px;
   }
   .tier-table .ctx {
+    display: block;
     color: var(--muted);
     font-size: 13.5px;
-    margin-left: 8px;
+    margin-top: 4px;
+    font-weight: 400;
   }
   .tier-table tr.current-row {
     background: #F2F0E8;
@@ -974,22 +976,22 @@
       </thead>
       <tbody>
         <tr class="current-row">
-          <td>Menos de 20 usuarios</td>
+          <td>&lt; 20</td>
           <td><span class="num">$27.40 USD</span></td>
-          <td><span class="num">$48K MXN</span><span class="ctx">con sus 16 usuarios actuales</span></td>
+          <td><span class="num">$48K MXN</span><span class="ctx">con 16 usuarios — donde están hoy</span></td>
         </tr>
         <tr>
-          <td>20 a 49 usuarios</td>
+          <td>20 – 49</td>
           <td><span class="num">$25 USD</span></td>
-          <td><span class="ctx">crece linealmente con cada usuario</span></td>
+          <td><span class="num">$60K – $147K MXN</span><span class="ctx">$3K por cada usuario activo</span></td>
         </tr>
         <tr>
-          <td>50 a 99 usuarios</td>
+          <td>50 – 99</td>
           <td><span class="num">$20 USD</span></td>
           <td><span class="num">$150K MXN</span><span class="ctx">a 50 usuarios — el acuerdo original</span></td>
         </tr>
         <tr class="target-row">
-          <td>100 o más usuarios</td>
+          <td>100+</td>
           <td><span class="num">$15 USD</span></td>
           <td><span class="num">$300K MXN</span><span class="ctx">a 100 usuarios — 2× la línea original</span></td>
         </tr>
