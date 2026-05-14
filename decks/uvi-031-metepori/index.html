@@ -460,6 +460,83 @@
   }
   .check-item strong { color: var(--ink); font-weight: 600; }
 
+  /* Tier table (simplified) */
+  .tier-table {
+    margin-top: 28px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1080px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .tier-table thead tr { background: var(--bg); }
+  .tier-table th, .tier-table td {
+    text-align: left;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .tier-table tbody tr:last-child td { border-bottom: 0; }
+  .tier-table th {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .tier-table td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .tier-table td.num,
+  .tier-table .num {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 18px;
+  }
+  .tier-table .ctx {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-left: 8px;
+  }
+  .tier-table tr.current-row {
+    background: #F2F0E8;
+  }
+  .tier-table tr.current-row td:first-child::after {
+    content: "Hoy";
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .tier-table tr.target-row {
+    background: var(--uv-green-soft);
+  }
+  .tier-table tr.target-row td:first-child::after {
+    content: "Objetivo";
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--uv-green-deep);
+    border: 1px solid var(--uv-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .tier-table tr.target-row .num { color: var(--uv-green-deep); }
+
   /* Glide path · phases */
   .phases {
     display: grid;
@@ -724,6 +801,14 @@
     .step h4 { font-size: 16px; }
     .step p { font-size: 13.5px; line-height: 1.45; }
 
+    /* Tier table */
+    .tier-table { margin-top: 18px; font-size: 13px; }
+    .tier-table th, .tier-table td { padding: 11px 12px; font-size: 13px; }
+    .tier-table .num, .tier-table td.num { font-size: 14.5px; }
+    .tier-table .ctx { display: block; margin-left: 0; margin-top: 2px; font-size: 12px; }
+    .tier-table tr.current-row td:first-child::after,
+    .tier-table tr.target-row td:first-child::after { font-size: 9px; padding: 1px 6px; margin-left: 6px; }
+
     /* Phases */
     .phases {
       grid-template-columns: 1fr;
@@ -875,62 +960,43 @@
   <!-- 6. PRICING TIERS -->
   <section class="slide">
     <div class="eyebrow">Pricing transparente</div>
-    <h2>Tres tiers. Mismo trato para todos.</h2>
-    <div class="body" style="max-width: 920px; margin-bottom: 8px;">
-      <p>Pricing por usuario depende solo del tamaño de la operación. Sin negociaciones caso a caso, sin precios opacos. La tabla es pública para todo nuestro portafolio.</p>
+    <h2>Cuatro tiers según el tamaño.</h2>
+    <div class="body" style="max-width: 820px; margin-bottom: 8px;">
+      <p>Crédito por usuario fijo en <strong>$3,000 MXN</strong> en todos los tiers. SaaS por usuario baja al crecer la operación.</p>
     </div>
-    <div class="tiers">
-      <div class="tier current">
-        <div class="tier-tag">Su tier hoy</div>
-        <div>
-          <div class="tier-band">&lt; 20 usuarios</div>
-          <div class="tier-meta">Entrada · $3,000 crédito/u</div>
-        </div>
-        <div class="tier-meta">Donde están hoy con sus 16 usuarios. Línea total $48K.</div>
-        <div class="tier-price">
-          <span class="currency">$</span>27.40<span class="currency"> USD</span>
-          <span class="per">por usuario / mes</span>
-        </div>
-      </div>
-      <div class="tier">
-        <div></div>
-        <div>
-          <div class="tier-band">20–49 usuarios</div>
-          <div class="tier-meta">Primer salto · $3,000 crédito/u</div>
-        </div>
-        <div class="tier-meta">Primer descuento al cruzar 20 usuarios. Línea total empieza a crecer linealmente.</div>
-        <div class="tier-price">
-          <span class="currency">$</span>25<span class="currency"> USD</span>
-          <span class="per">por usuario / mes</span>
-        </div>
-      </div>
-      <div class="tier">
-        <div></div>
-        <div>
-          <div class="tier-band">50–99 usuarios</div>
-          <div class="tier-meta">Tier intermedio · $3,000 crédito/u</div>
-        </div>
-        <div class="tier-meta">A 50 usuarios alcanzan exactamente la línea de $150K del acuerdo original — con la mitad del compromiso.</div>
-        <div class="tier-price">
-          <span class="currency">$</span>20<span class="currency"> USD</span>
-          <span class="per">por usuario / mes</span>
-        </div>
-      </div>
-      <div class="tier target">
-        <div class="tier-tag">Tier objetivo · máximo beneficio</div>
-        <div>
-          <div class="tier-band">100+ usuarios</div>
-          <div class="tier-meta">Volumen · $3,000 crédito/u</div>
-        </div>
-        <div class="tier-meta">El tier que corresponde al objetivo conjunto del inicio. SaaS al mínimo, línea total $300K — el doble de la línea pactada originalmente para el mismo destino.</div>
-        <div class="tier-price">
-          <span class="currency">$</span>15<span class="currency"> USD</span>
-          <span class="per">por usuario / mes</span>
-        </div>
-      </div>
-    </div>
-    <div class="punch" style="margin-top: 28px;">
-      Crédito por usuario fijo en <strong>$3,000 MXN</strong> — un buen crédito en todo momento. SaaS por usuario baja en cada tier al crecer. Y un detalle que celebra el escalamiento: al cruzar 50 o 100 usuarios el costo mensual total <strong>baja en lugar de subir</strong> (49u × $25 = $1,225 USD vs 50u × $20 = $1,000 USD). La estructura está pensada para acompañar el crecimiento, no encarecerlo.
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>SaaS / usuario / mes</th>
+          <th>Línea total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="current-row">
+          <td>Menos de 20 usuarios</td>
+          <td><span class="num">$27.40 USD</span></td>
+          <td><span class="num">$48K MXN</span><span class="ctx">con sus 16 usuarios actuales</span></td>
+        </tr>
+        <tr>
+          <td>20 a 49 usuarios</td>
+          <td><span class="num">$25 USD</span></td>
+          <td><span class="ctx">crece linealmente con cada usuario</span></td>
+        </tr>
+        <tr>
+          <td>50 a 99 usuarios</td>
+          <td><span class="num">$20 USD</span></td>
+          <td><span class="num">$150K MXN</span><span class="ctx">a 50 usuarios — el acuerdo original</span></td>
+        </tr>
+        <tr class="target-row">
+          <td>100 o más usuarios</td>
+          <td><span class="num">$15 USD</span></td>
+          <td><span class="num">$300K MXN</span><span class="ctx">a 100 usuarios — 2× la línea original</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="punch" style="margin-top: 24px;">
+      Cruzar a un tier superior <strong>baja el costo mensual total</strong>, no lo sube — la estructura está pensada para acompañar el crecimiento.
     </div>
   </section>
 
