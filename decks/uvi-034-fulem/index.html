@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fulem · Uvicuo 3.0</title>
+<style>
+  :root {
+    --bg: #FAF9F5;
+    --surface: #FFFFFF;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --muted: #8A8A85;
+    --line: #E8E6DD;
+    --line-strong: #D6D3C7;
+    --uv-green: #4FB942;
+    --uv-green-deep: #2D7A23;
+    --uv-green-soft: #EAF5E5;
+    --amber: #B45309;
+    --amber-soft: #FEF3C7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 96px 120px 96px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Chrome */
+  .wordmark {
+    position: fixed;
+    top: 36px;
+    left: 48px;
+    height: 24px;
+    z-index: 10;
+    opacity: 0.85;
+  }
+
+  .counter {
+    position: fixed;
+    top: 40px;
+    right: 48px;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    z-index: 10;
+  }
+
+  .dots {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .dot:hover { background: var(--muted); }
+  .dot.active { background: var(--uv-green); width: 24px; border-radius: 3px; }
+
+  .hint {
+    position: fixed;
+    bottom: 32px;
+    right: 48px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    z-index: 10;
+  }
+  .hint kbd {
+    font-family: inherit;
+    padding: 1px 6px;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    font-size: 10px;
+    background: var(--surface);
+  }
+
+  /* Typography */
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--uv-green-deep);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 88px;
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .lede {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 880px;
+    font-weight: 400;
+  }
+
+  .body {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 760px;
+  }
+
+  .body p + p { margin-top: 16px; }
+  .body strong { color: var(--ink); font-weight: 600; }
+
+  /* Title slide */
+  .title-slide .deck-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 56px;
+  }
+  .title-slide .deck-meta span { padding-right: 32px; border-right: 1px solid var(--line); }
+  .title-slide .deck-meta span:last-child { border: 0; padding-right: 0; }
+
+  .title-slide h1 { font-size: 144px; letter-spacing: -0.05em; }
+  .title-slide .sub {
+    margin-top: 32px;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+    max-width: 900px;
+    line-height: 1.3;
+  }
+
+  /* Stats grid */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin: 32px 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    max-width: 1000px;
+  }
+  .stat {
+    padding: 32px 32px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat-num {
+    font-size: 56px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-num .unit { font-size: 28px; color: var(--muted); margin-left: 6px; font-weight: 500; }
+  .stat-label {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .stat-context {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .stat.highlight {
+    background: var(--uv-green-soft);
+  }
+  .stat.highlight .stat-num { color: var(--uv-green-deep); }
+
+  /* Cards (three levers) */
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px 28px;
+  }
+  .card.accent { border-color: var(--uv-green); border-width: 2px; background: var(--uv-green-soft); }
+  .card-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--uv-green-soft);
+    color: var(--uv-green-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .card.accent .card-num { background: var(--uv-green); color: #fff; }
+  .card h4 {
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .card p { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* Compare table */
+  .compare {
+    margin-top: 24px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+  }
+  .compare th, .compare td {
+    text-align: left;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+  .compare th {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .compare th.b-col, .compare td.b-col { background: var(--uv-green-soft); }
+  .compare td.feature { font-weight: 500; color: var(--ink); }
+  .compare td.num { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 17px; color: var(--ink); }
+  .compare tr.total td { border-top: 1px solid var(--line-strong); border-bottom: 0; padding-top: 18px; }
+  .compare tr.total td.num { font-size: 22px; }
+  .compare .check { color: var(--uv-green-deep); font-weight: 600; }
+  .compare .delta { font-weight: 400; color: var(--uv-green-deep); font-size: 13px; margin-left: 6px; }
+  .compare .small { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  /* Cashback table */
+  .cb-formula {
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding: 12px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .cb-formula b { color: var(--uv-green-deep); font-weight: 600; }
+  .cb {
+    margin-top: 18px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1040px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cb thead tr { background: var(--bg); }
+  .cb th, .cb td {
+    text-align: right;
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+  }
+  .cb th {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .cb th:first-child, .cb td:first-child { text-align: left; font-weight: 500; color: var(--ink); }
+  .cb tbody tr:last-child td { border-bottom: 0; }
+  .cb td.pct { font-weight: 600; color: var(--ink); }
+  .cb td.year { font-weight: 600; color: var(--ink); }
+  .cb tr.now { background: #F2F0E8; }
+  .cb tr.now td:first-child::after {
+    content: "≈ Hoy";
+    display: inline-block; margin-left: 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--amber); border: 1px solid var(--amber); padding: 2px 8px; border-radius: 4px;
+  }
+  .cb tr.best { background: var(--uv-green-soft); }
+  .cb tr.best td:first-child::after {
+    content: "Objetivo";
+    display: inline-block; margin-left: 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--uv-green-deep); border: 1px solid var(--uv-green); padding: 2px 8px; border-radius: 4px;
+  }
+  .cb tr.best td, .cb tr.best td.pct, .cb tr.best td.year { color: var(--uv-green-deep); }
+  .cb tr.neutral td, .cb tr.cost td { color: var(--muted); }
+  .cb-note { margin-top: 14px; font-size: 13.5px; color: var(--muted); max-width: 1040px; }
+
+  /* Próximos pasos (numbered steps) */
+  .steps {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 980px;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 22px 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .step.primary {
+    border-color: var(--uv-green);
+    border-width: 2px;
+    background: var(--uv-green-soft);
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--uv-green);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 16px;
+  }
+  .step.primary .step-num { background: var(--uv-green-deep); }
+  .step h4 { font-size: 19px; font-weight: 600; margin-bottom: 4px; line-height: 1.25; }
+  .step p { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+
+  .title-accent {
+    width: 80px; height: 4px;
+    background: var(--uv-green);
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  /* Punchline */
+  .punch {
+    margin-top: 30px;
+    padding: 22px 28px;
+    background: var(--uv-green-soft);
+    border-radius: 8px;
+    font-size: 18px;
+    color: #1d4d12;
+    line-height: 1.5;
+    max-width: 1000px;
+    border-left: 3px solid var(--uv-green);
+  }
+  .punch strong { color: var(--uv-green-deep); }
+  .closing-line {
+    margin-top: 26px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 880px;
+  }
+  .closing-line strong { color: var(--ink); }
+
+  @media (max-width: 1280px) {
+    .slide { padding: 80px 64px; }
+    .title-slide h1 { font-size: 110px; }
+    h1 { font-size: 72px; }
+    h2 { font-size: 44px; }
+    .wordmark { left: 32px; }
+    .counter { right: 32px; }
+    .hint { right: 32px; }
+  }
+
+  @media (max-width: 1024px) {
+    .slide { padding: 72px 48px 84px; }
+    .cards-3 { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  @media (max-width: 768px) {
+    .slide {
+      padding: 64px 20px 80px;
+      justify-content: flex-start;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .wordmark { top: 16px; left: 18px; height: 18px; }
+    .counter { top: 20px; right: 18px; font-size: 11px; }
+    .dots { bottom: 18px; gap: 7px; }
+    .dot { width: 7px; height: 7px; }
+    .dot.active { width: 26px; }
+    .hint { display: none; }
+
+    .eyebrow { font-size: 10px; margin-bottom: 14px; letter-spacing: 0.14em; }
+    .title-slide h1 { font-size: 60px; }
+    h1 { font-size: 52px; line-height: 0.98; }
+    h2 { font-size: 28px; line-height: 1.1; margin-bottom: 22px; }
+    h3 { font-size: 20px; }
+    .lede { font-size: 17px; }
+    .body { font-size: 15.5px; line-height: 1.5; }
+    .punch { font-size: 14.5px; padding: 16px 18px; margin-top: 22px; line-height: 1.45; }
+    .closing-line { font-size: 15px; margin-top: 20px; }
+
+    .title-slide .sub { font-size: 17px; margin-top: 18px; }
+    .title-slide .deck-meta { font-size: 10.5px; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .title-slide .deck-meta span { padding-right: 12px; }
+
+    .stats { grid-template-columns: 1fr 1fr; margin: 20px 0; }
+    .stat { padding: 18px 14px; }
+    .stat-num { font-size: 30px; }
+    .stat-num .unit { font-size: 15px; margin-left: 4px; }
+    .stat-label { font-size: 11.5px; margin-top: 8px; line-height: 1.3; }
+    .stat-context { font-size: 10.5px; margin-top: 4px; }
+
+    .cards-3 { grid-template-columns: 1fr; gap: 12px; margin-top: 18px; }
+    .card { padding: 20px 18px; }
+    .card-num { width: 26px; height: 26px; font-size: 12px; margin-bottom: 14px; }
+    .card h4 { font-size: 16.5px; margin-bottom: 8px; }
+    .card p { font-size: 13.5px; line-height: 1.45; }
+
+    .compare { font-size: 13px; }
+    .compare th { font-size: 10.5px; }
+    .compare th, .compare td { padding: 11px 10px; }
+    .compare td.num { font-size: 13.5px; }
+    .compare tr.total td.num { font-size: 17px; }
+
+    .cb-formula { font-size: 14px; padding: 10px 14px; }
+    .cb { margin-top: 14px; font-size: 12.5px; }
+    .cb th, .cb td { padding: 9px 12px; font-size: 12.5px; }
+    .cb th { font-size: 9.5px; letter-spacing: 0.06em; }
+    .cb-note { font-size: 12px; }
+    .cb tr.now td:first-child::after, .cb tr.best td:first-child::after { font-size: 8.5px; padding: 1px 5px; margin-left: 6px; }
+
+    .steps { margin-top: 20px; gap: 10px; }
+    .step { grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 18px; }
+    .step-num { width: 28px; height: 28px; font-size: 13px; }
+    .step h4 { font-size: 16px; }
+    .step p { font-size: 13.5px; line-height: 1.45; }
+
+    .title-accent { width: 60px; height: 3px; margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<img src="assets/wordmark-green.png" class="wordmark" alt="Uvicuo">
+<div class="counter"><span id="cur">1</span> / <span id="total">6</span></div>
+<div class="dots" id="dots"></div>
+<div class="hint"><kbd>←</kbd> <kbd>→</kbd> para navegar</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1. TITLE -->
+  <section class="slide active title-slide">
+    <div class="title-accent"></div>
+    <div class="eyebrow">Uvicuo 3.0 · Mayo 2026</div>
+    <h1>Fulem</h1>
+    <div class="sub">Su migración a la nueva plataforma de Uvicuo. Un precio más simple, y un cashback que premia la forma en que ya pagan: rápido.</div>
+    <div class="deck-meta">
+      <span>Para su equipo directivo</span>
+      <span>Propuesta comercial</span>
+    </div>
+  </section>
+
+  <!-- 2. SU OPERACIÓN -->
+  <section class="slide">
+    <div class="eyebrow">Su operación con Uvicuo</div>
+    <h2>Una operación de combustible que mueve más de $1M al mes.</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">40</div>
+        <div class="stat-label">Operadores activos</div>
+        <div class="stat-context">desde diciembre 2025</div>
+      </div>
+      <div class="stat highlight">
+        <div class="stat-num">$1.11M<span class="unit">MXN</span></div>
+        <div class="stat-label">Gasto mensual</div>
+        <div class="stat-context">99.4% combustible</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$100K<span class="unit">MXN</span></div>
+        <div class="stat-label">Línea de crédito</div>
+        <div class="stat-context">rota más de 11 veces al mes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2.7<span class="unit">días</span></div>
+        <div class="stat-label">Revolvencia</div>
+        <div class="stat-context">liquidan su línea en menos de 3 días</div>
+      </div>
+    </div>
+    <div class="punch">
+      Pagan rápido y operan al límite de su línea — la usan como debe usarse. En el nuevo modelo, <strong>esa disciplina se convierte en cashback a su favor.</strong>
+    </div>
+  </section>
+
+  <!-- 3. LO QUE CAMBIA -->
+  <section class="slide">
+    <div class="eyebrow">Lo que cambia</div>
+    <h2>Tres cosas, claras.</h2>
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-num">1</div>
+        <h4>La nueva plataforma, sin costo de migración.</h4>
+        <p>Uvicuo 3.0: reportes nuevos, controles por tipo de usuario, facturación automática de peajes y WhatsApp rediseñado para operadores. Nuestro equipo acompaña la transición sin downtime.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">2</div>
+        <h4>Un solo precio por usuario, sin SaaS fijo.</h4>
+        <p>Pagan solo por usuario activo. Desaparece el fee fijo de SaaS y el cobro legacy por driver — un número claro, fácil de presupuestar, alineado a su uso real.</p>
+      </div>
+      <div class="card accent">
+        <div class="card-num">3</div>
+        <h4>Cashback que premia pagar rápido.</h4>
+        <p>Entre antes liquidan cada disposición de crédito, más cashback ganan. Ustedes ya pagan en 2.7 días — están justo en la zona donde el cashback es alto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CASHBACK DINÁMICO -->
+  <section class="slide">
+    <div class="eyebrow">El cashback, en detalle</div>
+    <h2>Entre más rápido pagan, más ganan.</h2>
+    <div class="body" style="max-width: 1040px; margin-bottom: 14px;">
+      <p>No es un descuento fijo. Cada disposición de crédito tiene un día de pago: si liquidan en los primeros días, ganan cashback sobre lo gastado. Del día 6 en adelante corre interés.</p>
+    </div>
+    <div class="cb-formula">Cashback = Monto gastado × <b>(0.25% − días × 0.05%)</b></div>
+    <table class="cb">
+      <thead>
+        <tr>
+          <th>Día en que pagan</th>
+          <th>Cashback</th>
+          <th>MXN / mes</th>
+          <th>MXN / año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="best">
+          <td>Día 0 — mismo día</td>
+          <td class="pct">0.25%</td>
+          <td>$2,775</td>
+          <td class="year">$33,300</td>
+        </tr>
+        <tr>
+          <td>Día 1</td>
+          <td class="pct">0.20%</td>
+          <td>$2,220</td>
+          <td class="year">$26,640</td>
+        </tr>
+        <tr>
+          <td>Día 2</td>
+          <td class="pct">0.15%</td>
+          <td>$1,665</td>
+          <td class="year">$19,980</td>
+        </tr>
+        <tr class="now">
+          <td>Día 3</td>
+          <td class="pct">0.10%</td>
+          <td>$1,110</td>
+          <td class="year">$13,320</td>
+        </tr>
+        <tr>
+          <td>Día 4</td>
+          <td class="pct">0.05%</td>
+          <td>$555</td>
+          <td class="year">$6,660</td>
+        </tr>
+        <tr class="neutral">
+          <td>Día 5</td>
+          <td class="pct">0% — neutro</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr class="cost">
+          <td>Día 6 en adelante</td>
+          <td class="pct">corre interés</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cb-note">Calculado sobre su gasto con tarjeta (~$1.11M/mes, excluye retiros en cajero). Hoy pagan en ~2.7 días: sin cambiar nada, su ritmo ya captura <strong>~$13K al año</strong>; apretando a día 0–1, hasta <strong>~$33K</strong>.</div>
+  </section>
+
+  <!-- 5. HOY VS PROPUESTA -->
+  <section class="slide">
+    <div class="eyebrow">Hoy vs Propuesta</div>
+    <h2>Lo que pagan hoy, y lo que pagarían.</h2>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Hoy</th>
+          <th class="b-col">Propuesta Uvicuo 3.0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature">Modelo</td>
+          <td>Fee fijo + cobro por driver</td>
+          <td class="b-col">Un precio por usuario activo</td>
+        </tr>
+        <tr>
+          <td class="feature">Fee SaaS fijo</td>
+          <td class="num">$6,932 MXN</td>
+          <td class="num b-col">—</td>
+        </tr>
+        <tr>
+          <td class="feature">Costo por usuario</td>
+          <td class="num">$324 MXN <span class="small">($18 USD)</span></td>
+          <td class="num b-col">$269 MXN <span class="small">($15 USD)</span></td>
+        </tr>
+        <tr>
+          <td class="feature">Usuarios facturados</td>
+          <td class="num">41</td>
+          <td class="num b-col">40</td>
+        </tr>
+        <tr class="total">
+          <td class="feature">Total mensual</td>
+          <td class="num">$20,216 MXN</td>
+          <td class="num b-col">$10,740 MXN <span class="delta">−47%</span></td>
+        </tr>
+        <tr>
+          <td class="feature">Línea de crédito</td>
+          <td class="num">$100K MXN</td>
+          <td class="num b-col">$100K MXN</td>
+        </tr>
+        <tr>
+          <td class="feature">Financiamiento</td>
+          <td>Sin cashback</td>
+          <td class="b-col">Cashback si pagan en menos de 5 días</td>
+        </tr>
+        <tr>
+          <td class="feature">Plataforma</td>
+          <td>Legacy</td>
+          <td class="b-col"><span class="check">Uvicuo 3.0</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="punch">
+      Un solo precio por usuario, sin SaaS fijo — más claro y más bajo. Y el financiamiento deja de ser un costo silencioso: <strong>su forma de pagar, rápido, ahora les regresa dinero.</strong>
+    </div>
+  </section>
+
+  <!-- 6. PRÓXIMOS PASOS + CIERRE -->
+  <section class="slide">
+    <div class="eyebrow">Próximos pasos</div>
+    <h2>Cómo arrancamos.</h2>
+    <div class="steps">
+      <div class="step primary">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Cargar documentos para el contrato nuevo</h4>
+          <p>KYC y documentación actualizada para generar el contrato Uvicuo 3.0. Sin costo de migración.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Firma del contrato Uvicuo 3.0</h4>
+          <p>$15 USD por usuario, sin SaaS fijo, línea de $100K y cashback en repagos de menos de 5 días.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Migración + kick-off</h4>
+          <p>Nuestro equipo de operaciones acompaña la transición sin downtime y activa el cashback desde el día uno.</p>
+        </div>
+      </div>
+    </div>
+    <div class="closing-line">
+      Llevamos poco camino juntos, pero su operación ya es de las más activas de Uvicuo. <strong>Queremos que sean de los primeros en la nueva plataforma.</strong> Cuando estén listos, agendamos.
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const totalEl = document.getElementById('total');
+  const curEl = document.getElementById('cur');
+  const dotsEl = document.getElementById('dots');
+  let current = 0;
+
+  totalEl.textContent = total;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+  const dots = dotsEl.querySelectorAll('.dot');
+
+  function goTo(i) {
+    if (i < 0 || i >= total || i === current) return;
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    curEl.textContent = current + 1;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      goTo(current - 1);
+    } else if (e.key === 'Home') {
+      goTo(0);
+    } else if (e.key === 'End') {
+      goTo(total - 1);
+    }
+  });
+
+  // Touch swipe for mobile
+  let touchStartX = 0, touchStartY = 0, touchStartT = 0;
+  document.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    touchStartX = t.screenX; touchStartY = t.screenY; touchStartT = Date.now();
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const t = e.changedTouches[0];
+    const dx = t.screenX - touchStartX;
+    const dy = t.screenY - touchStartY;
+    const dt = Date.now() - touchStartT;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 600) {
+      if (dx < 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
