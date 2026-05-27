@@ -187,12 +187,27 @@
   .title-slide h1 { font-size: 144px; letter-spacing: -0.05em; }
   .title-slide .sub {
     margin-top: 32px;
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 400;
     color: var(--ink-soft);
     letter-spacing: -0.01em;
-    max-width: 900px;
-    line-height: 1.3;
+    max-width: 920px;
+    line-height: 1.32;
+  }
+  .title-slide .sub-2 {
+    margin-top: 16px;
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--muted);
+    max-width: 820px;
+    line-height: 1.4;
+  }
+  .title-slide .sub-2 strong { color: var(--uv-green-deep); font-weight: 600; }
+
+  /* Top-aligned variant for content-dense slides (avoids overlap with fixed wordmark) */
+  .slide.top {
+    justify-content: flex-start;
+    padding-top: 108px;
   }
 
   /* Stats grid */
@@ -274,7 +289,7 @@
   }
   .compare th, .compare td {
     text-align: left;
-    padding: 16px 20px;
+    padding: 13px 20px;
     border-bottom: 1px solid var(--line);
     font-size: 16px;
   }
@@ -289,7 +304,7 @@
   .compare th.b-col, .compare td.b-col { background: var(--uv-green-soft); }
   .compare td.feature { font-weight: 500; color: var(--ink); }
   .compare td.num { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 17px; color: var(--ink); }
-  .compare tr.total td { border-top: 1px solid var(--line-strong); border-bottom: 0; padding-top: 18px; }
+  .compare tr.total td { border-top: 1px solid var(--line-strong); border-bottom: 0; padding-top: 13px; }
   .compare tr.total td.num { font-size: 22px; }
   .compare .check { color: var(--uv-green-deep); font-weight: 600; }
   .compare .delta { font-weight: 400; color: var(--uv-green-deep); font-size: 13px; margin-left: 6px; }
@@ -462,6 +477,8 @@
     .closing-line { font-size: 15px; margin-top: 20px; }
 
     .title-slide .sub { font-size: 17px; margin-top: 18px; }
+    .title-slide .sub-2 { font-size: 14.5px; margin-top: 12px; }
+    .slide.top { padding-top: 64px; }
     .title-slide .deck-meta { font-size: 10.5px; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
     .title-slide .deck-meta span { padding-right: 12px; }
 
@@ -515,7 +532,8 @@
     <div class="title-accent"></div>
     <div class="eyebrow">Uvicuo 3.0 · Mayo 2026</div>
     <h1>Fulem</h1>
-    <div class="sub">Su migración a la nueva plataforma de Uvicuo. Un precio más simple, y un cashback que premia la forma en que ya pagan: rápido.</div>
+    <div class="sub">Su migración a la nueva plataforma de Uvicuo — diseñada para autotransporte, con mejores reportes y construida con el feedback de clientes como ustedes.</div>
+    <div class="sub-2">Por prácticamente lo mismo que pagan hoy: <strong>más usuarios, más crédito y cashback.</strong></div>
     <div class="deck-meta">
       <span>Para su equipo directivo</span>
       <span>Propuesta comercial</span>
@@ -523,9 +541,9 @@
   </section>
 
   <!-- 2. SU OPERACIÓN -->
-  <section class="slide">
+  <section class="slide top">
     <div class="eyebrow">Su operación con Uvicuo</div>
-    <h2>Una operación de combustible que mueve más de $1M al mes.</h2>
+    <h2>Mueven más de $1M al mes.</h2>
     <div class="stats">
       <div class="stat">
         <div class="stat-num">40</div>
@@ -560,13 +578,13 @@
     <div class="cards-3">
       <div class="card">
         <div class="card-num">1</div>
-        <h4>La nueva plataforma, sin costo de migración.</h4>
-        <p>Uvicuo 3.0: reportes nuevos, controles por tipo de usuario, facturación automática de peajes y WhatsApp rediseñado para operadores. Nuestro equipo acompaña la transición sin downtime.</p>
+        <h4>Una plataforma para autotransporte.</h4>
+        <p>Uvicuo 3.0: mejores reportes, controles por tipo de usuario, facturación automática de peajes y WhatsApp rediseñado para operadores. Construida con el feedback de clientes como ustedes — sin costo de migración.</p>
       </div>
       <div class="card">
         <div class="card-num">2</div>
-        <h4>Un solo precio por usuario, sin SaaS fijo.</h4>
-        <p>Pagan solo por usuario activo. Desaparece el fee fijo de SaaS y el cobro legacy por driver — un número claro, fácil de presupuestar, alineado a su uso real.</p>
+        <h4>Más usuarios y más crédito, por casi lo mismo.</h4>
+        <p>Pasan a <strong>50 usuarios</strong> (hoy 41) y su crédito sube a <strong>$125K</strong>. Un solo precio por usuario, más bajo y sin SaaS fijo — y el crédito ahora escala con cada operador que suman.</p>
       </div>
       <div class="card accent">
         <div class="card-num">3</div>
@@ -583,7 +601,7 @@
     <div class="body" style="max-width: 1040px; margin-bottom: 14px;">
       <p>No es un descuento fijo. Cada disposición de crédito tiene un día de pago: si liquidan en los primeros días, ganan cashback sobre lo gastado. Del día 6 en adelante corre interés.</p>
     </div>
-    <div class="cb-formula">Cashback = Monto gastado × <b>(0.25% − días × 0.05%)</b></div>
+    <div class="cb-formula">Arranca en <b>0.25% el día 1</b> y baja 0.05% por cada día que tardan en pagar.</div>
     <table class="cb">
       <thead>
         <tr>
@@ -595,40 +613,34 @@
       </thead>
       <tbody>
         <tr class="best">
-          <td>Día 0 — mismo día</td>
+          <td>Día 1</td>
           <td class="pct">0.25%</td>
           <td>$2,775</td>
           <td class="year">$33,300</td>
         </tr>
         <tr>
-          <td>Día 1</td>
+          <td>Día 2</td>
           <td class="pct">0.20%</td>
           <td>$2,220</td>
           <td class="year">$26,640</td>
         </tr>
-        <tr>
-          <td>Día 2</td>
+        <tr class="now">
+          <td>Día 3</td>
           <td class="pct">0.15%</td>
           <td>$1,665</td>
           <td class="year">$19,980</td>
         </tr>
-        <tr class="now">
-          <td>Día 3</td>
+        <tr>
+          <td>Día 4</td>
           <td class="pct">0.10%</td>
           <td>$1,110</td>
           <td class="year">$13,320</td>
         </tr>
         <tr>
-          <td>Día 4</td>
+          <td>Día 5</td>
           <td class="pct">0.05%</td>
           <td>$555</td>
           <td class="year">$6,660</td>
-        </tr>
-        <tr class="neutral">
-          <td>Día 5</td>
-          <td class="pct">0% — neutro</td>
-          <td>—</td>
-          <td>—</td>
         </tr>
         <tr class="cost">
           <td>Día 6 en adelante</td>
@@ -638,13 +650,13 @@
         </tr>
       </tbody>
     </table>
-    <div class="cb-note">Calculado sobre su gasto con tarjeta (~$1.11M/mes, excluye retiros en cajero). Hoy pagan en ~2.7 días: sin cambiar nada, su ritmo ya captura <strong>~$13K al año</strong>; apretando a día 0–1, hasta <strong>~$33K</strong>.</div>
+    <div class="cb-note">Calculado sobre su gasto con tarjeta (~$1.11M/mes, excluye retiros en cajero). Hoy pagan en ~2.7 días: sin cambiar nada, su ritmo ya captura <strong>~$20K al año</strong>; apretando al día 1, hasta <strong>~$33K</strong>.</div>
   </section>
 
   <!-- 5. HOY VS PROPUESTA -->
-  <section class="slide">
+  <section class="slide top">
     <div class="eyebrow">Hoy vs Propuesta</div>
-    <h2>Lo que pagan hoy, y lo que pagarían.</h2>
+    <h2 style="margin-bottom: 28px;">Lo que pagan hoy, y lo que pagarían.</h2>
     <table class="compare">
       <thead>
         <tr>
@@ -656,48 +668,43 @@
       <tbody>
         <tr>
           <td class="feature">Modelo</td>
-          <td>Fee fijo + cobro por driver</td>
-          <td class="b-col">Un precio por usuario activo</td>
+          <td>Fee fijo de SaaS + cobro por driver</td>
+          <td class="b-col">Un solo precio por usuario, sin fee fijo</td>
         </tr>
         <tr>
-          <td class="feature">Fee SaaS fijo</td>
-          <td class="num">$6,932 MXN</td>
-          <td class="num b-col">—</td>
-        </tr>
-        <tr>
-          <td class="feature">Costo por usuario</td>
-          <td class="num">$324 MXN <span class="small">($18 USD)</span></td>
-          <td class="num b-col">$269 MXN <span class="small">($15 USD)</span></td>
-        </tr>
-        <tr>
-          <td class="feature">Usuarios facturados</td>
+          <td class="feature">Usuarios incluidos</td>
           <td class="num">41</td>
-          <td class="num b-col">40</td>
+          <td class="num b-col">50 <span class="delta">+9</span></td>
+        </tr>
+        <tr>
+          <td class="feature">Costo por usuario <span class="small">(todo incluido)</span></td>
+          <td class="num">$493 MXN</td>
+          <td class="num b-col">$412 MXN <span class="delta">−16%</span></td>
         </tr>
         <tr class="total">
           <td class="feature">Total mensual</td>
           <td class="num">$20,216 MXN</td>
-          <td class="num b-col">$10,740 MXN <span class="delta">−47%</span></td>
+          <td class="num b-col">$20,585 MXN</td>
         </tr>
         <tr>
           <td class="feature">Línea de crédito</td>
-          <td class="num">$100K MXN</td>
-          <td class="num b-col">$100K MXN</td>
+          <td class="num">$100K <span class="small">(monto fijo)</span></td>
+          <td class="num b-col">$125K <span class="small">($2,500/usuario)</span> <span class="delta">+25%</span></td>
         </tr>
         <tr>
           <td class="feature">Financiamiento</td>
           <td>Sin cashback</td>
-          <td class="b-col">Cashback si pagan en menos de 5 días</td>
+          <td class="b-col">Cashback hasta 0.25% si pagan rápido</td>
         </tr>
         <tr>
           <td class="feature">Plataforma</td>
           <td>Legacy</td>
-          <td class="b-col"><span class="check">Uvicuo 3.0</span></td>
+          <td class="b-col"><span class="check">Uvicuo 3.0 · autotransporte</span></td>
         </tr>
       </tbody>
     </table>
-    <div class="punch">
-      Un solo precio por usuario, sin SaaS fijo — más claro y más bajo. Y el financiamiento deja de ser un costo silencioso: <strong>su forma de pagar, rápido, ahora les regresa dinero.</strong>
+    <div class="punch" style="margin-top: 22px;">
+      Prácticamente el mismo fee mensual — pero con <strong>9 usuarios más, 25% más crédito y sin fee fijo de SaaS.</strong> Y encima el cashback: a su ritmo de pago actual, ~$20K al año de vuelta.
     </div>
   </section>
 
@@ -717,7 +724,7 @@
         <div class="step-num">2</div>
         <div>
           <h4>Firma del contrato Uvicuo 3.0</h4>
-          <p>$15 USD por usuario, sin SaaS fijo, línea de $100K y cashback en repagos de menos de 5 días.</p>
+          <p>50 usuarios incluidos, crédito de $125K ($2,500 por usuario), un solo precio por usuario sin SaaS fijo, y cashback en repagos de menos de 5 días.</p>
         </div>
       </div>
       <div class="step">
