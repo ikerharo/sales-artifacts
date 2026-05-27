@@ -280,6 +280,29 @@
   }
   .card p { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
 
+  /* "Próximamente" roadmap band */
+  .coming {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 20px 28px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--uv-green);
+    border-radius: 10px;
+  }
+  .coming .tag {
+    flex-shrink: 0;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--uv-green-deep);
+    border: 1px solid var(--uv-green);
+    padding: 5px 11px; border-radius: 5px;
+    background: var(--uv-green-soft);
+  }
+  .coming .ctext { font-size: 15.5px; color: var(--ink-soft); line-height: 1.5; }
+  .coming .ctext strong { color: var(--ink); font-weight: 600; }
+
   /* Compare table */
   .compare {
     margin-top: 24px;
@@ -494,6 +517,9 @@
     .card-num { width: 26px; height: 26px; font-size: 12px; margin-bottom: 14px; }
     .card h4 { font-size: 16.5px; margin-bottom: 8px; }
     .card p { font-size: 13.5px; line-height: 1.45; }
+    .coming { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 18px; margin-top: 14px; }
+    .coming .tag { font-size: 9.5px; padding: 4px 9px; }
+    .coming .ctext { font-size: 13px; }
 
     .compare { font-size: 13px; }
     .compare th { font-size: 10.5px; }
@@ -572,7 +598,7 @@
   </section>
 
   <!-- 3. LO QUE CAMBIA -->
-  <section class="slide">
+  <section class="slide top">
     <div class="eyebrow">Lo que cambia</div>
     <h2>Tres cosas, claras.</h2>
     <div class="cards-3">
@@ -583,14 +609,18 @@
       </div>
       <div class="card">
         <div class="card-num">2</div>
-        <h4>Más usuarios y más crédito, por casi lo mismo.</h4>
-        <p>Pasan a <strong>50 usuarios</strong> (hoy 41) y su crédito sube a <strong>$125K</strong>. Un solo precio por usuario, más bajo y sin SaaS fijo — y el crédito ahora escala con cada operador que suman.</p>
+        <h4>Le apostamos a su crecimiento.</h4>
+        <p>Pasan a <strong>50 usuarios</strong> (hoy 41) y su crédito sube a <strong>$125K</strong> — capacidad lista para cuando sumen operadores, sin renegociar. El crédito escala con cada usuario y el precio por usuario baja.</p>
       </div>
       <div class="card accent">
         <div class="card-num">3</div>
         <h4>Cashback que premia pagar rápido.</h4>
         <p>Entre antes liquidan cada disposición de crédito, más cashback ganan. Ustedes ya pagan en 2.7 días — están justo en la zona donde el cashback es alto.</p>
       </div>
+    </div>
+    <div class="coming">
+      <span class="tag">Próximamente</span>
+      <div class="ctext"><strong>Módulo de casetas:</strong> gestionen el telepeaje desde Uvicuo, junto con el combustible. En las primeras pruebas estamos recuperando <strong>7–9%</strong> del gasto en casetas — cobros dobles, errores de ejes y conciliación.</div>
     </div>
   </section>
 
