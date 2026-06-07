@@ -56,11 +56,16 @@
   .bar button.ghost { background:#fff; color:var(--mut); border:1px solid var(--line); }
   #flash { color:#1a7f43; font-size:12px; }
   #out { width:100%; min-height:90px; margin-top:10px; font-family:ui-monospace,Menlo,monospace; font-size:12px; border:1px solid var(--line); border-radius:8px; padding:10px; display:none; }
+  .extra-wrap { margin-top:22px; }
+  .extra-wrap label { display:block; font-size:12.5px; font-weight:600; color:var(--txt); margin-bottom:6px; }
+  .extra-wrap .hint { font-weight:400; color:var(--mut); }
+  #extra-fb { width:100%; min-height:70px; font:inherit; font-size:13px; border:1px solid var(--line); border-radius:8px; padding:10px; color:var(--txt); resize:vertical; box-sizing:border-box; }
+  #extra-fb:focus { outline:none; border-color:var(--acc); }
   .empty { color:var(--mut); }
   footer { margin-top:26px; color:#9aa1ab; font-size:11px; }
 </style></head>
 <body>
-  <header><h1>Comunicaciones</h1><span class="sub">deal-copilot · Sun 07-Jun-2026 14:25</span></header>
+  <header><h1>Comunicaciones</h1><span class="sub">deal-copilot · Sun 07-Jun-2026 15:01</span></header>
   <div class="sub">Nada se envía sin tu aprobación del texto exacto. Tablero de solo lectura.</div>
 
   <div class="box"><span class="k">Abrir sesión conmigo:</span> <code>cd ~/Projects/_platform/agents/deal-copilot</code> &nbsp;→&nbsp; <code>claude</code></div>
@@ -111,7 +116,7 @@
         </div>
         <div class="meta">
           <span class="to">→ Miguel Ángel + Elizabeth <span class="num">mahernandez@asamaz.com.mx, eosuna@asamaz.com.mx (CC carlos.huber@uvicuo.com)</span></span>
-          <span class="when">Mon 08-Jun 09:12 <span class="rel">(en 19 h)</span></span>
+          <span class="when">Mon 08-Jun 09:12 <span class="rel">(en 18 h)</span></span>
         </div>
         <div class="note"><span class="note-lbl">Por qué</span>Aprobado por Iker 7-jun para LUNES 8-jun 9:12 AM. Borrador en Gmail listo y enhebrado (responde al thread donde Miguel prometió retro el 1-jun). Iker hace Schedule Send lun 9:12. Nudge retro del deck + amarrar 3ra sesión.</div>
         <div class="email"><div class="subj">Asunto: RE: ASAMAZ × Uvicuo · Deck a la medida + materiales de la sesión</div><div class="body">Hola Miguel, Elizabeth,<br><br>Espero que hayan tenido buen fin de semana.<br><br>¿Cómo van con la revisión del deck por dentro? Con gusto les resuelvo cualquier duda que haya salido al verlo con sus áreas.<br><br>Para no perder el ritmo, me encantaría amarrar la 3ra sesión con el equipo ampliado (contabilidad, combustible y administración) y dejar lista la base para arrancar el diagnóstico. ¿Les funciona alguna de estas?<br><br>- Miércoles 10 de junio<br>- Jueves 11 de junio<br>- Viernes 12 de junio<br><br>En cuanto me confirmen, les mando el invite. Y si nos falta cerrar el NDA por Weetrust, lo dejamos listo en paralelo.<br><br>Un abrazo,<br>Iker</div></div>
@@ -186,13 +191,17 @@
         </div>
         <div class="meta">
           <span class="to">→ Arturo García Ariza <span class="num">5214448033271</span></span>
-          <span class="when">Mon 08-Jun 10:00 <span class="rel">(en 20 h)</span></span>
+          <span class="when">Mon 08-Jun 10:00 <span class="rel">(en 19 h)</span></span>
         </div>
         <div class="note"><span class="note-lbl">Por qué</span>Reactivación + reproponer 1:1 (Iker falló en agendar la vez pasada).</div>
         <div class="bubbles"><div class="bubble">Arturo, qué tal 👋 Te debo una disculpa</div><div class="bubble">Quedamos en una llamada y se me fue agendarla de mi lado. Una disculpa por dejarlo en el aire tanto tiempo.</div><div class="bubble">Sigo con muchas ganas de platicar contigo para entender cómo ves la operación antes de armarles la propuesta.</div><div class="bubble">¿Te funciona el lunes 8 a las 12:00 o el martes 9 a las 12:00?</div><div class="bubble">En cuanto me confirmes te mando el invite de una vez 🙏🏼</div></div>
         <div class="label">com.uvicuo.dealcopilot.tnl-arturo</div>
         <div class="fb"><input class="fb-in" data-ref="tnl-arturo" placeholder="instrucción (ej. cancelar, reprogramar mañana 9am)"></div>
       </div></div></div>
+  <div class="extra-wrap">
+    <label>Feedback adicional <span class="hint">— texto libre; se incluye en el correo / portapapeles junto con tus decisiones por tarjeta</span></label>
+    <textarea id="extra-fb" placeholder="Lo que quieras agregar: contexto, nuevas instrucciones, deals que faltan, cambios de prioridad…"></textarea>
+  </div>
   <textarea id="out" readonly placeholder="Aquí aparecen tus instrucciones para pegar en el chat."></textarea>
   <div class="bar">
     <button onclick="emailAll()">📧 Abrir en Gmail (log)</button>
@@ -213,26 +222,33 @@
       });
       return lines;
     }
+    function extra() {
+      var e = document.getElementById('extra-fb');
+      return e && e.value.trim() ? e.value.trim() : '';
+    }
+    function buildBody() {
+      var lines = gather(), ex = extra(), parts = [];
+      if (lines.length) parts.push('Procesa estas decisiones del tablero de comunicaciones (deal-copilot):\n' + lines.join('\n'));
+      if (ex) parts.push('Feedback adicional:\n' + ex);
+      return parts.join('\n\n');
+    }
     function copyAll() {
-      var lines = gather();
-      var txt = lines.length
-        ? ('Procesa estas decisiones del tablero de comunicaciones (deal-copilot):\n' + lines.join('\n'))
-        : '(No marqué ninguna instrucción.)';
+      var body = buildBody();
+      var txt = body || '(No marqué ninguna instrucción ni feedback.)';
       var o = document.getElementById('out');
       o.style.display = 'block'; o.value = txt; o.select();
       var f = document.getElementById('flash');
-      if (navigator.clipboard && lines.length) {
+      if (navigator.clipboard && body) {
         navigator.clipboard.writeText(txt).then(
           function(){ f.textContent = 'Copiado ✓'; },
           function(){ f.textContent = 'Selecciónalo y copia (Cmd+C)'; }
         );
-      } else { f.textContent = lines.length ? 'Selecciónalo y copia (Cmd+C)' : 'Nada que copiar'; }
+      } else { f.textContent = body ? 'Selecciónalo y copia (Cmd+C)' : 'Nada que copiar'; }
     }
     function emailAll() {
-      var lines = gather();
+      var body = buildBody();
       var f = document.getElementById('flash');
-      if (!lines.length) { f.textContent = 'Nada que enviar'; return; }
-      var body = 'Procesa estas decisiones del tablero de comunicaciones (deal-copilot):\n' + lines.join('\n');
+      if (!body) { f.textContent = 'Nada que enviar'; return; }
       var n = new Date(), p = function(x){ return String(x).padStart(2, '0'); };
       var d = n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate())
             + ' ' + p(n.getHours()) + ':' + p(n.getMinutes());
