@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Comunicaciones — deal-copilot</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --line:#e4e7eb; --txt:#1f2733; --mut:#6b7280; --acc:#2563eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font:14px/1.55 -apple-system,Segoe UI,Roboto,sans-serif; padding:24px; max-width:820px; }
+  header { display:flex; align-items:baseline; gap:10px; margin-bottom:4px; }
+  h1 { font-size:19px; margin:0; font-weight:650; }
+  .sub { color:var(--mut); font-size:12px; }
+  .box { border:1px solid var(--line); border-radius:8px; padding:10px 13px; margin:10px 0; font-size:12.5px; background:var(--card); }
+  .box .k { color:var(--mut); }
+  code { background:#eef2ff; color:#3759c9; padding:1px 6px; border-radius:4px; font-size:12px; }
+  .prompt { background:#f0f7ff; border-color:#d6e6fb; color:#234; }
+  .prompt .t { display:block; margin-top:5px; color:#1f3b57; font-style:italic; }
+  .tabs { display:flex; gap:6px; margin:16px 0 6px; }
+  .tab { background:var(--card); border:1px solid var(--line); color:var(--mut); border-radius:8px; padding:7px 14px; font:inherit; font-size:13px; cursor:pointer; }
+  .tab span { background:#eef0f3; color:var(--txt); border-radius:10px; padding:0 7px; font-size:11px; margin-left:6px; }
+  .tab.active { color:var(--txt); border-color:var(--acc); background:#eef2ff; }
+  .pane { display:none; } .pane.active { display:block; }
+  .block { margin-bottom:18px; }
+  .block h3 { font-size:13px; letter-spacing:.04em; margin:14px 0 8px; color:#111827; display:flex; align-items:center; gap:8px; }
+  .block h3 .count { background:#eef0f3; color:var(--mut); border-radius:10px; padding:0 7px; font-size:11px; font-weight:500; }
+  .block h3 .seq { font-size:10.5px; font-weight:400; letter-spacing:0; color:var(--acc); background:#eef2ff; border-radius:10px; padding:1px 8px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:8px; }
+  .card-head { display:flex; align-items:center; gap:9px; margin-bottom:7px; flex-wrap:wrap; }
+  .ref { font-family:ui-monospace,Menlo,monospace; font-size:11.5px; background:#eef2ff; border:1px solid #dbe3ff; color:#3759c9; padding:2px 8px; border-radius:6px; }
+  .chan { font-size:12px; color:var(--mut); }
+  .badge { font-size:11px; padding:2px 9px; border-radius:20px; font-weight:600; margin-left:auto; }
+  .badge.go { background:#e7f6ec; color:#1a7f43; }
+  .badge.ok { background:#eef0f3; color:#6b7280; }
+  .badge.warn { background:#fff4e0; color:#9a6700; }
+  .badge.bad { background:#fdeaea; color:#c0392b; }
+  .badge.muted { background:#eef0f3; color:#9aa1ab; }
+  .meta { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; color:var(--mut); font-size:12.5px; margin-bottom:5px; }
+  .num { color:#9aa1ab; }
+  .when { font-variant-numeric:tabular-nums; } .rel { color:#9aa1ab; }
+  .note { font-size:12.5px; color:var(--mut); font-style:italic; margin-bottom:9px; }
+  .bubbles { display:flex; flex-direction:column; gap:5px; align-items:flex-start; }
+  .bubble { background:#dcf8c6; color:#14321f; padding:7px 11px; border-radius:12px 12px 12px 3px; max-width:82%; white-space:pre-wrap; }
+  .email { background:#f3f4f6; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  .email .subj { font-weight:600; margin-bottom:6px; } .email .body { color:#374151; }
+  .label { margin-top:9px; font-size:10.5px; color:#9aa1ab; font-family:ui-monospace,Menlo,monospace; }
+  .fb { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+  .sc { display:flex; gap:6px; flex-wrap:wrap; }
+  .scbtn { font:inherit; font-size:11.5px; padding:3px 10px; border-radius:6px; border:1px solid var(--line); background:#fff; color:var(--mut); cursor:pointer; }
+  .scbtn.ok:hover { border-color:#1a7f43; color:#1a7f43; }
+  .scbtn.no:hover { border-color:#c0392b; color:#c0392b; }
+  .fb-in { font:inherit; font-size:12.5px; padding:6px 10px; border:1px solid var(--line); border-radius:6px; width:100%; color:var(--txt); }
+  .fb-in:focus { outline:none; border-color:var(--acc); }
+  .bar { position:sticky; bottom:0; background:rgba(246,247,249,.96); border-top:1px solid var(--line); padding:11px 0; margin-top:18px; display:flex; gap:12px; align-items:center; }
+  .bar button { font:inherit; background:var(--acc); color:#fff; border:0; border-radius:8px; padding:8px 16px; cursor:pointer; font-size:13px; }
+  .bar button.ghost { background:#fff; color:var(--mut); border:1px solid var(--line); }
+  #flash { color:#1a7f43; font-size:12px; }
+  #out { width:100%; min-height:90px; margin-top:10px; font-family:ui-monospace,Menlo,monospace; font-size:12px; border:1px solid var(--line); border-radius:8px; padding:10px; display:none; }
+  .empty { color:var(--mut); }
+  footer { margin-top:26px; color:#9aa1ab; font-size:11px; }
+</style></head>
+<body>
+  <header><h1>Comunicaciones</h1><span class="sub">deal-copilot · Sun 07-Jun-2026 13:10</span></header>
+  <div class="sub">Nada se envía sin tu aprobación del texto exacto. Tablero de solo lectura.</div>
+
+  <div class="box"><span class="k">Abrir sesión conmigo:</span> <code>cd ~/Projects/_platform/agents/deal-copilot</code> &nbsp;→&nbsp; <code>claude</code></div>
+  <div class="box prompt"><span class="k">Prompt para arrancar la semana (cópialo):</span><span class="t">Ponte al día con la cadencia de ventas: revisa lo reciente de mis cuentas activas y prepárame los seguimientos de esta semana por canal (WhatsApp/email) en mi estilo, listos para que apruebe. Déjalos en el tablero (En revisión).</span></div>
+  <div class="box"><span class="k">Para decidir, dime el</span> <code>ref</code> <span class="k">en el chat:</span> <code>aprueba armstrong-wa</code> · <code>en asamaz-mail no seas tan formal</code> · <code>armstrong-wa, revisa lo reciente</code> · <code>agenda armstrong-wa mañana 10am</code></div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="rev">En revisión <span>2</span></button>
+    <button class="tab " data-tab="val">Validado <span>1</span></button>
+  </div>
+  <div id="tab-rev" class="pane active"><div class="block"><h3>ARMSTRONG <span class="count">1</span></h3>
+      <div class="card">
+        <div class="card-head">
+          <span class="ref" title="Refiérete a este item por su ref">armstrong-wa</span>
+          <span class="chan">💬 WhatsApp</span>
+          <span class="badge warn">Espera tu OK</span>
+        </div>
+        <div class="meta">
+          <span class="to">→ Isaac Moreno <span class="num">5213331307420</span></span>
+          <span class="when">sugerido Tue 09-Jun 10:00 <span class="rel">(en 2 d)</span></span>
+        </div>
+        <div class="note">Nudge suave: ya tienes lista la intro, amarrar fecha en ventana de Humberto. Lo reactivaste el 5-jun.</div>
+        <div class="bubbles"><div class="bubble">Que tal Isaac, ¿cómo estás?</div><div class="bubble">Oye, ya tengo lista la presentación introductoria para la sesión con los equipos operativos 🙌🏼</div><div class="bubble">Solo nos falta amarrar la fecha dentro de la ventana de Humberto.</div><div class="bubble">¿Cómo ves la disponibilidad esta semana o la próxima? En cuanto me digas, mando el invite 🚀</div></div>
+        
+        <div class="fb"><div class="sc"><button class="scbtn ok" onclick="setFb(this,'aprobar y enviar ahora')">✓ enviar ahora</button><button class="scbtn ok" onclick="setFb(this,'aprobar y agendar ')">✓ agendar…</button><button class="scbtn no" onclick="setFb(this,'rechazar')">✕ rechazar</button></div><input class="fb-in" data-ref="armstrong-wa" placeholder="instrucción para Claude (estilo, fecha, lo que sea)"></div>
+      </div></div><div class="block"><h3>ASAMAZ <span class="count">1</span></h3>
+      <div class="card">
+        <div class="card-head">
+          <span class="ref" title="Refiérete a este item por su ref">asamaz-mail</span>
+          <span class="chan">✉️ Email</span>
+          <span class="badge warn">Espera tu OK</span>
+        </div>
+        <div class="meta">
+          <span class="to">→ Miguel Ángel + Elizabeth <span class="num">mahernandez@asamaz.com.mx, eosuna@asamaz.com.mx (CC carlos.huber@uvicuo.com)</span></span>
+          
+        </div>
+        <div class="note">Nudge retro del deck + amarrar 3ra sesión con fechas concretas. Hay draft del 5-jun en Gmail (r6477709299703017685) que este refresca.</div>
+        <div class="email"><div class="subj">Asunto: RE: ASAMAZ × Uvicuo · Deck a la medida + materiales de la sesión</div><div class="body">Hola Miguel, Elizabeth,<br><br>Espero que hayan tenido buen fin de semana.<br><br>¿Cómo van con la revisión del deck por dentro? Con gusto les resuelvo cualquier duda que haya salido al verlo con sus áreas.<br><br>Para no perder el ritmo, me encantaría amarrar la 3ra sesión con el equipo ampliado (contabilidad, combustible y administración) y dejar lista la base para arrancar el diagnóstico. ¿Les funciona alguna de estas?<br><br>- Miércoles 10 de junio<br>- Jueves 11 de junio<br>- Viernes 12 de junio<br><br>En cuanto me confirmen, les mando el invite. Y si nos falta cerrar el NDA por Weetrust, lo dejamos listo en paralelo.<br><br>Un abrazo,<br>Iker</div></div>
+        
+        <div class="fb"><div class="sc"><button class="scbtn ok" onclick="setFb(this,'aprobar y enviar ahora')">✓ enviar ahora</button><button class="scbtn ok" onclick="setFb(this,'aprobar y agendar ')">✓ agendar…</button><button class="scbtn no" onclick="setFb(this,'rechazar')">✕ rechazar</button></div><input class="fb-in" data-ref="asamaz-mail" placeholder="instrucción para Claude (estilo, fecha, lo que sea)"></div>
+      </div></div></div>
+  <div id="tab-val" class="pane "><div class="block"><h3>TNL <span class="count">1</span></h3>
+      <div class="card">
+        <div class="card-head">
+          <span class="ref" title="Refiérete a este item por su ref">tnl-arturo</span>
+          <span class="chan">💬 WhatsApp</span>
+          <span class="badge go">Agendado</span>
+        </div>
+        <div class="meta">
+          <span class="to">→ Arturo García Ariza <span class="num">5214448033271</span></span>
+          <span class="when">Mon 08-Jun 10:00 <span class="rel">(en 21 h)</span></span>
+        </div>
+        <div class="note">Reactivación + reproponer 1:1 (Iker falló en agendar la vez pasada).</div>
+        <div class="bubbles"><div class="bubble">Arturo, qué tal 👋 Te debo una disculpa</div><div class="bubble">Quedamos en una llamada y se me fue agendarla de mi lado. Una disculpa por dejarlo en el aire tanto tiempo.</div><div class="bubble">Sigo con muchas ganas de platicar contigo para entender cómo ves la operación antes de armarles la propuesta.</div><div class="bubble">¿Te funciona el lunes 8 a las 12:00 o el martes 9 a las 12:00?</div><div class="bubble">En cuanto me confirmes te mando el invite de una vez 🙏🏼</div></div>
+        <div class="label">com.uvicuo.dealcopilot.tnl-arturo</div>
+        <div class="fb"><input class="fb-in" data-ref="tnl-arturo" placeholder="instrucción (ej. cancelar, reprogramar mañana 9am)"></div>
+      </div></div></div>
+  <textarea id="out" readonly placeholder="Aquí aparecen tus instrucciones para pegar en el chat."></textarea>
+  <div class="bar">
+    <button onclick="emailAll()">📧 Abrir en Gmail (log)</button>
+    <button class="ghost" onclick="copyAll()">Copiar al portapapeles</button>
+    <span id="flash"></span>
+  </div>
+  <footer>Revisa todo, marca tu input en cada tarjeta y dale a "Abrir en Gmail": se abre el compositor con un correo a ti mismo, asunto <code>[deal-copilot] decisiones</code> — lo envías y me avisas "ya lo mandé". Queda como log auditable; yo lo leo por Gmail y proceso. Fuente: state/scheduled/scheduled.json · regenerar: python3 tools/scheduled-dashboard.py</footer>
+  <script>
+    function setFb(b, v) {
+      var i = b.closest('.fb').querySelector('.fb-in');
+      i.value = v; i.focus();
+      if (v.endsWith(' ')) i.setSelectionRange(v.length, v.length);
+    }
+    function gather() {
+      var lines = [];
+      document.querySelectorAll('.fb-in').forEach(function(i){
+        if (i.value.trim()) lines.push('- ' + i.dataset.ref + ': ' + i.value.trim());
+      });
+      return lines;
+    }
+    function copyAll() {
+      var lines = gather();
+      var txt = lines.length
+        ? ('Procesa estas decisiones del tablero de comunicaciones (deal-copilot):\n' + lines.join('\n'))
+        : '(No marqué ninguna instrucción.)';
+      var o = document.getElementById('out');
+      o.style.display = 'block'; o.value = txt; o.select();
+      var f = document.getElementById('flash');
+      if (navigator.clipboard && lines.length) {
+        navigator.clipboard.writeText(txt).then(
+          function(){ f.textContent = 'Copiado ✓'; },
+          function(){ f.textContent = 'Selecciónalo y copia (Cmd+C)'; }
+        );
+      } else { f.textContent = lines.length ? 'Selecciónalo y copia (Cmd+C)' : 'Nada que copiar'; }
+    }
+    function emailAll() {
+      var lines = gather();
+      var f = document.getElementById('flash');
+      if (!lines.length) { f.textContent = 'Nada que enviar'; return; }
+      var body = 'Procesa estas decisiones del tablero de comunicaciones (deal-copilot):\n' + lines.join('\n');
+      var d = new Date().toISOString().slice(0, 10);
+      // Compositor de Gmail directo (no depende del handler mailto del sistema).
+      var url = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=iker@uvicuo.com'
+              + '&su=' + encodeURIComponent('[deal-copilot] decisiones ' + d)
+              + '&body=' + encodeURIComponent(body);
+      window.open(url, '_blank');
+      f.textContent = 'Abriendo Gmail en otra pestaña… revisa y envía, luego avísame.';
+    }
+    document.querySelectorAll('.tab').forEach(function(t){
+      t.onclick = function(){
+        document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
+        document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('active');});
+        t.classList.add('active');
+        document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+      };
+    });
+  </script>
+</body></html>
