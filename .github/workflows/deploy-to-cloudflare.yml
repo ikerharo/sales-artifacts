@@ -1,0 +1,44 @@
+name: Deploy sales artifacts to CF Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up deploy key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          printf 'Host github.com\n  IdentityFile ~/.ssh/deploy_key\n  IdentitiesOnly yes\n' > ~/.ssh/config
+
+      - name: Push to product-deploy/sales/
+        run: |
+          git config --global user.email "deploy@uvicuo.com"
+          git config --global user.name "sales-deploy"
+
+          git clone git@github.com:ikerharo/product-deploy.git _deploy
+
+          # Mirror sales-artifacts into _deploy/sales/, preserving structure.
+          mkdir -p _deploy/sales
+          rsync -a --delete \
+            --exclude='.git' --exclude='_deploy' --exclude='.github' \
+            ./ _deploy/sales/
+
+          cd _deploy
+          git add sales
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "deploy: sales-artifacts from ${GITHUB_SHA::7}"
+            git push
+          fi
