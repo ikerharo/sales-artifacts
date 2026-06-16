@@ -333,69 +333,6 @@
   .compare .delta { font-weight: 400; color: var(--uv-green-deep); font-size: 13px; margin-left: 6px; }
   .compare .small { font-weight: 400; color: var(--muted); font-size: 13px; }
 
-  /* Cashback table */
-  .cb-formula {
-    display: inline-block;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    padding: 12px 20px;
-    background: var(--surface);
-    border: 1px solid var(--line-strong);
-    border-radius: 10px;
-    font-size: 18px;
-    font-variant-numeric: tabular-nums;
-    color: var(--ink);
-    letter-spacing: 0.01em;
-  }
-  .cb-formula b { color: var(--uv-green-deep); font-weight: 600; }
-  .cb {
-    margin-top: 18px;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 1040px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .cb thead tr { background: var(--bg); }
-  .cb th, .cb td {
-    text-align: right;
-    padding: 13px 22px;
-    border-bottom: 1px solid var(--line);
-    font-size: 16px;
-    font-variant-numeric: tabular-nums;
-    color: var(--ink-soft);
-  }
-  .cb th {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    border-bottom: 1px solid var(--line-strong);
-  }
-  .cb th:first-child, .cb td:first-child { text-align: left; font-weight: 500; color: var(--ink); }
-  .cb tbody tr:last-child td { border-bottom: 0; }
-  .cb td.pct { font-weight: 600; color: var(--ink); }
-  .cb td.year { font-weight: 600; color: var(--ink); }
-  .cb tr.now { background: #F2F0E8; }
-  .cb tr.now td:first-child::after {
-    content: "≈ Hoy";
-    display: inline-block; margin-left: 10px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--amber); border: 1px solid var(--amber); padding: 2px 8px; border-radius: 4px;
-  }
-  .cb tr.best { background: var(--uv-green-soft); }
-  .cb tr.best td:first-child::after {
-    content: "Objetivo";
-    display: inline-block; margin-left: 10px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--uv-green-deep); border: 1px solid var(--uv-green); padding: 2px 8px; border-radius: 4px;
-  }
-  .cb tr.best td, .cb tr.best td.pct, .cb tr.best td.year { color: var(--uv-green-deep); }
-  .cb tr.neutral td, .cb tr.cost td { color: var(--muted); }
-  .cb-note { margin-top: 14px; font-size: 13.5px; color: var(--muted); max-width: 1040px; }
-
   /* Próximos pasos (numbered steps) */
   .steps {
     margin-top: 28px;
@@ -529,13 +466,6 @@
     .compare td.num { font-size: 13.5px; }
     .compare tr.total td.num { font-size: 17px; }
 
-    .cb-formula { font-size: 14px; padding: 10px 14px; }
-    .cb { margin-top: 14px; font-size: 12.5px; }
-    .cb th, .cb td { padding: 9px 12px; font-size: 12.5px; }
-    .cb th { font-size: 9.5px; letter-spacing: 0.06em; }
-    .cb-note { font-size: 12px; }
-    .cb tr.now td:first-child::after, .cb tr.best td:first-child::after { font-size: 8.5px; padding: 1px 5px; margin-left: 6px; }
-
     .steps { margin-top: 20px; gap: 10px; }
     .step { grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 18px; }
     .step-num { width: 28px; height: 28px; font-size: 13px; }
@@ -561,7 +491,7 @@
     <div class="eyebrow">Uvicuo 3.0 · Mayo 2026</div>
     <h1>Dolphy</h1>
     <div class="sub">Su migración a la nueva plataforma de Uvicuo — control de gasto corporativo, más simple y con mejores reportes, construida con el feedback de clientes como ustedes.</div>
-    <div class="sub-2">Por casi lo mismo que pagan hoy: <strong>un esquema más simple, más crédito y cashback.</strong></div>
+    <div class="sub-2">Por casi lo mismo que pagan hoy: <strong>un esquema más simple y más crédito.</strong></div>
     <div class="deck-meta">
       <span>Para su equipo directivo</span>
       <span>Propuesta comercial</span>
@@ -595,7 +525,7 @@
       </div>
     </div>
     <div class="punch">
-      Hoy su factura junta tres cobros distintos, difícil de presupuestar. <strong>Lo volvemos un solo precio por usuario</strong> — más simple, con más usuarios incluidos y cashback.
+      Hoy su factura junta tres cobros distintos, difícil de presupuestar. <strong>Lo volvemos un solo precio por usuario</strong> — más simple, con más usuarios incluidos.
     </div>
   </section>
 
@@ -627,66 +557,7 @@
     </div>
   </section>
 
-  <!-- 4. CASHBACK DINÁMICO -->
-  <section class="slide">
-    <div class="eyebrow">El cashback, en detalle</div>
-    <h2>Entre más rápido pagan, más ganan.</h2>
-    <div class="body" style="max-width: 1040px; margin-bottom: 14px;">
-      <p>No es un descuento fijo. Cada disposición de crédito tiene un día de pago: si liquidan en los primeros días, ganan cashback sobre lo gastado. Del día 6 en adelante corre interés.</p>
-    </div>
-    <div class="cb-formula">Arranca en <b>0.25% el día 1</b> y baja 0.05% por cada día que tardan en pagar.</div>
-    <table class="cb">
-      <thead>
-        <tr>
-          <th>Día en que pagan</th>
-          <th>Cashback</th>
-          <th>MXN / mes</th>
-          <th>MXN / año</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="best">
-          <td>Día 1</td>
-          <td class="pct">0.25%</td>
-          <td>$1,298</td>
-          <td class="year">$15,572</td>
-        </tr>
-        <tr>
-          <td>Día 2</td>
-          <td class="pct">0.20%</td>
-          <td>$1,038</td>
-          <td class="year">$12,457</td>
-        </tr>
-        <tr>
-          <td>Día 3</td>
-          <td class="pct">0.15%</td>
-          <td>$779</td>
-          <td class="year">$9,343</td>
-        </tr>
-        <tr>
-          <td>Día 4</td>
-          <td class="pct">0.10%</td>
-          <td>$519</td>
-          <td class="year">$6,229</td>
-        </tr>
-        <tr>
-          <td>Día 5</td>
-          <td class="pct">0.05%</td>
-          <td>$260</td>
-          <td class="year">$3,114</td>
-        </tr>
-        <tr class="cost">
-          <td>Día 6 en adelante</td>
-          <td class="pct">corre interés</td>
-          <td>—</td>
-          <td>—</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="cb-note">Calculado sobre su gasto con tarjeta (~$519K/mes). Hoy liquidan alrededor del día 17 y pagan un costo por utilización; <strong>adelantar su pago convierte ese costo en cashback</strong> — al día 1, hasta <strong>~$15.6K al año.</strong></div>
-  </section>
-
-  <!-- 5. HOY VS PROPUESTA -->
+  <!-- 4. HOY VS PROPUESTA -->
   <section class="slide top">
     <div class="eyebrow">Hoy vs Propuesta</div>
     <h2 style="margin-bottom: 28px;">Lo que pagan hoy, y lo que pagarían.</h2>
@@ -732,7 +603,7 @@
         <tr>
           <td class="feature">Financiamiento</td>
           <td>Cobro por utilización</td>
-          <td class="b-col">Cashback hasta 0.25% si pagan rápido</td>
+          <td class="b-col">Sin cargo por utilización · interés solo desde día 6</td>
         </tr>
         <tr>
           <td class="feature">Plataforma</td>
@@ -742,7 +613,7 @@
       </tbody>
     </table>
     <div class="punch" style="margin-top: 22px;">
-      <strong>Mismo precio, esquema más simple:</strong> de 3 cobros a uno solo, su crédito sube a $315K ($4,500 por usuario) y 70 usuarios incluidos. Y el cobro por utilización de hoy se vuelve <strong>cashback a su favor.</strong>
+      <strong>Mismo precio, esquema más simple:</strong> de 3 cobros a uno solo, su crédito sube a $315K ($4,500 por usuario) y 70 usuarios incluidos.
     </div>
   </section>
 
@@ -762,14 +633,14 @@
         <div class="step-num">2</div>
         <div>
           <h4>Firma del contrato Uvicuo 3.0</h4>
-          <p>70 usuarios incluidos a $18 USD por usuario, crédito de $4,500 por usuario (línea de $315K), un solo precio sin cobros extra, y cashback en repagos de menos de 5 días.</p>
+          <p>70 usuarios incluidos a $18 USD por usuario, crédito de $4,500 por usuario (línea de $315K) y un solo precio sin cobros extra.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div>
           <h4>Migración + kick-off</h4>
-          <p>Nuestro equipo de operaciones acompaña la transición sin downtime y activa el cashback desde el día uno.</p>
+          <p>Nuestro equipo de operaciones acompaña la transición sin downtime.</p>
         </div>
       </div>
     </div>
