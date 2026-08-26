@@ -10,8 +10,9 @@
 <!-- ============================================================================
      DECK COMERCIAL · UVI-027 · GRUPO TRAYECTO
      Chasis visual heredado del business case de peajes (lámina 16:9, escala --k).
-     Este NO es un business case: no lleva cifras porque Trayecto nunca ha
-     compartido un dato. Es el material comercial que sostiene el ask.
+     Este NO es un business case: las cifras del renglón "cuánto" son de una
+     operación comparable y sirven para dimensionar, no para comprometer.
+     Trayecto todavía no ha compartido un solo dato.
 
      CONTEXTO: 2ª sesión del 26-ago-2026, Uvicuo + TeleVía + Trayecto.
      Alejandro Torres (Dir. Administración) reabrió el deal el 13-ago
@@ -21,17 +22,31 @@
      USO: leave-behind post-sesión, diseñado para que Alejandro lo circule
      internamente a Eduardo y al contador Enrique Ibarra SIN escolta.
 
+     ORDEN DEL ARGUMENTO (heredado del business case):
+       tesis → palancas → método → cuánto.
+     Las palancas explican DE DÓNDE SALE EL DINERO sin un solo monto; los
+     montos aparecen tres láminas después, cada uno en el renglón de su
+     palanca. Mezclarlos es lo que hace que después nadie sepa de dónde
+     salió el número.
+
      REGLAS DURAS:
      · Ibarra es autor del sistema in-house premiado y NO estuvo en la sesión.
-       Nada puede leerse como "su sistema está atrasado". Las láminas 3 y 9
-       existen para eso y no se cortan.
+       Nada puede leerse como "su sistema está atrasado". Las láminas del
+       punto de partida, el diagrama y "qué no cambia" existen para eso y no
+       se cortan.
      · CERO marcas competidoras: ni el proveedor de tag que usan hoy, ni los
        productos que solo detectan. Se habla de "la categoría" y del
        "estándar de la industria".
      · CERO pricing y CERO cashback — van con el pricing completo, no sueltos.
-     · Del business case va el MÉTODO, nunca los números de otro cliente.
+       Por eso las palancas son tres y no las cuatro del business case.
+     · Todo porcentaje va etiquetado sobre GASTO DE CASETAS. El correo del
+       29-abr a Alejandro citó 0.5-1% del gasto OPERATIVO para un scope de
+       dos vectores: no es comparable y hay que decirlo si sale en la junta.
+     · Deducibilidad = baseline, nunca titular. El wedge del efectivo es
+       operativo: que el comprobante exista y a tiempo.
      · Telemetría en genérico: no se presume qué plataforma usa Trayecto
        (dato pendiente en metadata.yml).
+     · Diagramas en bordes CSS, no en SVG — el chasis rechaza svg y polygon.
 ============================================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -313,6 +328,108 @@
     *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
   }
 </style>
+
+<style>
+  /* ══════════════════════════════════════════════════════════════════════
+     AÑADIDOS DEL DECK UVI-027 · van DESPUÉS del bloque base a propósito.
+     Selectores nuevos, así que no compiten con las reglas heredadas; el
+     único punto de contacto es el media query de móvil, que necesita ganar
+     por orden de aparición igual que el del chasis.
+
+     LA FLECHA VA EN BORDES CSS, NO EN SVG. El chasis rechaza svg, polygon
+     y stroke-dasharray sobre el HTML y el CSS. El diagrama respeta ese
+     gate: cada punta es un triángulo de borders, como .cruce .fl.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /* CAJA REUTILIZABLE. Nace de .cruce .caja pero SUELTA, porque .cruce es
+     un grid de tres columnas (1fr auto 1fr) que existe para alojar la
+     flecha en medio. Meter dos cajas ahí sin flecha manda la segunda a la
+     columna 'auto' y la desborda fuera de la lámina — ya pasó en la lámina
+     de TeleVía. Para dos bloques SIN relación de flujo se usa .duo. */
+  .bx{
+    border:calc(2 * var(--k)) solid var(--stone-200); border-radius:calc(20 * var(--k));
+    padding:calc(32 * var(--k)); background:var(--paper);
+  }
+  .bx p.k{font-family:var(--mono); font-size:calc(21 * var(--k)); letter-spacing:.14em;
+          text-transform:uppercase; color:var(--stone-400); margin:0 0 calc(14 * var(--k));}
+  .bx p.q{font-size:calc(31 * var(--k)); line-height:1.28; color:var(--stone-900);
+          margin:0; font-weight:500; letter-spacing:-.01em;}
+  .bx p.d{font-size:calc(25 * var(--k)); line-height:1.5; color:var(--stone-500);
+          margin:calc(14 * var(--k)) 0 0;}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:calc(32 * var(--k)); margin-top:calc(46 * var(--k));}
+
+  /* DIAGRAMA DE CONEXIÓN · tres entradas → un motor → un destino.
+     La dirección importa: la última flecha apunta HACIA el sistema de
+     Trayecto. Es la lámina "qué no cambia" dicha en dibujo — su sistema
+     es el destino del dato, no algo que se sustituye. */
+  .diag{margin-top:calc(40 * var(--k));}
+  .diag .fila3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:calc(26 * var(--k));}
+  .diag .bx{padding:calc(26 * var(--k));}
+  .diag .bx p.q{font-size:calc(27 * var(--k));}
+  .diag .bx p.d{font-size:calc(22 * var(--k)); line-height:1.42; margin-top:calc(10 * var(--k));}
+
+  /* El motor. Es la única caja con relleno: en un diagrama de cinco
+     bloques el ojo necesita saber cuál es el que hace el trabajo. */
+  .diag .bx.motor{background:var(--stone-900); border-color:var(--stone-900);}
+  .diag .bx.motor p.k{color:var(--green-lt);}
+  .diag .bx.motor p.q{color:#FAFAF5;}
+  .diag .bx.motor .tareas{display:grid; grid-template-columns:1fr 1fr; gap:calc(9 * var(--k)) calc(38 * var(--k));
+                          margin-top:calc(18 * var(--k));}
+  .diag .bx.motor .tareas span{font-size:calc(22 * var(--k)); line-height:1.4; color:var(--stone-300);
+                               padding-left:calc(20 * var(--k)); position:relative;}
+  .diag .bx.motor .tareas span::before{content:""; position:absolute; left:0; top:calc(11 * var(--k));
+                                       width:calc(10 * var(--k)); height:calc(2 * var(--k)); background:var(--green-lt);}
+
+  /* Destino: borde más marcado, porque es donde termina el recorrido. */
+  .diag .bx.destino{border-color:var(--stone-400);}
+  .diag .bx.destino .tareas{display:flex; flex-wrap:wrap; gap:calc(8 * var(--k)) calc(34 * var(--k));
+                            margin-top:calc(16 * var(--k));}
+  .diag .bx.destino .tareas span{font-size:calc(22 * var(--k)); color:var(--stone-500);
+                                 padding-left:calc(20 * var(--k)); position:relative;}
+  .diag .bx.destino .tareas span::before{content:""; position:absolute; left:0; top:calc(11 * var(--k));
+                                         width:calc(10 * var(--k)); height:calc(2 * var(--k)); background:var(--stone-300);}
+
+  /* Flecha vertical: tallo + punta, ambos en borders. El contenedor es
+     relative para que la punta y el rótulo se anclen al tallo. */
+  .diag .baja{position:relative; height:calc(64 * var(--k)); margin:calc(6 * var(--k)) 0;}
+  .diag .baja i{position:absolute; left:50%; top:0; transform:translateX(-50%);
+                width:calc(3 * var(--k)); height:calc(44 * var(--k)); background:#6FB43A; display:block;}
+  .diag .baja i::after{content:""; position:absolute; bottom:calc(-17 * var(--k)); left:50%; transform:translateX(-50%);
+                       border-left:calc(11 * var(--k)) solid transparent;
+                       border-right:calc(11 * var(--k)) solid transparent;
+                       border-top:calc(18 * var(--k)) solid #6FB43A;}
+  .diag .baja b{position:absolute; left:calc(50% + 30 * var(--k)); top:calc(10 * var(--k));
+                font-family:var(--mono); font-size:calc(21 * var(--k)); font-weight:400;
+                letter-spacing:.1em; text-transform:uppercase; color:var(--stone-400); white-space:nowrap;}
+
+  /* EFECTIVO · dos columnas enfrentadas, hoy contra después. No usa .g2
+     porque cada lado necesita su propio encabezado pegado a su lista. */
+  .vs{display:grid; grid-template-columns:1fr 1fr; gap:calc(70 * var(--k)); margin-top:calc(44 * var(--k));}
+  .vs .lado p.h{font-family:var(--mono); font-size:calc(21 * var(--k)); letter-spacing:.14em;
+                text-transform:uppercase; margin:0 0 calc(20 * var(--k)); padding-bottom:calc(14 * var(--k));
+                border-bottom:calc(2 * var(--k)) solid var(--stone-200);}
+  .vs .lado.hoy p.h{color:var(--stone-400);}
+  .vs .lado.post p.h{color:var(--green-ink); border-bottom-color:var(--green-lt);}
+  .vs .lado .it{padding:calc(18 * var(--k)) 0; border-bottom:1px solid var(--stone-100);
+                font-size:calc(26 * var(--k)); line-height:1.5; color:var(--stone-600);}
+  .vs .lado .it:last-child{border-bottom:0;}
+  .vs .lado .it b{color:var(--stone-900); font-weight:600;}
+
+  @media screen and (max-width:900px){
+    .duo{grid-template-columns:1fr; gap:calc(24 * var(--k));}
+    .diag .fila3{grid-template-columns:1fr; gap:calc(20 * var(--k));}
+    .diag .bx.motor .tareas{grid-template-columns:1fr;}
+    .diag .baja{height:auto; padding:calc(20 * var(--k)) 0 calc(40 * var(--k));}
+    .diag .baja b{position:static; display:block; margin-top:calc(52 * var(--k)); text-align:center;}
+    .vs{grid-template-columns:1fr; gap:calc(40 * var(--k));}
+  }
+
+  @media print{
+    .diag .bx.motor{background:var(--stone-900) !important;}
+  }
+</style>
+
 </head>
 <body>
 
@@ -413,17 +530,78 @@
   </div>
 </section>
 
-<!-- NOTA DE ORADOR · LAS ENTREGAS EN LENGUAJE LLANO. Orden específico para Trayecto: aclaraciones primero porque es su última milla declarada; costeo por viaje va TERCERO y con cuidado, porque ellos sí tienen liquidación con casetas presupuestadas — el ángulo es real contra presupuestado, nunca "no lo tienen". Regla: CERO montos y CERO pricing en esta lámina. -->
+<!-- ══ LAS PALANCAS ══════════════════════════════════════════════════════
+     NOTA DE ORADOR · Copia deliberada de la lámina de palancas del business
+     case: explica DE DÓNDE SALE EL DINERO, en lenguaje llano y para alguien
+     que no conoce el negocio. No es la lista de capacidades del producto —
+     eso es la lámina siguiente, y mezclarlas es lo que hace que un decisor
+     no sepa qué le van a devolver.
+     REGLA DE ESTA LÁMINA: CERO MONTOS. Los montos viven en "cuánto", tres
+     láminas después, y cada palanca de aquí tiene allá su propio renglón.
+     Son TRES y no cuatro porque la cuarta del business case es el cashback
+     de intercambio, y el cashback no se presenta suelto: va con el pricing
+     completo o se lee como descuento en vez de palanca.
+     ══════════════════════════════════════════════════════════════════════ -->
 <section class="slide">
-  <p class="brow">Qué se entrega</p>
-  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Cuatro entregas, en orden de peso para Trayecto</h2>
-  <div class="rows" style="margin-top:calc(44 * var(--k));">
-    <div class="row paso"><span class="num">1</span><span class="txt"><b>Aclaraciones gestionadas hasta el reembolso.</b> Detección enriquecida con la operación real, levantamiento de la aclaración y seguimiento plaza por plaza. Es el tramo que hoy consume personas dedicadas y devuelve lo menos.</span></div>
-    <div class="row paso"><span class="num">2</span><span class="txt"><b>Conciliación de la factura contra los cruces y contra los viajes.</b> Que lo facturado corresponda a lo que efectivamente se cruzó, en el periodo correcto. Incluye el caso incómodo: el cruce que se cobra hoy y aparece dos días después.</span></div>
-    <div class="row paso"><span class="num">3</span><span class="txt"><b>Costo real de casetas por viaje, no el presupuestado.</b> El que efectivamente se pagó, amarrado a la bitácora. Es la diferencia entre costear con una tarifa de referencia que se mantiene a mano y costear con el cobro real que llegó.</span></div>
-    <div class="row paso last"><span class="num">4</span><span class="txt"><b>Rechazos de tag resueltos sin detener la unidad.</b> El operador reporta desde la caseta por WhatsApp y la mayoría se resuelve en el momento. Hoy la cadena es operador, jefe y administrador, con el tractor parado mientras tanto.</span></div>
+  <p class="brow">Las palancas</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">De dónde sale el beneficio, en tres renglones</h2>
+  <div class="rows" style="margin-top:calc(46 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt"><b>Cuando les cobran de más en una caseta, hoy no hay quién lo cache a tiempo.</b> Cada cobro se compara contra lo que esa misma caseta cobra normalmente por ese mismo tipo de unidad, y la línea marcada se contrasta contra la unidad que de verdad pasó. Cuando no coincide, se levanta la aclaración y se sigue hasta el reembolso. A mano el ejercicio no es viable: es cada línea de cada mes, y cada reclamo se pelea plaza por plaza hasta que el dinero vuelve.</span></div>
+    <div class="row paso"><span class="num">2</span><span class="txt"><b>Cuando se paga en efectivo, el comprobante se pierde por tiempo, no por descuido.</b> El ticket de papel se extravía, y el que no se extravía viaja días dentro de la unidad mientras la ventana para facturar se cierra. Con la foto tomada en el cruce el comprobante queda desde el primer momento, y el sistema busca el CFDI y no deja de intentar hasta obtenerlo.</span></div>
+    <div class="row paso last"><span class="num">3</span><span class="txt"><b>Hoy hay personas dedicadas a conciliar cruces y a perseguir aclaraciones.</b> Eso deja de hacerse a mano. Son horas que se usan en otra cosa — no personas que sobran, sino capacidad que hoy se consume en un trabajo que no debería ser humano.</span></div>
   </div>
-  <p class="foot wide">Y el efectivo: alrededor de una cuarta parte de los cruces del país se sigue pagando así. Ahí el comprobante se pierde por tiempo, no por descuido — el ticket viaja días dentro de la unidad mientras la ventana para facturar se cierra.</p>
+  <p class="foot wide">Cuánto vale cada una y de qué depende, tres láminas más adelante. Aquí solo qué hace cada una.</p>
+</section>
+
+<!-- ══ LO QUE CAMBIA EN LA OPERACIÓN ═════════════════════════════════════
+     NOTA DE ORADOR · Las dos capacidades que NO producen un renglón de pesos
+     recuperados pero sí cambian el control. Van separadas de las palancas a
+     propósito: meterlas en la misma lista sugiere que hay un ahorro detrás y
+     no lo hay, y esa clase de mezcla es la que hace que después nadie sepa
+     de dónde salió el número.
+     ⚠ EL COSTEO POR VIAJE ES EL RENGLÓN DELICADO. Trayecto SÍ tiene
+     liquidación de viajes con casetas presupuestadas. El ángulo es REAL
+     CONTRA PRESUPUESTADO. Jamás "no lo tienen".
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <p class="brow">Y lo que cambia en la operación</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Dos cosas que no se miden en pesos recuperados</h2>
+  <p class="lede" style="margin-top:calc(28 * var(--k)); max-width:calc(1420 * var(--k));">Van aparte de las palancas a propósito: no producen un renglón de beneficio, pero cambian lo que Trayecto puede ver y lo que le pasa a una unidad en la carretera.</p>
+  <div class="rows" style="margin-top:calc(44 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt"><b>El costo de casetas por viaje deja de ser el presupuestado y pasa a ser el real.</b> Hoy el viaje se costea contra un tarifario que alguien mantiene a mano; el cobro que efectivamente llegó vive en otro lado y en otro tiempo. Amarrar el cruce a la bitácora cierra esa distancia, y el costeo del viaje empieza a reflejar lo que de verdad se pagó.</span></div>
+    <div class="row paso last"><span class="num">2</span><span class="txt"><b>Un tag rechazado deja de detener la unidad.</b> Hoy la cadena es operador, jefe y administrador, con el tractor parado en la caseta mientras alguien consigue autorizar o poner dinero. El operador reporta desde el teléfono en el momento del rechazo y la mayoría de los casos se resuelve ahí mismo. Pasa poco — pero cuando pasa, para un viaje completo.</span></div>
+  </div>
+  <p class="foot wide">Con ~6,000 operadores en carretera, la frecuencia baja de un evento deja de ser el criterio: lo que importa es cuánto cuesta cada vez que ocurre.</p>
+</section>
+
+<!-- ══ EFECTIVO ══════════════════════════════════════════════════════════
+     NOTA DE ORADOR · El efectivo tenía media línea al pie de "qué se entrega"
+     y se merece lámina propia: en flota foránea no es marginal.
+     ENCUADRE OBLIGADO — la deducibilidad NO es el titular. El peaje en
+     efectivo siempre fue deducible; eso es baseline y venderlo como
+     diferenciador nos hace ver ingenuos frente a un contador. El wedge es
+     operativo: que el comprobante EXISTA. La deducibilidad es la
+     consecuencia, y va al pie, no en el encabezado.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <p class="brow">El efectivo</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">No se pierde por descuido. Se pierde <em>por tiempo</em>.</h2>
+  <p class="lede" style="margin-top:calc(28 * var(--k)); max-width:calc(1420 * var(--k));">Alrededor de una cuarta parte de los cruces del país se sigue pagando en efectivo, y en flota foránea de larga distancia eso no es una esquina del problema. El tag resuelve donde hay tag; el resto viaja en la cabina.</p>
+  <div class="vs">
+    <div class="lado hoy">
+      <p class="h">Cómo se pierde hoy</p>
+      <div class="it">El ticket de papel viaja días dentro de la unidad. Para cuando llega a administración, <b>la ventana para solicitar el comprobante ya se cerró</b> — o el ticket simplemente no llegó.</div>
+      <div class="it">Pedir la factura caseta por caseta es trabajo manual que nadie alcanza a hacer a escala: <b>cada plaza tiene su portal, su plazo y su formato</b>.</div>
+      <div class="it">Lo que no se comprueba no se deduce, y lo que no se deduce deja de ser peaje y se vuelve costo. El IVA acreditable se queda en la mesa.</div>
+    </div>
+    <div class="lado post">
+      <p class="h">Cómo cambia</p>
+      <div class="it"><b>La foto se toma en el cruce</b>, desde el teléfono del operador. El comprobante existe desde el primer momento, no días después y no dependiendo de que el papel sobreviva el viaje.</div>
+      <div class="it">El sistema <b>busca el CFDI y no deja de intentar hasta obtenerlo</b>, plaza por plaza y dentro del plazo de cada una. Nadie de Trayecto persigue portales.</div>
+      <div class="it">El gasto queda amarrado al viaje <b>y comprobado</b>, así que entra a la contabilidad como lo que realmente es y no como una partida sin respaldo.</div>
+    </div>
+  </div>
+  <p class="foot wide">Que el peaje pagado en efectivo sea deducible no es la novedad: siempre lo fue. La diferencia es que ahora el comprobante existe, y a tiempo.</p>
 </section>
 
 <!-- NOTA DE ORADOR · El método antes del resultado. Es lo que le habla a Innovación y es el seguro contra Ibarra: un procedimiento auditable no se discute, se verifica. Se explica con el método, NUNCA con las cifras de otro cliente. -->
@@ -444,24 +622,119 @@
   <p class="foot wide">El ejercicio se entrega con todas las líneas del periodo y la tarifa de referencia de cada grupo, para que su equipo llegue al mismo número sin nosotros.</p>
 </section>
 
+<!-- ══ CUÁNTO ════════════════════════════════════════════════════════════
+     NOTA DE ORADOR · La pregunta que Eduardo va a hacer. "No tenemos número"
+     es la peor respuesta posible, y un número inventado es peor todavía.
+     Esta lámina da orden de magnitud medido, anonimizado, con TRES guardas:
+       1. El denominador va etiquetado en cada renglón. Es GASTO DE CASETAS,
+          no gasto operativo. El correo del 29-abr a Alejandro citó 0.5-1%
+          del gasto OPERATIVO y cubría peajes + viáticos: si alguien saca ese
+          número en la junta, no es comparable con este y hay que decirlo.
+       2. Detectado y recuperable van SEPARADOS. Esa brecha es literalmente
+          el argumento del deck: enriquecer y gestionar es lo que convierte
+          lo detectado en dinero de vuelta.
+       3. Objetivo, no promesa. La cifra de Trayecto sale de su mes.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <p class="brow">El orden de magnitud</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Cuánto hay. Y cuánto <em>de verdad regresa</em>.</h2>
+  <p class="lede" style="margin-top:calc(28 * var(--k)); max-width:calc(1420 * var(--k));">La cifra de Trayecto no la tenemos todavía. Lo que sí tenemos es lo medido con este mismo método en una operación comparable, sobre un mes real de facturación.</p>
+  <div class="rows" style="margin-top:calc(46 * var(--k));">
+    <div class="row recon hd"><span>Renglón</span><span class="r">% casetas</span><span>Qué significa</span><span></span></div>
+    <div class="row recon"><span class="txt"><b>Sobreprecio detectado</b><span class="sub">solo contra facturación</span></span><span class="r n">~3.2%</span><span class="f">Es el piso de lo detectable: se midió sin cruzar contra la operación física.</span><span></span></div>
+    <div class="row recon sumo"><span class="txt"><b>Lo que entra como recuperable</b><span class="sub">detección + gestión de aclaraciones</span></span><span class="r n">~1.5%</span><span class="f">La brecha contra el renglón de arriba es lo que se puede sostener frente a la concesionaria.</span><span></span></div>
+    <div class="row recon"><span class="txt">Comprobante del efectivo y horas liberadas</span><span class="r n">~0.9%</span><span class="f">Las palancas que no dependen de ganar una aclaración.</span><span></span></div>
+    <div class="row recon tot"><span class="txt"><b>El caso completo</b></span><span class="r n"><b>~2.4%</b></span><span class="f">Del gasto de casetas, al año.</span><span></span></div>
+  </div>
+  <div style="margin-top:calc(34 * var(--k)); padding-top:calc(28 * var(--k)); border-top:calc(2 * var(--k)) solid var(--stone-200);">
+    <p class="xxs">Objetivo, no promesa</p>
+    <p class="ps" style="margin-top:calc(12 * var(--k)); max-width:none;">Estos porcentajes son de otra operación y sirven para dimensionar, no para comprometer. <b>El número de Trayecto sale del mes de datos</b>, medido contra su propio corte y entregado línea por línea para que lo verifiquen.</p>
+  </div>
+  <p class="foot wide">Referencia: flota foránea de larga distancia de ~1,000 unidades. Todos los porcentajes son sobre el gasto de casetas — no sobre el gasto operativo, que es una base mucho mayor y da un número que no es comparable.</p>
+</section>
+
 <!-- NOTA DE ORADOR · POR QUÉ TELEVÍA. Encuadre de Iker: partner tecnológico + soporte por encima del estándar. Andrés Vázquez está en la sala. PROHIBIDO comparar contra el proveedor de tag que Trayecto usa hoy: se habla del estándar de la industria, nunca de la marca instalada, o Alejandro lo defiende por reflejo. -->
 <section class="slide">
   <p class="brow">El riel</p>
   <h2 class="sm" style="margin-top:calc(20 * var(--k));">Por qué TeleVía es <em>nuestro partner</em></h2>
   <p class="lede" style="margin-top:calc(30 * var(--k)); max-width:calc(1420 * var(--k));">No es un proveedor de tag más en la lista. Es la pieza que hace posible todo lo anterior, y lo elegimos por dos razones concretas.</p>
-  <div class="cruce" style="margin-top:calc(46 * var(--k));">
-    <div class="caja">
+  <!-- .duo y NO .cruce: .cruce es un grid de tres columnas (1fr auto 1fr) que
+       existe para alojar la flecha en medio. Dos cajas ahí sin flecha mandan
+       la segunda a la columna 'auto' y la desbordan fuera de la lámina.
+       Aquí no hay flujo entre las dos razones, así que van en .duo. -->
+  <div class="duo">
+    <div class="bx">
       <p class="k">Razón 01</p>
       <p class="q">Partner tecnológico.</p>
       <p class="d">Abre el detalle cruce por cruce por API. Sin ese detalle disponible en el momento no existe el amarre al viaje, no existe la comparación contra tarifa de referencia y no existe la conciliación. Todo lo demás se construye encima de ese acceso.</p>
     </div>
-    <div class="caja">
+    <div class="bx">
       <p class="k">Razón 02</p>
       <p class="q">Soporte por encima del estándar.</p>
       <p class="d">Del otro lado hay quien <b>gestiona</b> la aclaración, no un mostrador que levanta un folio y ahí termina. Es el cambio de fondo: hoy el desincentivo para buscar anomalías es que encontrarlas no sirve de nada si recuperarlas no depende de ti.</p>
     </div>
   </div>
   <p class="ps" style="margin-top:calc(40 * var(--k)); max-width:none;"><b>TeleVía abre el cruce y responde por él. Uvicuo dice si estuvo bien cobrado, a qué viaje pertenece, y pelea el dinero cuando no.</b></p>
+</section>
+
+<!-- ══ DIAGRAMA ══════════════════════════════════════════════════════════
+     NOTA DE ORADOR · Al deck le faltaba el CÓMO SE CONECTA. Tres entradas,
+     un motor, un destino. La última flecha apunta HACIA el sistema de
+     Trayecto a propósito: es "su sistema sigue siendo el cerebro" dicho en
+     dibujo, y por eso esta lámina va justo antes de esa.
+     La telemetría va en GENÉRICO: no sabemos qué plataforma usa Trayecto
+     (pendiente en metadata.yml) y nombrar una que no sea la suya tumba el
+     argumento en vivo.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="slide">
+  <p class="brow">Cómo se conecta</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Tres fuentes, un motor, y el dato llega <em>a su sistema</em></h2>
+  <div class="diag">
+    <div class="fila3">
+      <div class="bx">
+        <p class="k">Entrada 01</p>
+        <p class="q">El riel de peaje</p>
+        <p class="d">El detalle de cada cruce por API, en el momento: caseta, clase de vehículo, tarifa e importe.</p>
+      </div>
+      <div class="bx">
+        <p class="k">Entrada 02</p>
+        <p class="q">La telemetría de la flota</p>
+        <p class="d">Qué unidad iba, por qué ruta y con qué configuración de ejes. La mitad que el proveedor de peaje nunca ve.</p>
+      </div>
+      <div class="bx">
+        <p class="k">Entrada 03</p>
+        <p class="q">El operador en la caseta</p>
+        <p class="d">La foto del ticket cuando el pago fue en efectivo, y el aviso por WhatsApp cuando el tag se rechaza.</p>
+      </div>
+    </div>
+
+    <div class="baja"><i></i><b>Se cruzan</b></div>
+
+    <div class="bx motor">
+      <p class="k">El motor</p>
+      <p class="q">Uvicuo</p>
+      <div class="tareas">
+        <span>Valida el cobro contra la tarifa de referencia de esa caseta y esa clase</span>
+        <span>Amarra cada cruce al viaje que lo generó</span>
+        <span>Levanta la aclaración y la sostiene hasta el reembolso</span>
+        <span>Persigue el comprobante fiscal hasta obtenerlo</span>
+      </div>
+    </div>
+
+    <div class="baja"><i></i><b>Ya validado</b></div>
+
+    <div class="bx destino">
+      <p class="k">Destino</p>
+      <p class="q">Los sistemas de Trayecto</p>
+      <div class="tareas">
+        <span>Conciliación de autopistas</span>
+        <span>Liquidación de viajes</span>
+        <span>Back office</span>
+      </div>
+      <p class="d">Reciben el cruce ya validado, ya amarrado al viaje y ya comprobado. Su lógica de negocio no cambia: cambia la calidad del dato que le entra.</p>
+    </div>
+  </div>
+  <p class="foot wide">Una sola integración del lado de Trayecto. Todo lo demás ocurre antes de que el dato llegue a su casa.</p>
 </section>
 
 <!-- NOTA DE ORADOR · La lámina que Alejandro necesita para circular esto internamente sin escolta. Existe para que Ibarra la lea solo y no se sienta atacado. Si hay que cortar una lámina del deck, NO es esta. -->
