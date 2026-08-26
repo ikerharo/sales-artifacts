@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#14130C" />
+<title>Grupo Trayecto × Uvicuo · Conciliación de peajes</title>
+
+<!-- ============================================================================
+     DECK COMERCIAL · UVI-027 · GRUPO TRAYECTO
+     Chasis visual heredado del business case de peajes (lámina 16:9, escala --k).
+     Este NO es un business case: no lleva cifras porque Trayecto nunca ha
+     compartido un dato. Es el material comercial que sostiene el ask.
+
+     CONTEXTO: 2ª sesión del 26-ago-2026, Uvicuo + TeleVía + Trayecto.
+     Alejandro Torres (Dir. Administración) reabrió el deal el 13-ago
+     estrechando el scope a UN vector — conciliación de peajes — y trajo a
+     Eduardo de la Parra (Dir. Innovación) para conocer la herramienta.
+
+     USO: leave-behind post-sesión, diseñado para que Alejandro lo circule
+     internamente a Eduardo y al contador Enrique Ibarra SIN escolta.
+
+     REGLAS DURAS:
+     · Ibarra es autor del sistema in-house premiado y NO estuvo en la sesión.
+       Nada puede leerse como "su sistema está atrasado". Las láminas 3 y 9
+       existen para eso y no se cortan.
+     · CERO marcas competidoras: ni el proveedor de tag que usan hoy, ni los
+       productos que solo detectan. Se habla de "la categoría" y del
+       "estándar de la industria".
+     · CERO pricing y CERO cashback — van con el pricing completo, no sueltos.
+     · Del business case va el MÉTODO, nunca los números de otro cliente.
+     · Telemetría en genérico: no se presume qué plataforma usa Trayecto
+       (dato pendiente en metadata.yml).
+============================================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:SOFT,ital,opsz,wght@0..100,0,9..144,300..600;0..100,1,9..144,300..500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#FAFAF5; --stone-100:#EDEBE0; --stone-150:#F5F4EC; --stone-200:#DFDCCC;
+    --stone-300:#C9C5B0; --stone-400:#9C9880; --stone-500:#6F6B55;
+    --stone-600:#4F4B3A; --stone-700:#2F2D22; --stone-900:#14130C;
+    --navy:#0E2A47; --navy-mid:#2C5A85; --green-ink:#3F7B17; --green-lt:#8CC45F;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+
+  /* GATES DE MÓVIL · BRANDING §5 */
+  html{height:100%; overflow:hidden; background:var(--stone-900); color-scheme:only light; -webkit-text-size-adjust:100%;}
+  body{height:100%; margin:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; overscroll-behavior:none;
+       background:var(--stone-900); font-family:var(--sans); color:var(--stone-700);
+       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-feature-settings:'ss01','cv11';
+       /* NAVEGACIÓN SIN JAVASCRIPT: scroll-snap hace que las flechas y el modo
+          pantalla completa del navegador se comporten como un deck. */
+       scroll-snap-type:y mandatory;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--navy); color:#fff;}
+
+  /* LA LÁMINA · 16:9 con una sola variable de escala. --k es un píxel del
+     diseño de 1920, así que la composición se conserva exacta a cualquier ancho
+     sin JavaScript y sin transform. */
+  .slide{
+    --k:calc(100cqw / 1920);
+    container-type:inline-size;
+    aspect-ratio:16/9; width:100%;
+    background:var(--paper); color:var(--stone-700);
+    padding:calc(90 * var(--k)) calc(110 * var(--k)) calc(80 * var(--k));
+    display:flex; flex-direction:column;
+    scroll-snap-align:center; scroll-snap-stop:always;
+    font-size:calc(30 * var(--k)); line-height:1.5;
+  }
+  .slide + .slide{margin-top:calc(20 * var(--k));}
+  /* El divisor del anexo es la ÚNICA lámina oscura: es donde cambia el lector,
+     de dirección a Contraloría. */
+  .slide.ink{background:var(--stone-900); color:#FAFAF5;}
+
+  .brow{font-weight:500; font-size:calc(24 * var(--k)); letter-spacing:.14em; text-transform:uppercase; color:var(--stone-500); margin:0;}
+  .brow.wide{letter-spacing:.24em; color:var(--green-lt);}
+  h1,h2{font-family:var(--serif); font-weight:380; font-variation-settings:'opsz' 96,'SOFT' 30;
+        letter-spacing:-.03em; color:var(--stone-900); margin:0; text-wrap:balance;}
+  h1{font-size:calc(118 * var(--k)); line-height:.93; letter-spacing:-.035em;}
+  h2{font-size:calc(76 * var(--k)); line-height:1;}
+  h2.sm{font-size:calc(64 * var(--k));}
+  h2.lg{font-size:calc(112 * var(--k)); line-height:.95; letter-spacing:-.035em;}
+  .ink h1,.ink h2{color:#FAFAF5;}
+  em{font-style:italic; color:var(--green-ink);}
+  .ink em{color:var(--green-lt);}
+  .lede{font-size:calc(34 * var(--k)); line-height:1.5; color:var(--stone-600); margin:0; max-width:60ch;}
+  .p{font-size:calc(30 * var(--k)); line-height:1.5; color:var(--stone-600); margin:0;}
+  .ps{font-size:calc(28 * var(--k)); line-height:1.5; color:var(--stone-600); margin:0; max-width:55ch;}
+  .sm{font-size:calc(26 * var(--k)); color:var(--stone-500); margin:0;}
+  .xs{font-size:calc(24 * var(--k)); color:var(--stone-500); margin:0;}
+  .xxs{font-size:calc(22 * var(--k)); color:var(--stone-400); margin:0; letter-spacing:.1em; text-transform:uppercase;}
+  .ink .lede,.ink .p{color:var(--stone-300);}
+  b{color:var(--stone-900); font-weight:600;}
+  .ink b{color:#FAFAF5;}
+  .n{font-family:var(--mono); font-variant-numeric:tabular-nums; color:var(--stone-900);}
+  .gr{color:var(--green-ink);}
+  .mt{margin-top:auto;}
+  .fig{font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:500;
+       font-size:calc(76 * var(--k)); letter-spacing:-.03em; color:var(--stone-900); margin:0;}
+  .fig.xl{font-size:calc(84 * var(--k));}
+  .fig.md{font-size:calc(42 * var(--k)); letter-spacing:normal;}
+
+  .head{display:flex; align-items:flex-end; justify-content:space-between; gap:calc(60 * var(--k)); flex-wrap:wrap;}
+  .g2{display:grid; grid-template-columns:1fr 1fr; gap:calc(80 * var(--k));}
+  .g3{display:grid; grid-template-columns:1fr 1fr 1fr;
+      border-top:1px solid var(--stone-200); border-bottom:1px solid var(--stone-200);}
+  .g3 > *{padding:calc(44 * var(--k)) calc(48 * var(--k)); border-right:1px solid var(--stone-200);}
+  .g3 > *:first-child{padding-left:0;}
+  .g3 > *:last-child{padding-right:0; border-right:0;}
+  .split{display:grid; grid-template-columns:1.15fr 1fr; gap:calc(80 * var(--k)); align-items:start;}
+
+  .rows{display:flex; flex-direction:column;}
+  .row{display:grid; align-items:center; gap:0 calc(40 * var(--k));
+       border-bottom:1px solid var(--stone-100); padding:calc(20 * var(--k)) 0; font-size:calc(27 * var(--k));}
+  .row.hd{border-bottom:1px solid var(--stone-200); padding:0 0 calc(14 * var(--k));
+          font-size:calc(22 * var(--k)); letter-spacing:.1em; text-transform:uppercase; color:var(--stone-400);}
+  .row.last{border-bottom:1px solid var(--stone-200);}
+  .row .r{text-align:right;}
+  .row.tot{border-bottom:calc(2 * var(--k)) solid var(--stone-900);}
+  .esc{grid-template-columns:1.5fr 1fr 1fr 1fr 1.6fr;}
+  .part{grid-template-columns:1.4fr 1fr .5fr; padding:calc(30 * var(--k)) 0; font-size:calc(29 * var(--k));}
+  .sens{grid-template-columns:1.3fr .7fr 1.6fr; padding:calc(30 * var(--k)) 0; font-size:calc(29 * var(--k));}
+  .mem{grid-template-columns:1.1fr 1.5fr .6fr; padding:calc(22 * var(--k)) 0; font-size:calc(27 * var(--k));}
+  /* La escalera de reconciliación. Cuatro columnas porque el punto de la lámina es que
+     cada monto se vea junto a SU base: la mitad de las cifras del caso se confunden por
+     mezclar el numerador de una entidad con el denominador del grupo. */
+  .recon{grid-template-columns:1.5fr .75fr 1fr .5fr; padding:calc(20 * var(--k)) 0; font-size:calc(26 * var(--k));}
+  .recon .sub{color:var(--stone-400); font-size:calc(22 * var(--k)); display:block; margin-top:calc(4 * var(--k));}
+  .row.paso2{border-bottom:1px solid var(--stone-200);}
+  .row.recon.sumo{border-bottom:calc(2 * var(--k)) solid var(--stone-300);}
+  .mem .f,.f{font-family:var(--mono); font-size:calc(23 * var(--k)); color:var(--stone-500); line-height:1.4;}
+  .row.cap{background:var(--stone-150);}
+
+  /* G2 · barra de recuperación. Escala FIJA de 12 meses: no compara escenarios
+     entre sí, muestra que todos caen dentro del año. */
+  .bar{display:flex; align-items:center; gap:calc(18 * var(--k));}
+  .bar i{height:calc(16 * var(--k)); background:var(--navy); display:block;}
+  .bar span{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:calc(24 * var(--k)); color:var(--stone-600); white-space:nowrap;}
+
+  /* G1 · BARRA APILADA A ESCALA COMÚN. La única gráfica que pone costo y
+     beneficio en el mismo eje. Trama diagonal = capacidad liberada. */
+  /* CRUCE · dos cajas y una flecha. La flecha va en BORDES CSS, no en SVG: hay un
+     gate que rechaza svg, polygon y stroke-dasharray sobre el HTML y el CSS, porque
+     este tipo no dibuja tendencias ni proyecciones. */
+  .cruce{display:grid; grid-template-columns:1fr auto 1fr; align-items:stretch; gap:calc(40 * var(--k)); margin-top:calc(52 * var(--k));}
+  .cruce .caja{border:calc(2 * var(--k)) solid var(--stone-200); border-radius:calc(20 * var(--k)); padding:calc(40 * var(--k)) calc(38 * var(--k)); background:var(--paper);}
+  .cruce .caja p.k{font-family:var(--mono); font-size:calc(22 * var(--k)); letter-spacing:.14em; text-transform:uppercase; color:var(--stone-400); margin:0 0 calc(18 * var(--k));}
+  .cruce .caja p.q{font-size:calc(34 * var(--k)); line-height:1.3; color:var(--stone-900); margin:0; font-weight:500; letter-spacing:-.01em;}
+  .cruce .caja p.d{font-size:calc(26 * var(--k)); line-height:1.5; color:var(--stone-500); margin:calc(16 * var(--k)) 0 0;}
+  .cruce .fl{align-self:center; position:relative; width:calc(92 * var(--k)); height:calc(3 * var(--k)); background:#6FB43A;}
+  .cruce .fl::after{content:""; position:absolute; right:calc(-2 * var(--k)); top:50%; transform:translateY(-50%);
+                    border-top:calc(11 * var(--k)) solid transparent; border-bottom:calc(11 * var(--k)) solid transparent; border-right:calc(18 * var(--k)) solid #6FB43A;}
+  .cruce .fl::before{content:""; position:absolute; left:calc(-2 * var(--k)); top:50%; transform:translateY(-50%);
+                     border-top:calc(11 * var(--k)) solid transparent; border-bottom:calc(11 * var(--k)) solid transparent; border-left:calc(18 * var(--k)) solid #6FB43A;}
+  /* PASOS · escalera de método. Se construye sobre .row para heredar el apilado de
+     móvil y quedar cubierta por el gate que caza texto recortado en celda. */
+  .paso{grid-template-columns:calc(88 * var(--k)) 1fr;}
+  /* Variante para etiquetas de palabra: 88px alcanza para un dígito, no para
+     "QUÉ SE CONSOLIDA", que se desbordaba sobre la columna de texto. */
+  .paso.lbl{grid-template-columns:calc(250 * var(--k)) 1fr;}
+  .paso .num{font-family:var(--mono); font-size:calc(30 * var(--k)); color:var(--stone-400); font-variant-numeric:tabular-nums;}
+  .paso .txt{font-size:calc(28 * var(--k)); line-height:1.5; color:var(--stone-600);}
+  .paso .txt b{color:var(--stone-900); font-weight:600;}
+  .paso .rot{font-family:var(--mono); font-size:calc(22 * var(--k)); letter-spacing:.14em; text-transform:uppercase; color:var(--stone-400);}
+  .g1{position:relative; margin-top:calc(50 * var(--k));}
+  /* BARRA PARTIDA · un contenedor por barra, porque .cost es absoluta y con dos
+     tracks dentro del mismo .g1 la línea del costo cruzaría las dos. Y el relleno
+     NO lleva clase .seg: las dos barras se dibujan a la misma escala referida al
+     techo, así que los segmentos reales siguen sumando 100% y el gate que los
+     cuenta sigue viendo cuatro. */
+  .g1 .grp{position:relative;}
+  .g1 .grp + .grp{margin-top:calc(56 * var(--k));}
+  .g1 .pad{}
+  .g1.split2 .track{height:calc(104 * var(--k));}
+  /* El primer grupo lleva el rótulo del costo, así que necesita aire arriba: sin él
+     la línea punteada cruza la cifra del subtotal. */
+  .g1.split2 .grp:first-child{padding-top:calc(58 * var(--k));}
+  .g1.split2 .cost{top:calc(38 * var(--k)); bottom:calc(-44 * var(--k));}
+  .g1.split2 .costlbl{top:calc(2 * var(--k));}
+  .g1 .cap{display:flex; align-items:baseline; gap:calc(20 * var(--k)); margin-bottom:calc(14 * var(--k));}
+  .g1 .cap b{font-size:calc(26 * var(--k)); font-weight:600; color:var(--stone-900); letter-spacing:-.01em;}
+  .g1 .cap span{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:calc(26 * var(--k)); color:var(--stone-500);}
+  .g1 .cap i{margin-left:auto; font-style:normal; font-size:calc(22 * var(--k)); color:var(--stone-400);}
+  .g1 .track{display:flex; height:calc(132 * var(--k)); width:100%; background:var(--stone-100);}
+  .g1 .seg{display:flex; align-items:flex-end; padding:calc(18 * var(--k));}
+  .g1 .seg span{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:calc(26 * var(--k));}
+  .g1 .cost{position:absolute; top:calc(-34 * var(--k)); bottom:calc(-34 * var(--k)); border-left:calc(3 * var(--k)) dashed var(--stone-900);}
+  .g1 .costlbl{position:absolute; top:calc(-30 * var(--k)); z-index:2; font-size:calc(24 * var(--k)); letter-spacing:.1em;
+               text-transform:uppercase; color:var(--stone-900); padding-left:calc(14 * var(--k)); background:var(--paper);}
+  .g1 .keys{display:grid; margin-top:calc(30 * var(--k));}
+  .g1 .keys p{margin:0; padding-right:calc(24 * var(--k)); font-size:calc(24 * var(--k)); line-height:1.35; color:var(--stone-600);}
+  .g1 .axis{display:flex; justify-content:space-between; margin-top:calc(22 * var(--k));
+            font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:calc(22 * var(--k)); color:var(--stone-400);}
+  @media screen and (max-width:900px){
+    .g1 .keys{grid-template-columns:1fr !important; gap:calc(10 * var(--k));}
+    .g1 .seg span{display:none;}
+  }
+
+  .aside{background:var(--stone-150); border:1px solid var(--stone-200); border-radius:calc(14 * var(--k)); padding:calc(44 * var(--k)) calc(48 * var(--k));}
+  .aside ol{margin:calc(20 * var(--k)) 0 0; padding-left:calc(34 * var(--k)); font-size:calc(26 * var(--k)); line-height:1.6; color:var(--stone-600);}
+  .qa{display:flex; flex-direction:column; gap:calc(44 * var(--k)); margin-top:calc(56 * var(--k));}
+  .qa h3{font-family:var(--serif); font-weight:400; font-variation-settings:'opsz' 48,'SOFT' 30;
+         font-size:calc(38 * var(--k)); line-height:1.15; letter-spacing:-.02em; color:var(--stone-900); margin:0 0 calc(16 * var(--k));}
+  .dec{display:grid; grid-template-columns:auto 1fr; gap:calc(40 * var(--k)); align-items:baseline;
+       border-top:1px solid var(--stone-200); padding-top:calc(28 * var(--k));}
+  /* TOPE DE MEDIDA. Sin esto un pie de lámina corre a 156 caracteres por línea y el ojo
+     pierde el renglón al regresar. Lo legible son 45-75; 78 es el techo para nota al pie. */
+  .foot{margin-top:auto; padding-top:calc(30 * var(--k)); border-top:1px solid var(--stone-200);
+        font-size:calc(22 * var(--k)); color:var(--stone-400); max-width:66ch;}
+  .foot.wide{max-width:min(calc(1620 * var(--k)), 64ch); font-size:calc(25 * var(--k)); line-height:1.45; color:var(--stone-500);}
+  .ink .foot{border-top-color:rgba(250,250,245,.22);}
+  .meta{display:flex; gap:calc(60 * var(--k)); flex-wrap:wrap;}
+  .logos{display:flex; align-items:center; gap:calc(44 * var(--k));}
+  .logos img{height:calc(52 * var(--k)); width:auto;}
+  .logos .div{width:1px; height:calc(56 * var(--k)); background:var(--stone-200);}
+  /* MARCO DEL LOGO DEL CLIENTE. Se sustituye por el logo real; si no hay, se
+     queda el nombre en tipografía y no se inventa una marca. */
+  .logos .cl{border:1px solid var(--stone-300); border-radius:calc(8 * var(--k));
+             padding:calc(12 * var(--k)) calc(24 * var(--k)); font-size:calc(30 * var(--k)); font-weight:600;
+             color:var(--stone-900); letter-spacing:-.01em;}
+
+  a{color:var(--navy); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:#081A2E;}
+
+  /* ⚠ ESTE BLOQUE VA AL FINAL, DESPUÉS DE TODAS LAS REGLAS BASE.
+     Sus selectores tienen la MISMA especificidad que las reglas que corrige
+     (h1 contra h1), así que si se coloca arriba pierde por orden de aparición
+     y en silencio: la página se ve bien en escritorio y el móvil queda sin
+     tratamiento. Ya pasó una vez con el clamp del h1, que salía a 88px. */
+  /* ── MÓVIL ──────────────────────────────────────────────────────────────
+     Una lámina 16:9 a 390px mide 219px de alto y no se lee, así que se libera la
+     proporción y el deck se vuelve un documento que se desliza.
+     PERO ESCALAR TODO PROPORCIONALMENTE NO ALCANZA, y la primera versión lo hizo:
+     con un solo factor, o el cuerpo queda diminuto o el display queda enorme. A
+     660px de lienzo el cuerpo salía a 17px (aceptable) y el h1 a 70px, que se come
+     la pantalla en cinco renglones.
+     Van por separado: --k sube a un lienzo de 520px para que el cuerpo y las
+     tablas se lean, y el display se ACOTA con clamp en unidades de pantalla. */
+  @media screen and (max-width:900px){
+    .slide{--k:calc(100vw / 520); aspect-ratio:auto; container-type:normal; padding:calc(70 * var(--k)) calc(60 * var(--k));}
+    h1{font-size:clamp(30px,8.6vw,42px); line-height:1.04;}
+    h2{font-size:clamp(24px,6.6vw,32px);}
+    h2.sm{font-size:clamp(22px,6vw,29px);}
+    h2.lg{font-size:clamp(28px,8vw,38px);}
+    .fig{font-size:clamp(26px,7.4vw,34px);}
+    .fig.xl{font-size:clamp(27px,7.8vw,36px);}
+    .fig.md{font-size:clamp(18px,5vw,22px);}
+    .qa h3{font-size:clamp(19px,5.2vw,24px);}
+    /* La separación entre láminas era un hueco de 20px con el fondo oscuro del
+       body, y en el teléfono se lee como una barra negra que parte el documento.
+       Aquí las láminas se encadenan y las separa una regla fina. */
+    .slide + .slide{margin-top:0; border-top:1px solid var(--stone-200);}
+    /* El wordmark, la barra y el marco del cliente no caben en un renglón de
+       390px: el marco se cortaba por la derecha. */
+    .logos{flex-wrap:wrap; gap:calc(24 * var(--k));}
+    .logos .div{display:none;}
+    .g2,.g3,.split,.head,.cruce{grid-template-columns:1fr !important; display:block !important;}
+    .cruce > * + *{margin-top:calc(26 * var(--k));}
+    .cruce .fl{width:calc(3 * var(--k)); height:calc(60 * var(--k)); margin:0 auto;}
+    .cruce .fl::after{right:auto; left:50%; top:auto; bottom:calc(-2 * var(--k)); transform:translateX(-50%);
+                      border-left:calc(11 * var(--k)) solid transparent; border-right:calc(11 * var(--k)) solid transparent;
+                      border-bottom:calc(18 * var(--k)) solid #6FB43A; border-top:0;}
+    .cruce .fl::before{left:50%; top:calc(-2 * var(--k)); transform:translateX(-50%);
+                       border-left:calc(11 * var(--k)) solid transparent; border-right:calc(11 * var(--k)) solid transparent;
+                       border-top:calc(18 * var(--k)) solid #6FB43A; border-bottom:0;}
+    .g3 > *{border-right:0 !important; padding-left:0 !important; padding-right:0 !important;}
+    .g3 > * + *{margin-top:calc(28 * var(--k)); border-top:1px solid var(--stone-100); padding-top:calc(28 * var(--k));}
+    /* En el trío de cifras y en las cabeceras de bloque, el bloque derecho iba
+       alineado a la derecha y en una columna sola queda descolgado. */
+    .head > * + *{margin-top:calc(28 * var(--k));}
+    .head > *{text-align:left !important;}
+    .meta{gap:calc(6 * var(--k)) calc(28 * var(--k));}
+    /* La tabla de escenarios tiene CINCO columnas y a 390px no hay ancho para
+       ninguna. Colapsarla no sirve: cinco cifras sin rótulo no se entienden, y
+       es la tabla más útil del documento. Se le da su propio scroll. */
+    .rows{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    .row.esc{min-width:calc(1180 * var(--k));}
+
+    /* ── LAS TABLAS SE APILAN, Y ESTO NO ERA OPCIONAL ──────────────────────
+       Toda tabla de tres columnas a 390px da ~90px por columna, y la tercera se
+       CORTABA a media palabra: "Ya ocu", "el proveedo". Los gates no lo veían
+       porque el recorte pasa dentro de la celda del grid y el cuerpo de la
+       página nunca se desborda — se ve bien para un script y roto para un ojo.
+       Cada renglón pasa a una columna y sus celdas se leen de arriba a abajo.
+       El !important es necesario y no es pereza: el generador emite
+       grid-template-columns EN LÍNEA para que cada tabla tenga sus proporciones,
+       y una regla de hoja no le gana a un estilo en línea sin él.
+       LA DE ESCENARIOS SE EXCLUYE: son cinco cifras que solo significan algo
+       juntas, y ya tiene su propio scroll horizontal arriba. */
+    .row:not(.esc){grid-template-columns:1fr !important; gap:calc(12 * var(--k)) 0; padding:calc(26 * var(--k)) 0;}
+    .row.hd:not(.esc){display:none;}
+    .row:not(.esc) .r{text-align:left;}
+    /* Apilada, la cifra deja de estar en su columna y necesita separarse del
+       texto que la explica. */
+    .row:not(.esc) .r.n{font-size:calc(31 * var(--k));}
+  }
+
+  /* IMPRESIÓN · una lámina por hoja, horizontal. Libera el candado de altura de
+     los gates de móvil, o todo lo que pase de la primera hoja se recorta. */
+  @media print{
+    @page{ size:landscape; margin:0; }
+    html,body{height:auto; overflow:visible; background:none; scroll-snap-type:none;}
+    .slide{aspect-ratio:16/9; break-after:page; margin:0 !important;}
+    .slide:last-child{break-after:auto;}
+    .rows{overflow:visible;}
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NOTA DE ORADOR · Portada. No abre con cifra porque todavía NO HAY cifra de Trayecto: nunca han compartido un dato. Fingir un número aquí es el error que mata el deck con Eduardo de la Parra. La portada convierte esa ausencia en el argumento: el hueco tiene nombre, y llenarlo es el ask de la última lámina. -->
+<section class="slide">
+  <div class="logos">
+    <img src="data:image/png;base64,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" alt="Uvicuo" />
+    <span class="div"></span>
+    <span class="cl">Grupo Trayecto</span>
+  </div>
+  <div class="mt" style="max-width:calc(1460 * var(--k));">
+    <p class="brow">Conciliación de peajes &middot; Administración e Innovación</p>
+    <h1 style="margin-top:calc(36 * var(--k));">La última milla de <em>su</em> sistema de conciliación.</h1>
+    <p class="lede" style="margin-top:calc(44 * var(--k)); max-width:calc(1300 * var(--k));">Trayecto ya construyó el cerebro. Lo que falta es el tramo que ningún sistema interno puede cerrar solo, porque no depende de software: depende de <b>acceso al detalle del otro lado de la caseta</b> y de <b>una contraparte que responda</b>.</p>
+    <div style="margin-top:calc(46 * var(--k)); padding-top:calc(30 * var(--k)); border-top:calc(2 * var(--k)) solid var(--stone-200);">
+      <p class="xxs">La cifra de Trayecto todavía no está en este documento</p>
+      <p class="ps" style="margin-top:calc(14 * var(--k)); max-width:calc(1300 * var(--k));">A propósito. No hemos visto un solo dato de su operación, y un número inventado no resiste la primera pregunta. <b>Se llena con un mes de sus cruces y su propio corte</b> — es lo único que pedimos, y está en la última lámina.</p>
+    </div>
+  </div>
+  <div class="foot meta">
+    <span>26 de agosto de 2026</span>
+    <span>UVI-027</span>
+    <span>Documento de trabajo &middot; no constituye oferta comercial</span>
+  </div>
+</section>
+
+<!-- NOTA DE ORADOR · Alcance. Alejandro estrechó el scope él mismo el 13-ago a un solo vector. Esta lámina lo hace explícito para que nadie abra los otros tres en la junta y se diluya lo único que pidieron ver. -->
+<section class="slide">
+  <p class="brow">El alcance</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Qué entra y qué no</h2>
+  <div class="rows" style="margin-top:calc(56 * var(--k));">
+    <div class="row paso lbl"><span class="rot">Qué entra</span><span class="txt">El gasto de casetas de la flota foránea: la conciliación de cada cruce, la detección de cobros indebidos y la recuperación del comprobante fiscal, incluido lo que se paga en efectivo.</span></div>
+    <div class="row paso lbl"><span class="rot">Qué se administra</span><span class="txt">El levantamiento de las aclaraciones y su seguimiento hasta el reembolso. <b>No es un reporte: es el trabajo de reclamar</b>, hecho por alguien más.</span></div>
+    <div class="row paso lbl"><span class="rot">Qué se integra</span><span class="txt">Su sistema de conciliación y su liquidación de viajes siguen siendo la fuente. Lo que llega es el dato del cruce, ya validado y ya amarrado al viaje.</span></div>
+    <div class="row paso lbl last"><span class="rot">Qué NO entra</span><span class="txt">Viáticos, combustible y el efectivo de operadores. Cada uno tiene su propio caso y va aparte a propósito, para que este se sostenga solo.</span></div>
+  </div>
+  <p class="foot wide">Un solo riel. Es el que Trayecto pidió retomar, y es donde el trabajo manual de hoy es más caro.</p>
+</section>
+
+<!-- NOTA DE ORADOR · ANTI-BLOCKER, y va temprano a propósito. Enrique Ibarra es el autor del sistema in-house premiado y no está en la sala: Eduardo lo va a consultar después. Si esta lámina no existe, el deck se lee como "su sistema está atrasado" y el deal muere por dentro. -->
+<section class="slide">
+  <p class="brow">El punto de partida</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Trayecto no empieza de cero. Empieza <em>más adelante que casi nadie</em>.</h2>
+  <div class="g3" style="margin-top:calc(56 * var(--k));">
+    <div>
+      <p class="xxs">Ya existe</p>
+      <p class="q" style="font-size:calc(34 * var(--k)); font-weight:500; color:var(--stone-900); margin:calc(16 * var(--k)) 0 0; line-height:1.25;">Conciliación de autopistas</p>
+      <p class="xs" style="margin-top:calc(16 * var(--k)); line-height:1.5;">Sistema propio, construido en casa y reconocido con un premio de innovación.</p>
+    </div>
+    <div>
+      <p class="xxs">Ya existe</p>
+      <p class="q" style="font-size:calc(34 * var(--k)); font-weight:500; color:var(--stone-900); margin:calc(16 * var(--k)) 0 0; line-height:1.25;">Liquidación de viajes</p>
+      <p class="xs" style="margin-top:calc(16 * var(--k)); line-height:1.5;">Gasto e ingreso por viaje, kilómetros, rendimiento y comisiones. Con las casetas presupuestadas.</p>
+    </div>
+    <div>
+      <p class="xxs">En curso</p>
+      <p class="q" style="font-size:calc(34 * var(--k)); font-weight:500; color:var(--stone-900); margin:calc(16 * var(--k)) 0 0; line-height:1.25;">Migración de back office</p>
+      <p class="xs" style="margin-top:calc(16 * var(--k)); line-height:1.5;">El momento de integrar algo nuevo es mientras la casa está abierta, no después de cerrarla.</p>
+    </div>
+  </div>
+  <p class="ps" style="margin-top:calc(46 * var(--k)); max-width:none;">Eso cambia la conversación por completo. No venimos a instalar un sistema de conciliación donde no lo hay, ni a sustituir el que ya opera. <b>Venimos a conectarlo con lo que pasa del otro lado de la caseta</b>, que es la única parte que no se puede resolver desde adentro.</p>
+  <p class="foot wide">Con flotas que no tienen nada de esto la conversación es otra. Aquí el punto de partida es alto, y por eso el tramo que falta es tan visible.</p>
+</section>
+
+<!-- NOTA DE ORADOR · LA LÁMINA DEL ARGUMENTO. Contesta la pregunta que Eduardo de la Parra va a hacer en silencio: si esto se pudiera hacer, Ibarra ya lo habría hecho. La respuesta no es que les falte capacidad, es que la mitad del dato nunca estuvo disponible. -->
+<section class="slide">
+  <p class="brow">Por qué ahora</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Nadie lo había cruzado con la operación</h2>
+  <div class="cruce">
+    <div class="caja">
+      <p class="k">El proveedor de telepeaje</p>
+      <p class="q">Sabe qué cobró.</p>
+      <p class="d">Cada línea con su caseta, su clase de vehículo y su tarifa. Lo que no sabe es qué unidad iba, por qué ruta, ni con cuántos ejes.</p>
+    </div>
+    <div class="fl"></div>
+    <div class="caja">
+      <p class="k">El sistema de Trayecto</p>
+      <p class="q">Sabe qué pasó.</p>
+      <p class="d">Qué unidad salió, por dónde y con qué configuración. Lo que no ve es el detalle de lo que le facturaron por ese cruce, ni a tiempo.</p>
+    </div>
+  </div>
+  <p class="ps" style="margin-top:calc(40 * var(--k)); max-width:none;">Las dos mitades existen desde hace años, separadas. <b>Lo que cambió es que ya se pueden conectar</b>: Uvicuo abre el detalle de cada cruce en el momento, y lo cruza contra la operación física real de la flota. Eso contesta las dos preguntas que siempre vienen aquí. La primera: <b>ya tenemos telemetría y ya tenemos telepeaje</b>. Cierto — y ninguno de los dos lados ve al otro: la telemetría sabe dónde fue la unidad y nunca ve la factura. La segunda: <b>esto lo podemos construir por dentro</b>. También cierto, y lo que cuesta no es el reporte: es sostener el reclamo caseta por caseta, todos los meses, contra una contraparte que no tiene por qué contestarles rápido.</p>
+  <p class="foot wide">Ninguna flota de este tamaño en el país está operando así hoy, porque hasta ahora no había con qué.</p>
+</section>
+
+<!-- NOTA DE ORADOR · LA TESIS. Es la lámina que Iker pidió marcar. El diferenciador de categoría no es detectar: es enriquecer con la operación real y sostener la gestión hasta el reembolso. La categoría se queda en el paso 1. CERO nombres de competidores — se habla de "la categoría". -->
+<section class="slide">
+  <p class="brow">La tesis</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Detectar es <em>la parte fácil</em></h2>
+  <p class="lede" style="margin-top:calc(30 * var(--k)); max-width:calc(1420 * var(--k));">Un cobro que se sale de lo normal se marca con una regla. El problema nunca fue encontrarlo — fue poder <b>sostenerlo</b> frente a la concesionaria y poder <b>cobrarlo</b>. Por eso el trabajo real son tres pasos, no uno.</p>
+  <div class="rows" style="margin-top:calc(46 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt"><b>Detectar.</b> Cada cobro se compara contra lo que esa misma caseta cobra normalmente por ese mismo tipo de unidad. Lo que no coincide, se marca. Hasta aquí llega prácticamente toda la categoría.</span></div>
+    <div class="row paso"><span class="num">2</span><span class="txt"><b>Enriquecer.</b> La línea marcada se cruza contra la operación real — qué unidad iba, por qué ruta, con qué configuración de ejes — usando la telemetría que la flota ya trae instalada. Eso convierte <em>esta línea se ve rara</em> en <b>esta línea está mal, y aquí está la prueba</b>. Sin ese paso el reclamo se cae en la primera respuesta.</span></div>
+    <div class="row paso last"><span class="num">3</span><span class="txt"><b>Gestionar.</b> La aclaración se levanta, se sigue y se vuelve a empujar hasta que el dinero regresa. No es un tablero que alguien de Trayecto tiene que trabajar: <b>es el trabajo de reclamar, ya hecho</b>.</span></div>
+  </div>
+  <div style="margin-top:calc(36 * var(--k)); padding-top:calc(30 * var(--k)); border-top:calc(2 * var(--k)) solid var(--stone-200);">
+    <p class="ps" style="max-width:none;">Los dos efectos van juntos y por eso importa el orden: <b>enriquecer sube lo que se recupera</b>, porque el reclamo llega con evidencia y no con sospecha; <b>gestionar baja la carga administrativa</b>, porque el seguimiento deja de consumir gente de Trayecto. Detectar solo produce una lista más que alguien tiene que trabajar.</p>
+  </div>
+</section>
+
+<!-- NOTA DE ORADOR · LAS ENTREGAS EN LENGUAJE LLANO. Orden específico para Trayecto: aclaraciones primero porque es su última milla declarada; costeo por viaje va TERCERO y con cuidado, porque ellos sí tienen liquidación con casetas presupuestadas — el ángulo es real contra presupuestado, nunca "no lo tienen". Regla: CERO montos y CERO pricing en esta lámina. -->
+<section class="slide">
+  <p class="brow">Qué se entrega</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Cuatro entregas, en orden de peso para Trayecto</h2>
+  <div class="rows" style="margin-top:calc(44 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt"><b>Aclaraciones gestionadas hasta el reembolso.</b> Detección enriquecida con la operación real, levantamiento de la aclaración y seguimiento plaza por plaza. Es el tramo que hoy consume personas dedicadas y devuelve lo menos.</span></div>
+    <div class="row paso"><span class="num">2</span><span class="txt"><b>Conciliación de la factura contra los cruces y contra los viajes.</b> Que lo facturado corresponda a lo que efectivamente se cruzó, en el periodo correcto. Incluye el caso incómodo: el cruce que se cobra hoy y aparece dos días después.</span></div>
+    <div class="row paso"><span class="num">3</span><span class="txt"><b>Costo real de casetas por viaje, no el presupuestado.</b> El que efectivamente se pagó, amarrado a la bitácora. Es la diferencia entre costear con una tarifa de referencia que se mantiene a mano y costear con el cobro real que llegó.</span></div>
+    <div class="row paso last"><span class="num">4</span><span class="txt"><b>Rechazos de tag resueltos sin detener la unidad.</b> El operador reporta desde la caseta por WhatsApp y la mayoría se resuelve en el momento. Hoy la cadena es operador, jefe y administrador, con el tractor parado mientras tanto.</span></div>
+  </div>
+  <p class="foot wide">Y el efectivo: alrededor de una cuarta parte de los cruces del país se sigue pagando así. Ahí el comprobante se pierde por tiempo, no por descuido — el ticket viaja días dentro de la unidad mientras la ventana para facturar se cierra.</p>
+</section>
+
+<!-- NOTA DE ORADOR · El método antes del resultado. Es lo que le habla a Innovación y es el seguro contra Ibarra: un procedimiento auditable no se discute, se verifica. Se explica con el método, NUNCA con las cifras de otro cliente. -->
+<section class="slide">
+  <p class="brow">El método</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Cómo se mide. Sin cajas negras.</h2>
+  <div class="rows" style="margin-top:calc(44 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt">Se extraen las líneas del periodo: caseta, clase de vehículo, número de cruces, tarifa e importe.</span></div>
+    <div class="row paso"><span class="num">2</span><span class="txt">Se agrupa por caseta y clase, y se toma la <b>tarifa modal</b>: la que acumula más cruces. Moda y no promedio, porque el promedio se contamina con los propios cobros de más.</span></div>
+    <div class="row paso"><span class="num">3</span><span class="txt"><b>Primera regla:</b> toda línea con tarifa por encima de la modal de su grupo.</span></div>
+    <div class="row paso"><span class="num">4</span><span class="txt"><b>Segunda regla:</b> una clase de menos ejes cobrada más caro que una de más, en la misma caseta. Esa no admite explicación de carril.</span></div>
+    <div class="row paso last"><span class="num">5</span><span class="txt">Las dos reglas son excluyentes: una línea marcada por la segunda no vuelve a contarse en la primera.</span></div>
+  </div>
+  <div style="margin-top:calc(36 * var(--k)); padding-top:calc(30 * var(--k)); border-top:calc(2 * var(--k)) solid var(--stone-200);">
+    <p class="xxs">Y en operación el motor no se queda en la factura</p>
+    <p class="ps" style="margin-top:calc(14 * var(--k)); max-width:calc(1320 * var(--k));">Se apoya en la operación física real, así que la comparación pasa a ser el cobro contra lo que de verdad ocurrió. Eso importa para leer el resultado: <b>medido solo contra facturación, es el piso de lo detectable</b>, no el techo.</p>
+  </div>
+  <p class="foot wide">El ejercicio se entrega con todas las líneas del periodo y la tarifa de referencia de cada grupo, para que su equipo llegue al mismo número sin nosotros.</p>
+</section>
+
+<!-- NOTA DE ORADOR · POR QUÉ TELEVÍA. Encuadre de Iker: partner tecnológico + soporte por encima del estándar. Andrés Vázquez está en la sala. PROHIBIDO comparar contra el proveedor de tag que Trayecto usa hoy: se habla del estándar de la industria, nunca de la marca instalada, o Alejandro lo defiende por reflejo. -->
+<section class="slide">
+  <p class="brow">El riel</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Por qué TeleVía es <em>nuestro partner</em></h2>
+  <p class="lede" style="margin-top:calc(30 * var(--k)); max-width:calc(1420 * var(--k));">No es un proveedor de tag más en la lista. Es la pieza que hace posible todo lo anterior, y lo elegimos por dos razones concretas.</p>
+  <div class="cruce" style="margin-top:calc(46 * var(--k));">
+    <div class="caja">
+      <p class="k">Razón 01</p>
+      <p class="q">Partner tecnológico.</p>
+      <p class="d">Abre el detalle cruce por cruce por API. Sin ese detalle disponible en el momento no existe el amarre al viaje, no existe la comparación contra tarifa de referencia y no existe la conciliación. Todo lo demás se construye encima de ese acceso.</p>
+    </div>
+    <div class="caja">
+      <p class="k">Razón 02</p>
+      <p class="q">Soporte por encima del estándar.</p>
+      <p class="d">Del otro lado hay quien <b>gestiona</b> la aclaración, no un mostrador que levanta un folio y ahí termina. Es el cambio de fondo: hoy el desincentivo para buscar anomalías es que encontrarlas no sirve de nada si recuperarlas no depende de ti.</p>
+    </div>
+  </div>
+  <p class="ps" style="margin-top:calc(40 * var(--k)); max-width:none;"><b>TeleVía abre el cruce y responde por él. Uvicuo dice si estuvo bien cobrado, a qué viaje pertenece, y pelea el dinero cuando no.</b></p>
+</section>
+
+<!-- NOTA DE ORADOR · La lámina que Alejandro necesita para circular esto internamente sin escolta. Existe para que Ibarra la lea solo y no se sienta atacado. Si hay que cortar una lámina del deck, NO es esta. -->
+<section class="slide">
+  <p class="brow">Qué no cambia</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Su sistema sigue siendo <em>el cerebro</em></h2>
+  <p class="lede" style="margin-top:calc(30 * var(--k)); max-width:calc(1420 * var(--k));">Vale decirlo explícito, porque la lectura fácil de una conversación como esta es justo la equivocada.</p>
+  <div class="g2" style="margin-top:calc(52 * var(--k));">
+    <div>
+      <p class="xxs">Se queda de su lado</p>
+      <div class="rows" style="margin-top:calc(22 * var(--k));">
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">La conciliación como proceso y como criterio.</span></div>
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">La liquidación de viajes y su lógica de gasto e ingreso.</span></div>
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">El costeo, la contabilidad y las reglas del negocio.</span></div>
+        <div class="row last" style="grid-template-columns:1fr;"><span class="txt">La decisión de qué se reclama y qué no.</span></div>
+      </div>
+    </div>
+    <div>
+      <p class="xxs">Lo que aporta Uvicuo</p>
+      <div class="rows" style="margin-top:calc(22 * var(--k));">
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">El detalle del otro lado de la caseta, en el momento.</span></div>
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">El cruce contra la operación física real.</span></div>
+        <div class="row" style="grid-template-columns:1fr;"><span class="txt">El trabajo de levantar y sostener la aclaración.</span></div>
+        <div class="row last" style="grid-template-columns:1fr;"><span class="txt">La recuperación del comprobante, incluido lo pagado en efectivo.</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="foot wide">No es un reemplazo y no es una migración. Es el tramo final que ningún sistema interno puede cerrar solo, porque depende de acceso y de relación con el otro lado.</p>
+</section>
+
+<!-- NOTA DE ORADOR · EL ASK. Es la razón de existir del deck. Las tres cosas ya existen en su operación — Alejandro las describió en abril — así que es un pedido razonable, no una expedición de pesca. El punto 2 es el que hace útil el ejercicio: se compara contra SU corte, no contra un ideal nuestro. -->
+<section class="slide">
+  <p class="brow">El siguiente paso</p>
+  <h2 class="sm" style="margin-top:calc(20 * var(--k));">Un mes de datos. Nada más.</h2>
+  <p class="lede" style="margin-top:calc(30 * var(--k)); max-width:calc(1420 * var(--k));">La propuesta concreta es correr el método sobre un periodo real de Trayecto y contrastarlo <b>contra su propio corte</b> de ese mismo mes. No contra un ideal — contra lo que su sistema ya produjo.</p>
+  <div class="rows" style="margin-top:calc(46 * var(--k));">
+    <div class="row paso"><span class="num">1</span><span class="txt"><b>Un mes de cruces de peaje.</b> El detalle que les llega de la concesionaria para ese periodo.</span></div>
+    <div class="row paso"><span class="num">2</span><span class="txt"><b>Su corte de conciliación del mismo mes.</b> Es lo que hace útil el ejercicio: la comparación se hace contra su resultado, no contra una hipótesis nuestra.</span></div>
+    <div class="row paso last"><span class="num">3</span><span class="txt"><b>Tres números de la operación.</b> Personas dedicadas hoy a conciliar y reclamar; aclaraciones que se abren al mes; cuánto tarda hoy en resolverse una.</span></div>
+  </div>
+  <div style="margin-top:calc(36 * var(--k)); padding-top:calc(30 * var(--k)); border-top:calc(2 * var(--k)) solid var(--stone-200);">
+    <p class="ps" style="max-width:none;">Con eso devolvemos <b>el piso medido de lo que se está quedando en la mesa</b>, con las líneas abiertas para que lo verifiquen. Sin que Trayecto mueva absolutamente nada de su operación, y sin compromiso de ningún tipo.</p>
+  </div>
+  <p class="foot wide">Si hace falta convenio de confidencialidad para compartir el periodo, lo firmamos antes. El proceso ya está andando con otras cuentas y no toma semanas.</p>
+</section>
+
+<!-- NOTA DE ORADOR · Cierre honesto sobre el estado del producto. Decir noviembre en voz alta es deliberado: es más barato que prometer hoy y sostenerlo a medias. Y separa las dos cosas — el ejercicio se corre ya, el servicio llega en noviembre — para que el ask de la lámina anterior no quede rehén de la fecha. -->
+<section class="slide ink">
+  <p class="brow wide">Cierre</p>
+  <h2 class="lg" style="margin-top:calc(28 * var(--k)); max-width:calc(1500 * var(--k));">El ejercicio se corre <em>ya</em>. El servicio completo, en <em>noviembre</em>.</h2>
+  <div class="g2" style="margin-top:calc(64 * var(--k));">
+    <div>
+      <p class="xxs">Ahora</p>
+      <p class="q" style="font-size:calc(38 * var(--k)); font-weight:500; color:#FAFAF5; margin:calc(16 * var(--k)) 0 0; line-height:1.25;">El ejercicio con sus datos</p>
+      <p class="p" style="margin-top:calc(18 * var(--k));">Arranca en cuanto llegue el periodo. Devuelve el piso medido y el detalle línea por línea, auditable.</p>
+    </div>
+    <div>
+      <p class="xxs">Noviembre 2026</p>
+      <p class="q" style="font-size:calc(38 * var(--k)); font-weight:500; color:#FAFAF5; margin:calc(16 * var(--k)) 0 0; line-height:1.25;">El servicio en operación</p>
+      <p class="p" style="margin-top:calc(18 * var(--k));">Detección enriquecida, gestión de aclaraciones y conciliación corriendo de forma continua.</p>
+    </div>
+  </div>
+  <p class="ps" style="margin-top:calc(56 * var(--k)); max-width:none; color:var(--stone-300);">Damos la fecha con nombre porque preferimos llegar tarde y completo que temprano y a medias. Lo que se puede hacer hoy — medir — no depende de esa fecha.</p>
+  <p class="foot wide" style="color:var(--stone-400);">Uvicuo &middot; UVI-027 &middot; Grupo Trayecto &middot; agosto 2026</p>
+</section>
+
+</body>
+</html>
